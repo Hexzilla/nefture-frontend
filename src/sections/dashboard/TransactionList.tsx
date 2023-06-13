@@ -11,20 +11,34 @@ type Props = {
 function TransactionCard() {
   return (
     <Card>
-      <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between" sx={{ padding: '10px 20px'}}>
-        <Ethereum />
+      <Stack
+        direction="row"
+        spacing={2}
+        alignItems="center"
+        justifyContent="space-between"
+        sx={{ padding: '10px 20px' }}
+      >
+        <Stack direction="row" spacing={3}>
+          <div>
+            <Ethereum />
+          </div>
 
-        <Stack direction="column" justifyContent="space-between">
-          <Typography>Received at 12:56</Typography>
-          <Typography>1.05 ETH</Typography>
+          <Stack direction="column" spacing={1}>
+            <Typography>Received at 12:56</Typography>
+            <Typography>1.05 ETH</Typography>
+          </Stack>
         </Stack>
 
-        <Stack direction="column" justifyContent="space-between">
+        <Stack direction="column" spacing={1}>
           <Typography>Status</Typography>
           <Typography>pending</Typography>
         </Stack>
 
-        <Chip avatar={<Critical />} label={`critical`} sx={{ backgroundColor: 'critical.main' }} />
+        <Chip
+          avatar={<Critical />}
+          label={`critical`}
+          sx={{ bgcolor: 'critical.main', padding: '8px', height: '40px' }}
+        />
       </Stack>
     </Card>
   );
@@ -33,8 +47,8 @@ function TransactionCard() {
 export default function TransactionList({ title }: Props) {
   return (
     <Box>
-      <Stack direction="row" spacing={2} alignItems="center">
-        {title}
+      <Stack direction="row" spacing={2} alignItems="center" sx= {{ marginBottom: '20px' }}>
+        <Typography variant='h6'>{title}</Typography>
       </Stack>
 
       <Stack direction="column" spacing={2}>

@@ -63,31 +63,31 @@ const typography = {
   h2: {
     fontWeight: 700,
     lineHeight: 1.25,
-    fontSize: pxToRem(42),
+    fontSize: pxToRem(40),
     ...responsiveFontSizes({ sm: 48, md: 54, lg: 60 }),
   },
   h3: {
     fontWeight: 700,
     lineHeight: 1.5,
-    fontSize: pxToRem(36),
+    fontSize: pxToRem(34),
     ...responsiveFontSizes({ sm: 40, md: 44, lg: 48 }),
   },
   h4: {
     fontWeight: 700,
     lineHeight: 1.5,
-    fontSize: pxToRem(32),
+    fontSize: pxToRem(30),
     ...responsiveFontSizes({ sm: 32, md: 36, lg: 36 }),
   },
   h5: {
     fontWeight: 700,
     lineHeight: 1.5,
-    fontSize: pxToRem(28),
+    fontSize: pxToRem(26),
     ...responsiveFontSizes({ sm: 29, md: 30, lg: 30 }),
   },
   h6: {
     fontWeight: 700,
     lineHeight: 1.5,
-    fontSize: pxToRem(24),
+    fontSize: pxToRem(22),
     ...responsiveFontSizes({ sm: 24, md: 24, lg: 24 }),
   },
   subtitle1: {
