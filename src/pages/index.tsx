@@ -33,7 +33,7 @@ const DashboardDesktop = () => {
       </Grid>
 
       <Grid item xs={12} lg={5}>
-        <TransactionList title="Latest Transactions" />
+        <Wallet/>
       </Grid>
     </Grid>
   );
@@ -70,18 +70,6 @@ export default function GeneralAppPage() {
         <title> Dashboard | Nefture</title>
       </Head>
       <Container maxWidth={themeStretch ? false : 'xl'}>
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={7}>
-            <Stack direction="column" spacing={4}>
-              <TransactionList title="Suspicious Transactions" />
-              <TransactionList title="Latest Transactions" />
-            </Stack>
-          </Grid>
-
-          <Grid item xs={12} md={5} mt={3}>
-            <Wallet/>
-          </Grid>
-        </Grid>
         {isMobile ? <DashboardMobile /> : <DashboardDesktop />}
       </Container>
     </AnimatedContainer>
