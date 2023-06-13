@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import * as Yup from 'yup';
 import Head from 'next/head';
-import { Container, Grid, Stack, Card, Typography, Box, Button, Tabs, Tab } from '@mui/material';
+import { Container, Grid, Stack, Card, Typography, Box, Button, Tabs, 
+  Tab, Dialog, DialogTitle, DialogActions, DialogContent } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -21,19 +22,25 @@ type FormValuesProps = {
   storeName: string;
   afterSubmit?: string;
 };
-
-const DashboardDesktop = () => {
+const DashboardDesktop = () => { 
+  const [walletVisible, setWalletVisible] = useState(false);
+  const displayWallet =()=>{
+    setWalletVisible(true);
+  }
+  const hideWallet =()=>{
+    setWalletVisible(false);
+  }
   return (
     <Grid container spacing={4}>
       <Grid item xs={12} lg={7}>
         <Stack direction="column" spacing={4}>
-          <TransactionList title="Suspicious Transactions" />
-          <TransactionList title="Latest Transactions" />
+          <TransactionList title="Suspicious Transactions" onClicked={displayWallet}/>
+          <TransactionList title="Latest Transactions"  onClicked={displayWallet}/>
         </Stack>
       </Grid>
 
       <Grid item xs={12} lg={5}>
-        <Wallet/>
+        {walletVisible &&<Wallet onClosed={hideWallet}/>}
       </Grid>
     </Grid>
   );
@@ -41,6 +48,13 @@ const DashboardDesktop = () => {
 
 const DashboardMobile = () => {
   const [currentTab, setCurrentTab] = useState('suspicious');
+  const [walletVisible, setWalletVisible] = useState(false);
+  const displayWallet =()=>{
+    setWalletVisible(true);
+  }
+  const hideWallet =()=>{
+    setWalletVisible(false);
+  }
 
   return (
     <>
@@ -51,9 +65,14 @@ const DashboardMobile = () => {
         <Tab value={'transactions'} label={'LATEST TRANSACTIONS'} />
       </Tabs>
 
-      {currentTab === 'suspicious' && <Suspicious />}
-      {currentTab === 'transactions' && <Suspicious />}
+      {currentTab === 'suspicious' && <Suspicious onClicked={displayWallet}/>}
+      {currentTab === 'transactions' && <Suspicious onClicked={displayWallet}/>}
 
+      <Dialog fullWidth maxWidth="xs" open={walletVisible} >
+        <Stack>
+          <Wallet onClosed={hideWallet}/>
+        </Stack>
+      </Dialog>
       {/* <MobileMenu /> */}
     </>
   );

@@ -10,19 +10,20 @@ import SecureClip from '@components/chips/SecureClip';
 
 type Props = {
   isMobile?: boolean;
+  onClicked?: VoidFunction;
 };
 
-export default function TransactionCard({ isMobile }: Props) {
+export default function TransactionCard({ isMobile, onClicked }: Props) {
   const status = Math.random() * 10;
 
   return (
-    <Card>
+    <Card onClick={onClicked}>
       <Stack
         direction="row"
         spacing={2}
         alignItems="center"
         justifyContent="space-between"
-        sx={{ padding: '10px 20px' }}
+        sx={{ padding: '10px 20px', cursor:'pointer' }}
       >
         <Stack direction="row" spacing={3}>
           <div>
