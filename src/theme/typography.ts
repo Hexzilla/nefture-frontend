@@ -93,12 +93,12 @@ const typography = {
   subtitle1: {
     fontWeight: 700,
     lineHeight: 1.5,
-    fontSize: pxToRem(20),
+    fontSize: pxToRem(16),
   },
   subtitle2: {
     fontWeight: 700,
     lineHeight: 1.375,
-    fontSize: pxToRem(18),
+    fontSize: pxToRem(12),
   },
   body1: {
     lineHeight: 1.25,

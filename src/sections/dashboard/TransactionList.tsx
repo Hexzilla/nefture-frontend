@@ -47,15 +47,20 @@ function TransactionCard() {
 export default function TransactionList({ title }: Props) {
   return (
     <Box>
-      <Stack direction="row" spacing={2} alignItems="center" sx= {{ marginBottom: '20px' }}>
-        <Typography variant='h6'>{title}</Typography>
+      <Stack direction="row" spacing={2} alignItems="center" sx={{ marginBottom: '20px' }}>
+        <Typography variant="h6">{title}</Typography>
+        <Chip label={1} size="small" />
       </Stack>
 
-      <Stack direction="column" spacing={2}>
-        {new Array(5).fill(0).map((_, index) => (
+      <Stack direction="column" spacing="10px">
+        {new Array(4).fill(0).map((_, index) => (
           <TransactionCard key={index} />
         ))}
       </Stack>
+
+      <Typography variant="subtitle2" sx={{ paddingTop: '10px', color: '#7D7D7E' }}>
+        See 5 more pending transactions...
+      </Typography>
     </Box>
   );
 }
