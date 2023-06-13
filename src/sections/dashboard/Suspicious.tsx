@@ -13,7 +13,7 @@ export default function Suspicious({ onClicked }: Props) {
     <Box sx={{ paddingTop: '24px'}}>
       <Stack direction="column" spacing="10px">
         {new Array(10).fill(0).map((_, index) => (
-          <TransactionCard key={index} isMobile onClicked={onClicked}/>
+          <TransactionCard key={index} status={index+1} isMobile onClicked={onClicked}/>
         ))}
       </Stack>
     </Box>

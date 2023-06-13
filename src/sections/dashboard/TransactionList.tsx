@@ -19,7 +19,7 @@ export default function TransactionList({ title, onClicked }: Props) {
 
       <Stack direction="column" spacing="10px">
         {new Array(4).fill(0).map((_, index) => (
-          <TransactionCard key={index} />
+          <TransactionCard key={index} status={index + 1} />
         ))}
       </Stack>
 

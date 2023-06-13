@@ -9,13 +9,12 @@ import NoPendingTransactions from './NoPendingTransactions';
 import SecureClip from '@components/chips/SecureClip';
 
 type Props = {
+  status: number;
   isMobile?: boolean;
   onClicked?: VoidFunction;
 };
 
-export default function TransactionCard({ isMobile, onClicked }: Props) {
-  const status = Math.random() * 10;
-
+export default function TransactionCard({ status, isMobile, onClicked }: Props) {
   return (
     <Card onClick={onClicked}>
       <Stack
@@ -43,7 +42,7 @@ export default function TransactionCard({ isMobile, onClicked }: Props) {
           </Stack>
         )}
 
-        {status <= 3 ? <CriticalChip /> : status <= 5 ? <WarningChip /> : <SecureClip />}
+        {status === 1 ? <CriticalChip /> : status === 2 ? <WarningChip /> : <SecureClip />}
       </Stack>
     </Card>
   );
