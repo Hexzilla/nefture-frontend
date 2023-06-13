@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import * as Yup from 'yup';
 import Head from 'next/head';
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, Stack } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useAuthContext } from '../auth/useAuthContext';
@@ -69,9 +69,16 @@ export default function GeneralAppPage() {
         <title> Dashboard | Nefture</title>
       </Head>
       <Container maxWidth={themeStretch ? false : 'xl'}>
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={4}>
-            <TransactionList />
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={7}>
+            <Stack direction="column" spacing={4}>
+              <TransactionList title="Suspicious Transactions" />
+              <TransactionList title="Latest Transactions" />
+            </Stack>
+          </Grid>
+
+          <Grid item xs={12} md={5}>
+            <TransactionList title="Latest Transactions" />
           </Grid>
         </Grid>
       </Container>
