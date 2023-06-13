@@ -4,10 +4,10 @@ export default function Ethereum({ ...props }: SVGProps<SVGSVGElement>) {
   return (
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="48" height="48" rx="24" fill="black" />
-      <g clip-path="url(#clip0_1_24121)">
+      <g clipPath="url(#clip0_1_24121)">
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M24.1807 31.6424L14.9895 26.0927L24.1807 39.3405L33.3771 26.0927L24.1793 31.6437L24.1807 31.6424ZM24.3196 8.70776L15.1284 24.3069L24.3196 29.8646L33.5094 24.3123L24.3196 8.70776Z"
           fill="white"
         />

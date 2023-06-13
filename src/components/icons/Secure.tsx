@@ -3,7 +3,7 @@ import { SVGProps } from 'react';
 export default function Secure({ ...props }: SVGProps<SVGSVGElement>) {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g clip-path="url(#clip0_1_25776)">
+      <g clipPath="url(#clip0_1_25776)">
         <path
           d="M12 23.9883C18.5647 23.9883 24 18.5439 24 11.9941C24 5.43263 18.5529 0 11.9882 0C5.43529 0 0 5.43263 0 11.9941C0 18.5439 5.44705 23.9883 12 23.9883Z"
           fill="#2965FF"
