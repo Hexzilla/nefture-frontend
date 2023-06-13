@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import * as Yup from 'yup';
 import Head from 'next/head';
-import { Container, Grid, Stack } from '@mui/material';
+import { Container, Grid, Stack, Card, Typography, Box, Button } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useAuthContext } from '../auth/useAuthContext';
@@ -10,6 +10,7 @@ import useResponsive from '../hooks/useResponsive';
 import AnimatedContainer from '../components/animated-container';
 import { useSettingsContext } from '../components/settings';
 import TransactionList from '@sections/dashboard/TransactionList';
+import Wallet from '@sections/dashboard/wallet/WalletView';
 
 GeneralAppPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
 
@@ -77,8 +78,8 @@ export default function GeneralAppPage() {
             </Stack>
           </Grid>
 
-          <Grid item xs={12} md={5}>
-            <TransactionList title="Latest Transactions" />
+          <Grid item xs={12} md={5} mt={3}>
+            <Wallet/>
           </Grid>
         </Grid>
       </Container>
