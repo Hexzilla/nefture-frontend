@@ -1,0 +1,124 @@
+import { useEffect } from 'react';
+// next
+import { useRouter } from 'next/router';
+// @mui
+import { Box, Drawer, Stack, Typography, Button, Divider } from '@mui/material';
+// hooks
+import useResponsive from '../../../hooks/useResponsive';
+// config
+import { NAV } from '../../../config-global';
+// components
+import HeaderLogo from '../../../components/header-logo';
+import { NavSectionVertical } from '../../../components/nav-section';
+import Scrollbar from '../../../components/scrollbar';
+//
+import navConfig, { bottomNavConfig } from './config-navigation';
+import { padding } from '@mui/system';
+
+// ----------------------------------------------------------------------
+
+type Props = {
+  openNav: boolean;
+  onCloseNav: VoidFunction;
+};
+
+export default function NavVertical({ openNav, onCloseNav }: Props) {
+  const { pathname } = useRouter();
+
+  const isDesktop = useResponsive('up', 'lg');
+
+  useEffect(() => {
+    if (openNav) {
+      onCloseNav();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
+
+  const renderContent = (
+    <Scrollbar
+      sx={{
+        height: 1,
+        '& .simplebar-content': {
+          height: 1,
+          display: 'flex',
+          flexDirection: 'column',
+        },
+      }}
+    >
+      <Stack
+        sx={{
+          pt: 2,
+          pb: 2,
+          px: 4,
+          flexShrink: 0,
+        }}
+        direction="row"
+        justifyContent="flex-start"
+      >
+        <HeaderLogo />
+      </Stack>
+      <NavSectionVertical data={navConfig} />
+
+      <Box sx={{ flexGrow: 1 }} />
+      <Box 
+        sx={{
+              backgroundColor:'#0EAE88', 
+              backgroundImage:'linear-gradient(to right, #0EAE88 , #1350C7)',
+              borderRadius: '8px',
+              margin:'24px',
+              padding:'12px'
+              }}
+      >
+      <Typography textAlign="center" color="white">Upgrade your Wallet Security</Typography>
+
+      <Button sx={{width:'100%', background: 'white', color:'#1350C7', marginTop:'12px'}}>
+        Upgrade to Pro
+      </Button>
+      </Box>  
+      <NavSectionVertical data={bottomNavConfig} sx={{ mb: 2 }} />
+    </Scrollbar>
+  );
+
+  return (
+    <Box
+      component="nav"
+      sx={{
+        flexShrink: { lg: 0 },
+        width: { lg: NAV.W_DASHBOARD },
+      }}
+    >
+      {isDesktop ? (
+        <Drawer
+          open
+          variant="permanent"
+          PaperProps={{
+            sx: {
+              zIndex: 0,
+              width: NAV.W_DASHBOARD,
+              bgcolor: 'primary.main',
+              borderStyle: 'none',
+            },
+          }}
+        >
+          {renderContent}
+        </Drawer>
+      ) : (
+        <Drawer
+          open={openNav}
+          onClose={onCloseNav}
+          ModalProps={{
+            keepMounted: true,
+          }}
+          PaperProps={{
+            sx: {
+              bgcolor: 'primary.main',
+              width: NAV.W_DASHBOARD_MOBILE,
+            },
+          }}
+        >
+          {renderContent}
+        </Drawer>
+      )}
+    </Box>
+  );
+}
