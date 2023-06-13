@@ -13,9 +13,9 @@ export default function HeaderInfo() {
   const [info, setInfo] = useState('');
 
   useEffect(() => {
-    if (pathname === PATH_DASHBOARD.root) setInfo('Welcome, Luke! 👋');
-    else if (pathname === PATH_DASHBOARD.productResearch) setInfo('Product research');
-    else if (pathname === PATH_DASHBOARD.salesTracker) setInfo('Sales tracker');
+    if (pathname === PATH_DASHBOARD.root) setInfo('Welcome, Nefture!');
+    else if (pathname === PATH_DASHBOARD.wallet) setInfo('Wallet');
+    else if (pathname === PATH_DASHBOARD.nefturePlus) setInfo('Nefture +');
     else if (pathname === PATH_DASHBOARD.myProducts.overview) setInfo('Overview');
     else if (pathname === PATH_DASHBOARD.myProducts.savedProducts) setInfo('Saved products');
     else if (pathname === PATH_DASHBOARD.myProducts.scheduled) setInfo('Scheduled');

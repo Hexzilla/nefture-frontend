@@ -42,8 +42,8 @@ export const PATH_DASHBOARD = {
   // -------------------------------------------------------
 
   root: ROOTS_DASHBOARD,
-  productResearch: path(ROOTS_DASHBOARD, 'product-research'),
-  salesTracker: path(ROOTS_DASHBOARD, 'sales-tracker'),
+  wallet: path(ROOTS_DASHBOARD, 'wallet'),
+  nefturePlus: path(ROOTS_DASHBOARD, 'nefture'),
   myProducts: {
     root: path(ROOTS_DASHBOARD, 'my-products'),
     overview: path(ROOTS_DASHBOARD, 'my-products/overview'),

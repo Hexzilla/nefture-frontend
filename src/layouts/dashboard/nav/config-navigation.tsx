@@ -32,8 +32,8 @@ const navConfig = [
     subheader: '',
     items: [
       { title: 'Dashboard', path: PATH_DASHBOARD.root, icon: ICONS.dashboard },
-      { title: 'Wallet', path: PATH_DASHBOARD.productResearch, icon: ICONS.wallets },
-      { title: 'Nefture+', path: PATH_DASHBOARD.salesTracker, icon: ICONS.guard },
+      { title: 'Wallet', path: PATH_DASHBOARD.wallet, icon: ICONS.wallets },
+      { title: 'Nefture +', path: PATH_DASHBOARD.nefturePlus, icon: ICONS.guard },
       // {
       //   title: 'My Products',
       //   path: PATH_DASHBOARD.myProducts.root,
