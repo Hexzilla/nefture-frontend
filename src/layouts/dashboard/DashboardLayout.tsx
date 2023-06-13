@@ -86,7 +86,9 @@ export default function DashboardLayout({ children }: Props) {
         >
           {renderNavVertical}
 
-          <Main>{children}</Main>
+          <Main sx={{ ...(!isDesktop && {
+            p: '0'
+          })}}>{children}</Main>
         </Box>
 
         {!isDesktop && <MobileMenu />}
