@@ -33,7 +33,6 @@ export default function Header({ onOpenNav }: Props) {
       sx={{
         width: 1,
         height: 1,
-        backgroundColor:'primary.main',
         margin:'0px',
       }}
     >
@@ -61,8 +60,7 @@ export default function Header({ onOpenNav }: Props) {
         direction="row"
         alignItems="center"
         justifyContent="space-between"
-        sx={{ height: HEADER.H_MOBILE_EACH,
-           px: { xs: 2, lg: 0 } }}
+        sx={{ height: HEADER.H_MOBILE_EACH, px: { xs: 2, lg: 0 } }}
       >
         <HeaderInfo />
         <Stack
