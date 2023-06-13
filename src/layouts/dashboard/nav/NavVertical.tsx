@@ -95,7 +95,6 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
             sx: {
               zIndex: 0,
               width: NAV.W_DASHBOARD,
-              bgcolor: 'primary.main',
               borderStyle: 'none',
             },
           }}
@@ -111,7 +110,6 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
           }}
           PaperProps={{
             sx: {
-              bgcolor: 'primary.main',
               width: NAV.W_DASHBOARD_MOBILE,
             },
           }}
