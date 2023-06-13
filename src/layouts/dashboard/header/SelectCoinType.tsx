@@ -20,7 +20,7 @@ export default function SelectCoinType({ list, ...other }: Props) {
       label=""
       displayEmpty
       size="small"
-      sx={{ width: 150, backgroundColor: '#1A1B1F' }}
+      sx={{ width: 150, backgroundColor: '#1A1B1F', borderRadius: '14px' }}
       value={selectedCoinId}
       renderValue={(selected: number | undefined) => {
         // if (selected) {
