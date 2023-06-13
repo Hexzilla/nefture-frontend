@@ -89,7 +89,7 @@ export default function DashboardLayout({ children }: Props) {
           <Main>{children}</Main>
         </Box>
 
-        <MobileMenu />
+        {!isDesktop && <MobileMenu />}
       </>
     );
   };

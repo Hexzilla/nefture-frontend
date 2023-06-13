@@ -22,14 +22,14 @@ type FormValuesProps = {
 const DashboardDesktop = () => {
   return (
     <Grid container spacing={4}>
-      <Grid item xs={12} md={7}>
+      <Grid item xs={12} lg={7}>
         <Stack direction="column" spacing={4}>
           <TransactionList title="Suspicious Transactions" />
           <TransactionList title="Latest Transactions" />
         </Stack>
       </Grid>
 
-      <Grid item xs={12} md={5}>
+      <Grid item xs={12} lg={5}>
         <TransactionList title="Latest Transactions" />
       </Grid>
     </Grid>
@@ -45,7 +45,7 @@ const DashboardMobile = () => {
 
       <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)}>
         <Tab value={'suspicious'} label={'SUSPICIOUS'} />
-        <Tab value={'transactions'} label={'Latest Transactions'} />
+        <Tab value={'transactions'} label={'LATEST TRANSACTIONS'} />
       </Tabs>
 
       {currentTab === 'suspicious' && <Suspicious />}

@@ -4,7 +4,7 @@ import { useTheme, alpha } from '@mui/material/styles';
 
 const MenuButton = ({ title, icon }: { title: string; icon: string }) => (
   <Button variant="text" sx={{ color: 'white' }}>
-    <Stack direction="column" alignItems="center">
+    <Stack direction="column" alignItems="center" spacing={1}>
       <Box component="img" src={icon} width={24} />
       <Typography variant="caption">{title}</Typography>
     </Stack>
@@ -19,7 +19,7 @@ export default function MobileMenu() {
       sx={{
         position: 'sticky',
         bottom: 0,
-        background: theme.palette.background.neutral,
+        background: '#2D2D2D',
         opacity: 1,
         border: '1px solid rgba(255, 255, 255, 0.12)',
         borderRadius: '10px 10px 0px 0px',
