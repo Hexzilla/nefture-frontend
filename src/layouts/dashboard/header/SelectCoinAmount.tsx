@@ -17,13 +17,13 @@ export default function SelectCoinAmount({ list, ...other }: Props) {
   const [selectedUserId, setSelectedUserId] = useState(1);
 
   return (
-    <Stack direction="row" alignItems="center" spacing={1} sx={{ backgroundColor: '#1A1B1F', borderRadius: '8px' }}>
+    <Stack direction="row" alignItems="center" spacing={1} sx={{ backgroundColor: '#1A1B1F', borderRadius: '14px' }}>
       <Typography sx={{ paddingTop: '1px', paddingLeft: '1em' }}>{list.find((x) => x.id === selectedUserId)?.amount}</Typography>
       <Select
         label=""
         displayEmpty
         size="small"
-        sx={{ width: 150, backgroundColor: '#27282C' }}
+        sx={{ width: 150, backgroundColor: '#27282C', borderRadius: '14px' }}
         value={selectedUserId}
         renderValue={(selected: number | undefined) => {
           return (
