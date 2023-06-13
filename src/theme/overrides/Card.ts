@@ -1,4 +1,4 @@
-import { Theme } from '@mui/material/styles';
+import { Theme, alpha } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
 
@@ -11,6 +11,8 @@ export default function Card(theme: Theme) {
           boxShadow: theme.customShadows.card,
           borderRadius: Number(theme.shape.borderRadius) * 2,
           zIndex: 0, // Fix Safari overflow: hidden with border radius
+          border: '1px solid rgba(255, 255, 255, 0.12)',
+          backgroundColor: alpha(theme.palette.grey[900], 0.16),
         },
       },
     },
