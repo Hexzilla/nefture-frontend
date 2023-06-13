@@ -42,28 +42,31 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
           height: 1,
           display: 'flex',
           flexDirection: 'column',
+          borderColor: '#474B56',
+          borderWidth: '1px',
+          borderRightStyle: 'solid',
         },
-        top:HEADER.H_DASHBOARD_DESKTOP
+        top: HEADER.H_DASHBOARD_DESKTOP
       }}
     >
       <NavSectionVertical data={navConfig} />
 
       <Box sx={{ flexGrow: 1 }} />
-      <Box 
+      <Box
         sx={{
-              backgroundColor:'#0EAE88', 
-              backgroundImage:'linear-gradient(to right, #0EAE88 , #1350C7)',
-              borderRadius: '8px',
-              margin:'24px',
-              padding:'12px'
-              }}
+          backgroundColor: '#0EAE88',
+          backgroundImage: 'linear-gradient(to right, #0EAE88 , #1350C7)',
+          borderRadius: '8px',
+          margin: '24px',
+          padding: '12px'
+        }}
       >
-      <Typography textAlign="center" color="white">Upgrade your Wallet Security</Typography>
+        <Typography textAlign="center" color="white">Upgrade your Wallet Security</Typography>
 
-      <Button sx={{width:'100%', background: 'white', color:'#1350C7', marginTop:'12px'}}>
-        Upgrade to Pro
-      </Button>
-      </Box>  
+        <Button sx={{ width: '100%', background: 'white', color: '#1350C7', marginTop: '12px' }}>
+          Upgrade to Pro
+        </Button>
+      </Box>
       <NavSectionVertical data={bottomNavConfig} sx={{ mb: 2 }} />
     </Scrollbar>
   );

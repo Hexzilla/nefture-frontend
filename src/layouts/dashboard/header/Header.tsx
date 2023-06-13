@@ -12,7 +12,6 @@ import HeaderLogo from '../../../components/header-logo';
 import { useState } from 'react';
 import SelectCoinType from './SelectCoinType';
 import SelectCoinAmount from './SelectCoinAmount';
-import Iconify from '@components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -66,9 +65,6 @@ export default function Header({ onOpenNav }: Props) {
       >
         <Stack
           sx={{
-            pt: 2,
-            pb: 3,
-            flexShrink: 0,
           }}
           direction="row"
           justifyContent="flex-start"
@@ -88,24 +84,6 @@ export default function Header({ onOpenNav }: Props) {
           {coinAmountsData && coinAmountsData.length > 0 && (
             <SelectCoinAmount list={coinAmountsData} />
           )}
-
-          <IconButton
-            size="small"
-            color="inherit"
-            onClick={()=>{}}
-            sx={{ color: 'white' }}
-          >
-            <Iconify icon="carbon:notification" width={20} height={20} />
-          </IconButton>
-
-          <IconButton
-            size="small"
-            color="inherit"
-            onClick={()=>{}}
-            sx={{ color: 'white' }}
-          >
-            <Iconify icon="raphael:question" width={20} height={20} />
-          </IconButton>
         </Stack>
       </Stack>
     </Stack>
@@ -135,7 +113,7 @@ export default function Header({ onOpenNav }: Props) {
         sx={{
           height: 1,
           px: { xs: 0, lg: 5 },
-          borderColor: 'grey.200',
+          borderColor: '#474B56',
           borderWidth: '1px',
           borderBottomStyle: 'solid',
         }}
