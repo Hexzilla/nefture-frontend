@@ -82,7 +82,7 @@ export default function WalletView({ onClosed }: Props) {
           <Down/>
         </Stack>
         {warnings.map((row, index) => (
-          <Card sx={{margin:'16px 30px'}}>
+          <Card sx={{margin:'16px 30px'}}  key={index}>
             <Stack
               direction="row"
               spacing={2}
