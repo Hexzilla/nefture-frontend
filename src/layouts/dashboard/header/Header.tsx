@@ -42,7 +42,7 @@ export default function Header({ onOpenNav }: Props) {
           direction="row"
           justifyContent="space-between"
           alignItems="center"
-          sx={{ bgcolor: 'primary.main', px: 2, height: HEADER.H_MOBILE_EACH }}
+          sx={{ px: 2, height: HEADER.H_MOBILE_EACH }}
         >
           <HeaderLogo />
           <IconButton onClick={onOpenNav} sx={{ mr: 1, color: 'text.primary' }}>
@@ -62,7 +62,17 @@ export default function Header({ onOpenNav }: Props) {
         justifyContent="space-between"
         sx={{ height: HEADER.H_MOBILE_EACH, px: { xs: 2, lg: 0 } }}
       >
-        <HeaderInfo />
+        <Stack
+          sx={{
+            pt: 2,
+            pb: 3,
+            flexShrink: 0,
+          }}
+          direction="row"
+          justifyContent="flex-start"
+        >
+          <HeaderLogo />
+        </Stack>
         <Stack
           direction="row"
           alignItems="center"
@@ -87,11 +97,12 @@ export default function Header({ onOpenNav }: Props) {
         ...bgBlur({
           color: theme.palette.common.white,
         }),
+        bgcolor:'transparent',
         transition: theme.transitions.create(['height'], {
           duration: theme.transitions.duration.shorter,
         }),
         ...(isDesktop && {
-          width: `calc(100% - ${NAV.W_DASHBOARD + 1}px)`,
+          width: `100%`,
           height: HEADER.H_DASHBOARD_DESKTOP,
         }),
       }}

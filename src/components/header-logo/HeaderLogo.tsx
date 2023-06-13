@@ -17,7 +17,7 @@ const HeaderLogo = forwardRef<HTMLDivElement, LogoProps>(
         ref={ref}
         component="img"
         src="/logo/ex_log.svg"
-        sx={{ width: 'auto', height: '36px', cursor: 'pointer', ...sx }}
+        sx={{ width: 'auto', height: '36px', cursor: 'pointer', marginLeft:'-8px', ...sx }}
       />
     );
 
