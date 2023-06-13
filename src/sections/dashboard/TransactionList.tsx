@@ -6,11 +6,12 @@ import TransactionCard from './TransactionCard';
 
 type Props = {
   title: string;
+  onClicked?: VoidFunction;
 };
 
-export default function TransactionList({ title }: Props) {
+export default function TransactionList({ title, onClicked }: Props) {
   return (
-    <Box>
+    <Box onClick={onClicked} sx={{cursor:'pointer'}}>
       <Stack direction="row" spacing={2} alignItems="center" sx={{ marginBottom: '20px' }}>
         <Typography variant="h6">{title}</Typography>
         <Chip label={1} size="small" />

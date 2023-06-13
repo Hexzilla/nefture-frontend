@@ -17,7 +17,7 @@ import Help from '@components/icons/Help';
 import Lock from '@components/icons/Lock';
 
 type Props = {
-  title: string;
+  onClosed?: VoidFunction;
 };
 
 const warnings: String[] = new Array(3).fill(0).map(
@@ -25,7 +25,7 @@ const warnings: String[] = new Array(3).fill(0).map(
     ("test" as String)
 );
 
-export default function WalletView() {
+export default function WalletView({ onClosed }: Props) {
   return (
     <Card
       sx={{ padding: '10px 20px' }}>
@@ -44,7 +44,9 @@ export default function WalletView() {
         </Stack>
         <Stack direction="row" spacing={1} alignItems="center">
           <Typography>Wallet1</Typography>
-          <Close/>
+          <Box sx={{cursor:'pointer'}} onClick = {onClosed}>
+            <Close/>
+          </Box>
         </Stack>
       </Stack>
       <Typography mt={3} mb={1}>Receiving</Typography>
