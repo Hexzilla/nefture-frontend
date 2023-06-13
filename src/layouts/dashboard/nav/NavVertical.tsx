@@ -100,7 +100,6 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
           }}
           PaperProps={{
             sx: {
-              bgcolor: 'primary.main',
               width: NAV.W_DASHBOARD_MOBILE,
             },
           }}
