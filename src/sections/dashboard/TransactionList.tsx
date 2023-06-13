@@ -26,20 +26,20 @@ function TransactionCard() {
           </div>
 
           <Stack direction="column" spacing={1}>
-            <Typography>Received at 12:56</Typography>
+          <Typography color="grey">Received at 12:56</Typography>
             <Typography>1.05 ETH</Typography>
           </Stack>
         </Stack>
 
         <Stack direction="column" spacing={1}>
-          <Typography>Status</Typography>
+          <Typography color="grey">Status</Typography>
           <Typography>pending</Typography>
         </Stack>
 
         <Chip
           avatar={<Critical />}
           label={`critical`}
-          sx={{ bgcolor: 'critical.main', padding: '8px', height: '40px' }}
+          sx={{ bgcolor: 'critical.main', padding: '8px', height: '40px', borderRadius: '20px' }}
         />
       </Stack>
     </Card>
