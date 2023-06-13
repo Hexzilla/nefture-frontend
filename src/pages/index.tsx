@@ -58,6 +58,10 @@ const DashboardMobile = () => {
 
   return (
     <>
+      <Button variant="contained" size="large" sx={{ float: 'right' }}>
+        Connect Wallet
+      </Button><br/>
+      
       <Typography variant="h3">Transactions</Typography>
 
       <Tabs value={currentTab} onChange={(event, newValue) => setCurrentTab(newValue)}>
