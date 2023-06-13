@@ -2,15 +2,19 @@ import React from 'react';
 import { Box, Card, Chip, Stack, Typography } from '@mui/material';
 
 import Ethereum from '@components/icons/Ethereum';
-import Critical from '@components/icons/Critical';
+import CriticalChip from '@components/chips/CriticalChip';
+import WarningChip from '@components/chips/WarningChip';
 
 import NoPendingTransactions from './NoPendingTransactions';
+import SecureClip from '@components/chips/SecureClip';
 
 type Props = {
   title: string;
 };
 
 function TransactionCard() {
+  const status = Math.random() * 10;
+
   return (
     <Card>
       <Stack
@@ -26,7 +30,7 @@ function TransactionCard() {
           </div>
 
           <Stack direction="column" spacing={1}>
-          <Typography color="grey">Received at 12:56</Typography>
+            <Typography color="grey">Received at 12:56</Typography>
             <Typography>1.05 ETH</Typography>
           </Stack>
         </Stack>
@@ -36,11 +40,7 @@ function TransactionCard() {
           <Typography>pending</Typography>
         </Stack>
 
-        <Chip
-          avatar={<Critical />}
-          label={`critical`}
-          sx={{ bgcolor: 'critical.main', padding: '8px', height: '40px', borderRadius: '20px' }}
-        />
+        {status <= 3 ? <CriticalChip /> : status <= 5 ? <WarningChip /> : <SecureClip />}
       </Stack>
     </Card>
   );
@@ -64,7 +64,7 @@ export default function TransactionList({ title }: Props) {
         See 5 more pending transactions...
       </Typography>
 
-      <NoPendingTransactions />
+      {/* <NoPendingTransactions /> */}
     </Box>
   );
 }
