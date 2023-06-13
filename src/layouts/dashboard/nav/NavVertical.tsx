@@ -6,7 +6,7 @@ import { Box, Drawer, Stack, Typography, Button, Divider } from '@mui/material';
 // hooks
 import useResponsive from '../../../hooks/useResponsive';
 // config
-import { NAV } from '../../../config-global';
+import { HEADER, NAV } from '../../../config-global';
 // components
 import HeaderLogo from '../../../components/header-logo';
 import { NavSectionVertical } from '../../../components/nav-section';
@@ -43,20 +43,9 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
           display: 'flex',
           flexDirection: 'column',
         },
+        top:HEADER.H_DASHBOARD_DESKTOP
       }}
     >
-      <Stack
-        sx={{
-          pt: 2,
-          pb: 2,
-          px: 4,
-          flexShrink: 0,
-        }}
-        direction="row"
-        justifyContent="flex-start"
-      >
-        <HeaderLogo />
-      </Stack>
       <NavSectionVertical data={navConfig} />
 
       <Box sx={{ flexGrow: 1 }} />
@@ -95,7 +84,7 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
             sx: {
               zIndex: 0,
               width: NAV.W_DASHBOARD,
-              bgcolor: 'primary.main',
+              bgcolor: 'transparent',
               borderStyle: 'none',
             },
           }}
