@@ -4,6 +4,8 @@ import { Box, Card, Chip, Stack, Typography } from '@mui/material';
 import Ethereum from '@components/icons/Ethereum';
 import Critical from '@components/icons/Critical';
 
+import NoPendingTransactions from './NoPendingTransactions';
+
 type Props = {
   title: string;
 };
@@ -61,6 +63,8 @@ export default function TransactionList({ title }: Props) {
       <Typography variant="subtitle2" sx={{ paddingTop: '10px', color: '#7D7D7E' }}>
         See 5 more pending transactions...
       </Typography>
+
+      <NoPendingTransactions />
     </Box>
   );
 }
