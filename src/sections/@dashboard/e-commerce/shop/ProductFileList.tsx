@@ -10,7 +10,6 @@ import ProductFileCard from './ProductFileCard';
 import ProductFileTabs from './ProductFileTabs';
 import React, { useState } from 'react';
 import FrontImageButton from '@components/atoms/FrontImageButton';
-import ProductFileStoreList from './ProductFileStoreList';
 
 // ----------------------------------------------------------------------
 
@@ -63,9 +62,6 @@ export default function ProductFileList({ products, loading, ...other }: Props) 
           )
         }
       </Box>
-        {(activeTab === 1) &&
-          <ProductFileStoreList/>
-        }
     </Card>
   );
 }

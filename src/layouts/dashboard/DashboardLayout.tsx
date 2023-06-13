@@ -10,6 +10,7 @@ import { useSettingsContext } from '../../components/settings';
 //
 import Main from './Main';
 import Header from './header';
+import MobileMenu from './header/MobileMenu';
 import NavMini from './nav/NavMini';
 import NavVertical from './nav/NavVertical';
 import NavHorizontal from './nav/NavHorizontal';
@@ -75,7 +76,7 @@ export default function DashboardLayout({ children }: Props) {
 
     return (
       <>
-        <Header onOpenNav={handleOpen} />
+        {isDesktop && <Header onOpenNav={handleOpen} />}
 
         <Box
           sx={{
@@ -87,6 +88,8 @@ export default function DashboardLayout({ children }: Props) {
 
           <Main>{children}</Main>
         </Box>
+
+        {!isDesktop && <MobileMenu />}
       </>
     );
   };
