@@ -25,6 +25,13 @@ const warnings: String[] = new Array(3).fill(0).map(
     ("test" as String)
 );
 
+const buttonSX = {
+  width:'100%', backgroundColor:'black', marginTop:'12px',
+  "&:hover": {
+    backgroundColor: "#2965FF",
+  },
+};
+
 export default function WalletView({ onClosed }: Props) {
   return (
     <Card
@@ -102,7 +109,7 @@ export default function WalletView({ onClosed }: Props) {
       ))}
       </Card>
       <Button href="/" size="large" variant="contained" 
-        sx={{width:'100%', backgroundColor:'black', marginTop:'12px'}}>
+        sx={buttonSX}>
         Go to Home
       </Button>
       <Card sx={{marginTop:'12px'}}>
