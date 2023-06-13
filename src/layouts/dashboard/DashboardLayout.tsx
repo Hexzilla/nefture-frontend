@@ -75,7 +75,7 @@ export default function DashboardLayout({ children }: Props) {
 
     return (
       <>
-        <Header onOpenNav={handleOpen} />
+        {isDesktop && <Header onOpenNav={handleOpen} />}
 
         <Box
           sx={{
