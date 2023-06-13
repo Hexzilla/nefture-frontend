@@ -12,6 +12,7 @@ import HeaderLogo from '../../../components/header-logo';
 import { useState } from 'react';
 import SelectCoinType from './SelectCoinType';
 import SelectCoinAmount from './SelectCoinAmount';
+import Iconify from '@components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -87,6 +88,24 @@ export default function Header({ onOpenNav }: Props) {
           {coinAmountsData && coinAmountsData.length > 0 && (
             <SelectCoinAmount list={coinAmountsData} />
           )}
+
+          <IconButton
+            size="small"
+            color="inherit"
+            onClick={()=>{}}
+            sx={{ color: 'white' }}
+          >
+            <Iconify icon="carbon:notification" width={20} height={20} />
+          </IconButton>
+
+          <IconButton
+            size="small"
+            color="inherit"
+            onClick={()=>{}}
+            sx={{ color: 'white' }}
+          >
+            <Iconify icon="raphael:question" width={20} height={20} />
+          </IconButton>
         </Stack>
       </Stack>
     </Stack>
