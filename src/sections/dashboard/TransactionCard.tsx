@@ -1,11 +1,9 @@
-import React from 'react';
-import { Box, Card, Chip, Stack, Typography } from '@mui/material';
+import { Card, Stack, Typography } from '@mui/material';
 
 import Ethereum from '@components/icons/Ethereum';
 import CriticalChip from '@components/chips/CriticalChip';
 import WarningChip from '@components/chips/WarningChip';
 
-import NoPendingTransactions from './NoPendingTransactions';
 import SecureClip from '@components/chips/SecureClip';
 
 type Props = {
@@ -13,10 +11,14 @@ type Props = {
   isMobile?: boolean;
   onClicked?: VoidFunction;
 };
-
+const cardSX = {
+  "&:hover": {
+    backgroundColor: "rgba(145,158,171,0.08)",
+  },
+};
 export default function TransactionCard({ status, isMobile, onClicked }: Props) {
   return (
-    <Card onClick={onClicked}>
+    <Card onClick={onClicked} sx={ cardSX }>
       <Stack
         direction="row"
         spacing={2}
