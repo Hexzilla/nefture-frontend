@@ -1,18 +1,17 @@
 // @mui
+import { AppBar, Box, IconButton, MenuItem, Select, Stack, Toolbar, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { Stack, AppBar, Toolbar, IconButton, Box } from '@mui/material';
 // utils
 import { bgBlur } from '../../../utils/cssStyles';
 // hooks
 import useResponsive from '../../../hooks/useResponsive';
 // config
-import { HEADER, NAV } from '../../../config-global';
+import { HEADER } from '../../../config-global';
 // components
 import HeaderLogo from '../../../components/header-logo';
-import AccountPopover from './AccountPopover';
-import UpgradeButton from './UpgradeButton';
-import LanguagePopover from './LanguagePopover';
-import HeaderInfo from './HeaderInfo';
+import { useState } from 'react';
+import SelectCoinType from './SelectCoinType';
+import SelectCoinAmount from './SelectCoinAmount';
 
 // ----------------------------------------------------------------------
 
@@ -21,6 +20,8 @@ type Props = {
 };
 
 export default function Header({ onOpenNav }: Props) {
+
+  const [selectedUserId, setSelectedUserId] = useState(1);
   const theme = useTheme();
 
   const isDesktop = useResponsive('up', 'lg');
@@ -33,7 +34,7 @@ export default function Header({ onOpenNav }: Props) {
       sx={{
         width: 1,
         height: 1,
-        margin:'0px',
+        margin: '0px',
       }}
     >
       {!isDesktop && (
@@ -79,9 +80,13 @@ export default function Header({ onOpenNav }: Props) {
           justifyContent="space-between"
           spacing={{ xs: 0.5, sm: 1.5 }}
         >
-          <UpgradeButton />
-          <LanguagePopover />
-          <AccountPopover />
+          {coinTypesData && coinTypesData.length > 0 && (
+            <SelectCoinType list={coinTypesData} />
+          )}
+
+          {coinAmountsData && coinAmountsData.length > 0 && (
+            <SelectCoinAmount list={coinAmountsData} />
+          )}
         </Stack>
       </Stack>
     </Stack>
@@ -97,7 +102,7 @@ export default function Header({ onOpenNav }: Props) {
         ...bgBlur({
           color: theme.palette.common.white,
         }),
-        bgcolor:'transparent',
+        bgcolor: 'transparent',
         transition: theme.transitions.create(['height'], {
           duration: theme.transitions.duration.shorter,
         }),
@@ -121,3 +126,16 @@ export default function Header({ onOpenNav }: Props) {
     </AppBar>
   );
 }
+
+
+const coinTypesData = [
+  { id: 1, name: 'Ethereum', icon: '/assets/images/coins/ethereum.svg' },
+  { id: 2, name: 'Bitcoin', icon: '/assets/images/coins/ethereum.svg' },
+  { id: 3, name: 'USDT', icon: '/assets/images/coins/ethereum.svg' },
+];
+
+const coinAmountsData = [
+  { id: 1, name: '0xhab.eth', icon: '/assets/images/avatar/avatar.svg', amount: '42.069ETH' },
+  { id: 2, name: '0xcea.eth', icon: '/assets/images/avatar/avatar.svg', amount: '0.1ETH' },
+  { id: 3, name: '0xmut.eth', icon: '/assets/images/avatar/avatar.svg', amount: '2.356ETH' },
+];
