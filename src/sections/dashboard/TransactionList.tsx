@@ -24,7 +24,7 @@ function TransactionCard() {
           <Typography>pending</Typography>
         </Stack>
 
-        <Chip avatar={<Critical />} label={`critical`} />
+        <Chip avatar={<Critical />} label={`critical`} sx={{ backgroundColor: 'critical.main' }} />
       </Stack>
     </Card>
   );

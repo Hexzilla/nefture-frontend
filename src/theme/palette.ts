@@ -87,6 +87,15 @@ const ERROR = {
   contrastText: '#FFFFFF',
 };
 
+const CRITICAL = {
+  lighter: '#FFE9D5',
+  light: '#FFAC82',
+  main: '#FF4601',
+  dark: '#B71D18',
+  darker: '#7A0916',
+  contrastText: '#FFFFFF',
+}
+
 const COMMON = {
   common: { black: '#000000', white: '#FFFFFF' },
   primary: PRIMARY,
@@ -94,6 +103,7 @@ const COMMON = {
   info: INFO,
   success: SUCCESS,
   warning: WARNING,
+  critical: CRITICAL,
   error: ERROR,
   grey: GREY,
   divider: alpha(GREY[500], 0.24),
