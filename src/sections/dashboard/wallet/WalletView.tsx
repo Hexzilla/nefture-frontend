@@ -1,22 +1,13 @@
 import React from 'react';
-import { Box, Card, Chip, Stack, Typography, Container, Grid, Button, AccordionDetails, AccordionSummary, Accordion } from '@mui/material';
-
-import Ethereum from '@components/icons/Ethereum';
-import CriticalChip from '@components/chips/CriticalChip';
-import WarningChip from '@components/chips/WarningChip';
-
-import SecureClip from '@components/chips/SecureClip';
-
+import { Box, Card, Stack, Typography, Button, AccordionDetails, AccordionSummary, Accordion } from '@mui/material';
 import Transaction from '@components/icons/Transaction';
 import Close from '@components/icons/GrayClose';
 import PlusBlue from '@components/icons/PlusBlue';
 import Alert from '@components/icons/Alert';
-import Down from '@components/icons/Down';
 import DoubleArrow from '@components/icons/DoubleArrow';
 import Help from '@components/icons/Help';
 import Lock from '@components/icons/Lock';
 import Iconify from '@components/iconify';
-import accordion from 'src/pages/components/mui/accordion';
 
 type Props = {
   onClosed?: VoidFunction;
@@ -82,40 +73,6 @@ export default function WalletView({ onClosed }: Props) {
           </Stack>
         </Stack>
       </Card>
-      {/* <Card sx={{marginTop:'24px'}}>
-        <Stack
-          direction="row"
-          spacing={2}
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ padding: '10px 20px' }}
-        >
-          <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="center">
-              <Alert/>
-              <Typography sx={{color:'critical.main'}}>Critical Risks</Typography>
-          </Stack>
-          <Down/>
-        </Stack>
-        {warnings.map((row, index) => (
-          <Card sx={{margin:'16px 30px'}}  key={index}>
-            <Stack
-              direction="row"
-              spacing={2}
-              alignItems="center"
-              justifyContent="space-between"
-              sx={{ padding: '4px 4px' }}
-            >
-              <Stack direction="row" spacing={3} alignItems="center">
-                <Alert />
-                <Stack direction="column" spacing={1}>
-                  <Typography>Danger</Typography>
-                  <Typography color="grey">This is the danger first we flagged</Typography>
-                </Stack>
-              </Stack>
-            </Stack>
-          </Card>
-      ))}
-      </Card> */}
       <Accordion sx={accordionSX}>
         <AccordionSummary expandIcon={<Iconify icon="eva:arrow-ios-downward-fill" />}>
           {
