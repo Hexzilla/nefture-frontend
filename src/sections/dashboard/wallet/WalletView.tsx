@@ -8,6 +8,10 @@ import DoubleArrow from '@components/icons/DoubleArrow';
 import Help from '@components/icons/Help';
 import Lock from '@components/icons/Lock';
 import Iconify from '@components/iconify';
+import dynamic from 'next/dynamic'
+const SwipeableButton = dynamic(() => import('./SwipeableButton'), {
+  ssr: false
+})
 
 type Props = {
   onClosed?: VoidFunction;
@@ -108,19 +112,7 @@ export default function WalletView({ onClosed }: Props) {
         sx={buttonSX}>
         Go to Home
       </Button>
-      <Card sx={{ marginTop: '12px' }}>
-        <Stack
-          direction="row"
-          spacing={2}
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ padding: '10px 20px' }}
-        >
-          <DoubleArrow />
-          <Typography>Swipe to Approve</Typography>
-          <Lock />
-        </Stack>
-      </Card>
+      <SwipeableButton text='SLIDE TO UNLOCK' />
       <Stack
         alignItems="center"
         sx={{ padding: '10px 20px', marginTop: "12px" }}
