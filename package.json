@@ -17,7 +17,7 @@
     "re-start": "rm -rf .next .swc _static node_modules && yarn install && yarn dev",
     "re-build": "rm -rf .next .swc _static node_modules && yarn install && yarn build"
   },
-  "dependencies": {                                   
+  "dependencies": {
     "@auth0/auth0-spa-js": "^2.0.3",
     "@emotion/cache": "^11.10.5",
     "@emotion/react": "^11.10.6",
@@ -72,6 +72,7 @@
     "react-quill": "^2.0.0",
     "react-redux": "^8.0.5",
     "react-slick": "^0.29.0",
+    "react-swipeable": "^7.0.1",
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
     "rehype-highlight": "^6.0.0",

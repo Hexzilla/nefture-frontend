@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Box, Card, Stack, Typography, Button, AccordionDetails, AccordionSummary, Accordion } from '@mui/material';
 import Transaction from '@components/icons/Transaction';
 import Close from '@components/icons/GrayClose';
@@ -9,7 +9,12 @@ import Help from '@components/icons/Help';
 import Lock from '@components/icons/Lock';
 import Iconify from '@components/iconify';
 import dynamic from 'next/dynamic'
-const SwipeableButton = dynamic(() => import('./SwipeableButton'), {
+
+// const SwipeableButton = dynamic(() => import('./SwipeableButton'), {
+//   ssr: false
+// })
+
+const Swipezor = dynamic(() => import('./Swipezor.js'), {
   ssr: false
 })
 
@@ -36,6 +41,7 @@ const accordionSX = {
 }
 
 export default function WalletView({ onClosed }: Props) {
+  const [reset, setReset] = useState(0);
   return (
     <Card
       sx={{ padding: '10px 20px' }}>
@@ -112,7 +118,15 @@ export default function WalletView({ onClosed }: Props) {
         sx={buttonSX}>
         Go to Home
       </Button>
-      <SwipeableButton text='' />
+      <Swipezor 
+        mainText="Swipe me" 
+        overlayText="S I K E" 
+        onSwipeDone={function () {
+          console.log("Done!");
+        }} 
+        reset={reset}
+      />
+      {/* <SwipeableButton text='' /> */}
       <Stack
         alignItems="center"
         sx={{ padding: '10px 20px', marginTop: "12px" }}
