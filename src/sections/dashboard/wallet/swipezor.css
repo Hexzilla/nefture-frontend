@@ -2,12 +2,14 @@
   box-sizing: border-box;
 }
 .swipezor-but {
-  border: 2px solid #444;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 71px;
   min-width: 200px;
   padding: 11px;
   position: relative;
   overflow: hidden;
-  color: #000;
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;

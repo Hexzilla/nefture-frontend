@@ -1,56 +1,52 @@
-import React, {useState} from 'react';
-import { Box, Card, Stack, Typography, Button, AccordionDetails, AccordionSummary, Accordion } from '@mui/material';
+import React, { useState } from 'react';
+import {
+  Box,
+  Card,
+  Stack,
+  Typography,
+  Button,
+  AccordionDetails,
+  AccordionSummary,
+  Accordion,
+} from '@mui/material';
 import Transaction from '@components/icons/Transaction';
 import Close from '@components/icons/GrayClose';
 import PlusBlue from '@components/icons/PlusBlue';
 import Alert from '@components/icons/Alert';
-import DoubleArrow from '@components/icons/DoubleArrow';
 import Help from '@components/icons/Help';
-import Lock from '@components/icons/Lock';
 import Iconify from '@components/iconify';
-import dynamic from 'next/dynamic'
-
-// const SwipeableButton = dynamic(() => import('./SwipeableButton'), {
-//   ssr: false
-// })
+import dynamic from 'next/dynamic';
 
 const Swipezor = dynamic(() => import('./Swipezor.js'), {
-  ssr: false
-})
+  ssr: false,
+});
 
 type Props = {
   onClosed?: VoidFunction;
 };
 
-const warnings: String[] = new Array(3).fill(0).map(
-  (_, index) =>
-    ("test" as String)
-);
+const warnings: String[] = new Array(3).fill(0).map((_, index) => 'test' as String);
 
 const buttonSX = {
-  width: '100%', backgroundColor: 'black', marginTop: '12px',
-  "&:hover": {
-    backgroundColor: "#2965FF",
+  width: '100%',
+  backgroundColor: 'black',
+  marginTop: '12px',
+  '&:hover': {
+    backgroundColor: '#2965FF',
   },
 };
 
 const accordionSX = {
-  "&:before": {
-    display: "none"
-  }
-}
+  '&:before': {
+    display: 'none',
+  },
+};
 
 export default function WalletView({ onClosed }: Props) {
   const [reset, setReset] = useState(0);
   return (
-    <Card
-      sx={{ padding: '10px 20px' }}>
-      <Stack
-        direction="row"
-        spacing={2}
-        alignItems="center"
-        justifyContent="space-between"
-      >
+    <Card sx={{ padding: '10px 20px' }}>
+      <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
         <Stack direction="row" alignItems="center">
           <Transaction />
           <Typography>Medium Rist</Typography>
@@ -65,7 +61,9 @@ export default function WalletView({ onClosed }: Props) {
           </Box>
         </Stack>
       </Stack>
-      <Typography mt={3} mb={1}>Receiving</Typography>
+      <Typography mt={3} mb={1}>
+        Receiving
+      </Typography>
       <Card>
         <Stack
           direction="row"
@@ -114,26 +112,21 @@ export default function WalletView({ onClosed }: Props) {
           ))}
         </AccordionDetails>
       </Accordion>
-      <Button href="/" size="large" variant="contained"
-        sx={buttonSX}>
+      <Button href="/" size="large" variant="contained" sx={buttonSX}>
         Go to Home
       </Button>
-      <Swipezor 
-        mainText="Swipe me" 
-        overlayText="S I K E" 
-        onSwipeDone={function () {
-          console.log("Done!");
-        }} 
-        reset={reset}
-      />
-      {/* <SwipeableButton text='' /> */}
-      <Stack
-        alignItems="center"
-        sx={{ padding: '10px 20px', marginTop: "12px" }}
-      >
-        <Stack
-          direction="row"
-          spacing={2}>
+      <Stack mt={3} mb={1}>
+        <Swipezor
+          mainText="Swipe to Approve"
+          overlayText=""
+          onSwipeDone={function () {
+            console.log('Done!');
+          }}
+          reset={reset}
+        />
+      </Stack>
+      <Stack alignItems="center" sx={{ padding: '10px 20px', marginTop: '12px' }}>
+        <Stack direction="row" spacing={2}>
           <Help />
           <Typography color="gray">Need Help?</Typography>
         </Stack>

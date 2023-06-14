@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSwipeable } from 'react-swipeable';
-import Arrow from "./arrow.png";
+import DoubleArrow from '@components/icons/DoubleArrow';
+import Lock from '@components/icons/Lock';
 
-// import "./swipezor.css";
 
 function findLeft(element) {
   var rec = element.getBoundingClientRect();
@@ -83,7 +83,7 @@ function Swipezor({
       <div className={`swipezor-overlay ${overlayClassList}`} style={{ width: overlayWidth }}>
         <div className="swipezor-overlay-wrapper">
           <div className={`swipezor-caret-wrapper ${caretClassList}`}>
-            {caret ? caret : <img src={Arrow} alt="caret" style={{ maxWidth: '100%' }} />}
+            {caret ? caret : <img src={'/assets/icons/arrow.png'} alt="caret" style={{ maxWidth: '100%' }} />}
           </div>
           <div className="swipezor-overlay-txt">
             {overlayText}
