@@ -29,7 +29,7 @@ const PALETTE = ['primary', 'secondary', 'info', 'success', 'warning', 'error'] 
 
 const VARIATIONS = ['lighter', 'light', 'main', 'dark', 'darker'] as const;
 
-const GREY = ['100', '200', '300', '400', '500', '600', '700', '800', '900'] as const;
+const GREY = ['100', '200', '300', '400', '500', '600', '700', '800', '900', '1000'] as const;
 
 // ----------------------------------------------------------------------
 

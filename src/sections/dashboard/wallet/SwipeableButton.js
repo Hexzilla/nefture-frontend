@@ -83,7 +83,7 @@ export default class SwipeableButton extends Component {
   }
 
   getText =()=> {
-    return this.state.unlocked ? (this.props.text_unlocked || 'UNLOCKED') : (this.props.text || 'SLIDE')
+    return this.state.unlocked ? (this.props.text_unlocked || 'UNLOCKED') : (this.props.text || '')
   }
 
   reset =()=> {

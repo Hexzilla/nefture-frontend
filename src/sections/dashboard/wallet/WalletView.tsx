@@ -112,7 +112,7 @@ export default function WalletView({ onClosed }: Props) {
         sx={buttonSX}>
         Go to Home
       </Button>
-      <SwipeableButton text='SLIDE TO UNLOCK' />
+      <SwipeableButton text='' />
       <Stack
         alignItems="center"
         sx={{ padding: '10px 20px', marginTop: "12px" }}
