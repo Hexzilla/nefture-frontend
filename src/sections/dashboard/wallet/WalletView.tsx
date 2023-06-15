@@ -4,14 +4,7 @@ import Down from '@components/icons/Down';
 import Help from '@components/icons/Help';
 import PlusBlue from '@components/icons/PlusBlue';
 import Transaction from '@components/icons/Transaction';
-import {
-  Box,
-  Button,
-  Card,
-  Collapse,
-  Stack,
-  Typography
-} from '@mui/material';
+import { Box, Button, Card, Collapse, Stack, Typography } from '@mui/material';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
