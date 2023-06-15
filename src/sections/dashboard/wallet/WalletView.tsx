@@ -100,12 +100,17 @@ export default function WalletView({ onClosed }: Props) {
                 justifyContent="space-between"
                 sx={{ padding: '8px' }}
               >
-                <Stack direction="row" spacing={3} alignItems="center" sx={{width:'100%'}}>
+                <Stack direction="row" spacing={3} alignItems="center" sx={{ width: '100%' }}>
                   <Alert />
-                  <Stack direction="column" spacing={1} sx={{width:`calc(100% - 48px)`, marginLeft: '12px!important'}}>
+                  <Stack
+                    direction="column"
+                    spacing={1}
+                    sx={{ width: `calc(100% - 48px)`, marginLeft: '12px!important' }}
+                  >
                     <Typography>Danger</Typography>
-                    <Typography color="grey" sx={{overflowWrap: 'break-word'}}>
-                      This is the danger first we flagged 123456789029389898989898989898983456789029389898989898989898989898989
+                    <Typography color="grey" sx={{ overflowWrap: 'break-word' }}>
+                      This is the danger first we flagged
+                      123456789029389898989898989898983456789029389898989898989898989898989
                     </Typography>
                   </Stack>
                 </Stack>
