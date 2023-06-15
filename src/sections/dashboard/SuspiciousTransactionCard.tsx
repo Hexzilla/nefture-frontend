@@ -40,7 +40,7 @@ export default function SuspiciousTransactionCard({ status, isMobile, onClicked 
             <Typography>pending</Typography>
           </Stack>
         )}
-        <StatusChip status={status} />
+        <StatusChip status='secure' />
       </Stack>
     </Card>
   );

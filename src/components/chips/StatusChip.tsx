@@ -5,28 +5,41 @@ import Warning from '@components/icons/Warning';
 import Secure from '@components/icons/Secure';
 
 type Props = {
-  status: number;
+  status: 'critical' | 'warning' | 'secure';
+};
+
+const Config = {
+  critical: {
+    avatar: <Critical />,
+    bgcolor: 'critical.main',
+    color: 'white',
+  },
+  warning: {
+    avatar: <Warning />,
+    bgcolor: 'warning.main',
+    color: 'white',
+  },
+  secure: {
+    avatar: <Secure />,
+    bgcolor: 'white',
+    color: '#2965FF',
+  },
 };
 
 export default function StatusChip({ status }: Props) {
-  const sx = {
-    padding: '8px',
-    height: '40px',
-    borderRadius: '20px',
-    color: 'white',
-  };
+  const config = Config[status];
 
-  if (status === 1) {
-    return <Chip avatar={<Critical />} label="critical" sx={{ ...sx, bgcolor: 'critical.main' }} />;
-  }
-  if (status === 2) {
-    return <Chip avatar={<Warning />} label="warning" sx={{ ...sx, bgcolor: 'warning.main' }} />;
-  }
-  if (status === 3) {
-    return (
-      <Chip avatar={<Secure />} label="secure" sx={{ ...sx, bgcolor: 'white', color: '#2965FF' }} />
-    );
-  }
-
-  return <></>;
+  return (
+    <Chip
+      avatar={config.avatar}
+      label={status}
+      sx={{
+        padding: '8px',
+        height: '40px',
+        borderRadius: '20px',
+        bgcolor: config.bgcolor,
+        color: config.color,
+      }}
+    />
+  );
 }
