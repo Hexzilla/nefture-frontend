@@ -6,7 +6,7 @@ import { TransactionItem } from './wallet/types';
 
 type Props = {
   title: string;
-  onClicked?: VoidFunction;
+  onClicked: (value: TransactionItem) => void;
   type: number; //1:suspicious transactionlist, 2: latest transaction list
   transactions: TransactionItem[];
 };

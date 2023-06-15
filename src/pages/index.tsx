@@ -1,13 +1,4 @@
-import {
-  Button,
-  Container,
-  Dialog,
-  Grid,
-  Stack,
-  Tab,
-  Tabs,
-  Typography
-} from '@mui/material';
+import { Button, Container, Dialog, Grid, Stack, Tab, Tabs, Typography } from '@mui/material';
 import Head from 'next/head';
 import { useState } from 'react';
 
@@ -26,8 +17,10 @@ GeneralAppPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}
 
 const DashboardDesktop = () => {
   const [walletVisible, setWalletVisible] = useState(false);
-  const displayWallet = () => {
+  const [activeWallet, setActiveWallet] = useState({});
+  const displayWallet = (value: TransactionItem) => {
     setWalletVisible(true);
+    setActiveWallet(value);
   };
   const hideWallet = () => {
     setWalletVisible(false);
@@ -52,7 +45,7 @@ const DashboardDesktop = () => {
       </Grid>
 
       <Grid item xs={12} lg={5}>
-        {walletVisible && <Wallet onClosed={hideWallet} />}
+        {walletVisible && <Wallet onClosed={hideWallet} data={activeWallet} />}
       </Grid>
     </Grid>
   );
@@ -61,8 +54,10 @@ const DashboardDesktop = () => {
 const DashboardMobile = () => {
   const [currentTab, setCurrentTab] = useState('suspicious');
   const [walletVisible, setWalletVisible] = useState(false);
-  const displayWallet = () => {
+  const [activeWallet, setActiveWallet] = useState({});
+  const displayWallet = (value: TransactionItem) => {
     setWalletVisible(true);
+    setActiveWallet(value);
   };
   const hideWallet = () => {
     setWalletVisible(false);
@@ -90,7 +85,7 @@ const DashboardMobile = () => {
 
       <Dialog fullWidth maxWidth="xs" open={walletVisible}>
         <Stack>
-          <Wallet onClosed={hideWallet} />
+          <Wallet onClosed={hideWallet} data={activeWallet} />
         </Stack>
       </Dialog>
       {/* <MobileMenu /> */}
@@ -159,10 +154,6 @@ const transactions: TransactionItem[] = [
     critical_risks: [
       {
         id_risk: 1,
-        description: 'description danger',
-      },
-      {
-        id_risk: 2,
         description: 'description danger',
       },
     ],

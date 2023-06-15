@@ -7,6 +7,7 @@ import Transaction from '@components/icons/Transaction';
 import { Box, Button, Card, Collapse, Stack, Typography } from '@mui/material';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
+import { TransactionItem } from './types';
 
 const Swipezor = dynamic(() => import('./Swipezor'), {
   ssr: false,
@@ -14,6 +15,7 @@ const Swipezor = dynamic(() => import('./Swipezor'), {
 
 type Props = {
   onClosed?: VoidFunction;
+  data: any|TransactionItem;
 };
 
 const warnings: String[] = new Array(3).fill(0).map((_, index) => 'test' as String);
@@ -27,7 +29,7 @@ const buttonSX = {
   },
 };
 
-export default function WalletView({ onClosed }: Props) {
+export default function WalletView({ onClosed, data }: Props) {
   const [reset, setReset] = useState(0);
   const [open, setOpen] = useState(false);
   const changeOpen = () => {
@@ -61,8 +63,8 @@ export default function WalletView({ onClosed }: Props) {
           <Stack direction="row" spacing={3} alignItems="center">
             <PlusBlue />
             <Stack direction="column" spacing={1}>
-              <Typography variant="h6">2 Tokens</Typography>
-              <Typography color="grey">Value: $5775.9</Typography>
+              <Typography variant="h6">{data.receiving}</Typography>
+              <Typography color="grey">Value: ${data.value}</Typography>
             </Stack>
           </Stack>
         </Stack>
@@ -85,7 +87,7 @@ export default function WalletView({ onClosed }: Props) {
           </Box>
         </Stack>
         <Collapse in={open} unmountOnExit>
-          {warnings.map((row, index) => (
+          {data.critical_risks && data.critical_risks.map((index:number) => (
             <Card sx={{ margin: '16px 30px' }} key={index}>
               <Stack
                 direction="row"
@@ -103,8 +105,7 @@ export default function WalletView({ onClosed }: Props) {
                   >
                     <Typography>Danger</Typography>
                     <Typography color="grey" sx={{ overflowWrap: 'break-word' }}>
-                      This is the danger first we flagged
-                      123456789029389898989898989898983456789029389898989898989898989898989
+                      {data.critical_risks[0].description}
                     </Typography>
                   </Stack>
                 </Stack>

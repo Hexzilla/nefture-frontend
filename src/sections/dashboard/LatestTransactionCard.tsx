@@ -8,7 +8,7 @@ import { TransactionItem } from './wallet/types';
 type Props = {
   status: number;
   isMobile?: boolean;
-  onClicked?: VoidFunction;
+  onClicked: (value: TransactionItem) => void;
   transactionItem: TransactionItem;
 };
 const cardSX = {
@@ -23,7 +23,8 @@ export default function LatestTransactionCard({
   transactionItem,
 }: Props) {
   return (
-    <Card onClick={onClicked} sx={cardSX}>
+    <Card sx={cardSX}
+      onClick={() => onClicked(transactionItem)}>
       <Stack
         direction="row"
         spacing={2}

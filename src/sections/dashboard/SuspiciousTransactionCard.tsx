@@ -7,7 +7,7 @@ import { TransactionItem } from './wallet/types';
 type Props = {
   status: number;
   isMobile?: boolean;
-  onClicked?: VoidFunction;
+  onClicked: (value: TransactionItem) => void;
   transactionItem: TransactionItem;
 };
 const cardSX = {
@@ -22,7 +22,7 @@ export default function SuspiciousTransactionCard({
   transactionItem,
 }: Props) {
   return (
-    <Card onClick={onClicked} sx={cardSX}>
+    <Card onClick={() => onClicked(transactionItem)} sx={cardSX}>
       <Stack
         direction="row"
         spacing={2}
