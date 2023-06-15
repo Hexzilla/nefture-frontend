@@ -9,19 +9,19 @@ type Props = {
   onClicked?: VoidFunction;
 };
 const cardSX = {
-  "&:hover": {
-    backgroundColor: "rgba(145,158,171,0.08)",
+  '&:hover': {
+    backgroundColor: 'rgba(145,158,171,0.08)',
   },
 };
 export default function SuspiciousTransactionCard({ status, isMobile, onClicked }: Props) {
   return (
-    <Card onClick={onClicked} sx={ cardSX }>
+    <Card onClick={onClicked} sx={cardSX}>
       <Stack
         direction="row"
         spacing={2}
         alignItems="center"
         justifyContent="space-between"
-        sx={{ padding: '10px 20px', cursor:'pointer' }}
+        sx={{ padding: '10px 20px', cursor: 'pointer' }}
       >
         <Stack direction="row" spacing={3}>
           <div>
@@ -40,7 +40,7 @@ export default function SuspiciousTransactionCard({ status, isMobile, onClicked 
             <Typography>pending</Typography>
           </Stack>
         )}
-        <StatusChip status={status}/>
+        <StatusChip status={status} />
       </Stack>
     </Card>
   );
