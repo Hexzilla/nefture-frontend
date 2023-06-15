@@ -1,10 +1,7 @@
 import { Card, Stack, Typography } from '@mui/material';
 
 import EthereumIcon from '@components/icons/EthereumIcon';
-import CriticalChip from '@components/chips/CriticalChip';
-import WarningChip from '@components/chips/WarningChip';
-
-import SecureClip from '@components/chips/SecureClip';
+import StatusChip from '@components/chips/StatusChip';
 
 type Props = {
   status: number;
@@ -43,8 +40,7 @@ export default function TransactionCard({ status, isMobile, onClicked }: Props) 
             <Typography>pending</Typography>
           </Stack>
         )}
-
-        {status === 1 ? <CriticalChip /> : status === 2 ? <WarningChip /> : <SecureClip />}
+        <StatusChip status={status}/>
       </Stack>
     </Card>
   );
