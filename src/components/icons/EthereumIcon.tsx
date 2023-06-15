@@ -1,6 +1,6 @@
 import { SVGProps } from 'react';
 
-export default function Ethereum({ ...props }: SVGProps<SVGSVGElement>) {
+export default function EthereumIcon({ ...props }: SVGProps<SVGSVGElement>) {
   return (
     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="48" height="48" rx="24" fill="black" />

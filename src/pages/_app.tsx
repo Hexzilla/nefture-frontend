@@ -1,9 +1,6 @@
 // i18n
 import '../locales/i18n';
 
-//Swipezor
-import '../sections/dashboard/wallet/swipezor.css'
-
 // scroll bar
 import 'simplebar-react/dist/simplebar.min.css';
 
@@ -24,7 +21,11 @@ import 'slick-carousel/slick/slick-theme.css';
 
 // lazy image
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import '../utils/slide.css';
+import '../theme/css/slide.css';
+
+//Swipezor
+import '../theme/css/swipezor.css'
+
 // ----------------------------------------------------------------------
 
 import { CacheProvider, EmotionCache } from '@emotion/react';

@@ -51,9 +51,9 @@ export default function WalletView({ onClosed }: Props) {
           <Transaction />
           <Typography>Medium Rist</Typography>
         </Stack>
-        <Stack direction="column" spacing={1}>
+        {/* <Stack direction="column" spacing={1}>
           <Typography>1/3</Typography>
-        </Stack>
+        </Stack> */}
         <Stack direction="row" spacing={1} alignItems="center">
           <Typography>Wallet1</Typography>
           <Box sx={{ cursor: 'pointer' }} onClick={onClosed}>

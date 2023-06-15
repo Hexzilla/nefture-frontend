@@ -1,6 +1,6 @@
 import { Card, Stack, Typography } from '@mui/material';
 
-import Ethereum from '@components/icons/Ethereum';
+import EthereumIcon from '@components/icons/EthereumIcon';
 import CriticalChip from '@components/chips/CriticalChip';
 import WarningChip from '@components/chips/WarningChip';
 
@@ -28,7 +28,7 @@ export default function TransactionCard({ status, isMobile, onClicked }: Props) 
       >
         <Stack direction="row" spacing={3}>
           <div>
-            <Ethereum />
+            <EthereumIcon />
           </div>
 
           <Stack direction="column" spacing={1}>
