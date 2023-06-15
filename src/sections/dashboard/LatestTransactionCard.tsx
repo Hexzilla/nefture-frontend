@@ -1,7 +1,9 @@
-import { Card, Stack, Typography } from '@mui/material';
+import { Card, Stack, Typography, Box } from '@mui/material';
 
 import EthereumIcon from '@components/icons/EthereumIcon';
-import StatusChip from '@components/chips/StatusChip';
+import BlueCheck from '@components/icons/BlueCheck';
+import ArrowCircleUp from '@components/icons/ArrowCircleUp';
+import { position } from 'stylis';
 
 type Props = {
   status: number;
@@ -13,7 +15,7 @@ const cardSX = {
     backgroundColor: "rgba(145,158,171,0.08)",
   },
 };
-export default function TransactionCard({ status, isMobile, onClicked }: Props) {
+export default function LatestTransactionCard({ status, isMobile, onClicked }: Props) {
   return (
     <Card onClick={onClicked} sx={ cardSX }>
       <Stack
@@ -24,9 +26,12 @@ export default function TransactionCard({ status, isMobile, onClicked }: Props) 
         sx={{ padding: '10px 20px', cursor:'pointer' }}
       >
         <Stack direction="row" spacing={3}>
-          <div>
+          <Box>
             <EthereumIcon />
-          </div>
+            <Box sx={{position:'absolute', top:0, left:0}}>
+              <ArrowCircleUp/>
+            </Box>
+          </Box>
 
           <Stack direction="column" spacing={1}>
             <Typography color="grey">Received at 12:56</Typography>
@@ -37,10 +42,10 @@ export default function TransactionCard({ status, isMobile, onClicked }: Props) 
         {!isMobile && (
           <Stack direction="column" spacing={1}>
             <Typography color="grey">Status</Typography>
-            <Typography>pending</Typography>
+            <Typography>{(status<3)?'pending':'rejected'}</Typography>
           </Stack>
         )}
-        <StatusChip status={status}/>
+        <BlueCheck/>
       </Stack>
     </Card>
   );

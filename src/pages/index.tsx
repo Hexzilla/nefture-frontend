@@ -14,14 +14,10 @@ import { useSettingsContext } from '../components/settings';
 
 import TransactionList from '@sections/dashboard/TransactionList';
 import Wallet from '@sections/dashboard/wallet/WalletView';
-import Suspicious from '@sections/dashboard/Suspicious';
+import MobileTransactionList from '@sections/dashboard/MobileTransactionList';
 
 GeneralAppPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
 
-type FormValuesProps = {
-  storeName: string;
-  afterSubmit?: string;
-};
 const DashboardDesktop = () => { 
   const [walletVisible, setWalletVisible] = useState(false);
   const displayWallet =()=>{
@@ -34,8 +30,8 @@ const DashboardDesktop = () => {
     <Grid container spacing={4}>
       <Grid item xs={12} lg={7}>
         <Stack direction="column" spacing={4}>
-          <TransactionList title="Suspicious Transactions" onClicked={displayWallet}/>
-          <TransactionList title="Latest Transactions"  onClicked={displayWallet}/>
+          <TransactionList type={1} title="Suspicious Transactions" onClicked={displayWallet}/>
+          <TransactionList type={2} title="Latest Transactions" onClicked={displayWallet}/>
         </Stack>
       </Grid>
 
@@ -68,9 +64,8 @@ const DashboardMobile = () => {
         <Tab value={'suspicious'} label={'SUSPICIOUS'} />
         <Tab value={'transactions'} label={'LATEST TRANSACTIONS'} />
       </Tabs>
-
-      {currentTab === 'suspicious' && <Suspicious onClicked={displayWallet}/>}
-      {currentTab === 'transactions' && <Suspicious onClicked={displayWallet}/>}
+      {currentTab === 'suspicious' && <MobileTransactionList type={1} onClicked={displayWallet}/>}
+      {currentTab === 'transactions' && <MobileTransactionList type={2} onClicked={displayWallet}/>}
 
       <Dialog fullWidth maxWidth="xs" open={walletVisible} >
         <Stack>
