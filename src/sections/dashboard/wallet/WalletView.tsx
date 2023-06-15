@@ -17,7 +17,7 @@ import Help from '@components/icons/Help';
 import Iconify from '@components/iconify';
 import dynamic from 'next/dynamic';
 
-const Swipezor = dynamic(() => import('./Swipezor.js'), {
+const Swipezor = dynamic(() => import('./Swipezor'), {
   ssr: false,
 });
 
