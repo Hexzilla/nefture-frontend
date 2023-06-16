@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSwipeable } from 'react-swipeable';
-import DoubleArrow from '@components/icons/DoubleArrow';
-import Lock from '@components/icons/Lock';
+// import DoubleArrow from '@components/icons/DoubleArrow';
+// import Lock from '@components/icons/Lock';
 
-
-function findLeft(element) {
+function findLeft(element: any) {
   var rec = element.getBoundingClientRect();
   return rec.left + window.scrollX;
 }
@@ -21,7 +20,7 @@ function Swipezor({
   minSwipeWidth = 0.6,
   minSwipeVelocity = 0.6,
   caret = null
-}) {
+}: any) {
   const [overlayWidth, setOverlayWidth] = useState(40);
   const [swipeComplete, setSwipeComplete] = useState(false);
   const buttonRef = useRef();

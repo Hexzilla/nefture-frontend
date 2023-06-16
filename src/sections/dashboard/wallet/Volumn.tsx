@@ -1,14 +1,13 @@
 import PlusBlue from '@components/icons/PlusBlue';
 import MinusCrucial from '@components/icons/MinusCrucial';
 import { Card, Stack, Typography } from '@mui/material';
-import { Risk, TransactionItem } from './types';
+import { Transaction } from '../types';
 
 type Props = {
   display: string;
-  data: any | TransactionItem;
+  data: any | Transaction;
   type: string;
 };
-
 
 export default function Volumn({ display, data, type }: Props) {
   return (
