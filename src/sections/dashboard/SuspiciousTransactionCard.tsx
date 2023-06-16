@@ -10,11 +10,13 @@ type Props = {
   onClicked: (value: TransactionItem) => void;
   transactionItem: TransactionItem;
 };
+
 const cardSX = {
   '&:hover': {
     backgroundColor: 'rgba(145,158,171,0.08)',
   },
 };
+
 export default function SuspiciousTransactionCard({
   status,
   isMobile,

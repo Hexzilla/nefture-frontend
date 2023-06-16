@@ -18,13 +18,16 @@ GeneralAppPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}
 const DashboardDesktop = () => {
   const [walletVisible, setWalletVisible] = useState(false);
   const [activeWallet, setActiveWallet] = useState({});
+
   const displayWallet = (value: TransactionItem) => {
     setWalletVisible(true);
     setActiveWallet(value);
   };
+
   const hideWallet = () => {
     setWalletVisible(false);
   };
+  
   return (
     <Grid container spacing={4}>
       <Grid item xs={12} lg={7}>
@@ -43,7 +46,6 @@ const DashboardDesktop = () => {
           />
         </Stack>
       </Grid>
-
       <Grid item xs={12} lg={5}>
         {walletVisible && <Wallet onClosed={hideWallet} data={activeWallet} />}
       </Grid>
@@ -55,10 +57,12 @@ const DashboardMobile = () => {
   const [currentTab, setCurrentTab] = useState('suspicious');
   const [walletVisible, setWalletVisible] = useState(false);
   const [activeWallet, setActiveWallet] = useState({});
+
   const displayWallet = (value: TransactionItem) => {
     setWalletVisible(true);
     setActiveWallet(value);
   };
+
   const hideWallet = () => {
     setWalletVisible(false);
   };

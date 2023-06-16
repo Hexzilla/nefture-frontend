@@ -34,11 +34,14 @@ export default function WalletView({ onClosed, data }: Props) {
   const [reset, setReset] = useState(0);
   const [open, setOpen] = useState(false);
   const [display, setDisplay] = useState('flex');
+  const [arrowVisible, setArrowVisible] = useState("visible");
+  
   const changeOpen = () => {
     setOpen(!open);
     if (display === 'flex') setDisplay('none');
     else setDisplay('flex');
   };
+
   return (
     <Card sx={{ padding: '10px 20px' }}>
       <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
@@ -146,11 +149,12 @@ export default function WalletView({ onClosed, data }: Props) {
       <Stack mt={3} mb={1}>
         <Swipezor
           mainText="Swipe to Approve"
-          overlayText=""
+          overlayText="Approved"
           onSwipeDone={function () {
-            console.log('Done!');
+            setArrowVisible("hidden");
           }}
           reset={reset}
+          arrowVisible={arrowVisible}
         />
       </Stack>
       <Stack alignItems="center" sx={{ padding: '10px 20px', marginTop: '12px' }}>

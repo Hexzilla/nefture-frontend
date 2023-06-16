@@ -20,10 +20,12 @@ function Swipezor({
   delta = 10,
   minSwipeWidth = 0.6,
   minSwipeVelocity = 0.6,
-  caret = null
+  caret = null,
+  arrowVisible,
 }) {
   const [overlayWidth, setOverlayWidth] = useState(40);
   const [swipeComplete, setSwipeComplete] = useState(false);
+  const [arrowVisibled, setArrowVisibled] = useState(arrowVisible);
   const buttonRef = useRef();
 
   useEffect(() => {
@@ -82,10 +84,10 @@ function Swipezor({
     }}>
       <div className={`swipezor-overlay ${overlayClassList}`} style={{ width: overlayWidth }}>
         <div className="swipezor-overlay-wrapper">
-          <div className={`swipezor-caret-wrapper ${caretClassList}`}>
-            {caret ? caret : <img src={'/assets/icons/arrow.png'} alt="caret" style={{ maxWidth: '100%' }} />}
+          <div className={`swipezor-caret-wrapper ${caretClassList}${arrowVisible}`}>
+            {(caret || arrowVisible=="hidden") ? caret : <img src={'/assets/icons/arrow.png'} alt="caret" style={{ maxWidth: '100%' }} />}
           </div>
-          <div className="swipezor-overlay-txt">
+          <div className="swipezor-overlay-txt" style={{backgroundColor:'green'}}>
             {overlayText}
           </div>
         </div>

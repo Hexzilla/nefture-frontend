@@ -9,7 +9,6 @@ type Props = {
   type: string;
 };
 
-
 export default function Volumn({ display, data, type }: Props) {
   return (
     <>
