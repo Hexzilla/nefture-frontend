@@ -1,13 +1,15 @@
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+import { Box, Button, Card, Collapse, Stack, Typography } from '@mui/material';
+
 import Alert from '@components/icons/Alert';
 import Down from '@components/icons/Down';
 import Close from '@components/icons/GrayClose';
 import Help from '@components/icons/Help';
 import CheckGreen from '@components/icons/CheckGreen';
-import Transaction from '@components/icons/Transaction';
-import { Box, Button, Card, Collapse, Stack, Typography } from '@mui/material';
-import dynamic from 'next/dynamic';
-import { useState } from 'react';
-import { Risk, TransactionItem } from './types';
+import TransactionIcon from '@components/icons/Transaction';
+
+import { Risk, Transaction } from '../types';
 import Volumn from './Volumn';
 
 const Swipezor = dynamic(() => import('./Swipezor'), {
@@ -16,7 +18,7 @@ const Swipezor = dynamic(() => import('./Swipezor'), {
 
 type Props = {
   onClosed?: VoidFunction;
-  data: any | TransactionItem;
+  data: any | Transaction;
 };
 
 const warnings: String[] = new Array(3).fill(0).map((_, index) => 'test' as String);
@@ -46,7 +48,7 @@ export default function WalletView({ onClosed, data }: Props) {
     <Card sx={{ padding: '10px 20px' }}>
       <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
         <Stack direction="row" alignItems="center">
-          <Transaction />
+          <TransactionIcon />
           <Typography>Swap</Typography>
         </Stack>
         <Stack direction="row" spacing={1} alignItems="center">

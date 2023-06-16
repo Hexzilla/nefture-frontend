@@ -1,9 +1,13 @@
 import { Box, Stack, Typography } from '@mui/material';
 import React from 'react';
 
-export default function NoPendingTransactions() {
+type Props = {
+  onClick: () => void;
+};
+
+export default function EmptyTransactions({ onClick }: Props) {
   return (
-    <Stack direction="column" spacing={3} alignItems="center">
+    <Stack direction="column" spacing={3} alignItems="center" onClick={onClick} >
       <Box
         component="img"
         src="/assets/images/dashboard/no_pending_transactions.png"

@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSwipeable } from 'react-swipeable';
-import DoubleArrow from '@components/icons/DoubleArrow';
-import Lock from '@components/icons/Lock';
+// import DoubleArrow from '@components/icons/DoubleArrow';
+// import Lock from '@components/icons/Lock';
 
-
-function findLeft(element) {
+function findLeft(element: any) {
   var rec = element.getBoundingClientRect();
   return rec.left + window.scrollX;
 }
