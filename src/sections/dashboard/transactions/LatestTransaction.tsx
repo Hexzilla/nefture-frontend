@@ -3,28 +3,26 @@ import { Card, Stack, Typography, Box } from '@mui/material';
 import EthereumIcon from '@components/icons/EthereumIcon';
 import BlueCheck from '@components/icons/BlueCheck';
 import ArrowCircleUp from '@components/icons/ArrowCircleUp';
-import { TransactionItem } from './wallet/types';
+import useResponsive from '@hooks/useResponsive';
 
-type Props = {
-  status: number;
-  isMobile?: boolean;
-  onClicked: (value: TransactionItem) => void;
-  transactionItem: TransactionItem;
-};
-const cardSX = {
+import { Transaction } from '../types';
+
+const styles = {
   '&:hover': {
     backgroundColor: 'rgba(145,158,171,0.08)',
   },
 };
-export default function LatestTransactionCard({
-  status,
-  isMobile,
-  onClicked,
-  transactionItem,
-}: Props) {
+
+type Props = {
+  transaction: Transaction;
+  onClick: (value: Transaction) => void;
+};
+
+export default function LatestTransaction({ transaction, onClick }: Props) {
+  const isMobile = useResponsive('down', 'sm');
+
   return (
-    <Card sx={cardSX}
-      onClick={() => onClicked(transactionItem)}>
+    <Card sx={styles} onClick={() => onClick(transaction)}>
       <Stack
         direction="row"
         spacing={2}
@@ -42,14 +40,14 @@ export default function LatestTransactionCard({
 
           <Stack direction="column" spacing={1}>
             <Typography color="grey">Received at 12:56</Typography>
-            <Typography>{transactionItem.value_tx}</Typography>
+            <Typography>{transaction.value_tx}</Typography>
           </Stack>
         </Stack>
 
         {!isMobile && (
           <Stack direction="column" spacing={1}>
             <Typography color="grey">Status</Typography>
-            <Typography>{transactionItem.status}</Typography>
+            <Typography>{transaction.status}</Typography>
           </Stack>
         )}
         <BlueCheck />
