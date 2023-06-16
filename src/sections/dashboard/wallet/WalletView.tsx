@@ -1,13 +1,13 @@
 import Alert from '@components/icons/Alert';
-import Close from '@components/icons/GrayClose';
 import Down from '@components/icons/Down';
+import Close from '@components/icons/GrayClose';
 import Help from '@components/icons/Help';
 import PlusBlue from '@components/icons/PlusBlue';
 import Transaction from '@components/icons/Transaction';
 import { Box, Button, Card, Collapse, Stack, Typography } from '@mui/material';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
-import { TransactionItem } from './types';
+import { Risk, TransactionItem } from './types';
 
 const Swipezor = dynamic(() => import('./Swipezor'), {
   ssr: false,
@@ -15,7 +15,7 @@ const Swipezor = dynamic(() => import('./Swipezor'), {
 
 type Props = {
   onClosed?: VoidFunction;
-  data: any|TransactionItem;
+  data: any | TransactionItem;
 };
 
 const warnings: String[] = new Array(3).fill(0).map((_, index) => 'test' as String);
@@ -87,31 +87,32 @@ export default function WalletView({ onClosed, data }: Props) {
           </Box>
         </Stack>
         <Collapse in={open} unmountOnExit>
-          {data.critical_risks && data.critical_risks.map((index:number) => (
-            <Card sx={{ margin: '16px 30px' }} key={index}>
-              <Stack
-                direction="row"
-                spacing={2}
-                alignItems="center"
-                justifyContent="space-between"
-                sx={{ padding: '8px' }}
-              >
-                <Stack direction="row" spacing={3} alignItems="center" sx={{ width: '100%' }}>
-                  <Alert />
-                  <Stack
-                    direction="column"
-                    spacing={1}
-                    sx={{ width: `calc(100% - 48px)`, marginLeft: '12px!important' }}
-                  >
-                    <Typography>Danger</Typography>
-                    <Typography color="grey" sx={{ overflowWrap: 'break-word' }}>
-                      {data.critical_risks[0].description}
-                    </Typography>
+          {data.critical_risks &&
+            data.critical_risks.map((item: Risk, index: number) => (
+              <Card sx={{ margin: '16px 30px' }} key={index}>
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  alignItems="center"
+                  justifyContent="space-between"
+                  sx={{ padding: '8px' }}
+                >
+                  <Stack direction="row" spacing={3} alignItems="center" sx={{ width: '100%' }}>
+                    <Alert />
+                    <Stack
+                      direction="column"
+                      spacing={1}
+                      sx={{ width: `calc(100% - 48px)`, marginLeft: '12px!important' }}
+                    >
+                      <Typography>Danger</Typography>
+                      <Typography color="grey" sx={{ overflowWrap: 'break-word' }}>
+                        {data.critical_risks[index].description}
+                      </Typography>
+                    </Stack>
                   </Stack>
                 </Stack>
-              </Stack>
-            </Card>
-          ))}
+              </Card>
+            ))}
         </Collapse>
       </Card>
       <Button href="/" size="large" variant="contained" sx={buttonSX}>

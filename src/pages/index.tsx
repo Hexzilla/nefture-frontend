@@ -120,11 +120,11 @@ const transactions: TransactionItem[] = [
     critical_risks: [
       {
         id_risk: 1,
-        description: 'description danger',
+        description: 'description danger 1',
       },
       {
         id_risk: 1,
-        description: 'description danger',
+        description: 'description danger 2',
       },
     ],
   },
@@ -137,11 +137,11 @@ const transactions: TransactionItem[] = [
     critical_risks: [
       {
         id_risk: 1,
-        description: 'description danger',
+        description: 'description danger 3',
       },
       {
         id_risk: 2,
-        description: 'description danger',
+        description: 'description danger 4',
       },
     ],
   },
@@ -154,7 +154,7 @@ const transactions: TransactionItem[] = [
     critical_risks: [
       {
         id_risk: 1,
-        description: 'description danger',
+        description: 'description danger 5',
       },
     ],
   },
