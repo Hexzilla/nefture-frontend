@@ -11,6 +11,7 @@ import { TeamMember } from '@sections/team/TeamMembers';
 import React from 'react';
 import EthereumIconRectangle from '@components/icons/EthereumIconRectangle';
 import Polygon from '@components/icons/Polygon';
+import ComingCard from '@sections/networks/ComingCard';
 
 export default function NetworksPage() {
   const { themeStretch } = useSettingsContext();
@@ -49,6 +50,7 @@ export default function NetworksPage() {
             <>
               <NetworkCard type='ethereum'/>
               <NetworkCard type='polygon'/>
+              <ComingCard/>
             </>
           )}
         </Box>
