@@ -2,27 +2,26 @@ import { Card, Stack, Typography } from '@mui/material';
 
 import StatusChip from '@components/chips/StatusChip';
 import EthereumIcon from '@components/icons/EthereumIcon';
-import { TransactionItem } from './wallet/types';
+import useResponsive from '@hooks/useResponsive';
+
+import { Transaction } from '../types';
 
 type Props = {
-  status: number;
-  isMobile?: boolean;
-  onClicked: (value: TransactionItem) => void;
-  transactionItem: TransactionItem;
+  transaction: Transaction;
+  onClick: (value: Transaction) => void;
 };
+
 const cardSX = {
   '&:hover': {
     backgroundColor: 'rgba(145,158,171,0.08)',
   },
 };
-export default function SuspiciousTransactionCard({
-  status,
-  isMobile,
-  onClicked,
-  transactionItem,
-}: Props) {
+
+export default function SuspiciousTransaction({ transaction, onClick }: Props) {
+  const isMobile = useResponsive('down', 'sm');
+
   return (
-    <Card onClick={() => onClicked(transactionItem)} sx={cardSX}>
+    <Card onClick={() => onClick(transaction)} sx={cardSX}>
       <Stack
         direction="row"
         spacing={2}
@@ -37,7 +36,7 @@ export default function SuspiciousTransactionCard({
 
           <Stack direction="column" spacing={1}>
             <Typography color="grey">Received at 12:56</Typography>
-            <Typography>{transactionItem.value_tx}</Typography>
+            <Typography>{transaction.value_tx}</Typography>
           </Stack>
         </Stack>
 
@@ -47,7 +46,7 @@ export default function SuspiciousTransactionCard({
             <Typography>pending</Typography>
           </Stack>
         )}
-        <StatusChip status={transactionItem.state} />
+        <StatusChip status={transaction.state} />
       </Stack>
     </Card>
   );
