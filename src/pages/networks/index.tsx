@@ -1,21 +1,36 @@
+import { Box, Container, Divider, Typography } from '@mui/material';
 import Head from 'next/head';
-import { Container, Stack, Box } from '@mui/material';
+import { useState, useEffect } from 'react';
 
-import DashboardLayout from '@layouts/dashboard';
 import AnimatedContainer from '@components/animated-container';
 import { useSettingsContext } from '@components/settings';
-import TeamMembers, { TeamMember } from '@sections/team/TeamMembers';
-import { SkeletonPostDetails, SkeletonPostItem, SkeletonProductDetails } from '@components/skeleton';
 import SkeletonNetworkItem from '@components/skeleton/SkeletonNetworkItem';
+import DashboardLayout from '@layouts/dashboard';
+import NetworkCard from '@sections/networks/NetworkCard';
+import { TeamMember } from '@sections/team/TeamMembers';
+import React from 'react';
+import EthereumIconRectangle from '@components/icons/EthereumIconRectangle';
+import Polygon from '@components/icons/Polygon';
 
 export default function NetworksPage() {
   const { themeStretch } = useSettingsContext();
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    (async () => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    })();
+  }, []);
 
   return (
     <AnimatedContainer>
       <Head>
         <title> Networks | Nefture</title>
       </Head>
+      <Typography variant='h6' ml={3}>Networks</Typography>
+      <Typography color='#2965FF' ml={3} mb={3}>Have suggestions or feedback?</Typography>
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Box
           gap={3}
@@ -26,9 +41,16 @@ export default function NetworksPage() {
             md: 'repeat(3, 1fr)',
           }}
         >
-        <SkeletonNetworkItem key={1} />
-          <SkeletonNetworkItem key={1} />
-          <SkeletonNetworkItem key={1} />
+          {loading ? (
+            <>
+              <SkeletonNetworkItem key={1} />
+            </>
+          ) : (
+            <>
+              <NetworkCard type='ethereum'/>
+              <NetworkCard type='polygon'/>
+            </>
+          )}
         </Box>
       </Container>
     </AnimatedContainer>
