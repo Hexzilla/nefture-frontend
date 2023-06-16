@@ -13,8 +13,9 @@ import PolygonIcon from '@components/icons/Polygon';
 
 type Props = {
   type: String;
+  addWallet: (value: boolean) => void;
 };
-export default function NetworkCard({ type }: Props) {
+export default function NetworkCard({ type, addWallet }: Props) {
   return (
     <Card sx={{ padding: '1em' }}>
       <Stack
@@ -40,6 +41,7 @@ export default function NetworkCard({ type }: Props) {
           variant="contained"
           startIcon={<Image src="/assets/icons/apps/metamask.svg" />}
           sx={{ height: '100%', width: '100%' }}
+          onClick={() => addWallet(true)}
         >
           Add to Wallet
         </Button>
