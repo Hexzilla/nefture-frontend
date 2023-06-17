@@ -21,8 +21,6 @@ type Props = {
   data: any | Transaction;
 };
 
-const warnings: String[] = new Array(3).fill(0).map((_, index) => 'test' as String);
-
 const buttonSX = {
   width: '100%',
   backgroundColor: 'black',
@@ -33,11 +31,10 @@ const buttonSX = {
 };
 
 export default function WalletView({ onClosed, data }: Props) {
-  const [reset, setReset] = useState(0);
   const [open, setOpen] = useState(false);
   const [display, setDisplay] = useState('flex');
-  const [arrowVisible, setArrowVisible] = useState("visible");
-  
+  const [arrowVisible, setArrowVisible] = useState('visible');
+
   const changeOpen = () => {
     setOpen(!open);
     if (display === 'flex') setDisplay('none');
@@ -58,8 +55,10 @@ export default function WalletView({ onClosed, data }: Props) {
           </Box>
         </Stack>
       </Stack>
+
       <Volumn display={display} data={data} type={'receiving'} />
       <Volumn display={display} data={data} type={'paying'} />
+
       <Stack
         direction="row"
         spacing={2}
@@ -99,6 +98,7 @@ export default function WalletView({ onClosed, data }: Props) {
         <Typography color="gray">Network Fee</Typography>
         <Typography>0.0034 ETH ~$1.59</Typography>
       </Stack>
+
       <Card>
         <Stack
           direction="row"
@@ -116,6 +116,7 @@ export default function WalletView({ onClosed, data }: Props) {
             <Down />
           </Box>
         </Stack>
+
         <Collapse in={open} unmountOnExit>
           {data.critical_risks &&
             data.critical_risks.map((item: Risk, index: number) => (
@@ -145,20 +146,22 @@ export default function WalletView({ onClosed, data }: Props) {
             ))}
         </Collapse>
       </Card>
+
       <Button href="/" size="large" variant="contained" sx={buttonSX}>
         Go to Home
       </Button>
+
       <Stack mt={3} mb={1}>
         <Swipezor
           mainText="Swipe to Approve"
           overlayText="Approved"
           onSwipeDone={function () {
-            setArrowVisible("hidden");
+            setArrowVisible('hidden');
           }}
-          reset={reset}
           arrowVisible={arrowVisible}
         />
       </Stack>
+
       <Stack alignItems="center" sx={{ padding: '10px 20px', marginTop: '12px' }}>
         <Stack direction="row" spacing={2}>
           <Help />

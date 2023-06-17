@@ -10,7 +10,6 @@ function Swipezor({
   mainText,
   overlayText,
   onSwipeDone,
-  reset,
   classList = '',
   overlayClassList = '',
   caretClassList = '',
@@ -23,13 +22,6 @@ function Swipezor({
   const [overlayWidth, setOverlayWidth] = useState(40);
   const [swipeComplete, setSwipeComplete] = useState(false);
   const buttonRef = useRef<any>();
-
-  useEffect(() => {
-    if (reset) {
-      setSwipeComplete(false);
-      setOverlayWidth(40);
-    }
-  }, [reset]);
 
   const handlers = useSwipeable({
     onSwipedRight: (data) => {
