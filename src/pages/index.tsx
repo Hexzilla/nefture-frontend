@@ -1,4 +1,4 @@
-import { Container, Grid, Stack } from '@mui/material';
+import { Container, Dialog, Grid, Stack } from '@mui/material';
 import Head from 'next/head';
 import { useState } from 'react';
 
@@ -18,6 +18,7 @@ GeneralAppPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}
 const Dashboard = () => {
   const [walletVisible, setWalletVisible] = useState(false);
   const [activeWallet, setActiveWallet] = useState({});
+  const isMobile = useResponsive('down', 'sm');
 
   const displayWallet = (value: Transaction) => {
     setWalletVisible(true);
@@ -38,13 +39,19 @@ const Dashboard = () => {
       </Grid>
       <Grid item xs={12} lg={5}>
         {walletVisible && <Wallet onClosed={hideWallet} data={activeWallet} />}
+        {isMobile && (
+          <Dialog fullWidth maxWidth="xs" open={walletVisible}>
+            <Stack>
+              <Wallet onClosed={hideWallet} data={activeWallet} />
+            </Stack>
+          </Dialog>
+        )}
       </Grid>
     </Grid>
   );
 };
 
 export default function GeneralAppPage() {
-  const isMobile = useResponsive('down', 'sm');
   const { user } = useAuthContext();
   const { themeStretch } = useSettingsContext();
 

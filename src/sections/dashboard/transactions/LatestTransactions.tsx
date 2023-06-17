@@ -4,6 +4,7 @@ import { Stack, Typography } from '@mui/material';
 import { Transaction } from '../types';
 import Container from './Container';
 import Suspicious from './Suspicious';
+import LatestTransaction from './LatestTransaction';
 
 const SHOW_TRANSACTIONS = 4;
 
@@ -23,7 +24,7 @@ export default function LatestTransactions({ onClick }: Props) {
       <>
         <Stack direction="column" spacing="10px" sx={{ cursor: 'pointer' }}>
           {items.map((item, index) => (
-            <Suspicious
+            <LatestTransaction
               key={index}
               transaction={item}
               onClick={onClick}
