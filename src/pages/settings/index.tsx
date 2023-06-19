@@ -13,6 +13,7 @@ import PlanTab from './PlanTab';
 import { Box } from '@mui/system';
 import SkeletonNetworkItem from '@components/skeleton/SkeletonNetworkItem';
 import NotificationCard from '@sections/notification/NotificationCard';
+import SettingsCard from '@sections/settings/SettingsCard';
 // import ExtendTrialModal from './ExtendTrialModal';
 // import CancellingReason from './CancellingReason';
 
@@ -36,10 +37,10 @@ export default function SettingspPage() {
         <title> Settings | Nefture</title>
       </Head>
       <Container maxWidth={themeStretch ? false : 'xl'}>
-        <Typography variant="h6" ml={3} pt={3}>
+        <Typography variant="h6" ml={1} pt={3}>
           Notifications
         </Typography>
-        <Typography ml={3} mb={3}>
+        <Typography ml={1} mb={3}>
           Among the following notifications, choose the ones you want to receive by email.
         </Typography>
         <Box
@@ -57,8 +58,35 @@ export default function SettingspPage() {
             </>
           ) : (
             <>
-              <NotificationCard type={'smart contrac'} />
-              <NotificationCard type={'smart contrac'} />
+              <NotificationCard title={'Smart Contract Analytics'} type={0} />
+              <NotificationCard title={'Rug Pull Checker'} type={0} />
+              <NotificationCard title={'Monthly Audit'} type={1} />
+            </>
+          )}
+        </Box>
+        <Typography variant="h6" ml={1} pt={3}>
+          Settings
+        </Typography>
+        <Typography ml={1} mb={3}>
+          Manage your notification system. Want to see a new notification system?
+        </Typography>
+        <Box
+          gap={3}
+          display="grid"
+          gridTemplateColumns={{
+            xs: 'repeat(1, 1fr)',
+            sm: 'repeat(2, 1fr)',
+            md: 'repeat(3, 1fr)',
+          }}
+        >
+          {loading ? (
+            <>
+              <SkeletonNetworkItem key={1} />
+            </>
+          ) : (
+            <>
+              <SettingsCard title={'Smart Contract Analytics'} type={0} />
+              <SettingsCard title={'Telegram'} type={1} />
             </>
           )}
         </Box>
