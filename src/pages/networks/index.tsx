@@ -66,7 +66,7 @@ export default function NetworksPage() {
           </Box>
         </Container>
       </AnimatedContainer>
-      <Dialog fullWidth maxWidth="xs" open={dialogOpen} aria-disabled={true}>
+      <Dialog fullWidth maxWidth="xs" open={dialogOpen}  onClose={() => setDialogOpen(false)}>
         <Stack>
           <Card sx={{ padding: '1em' }}>
             <Stack
