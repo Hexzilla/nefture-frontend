@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import dynamic from 'next/dynamic';
 import { Box, Button, Card, Collapse, Stack, Typography } from '@mui/material';
+import dynamic from 'next/dynamic';
+import { useState } from 'react';
 
 import Alert from '@components/icons/Alert';
+import CheckGreen from '@components/icons/CheckGreen';
 import Down from '@components/icons/Down';
 import Close from '@components/icons/GrayClose';
 import Help from '@components/icons/Help';
-import CheckGreen from '@components/icons/CheckGreen';
 import TransactionIcon from '@components/icons/Transaction';
-
+import { DM_Mono } from 'next/font/google';
 import { Risk, Transaction } from '../types';
 import Volumn from './Volumn';
 
@@ -30,6 +30,11 @@ const buttonSX = {
   },
 };
 
+const dmMono = DM_Mono({
+  weight: '400',
+  subsets: ['latin'],
+});
+
 export default function WalletView({ onClosed, data }: Props) {
   const [open, setOpen] = useState(false);
   const [display, setDisplay] = useState('flex');
@@ -42,7 +47,7 @@ export default function WalletView({ onClosed, data }: Props) {
   };
 
   return (
-    <Card sx={{ padding: '10px 20px', minHeight:'90vh' }}>
+    <Card sx={{ padding: '10px 20px', minHeight: '90vh' }}>
       <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
         <Stack direction="row" alignItems="center">
           <TransactionIcon />
@@ -66,6 +71,7 @@ export default function WalletView({ onClosed, data }: Props) {
         justifyContent="space-between"
         mt={3}
         sx={{ display: display }}
+        className={dmMono.className}
       >
         <Typography color="gray">Protocal</Typography>
         <Stack direction="row" spacing={1} alignItems="center">
@@ -82,6 +88,7 @@ export default function WalletView({ onClosed, data }: Props) {
         justifyContent="space-between"
         mt={1}
         sx={{ display: display }}
+        className={dmMono.className}
       >
         <Typography color="gray">Chain</Typography>
         <Typography>Ethereum</Typography>
@@ -94,6 +101,7 @@ export default function WalletView({ onClosed, data }: Props) {
         mt={1}
         mb={3}
         sx={{ display: display }}
+        className={dmMono.className}
       >
         <Typography color="gray">Network Fee</Typography>
         <Typography>0.0034 ETH ~$1.59</Typography>

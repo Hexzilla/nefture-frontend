@@ -1,6 +1,7 @@
 import { Stack, Typography } from '@mui/material';
 import { useMemo, useState } from 'react';
 
+import { DM_Mono } from 'next/font/google';
 import { Transaction } from '../types';
 import Container from './Container';
 import LatestTransaction from './LatestTransaction';
@@ -12,6 +13,11 @@ type Props = {
   state: number;
   viewTransaction: VoidFunction;
 };
+
+const dmMono = DM_Mono({
+  weight: '400',
+  subsets: ['latin'],
+});
 
 export default function LatestTransactions({ onClick, state, viewTransaction }: Props) {
   const [transactions, setTransactions] = useState(mock_transactions);
@@ -29,7 +35,11 @@ export default function LatestTransactions({ onClick, state, viewTransaction }: 
           ))}
         </Stack>
 
-        <Typography variant="subtitle2" sx={{ paddingTop: '10px', color: '#7D7D7E' }}>
+        <Typography
+          variant="subtitle2"
+          sx={{ paddingTop: '10px', color: '#7D7D7E' }}
+          className={dmMono.className}
+        >
           See 5 more pending transactions...
         </Typography>
       </>

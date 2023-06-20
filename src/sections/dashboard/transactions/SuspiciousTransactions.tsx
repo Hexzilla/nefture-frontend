@@ -1,6 +1,7 @@
-import { useState, useMemo } from 'react';
 import { Stack, Typography } from '@mui/material';
+import { useMemo, useState } from 'react';
 
+import { DM_Mono } from 'next/font/google';
 import { Transaction } from '../types';
 import Container from './Container';
 import Suspicious from './Suspicious';
@@ -13,6 +14,11 @@ type Props = {
   viewTransaction: VoidFunction;
 };
 
+const dmMono = DM_Mono({
+  weight: '400',
+  subsets: ['latin'],
+});
+
 export default function SuspiciousTransactions({ onClick, state, viewTransaction }: Props) {
   const [transactions, setTransactions] = useState(mock_transactions);
 
@@ -21,7 +27,7 @@ export default function SuspiciousTransactions({ onClick, state, viewTransaction
   }, [transactions]);
 
   return (
-    <Container title="Suspicious Transactions" state={state}  viewTransaction={viewTransaction}>
+    <Container title="Suspicious Transactions" state={state} viewTransaction={viewTransaction}>
       <>
         <Stack direction="column" spacing="10px" sx={{ cursor: 'pointer' }}>
           {items.map((item, index) => (
@@ -29,7 +35,11 @@ export default function SuspiciousTransactions({ onClick, state, viewTransaction
           ))}
         </Stack>
 
-        <Typography variant="subtitle2" sx={{ paddingTop: '10px', color: '#7D7D7E' }}>
+        <Typography
+          variant="subtitle2"
+          sx={{ paddingTop: '10px', color: '#7D7D7E' }}
+          className={dmMono.className}
+        >
           See 5 more pending transactions...
         </Typography>
       </>
