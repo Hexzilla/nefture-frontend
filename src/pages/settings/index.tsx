@@ -1,36 +1,38 @@
-import { useState } from 'react';
-import Head from 'next/head';
 import { Container } from '@mui/material';
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
 
-import DashboardLayout from '@layouts/dashboard';
 import AnimatedContainer from '@components/animated-container';
 import { useSettingsContext } from '@components/settings';
+import DashboardLayout from '@layouts/dashboard';
 
-import SettingTabs from './SettingTabs';
-import AccountTab from './AccountTab';
-import BillingTab from './BillingTab';
-import PlanTab from './PlanTab';
-// import ExtendTrialModal from './ExtendTrialModal';
-// import CancellingReason from './CancellingReason';
+import useResponsive from '../../hooks/useResponsive';
+import SettingsDesktop from './SettingsDesktop';
+import SettingsMobile from './SettingsMobile';
 
 export default function SettingspPage() {
+  const isDesktop = useResponsive('up', 'lg');
   const [currentTab, setCurrentTab] = useState(0);
-
   const { themeStretch } = useSettingsContext();
+  const [loading, setLoading] = useState(true);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    })();
+  }, []);
 
   return (
     <AnimatedContainer>
       <Head>
-        <title> Accounts | Exodais</title>
+        <title> Settings | Nefture</title>
       </Head>
-
       <Container maxWidth={themeStretch ? false : 'xl'}>
-        <SettingTabs value={currentTab} setValue={setCurrentTab} />
-        {currentTab === 0 && <AccountTab />}
-        {currentTab === 1 && <BillingTab />}
-        {currentTab === 2 && <PlanTab />}
-        {/* <ExtendTrialModal open onClose={() => console.log('close')} /> */}
-        {/* <CancellingReason open onClose={() => console.log('close')} /> */}
+        {isDesktop && <SettingsDesktop />}
+        {!isDesktop && <SettingsMobile />}
       </Container>
     </AnimatedContainer>
   );

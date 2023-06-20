@@ -1,30 +1,32 @@
 import { Card, Stack, Typography } from '@mui/material';
 
+import StatusChip from '@components/chips/StatusChip';
 import EthereumIcon from '@components/icons/EthereumIcon';
-import CriticalChip from '@components/chips/CriticalChip';
-import WarningChip from '@components/chips/WarningChip';
+import useResponsive from '@hooks/useResponsive';
 
-import SecureClip from '@components/chips/SecureClip';
+import { Transaction } from '../types';
 
 type Props = {
-  status: number;
-  isMobile?: boolean;
-  onClicked?: VoidFunction;
+  transaction: Transaction;
+  onClick: (value: Transaction) => void;
 };
+
 const cardSX = {
-  "&:hover": {
-    backgroundColor: "rgba(145,158,171,0.08)",
+  '&:hover': {
+    backgroundColor: 'rgba(145,158,171,0.08)',
   },
 };
-export default function TransactionCard({ status, isMobile, onClicked }: Props) {
+export default function SuspiciousTransaction({ transaction, onClick }: Props) {
+  const isMobile = useResponsive('down', 'sm');
+
   return (
-    <Card onClick={onClicked} sx={ cardSX }>
+    <Card onClick={() => onClick(transaction)} sx={cardSX}>
       <Stack
         direction="row"
         spacing={2}
         alignItems="center"
         justifyContent="space-between"
-        sx={{ padding: '10px 20px', cursor:'pointer' }}
+        sx={{ padding: '10px 20px', cursor: 'pointer' }}
       >
         <Stack direction="row" spacing={3}>
           <div>
@@ -33,7 +35,7 @@ export default function TransactionCard({ status, isMobile, onClicked }: Props) 
 
           <Stack direction="column" spacing={1}>
             <Typography color="grey">Received at 12:56</Typography>
-            <Typography>1.05 ETH</Typography>
+            <Typography>{transaction.value_tx}</Typography>
           </Stack>
         </Stack>
 
@@ -43,8 +45,7 @@ export default function TransactionCard({ status, isMobile, onClicked }: Props) 
             <Typography>pending</Typography>
           </Stack>
         )}
-
-        {status === 1 ? <CriticalChip /> : status === 2 ? <WarningChip /> : <SecureClip />}
+        <StatusChip status={transaction.state} />
       </Stack>
     </Card>
   );

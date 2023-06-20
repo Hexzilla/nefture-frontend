@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: default;
+  cursor: pointer;
   user-select: none;
   /* box-sizing: border-box; */
 }
@@ -51,12 +51,15 @@
   top: 50%;
   height: 100%;
   transform: translateY(-50%);
-  background: #444;
+  background: #37383a;
   z-index: 2;
   display: flex;
   align-items: center;
   padding: 10px;
   justify-content: center;
+}
+.swipezor-but .swipezor-overlay .swipezor-caret-wrapper.hidden {  
+  background: green;
 }
 .swipezor-but .swipezor-overlay .swipezor-overlay-txt {
   position: absolute;

@@ -20,7 +20,6 @@ export default function HeaderInfo() {
     else if (pathname === PATH_DASHBOARD.myProducts.savedProducts) setInfo('Saved products');
     else if (pathname === PATH_DASHBOARD.myProducts.scheduled) setInfo('Scheduled');
     else if (pathname === PATH_DASHBOARD.myProducts.tested) setInfo('Tested');
-    else if (pathname === PATH_DASHBOARD.team) setInfo('Team');
   }, [pathname]);
 
   return (

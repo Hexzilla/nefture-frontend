@@ -51,7 +51,7 @@ export const PATH_DASHBOARD = {
     scheduled: path(ROOTS_DASHBOARD, 'my-products/scheduled'),
     tested: path(ROOTS_DASHBOARD, 'my-products/tested'),
   },
-  team: path(ROOTS_DASHBOARD, 'team'),
+  networks: path(ROOTS_DASHBOARD, 'networks'),
   settings: path(ROOTS_DASHBOARD, 'settings'),
 
   // --------------------------------------------------------

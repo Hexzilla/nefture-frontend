@@ -54,7 +54,7 @@ export const bottomNavConfig = [
   {
     subheader: '',
     items: [
-      { title: 'Networks', path: PATH_DASHBOARD.team, icon: ICONS.networks },
+      { title: 'Networks', path: PATH_DASHBOARD.networks, icon: ICONS.networks },
       { title: 'Settings', path: PATH_DASHBOARD.settings, icon: ICONS.settings },
       { title: 'FAQ', path: PATH_DASHBOARD.settings, icon: ICONS.faqs },
     ],
