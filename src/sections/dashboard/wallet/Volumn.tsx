@@ -15,7 +15,7 @@ export default function Volumn({ display, data, type }: Props) {
       <Typography mt={3} mb={1} sx={{display:display}}>
         {type}
       </Typography>
-      <Card sx={{display:display}}>
+      <Card sx={{display:display, backgroundColor:'primary.buttonColor'}}>
         <Stack
           direction="row"
           spacing={2}
