@@ -32,6 +32,10 @@ export default function WalletPage() {
   );
 }
 
+WalletPage.getLayout = (page: React.ReactElement) => (
+  <DashboardLayout>{page}</DashboardLayout>
+);
+
 const teamMembers: TeamMember[] = [
   {
     name: 'Luke Dalton',
