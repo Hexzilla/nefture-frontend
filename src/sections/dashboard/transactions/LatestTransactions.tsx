@@ -1,18 +1,19 @@
-import { useState, useMemo } from 'react';
 import { Stack, Typography } from '@mui/material';
+import { useMemo, useState } from 'react';
 
 import { Transaction } from '../types';
 import Container from './Container';
-import Suspicious from './Suspicious';
 import LatestTransaction from './LatestTransaction';
 
 const SHOW_TRANSACTIONS = 4;
 
 type Props = {
   onClick: (transaction: Transaction) => void;
+  state: number;
+  viewTransaction: VoidFunction;
 };
 
-export default function LatestTransactions({ onClick }: Props) {
+export default function LatestTransactions({ onClick, state, viewTransaction }: Props) {
   const [transactions, setTransactions] = useState(mock_transactions);
 
   const items = useMemo(() => {
@@ -20,15 +21,11 @@ export default function LatestTransactions({ onClick }: Props) {
   }, [transactions]);
 
   return (
-    <Container title="Latest Transactions">
+    <Container title="Latest Transactions" state={state} viewTransaction={viewTransaction}>
       <>
         <Stack direction="column" spacing="10px" sx={{ cursor: 'pointer' }}>
           {items.map((item, index) => (
-            <LatestTransaction
-              key={index}
-              transaction={item}
-              onClick={onClick}
-            />
+            <LatestTransaction key={index} transaction={item} onClick={onClick} />
           ))}
         </Stack>
 

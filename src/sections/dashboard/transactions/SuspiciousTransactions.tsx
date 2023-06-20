@@ -9,9 +9,11 @@ const SHOW_TRANSACTIONS = 4;
 
 type Props = {
   onClick: (transaction: Transaction) => void;
+  state: number;
+  viewTransaction: VoidFunction;
 };
 
-export default function SuspiciousTransactions({ onClick }: Props) {
+export default function SuspiciousTransactions({ onClick, state, viewTransaction }: Props) {
   const [transactions, setTransactions] = useState(mock_transactions);
 
   const items = useMemo(() => {
@@ -19,15 +21,11 @@ export default function SuspiciousTransactions({ onClick }: Props) {
   }, [transactions]);
 
   return (
-    <Container title="Suspicious Transactions">
+    <Container title="Suspicious Transactions" state={state}  viewTransaction={viewTransaction}>
       <>
         <Stack direction="column" spacing="10px" sx={{ cursor: 'pointer' }}>
           {items.map((item, index) => (
-            <Suspicious
-              key={index}
-              transaction={item}
-              onClick={onClick}
-            />
+            <Suspicious key={index} transaction={item} onClick={onClick} />
           ))}
         </Stack>
 

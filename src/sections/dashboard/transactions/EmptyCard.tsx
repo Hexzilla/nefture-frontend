@@ -1,5 +1,6 @@
-import { Card } from '@mui/material';
+import { SkeletonPostDetails } from '@components/skeleton';
+import { Card, Skeleton } from '@mui/material';
 
 export default function EmptyCard() {
-  return <Card sx={{ minHeight: '73px' }} />;
+  return <Skeleton variant="text" height={84} sx={{marginTop:'-1em'}}/>;
 }

@@ -1,6 +1,6 @@
 import { Container, Dialog, Grid, Stack } from '@mui/material';
 import Head from 'next/head';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useAuthContext } from '../auth/useAuthContext';
 import AnimatedContainer from '../components/animated-container';
@@ -12,12 +12,14 @@ import SuspiciousTransactions from '@sections/dashboard/transactions/SuspiciousT
 import LatestTransactions from '@sections/dashboard/transactions/LatestTransactions';
 import Wallet from '@sections/dashboard/wallet/WalletView';
 import { Transaction } from '@sections/dashboard/types';
+import SkeletonWalletView from '@sections/dashboard/wallet/SkeletonWalletView';
 
 GeneralAppPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
 
 const Dashboard = () => {
   const [walletVisible, setWalletVisible] = useState(false);
   const [activeWallet, setActiveWallet] = useState({});
+  const [state, setState] = useState(0);
   const isMobile = useResponsive('down', 'sm');
 
   const displayWallet = (value: Transaction) => {
@@ -29,15 +31,29 @@ const Dashboard = () => {
     setWalletVisible(false);
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setState(1);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const viewTransactions = () => {
+    console.log('yes')
+    setState(2);
+  };
+
   return (
     <Grid container spacing={4}>
-      <Grid item xs={12} lg={7}>
+      <Grid item xs={12} lg={8}>
         <Stack direction="column" spacing={4}>
-          <SuspiciousTransactions onClick={displayWallet} />
-          <LatestTransactions onClick={displayWallet} />
+          <SuspiciousTransactions onClick={displayWallet} state={state} viewTransaction={viewTransactions}/>
+          <LatestTransactions onClick={displayWallet} state={state} viewTransaction={viewTransactions}/>
         </Stack>
       </Grid>
-      <Grid item xs={12} lg={5}>
+      <Grid item xs={12} lg={4}>
+        {!isMobile && state == 0 && <SkeletonWalletView />}
         {walletVisible && <Wallet onClosed={hideWallet} data={activeWallet} />}
         {isMobile && (
           <Dialog fullWidth maxWidth="xs" open={walletVisible}>

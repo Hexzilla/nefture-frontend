@@ -18,7 +18,7 @@ export default function Title({ title, loading }: Props) {
         <Typography variant="h6" mr="4">
           {title}
         </Typography>
-        <Chip label={1} size="small" />
+        <Chip label={4} size="small" sx={{borderRadius:'50%'}} />
       </Stack>
       {!!loading && (
         <Stack direction="row" alignItems="center">

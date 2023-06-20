@@ -8,13 +8,15 @@ import Title from './Title';
 type Props = {
   title: string;
   children: React.ReactElement;
+  state: number;
+  viewTransaction: VoidFunction;
 };
 
 const SHOW_TRANSACTIONS = 4;
 
 const Loading = () => {
   return (
-    <Stack direction="column" spacing="10px" sx={{ cursor: 'pointer' }}>
+    <Stack direction="column" sx={{ cursor: 'pointer' }}>
       {new Array(SHOW_TRANSACTIONS).fill(0).map((_, index) => (
         <EmptyCard key={index} />
       ))}
@@ -22,17 +24,8 @@ const Loading = () => {
   );
 };
 
-export default function Container({ title, children }: Props) {
-  const [state, setState] = useState(0);
+export default function Container({ title, children, state, viewTransaction }: Props) {
   const isLoading = state === 0;
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setState(1);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <Box sx={{ minHeight: '372px' }}>
@@ -40,7 +33,7 @@ export default function Container({ title, children }: Props) {
 
       {state === 0 && <Loading />}
 
-      {state === 1 && <EmptyTransactions onClick={() => setState(2)} />}
+      {state === 1 && <EmptyTransactions onClick={viewTransaction} />}
 
       {state === 2 && children}
     </Box>
