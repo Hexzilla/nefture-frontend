@@ -71,5 +71,16 @@ export const bottomNavConfig = [
     ],
   },
 ];
+export const mobileNavConfig = [
+  {
+    subheader: '',
+    items: [
+      { title: 'Dashboard', path: PATH_DASHBOARD.root, icon: ICONS.dashboard, iconDisabled: ICONS.dashboardDisabled },
+      { title: 'Wallet', path: PATH_DASHBOARD.wallet, icon: ICONS.wallets, iconDisabled: ICONS.walletsDisabled },
+      { title: 'Nefture +', path: PATH_DASHBOARD.nefturePlus, icon: ICONS.guard, iconDisabled: ICONS.guardDisabled },
+      { title: 'Settings', path: PATH_DASHBOARD.settings, icon: ICONS.settings, iconDisabled:ICONS.settingsDisabled},
+    ],
+  },
+];
 
 export default navConfig;

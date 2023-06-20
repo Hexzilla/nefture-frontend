@@ -14,6 +14,7 @@ import MobileMenu from './header/MobileMenu';
 import NavMini from './nav/NavMini';
 import NavVertical from './nav/NavVertical';
 import NavHorizontal from './nav/NavHorizontal';
+import navConfig, { mobileNavConfig } from './nav/config-navigation';
 
 // ----------------------------------------------------------------------
 
@@ -98,7 +99,7 @@ export default function DashboardLayout({ children }: Props) {
           </Main>
         </Box>
 
-        {!isDesktop && <MobileMenu />}
+        {!isDesktop && <MobileMenu data={mobileNavConfig}/>}
       </>
     );
   };
