@@ -44,13 +44,13 @@ export default function SettingsDesktop() {
           </>
         )}
       </Box>
-      <Typography variant="h6" ml={1} pt={3}>
+      <Typography variant="h6" ml={1} pt={3} sx={{marginTop:'60px'}}>
         Settings
       </Typography>
       <Typography ml={1} mb={3}>
         Manage your notification system. Want to see a new notification system?
       </Typography>
-      <Box gap={3} display="grid" gridTemplateColumns={columnTemplates}>
+      <Box gap={3} display="grid" gridTemplateColumns={columnTemplates} mb={1}>
         {loading ? (
           <>
             <SkeletonNetworkItem key={1} />
