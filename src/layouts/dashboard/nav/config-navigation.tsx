@@ -11,18 +11,29 @@ const icon = (name: string) => (
   <Box component="img" src={`/assets/icons/navbar/${name}.svg`} sx={{ width: 1, height: 1 }} />
 );
 
+const colorIcon = (name: string, color: string) => (
+  // <Box component="img" src={`/assets/icons/navbar/${name}.svg`} sx={{ width: 1, height: 1 }} />
+  <SvgColor src={`/assets/icons/navbar/${name}.svg`} sx={{color: color, width: 1, height: 1 }}/>
+);
+
 const ICONS = {
   tracker: icon('tracker-icon'),
   team: icon('team-icon'),
   setting: icon('setting-icon'),
   product: icon('product-icon'),
   research: icon('research-icon'),
-  dashboard: icon('ic_dashboard'),
-  guard: icon('ic_guard'),
-  wallets: icon('ic_wallets'),
-  settings: icon('ic_settings'),
-  networks: icon('ic_networks'),
-  faqs: icon('ic_faq'),
+  dashboard: colorIcon('ic_dashboard', 'rgb(255,255,255,100%)'),
+  dashboardDisabled: colorIcon('ic_dashboard', 'rgb(255,255,255,40%)'),
+  guard: colorIcon('ic_guard', 'rgb(255,255,255,100%)'),
+  guardDisabled: colorIcon('ic_guard', 'rgb(255,255,255,40%)'),
+  wallets: colorIcon('ic_wallets', 'rgb(255,255,255,100%)'),
+  walletsDisabled: colorIcon('ic_wallets', 'rgb(255,255,255,40%)'),
+  settings: colorIcon('ic_settings', 'rgb(255,255,255,100%)'),
+  settingsDisabled: colorIcon('ic_settings', 'rgb(255,255,255,40%)'),
+  networks: colorIcon('ic_networks', 'rgb(255,255,255,100%)'),
+  networksDisabled: colorIcon('ic_networks', 'rgb(255,255,255,40%)'),
+  faqs: colorIcon('ic_faq', 'rgb(255,255,255,100%)'),
+  faqsDisabled: colorIcon('ic_faq', 'rgb(255,255,255,40%)'),
 };
 
 const navConfig = [
@@ -31,9 +42,9 @@ const navConfig = [
   {
     subheader: '',
     items: [
-      { title: 'Dashboard', path: PATH_DASHBOARD.root, icon: ICONS.dashboard },
-      { title: 'Wallet', path: PATH_DASHBOARD.wallet, icon: ICONS.wallets },
-      { title: 'Nefture +', path: PATH_DASHBOARD.nefturePlus, icon: ICONS.guard },
+      { title: 'Dashboard', path: PATH_DASHBOARD.root, icon: ICONS.dashboard, iconDisabled: ICONS.dashboardDisabled },
+      { title: 'Wallet', path: PATH_DASHBOARD.wallet, icon: ICONS.wallets, iconDisabled: ICONS.walletsDisabled },
+      { title: 'Nefture +', path: PATH_DASHBOARD.nefturePlus, icon: ICONS.guard, iconDisabled: ICONS.guardDisabled },
       // {
       //   title: 'My Products',
       //   path: PATH_DASHBOARD.myProducts.root,
@@ -54,9 +65,9 @@ export const bottomNavConfig = [
   {
     subheader: '',
     items: [
-      { title: 'Networks', path: PATH_DASHBOARD.networks, icon: ICONS.networks },
-      { title: 'Settings', path: PATH_DASHBOARD.settings, icon: ICONS.settings },
-      { title: 'FAQ', path: PATH_DASHBOARD.settings, icon: ICONS.faqs },
+      { title: 'Networks', path: PATH_DASHBOARD.networks, icon: ICONS.networks, iconDisabled:ICONS.networksDisabled },
+      { title: 'Settings', path: PATH_DASHBOARD.settings, icon: ICONS.settings, iconDisabled:ICONS.settingsDisabled},
+      { title: 'FAQ', path: PATH_DASHBOARD.faq, icon: ICONS.faqs, iconDisabled:ICONS.faqsDisabled},
     ],
   },
 ];

@@ -24,13 +24,15 @@ export default function NavItem({
 }: NavItemProps) {
   const { translate } = useLocales();
 
-  const { title, path, icon, info, children, disabled, caption, roles } = item;
+  const { title, path, icon, info, children, disabled, caption, roles, iconDisabled } = item;
 
   const subItem = depth !== 1;
 
+  const color = active?'white':'gray';
+
   const renderContent = (
     <StyledItem depth={depth} active={active} disabled={disabled} caption={!!caption} {...other}>
-      {icon && <StyledIcon>{icon}</StyledIcon>}
+      {icon && <StyledIcon>{active?icon:iconDisabled}</StyledIcon>}
 
       {subItem && <StyledIcon>{/* <StyledDotIcon active={active && subItem} /> */}</StyledIcon>}
 
@@ -53,6 +55,7 @@ export default function NavItem({
           noWrap: true,
           variant: 'caption',
         }}
+        sx={{color:color}}
       />
 
       {info && (

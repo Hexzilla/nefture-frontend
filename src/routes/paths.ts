@@ -53,6 +53,7 @@ export const PATH_DASHBOARD = {
   },
   networks: path(ROOTS_DASHBOARD, 'networks'),
   settings: path(ROOTS_DASHBOARD, 'settings'),
+  faq: path(ROOTS_DASHBOARD, 'faq'),
 
   // --------------------------------------------------------
 

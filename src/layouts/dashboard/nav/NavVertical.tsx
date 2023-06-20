@@ -67,7 +67,7 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
           Upgrade to Pro
         </Button>
       </Box>
-      <NavSectionVertical data={bottomNavConfig} sx={{ mb: 2 }} />
+      <NavSectionVertical data={bottomNavConfig} sx={{ marginBottom:'108px' }} />
     </Scrollbar>
   );
 
