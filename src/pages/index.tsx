@@ -46,13 +46,13 @@ const Dashboard = () => {
 
   return (
     <Grid container spacing={4}>
-      <Grid item xs={12} lg={8}>
+      <Grid item xs={12} lg={7}>
         <Stack direction="column" spacing={4}>
           <SuspiciousTransactions onClick={displayWallet} state={state} viewTransaction={viewTransactions}/>
           <LatestTransactions onClick={displayWallet} state={state} viewTransaction={viewTransactions}/>
         </Stack>
       </Grid>
-      <Grid item xs={12} lg={4}>
+      <Grid item xs={12} lg={5}>
         {!isMobile && state == 0 && <SkeletonWalletView />}
         {walletVisible && <Wallet onClosed={hideWallet} data={activeWallet} />}
         {isMobile && (

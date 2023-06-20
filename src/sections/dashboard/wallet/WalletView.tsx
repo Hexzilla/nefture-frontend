@@ -42,7 +42,7 @@ export default function WalletView({ onClosed, data }: Props) {
   };
 
   return (
-    <Card sx={{ padding: '10px 20px' }}>
+    <Card sx={{ padding: '10px 20px', minHeight:'90vh' }}>
       <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
         <Stack direction="row" alignItems="center">
           <TransactionIcon />
