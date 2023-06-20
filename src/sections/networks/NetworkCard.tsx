@@ -1,15 +1,9 @@
-import { Card, Stack, Typography, Box, Divider, Button } from '@mui/material';
+import { Box, Button, Card, Divider, Stack, Typography } from '@mui/material';
 
-import EthereumIcon from '@components/icons/EthereumIcon';
-import BlueCheck from '@components/icons/BlueCheck';
-import ArrowCircleUp from '@components/icons/ArrowCircleUp';
-import EthereumIconRectangle from '@components/icons/EthereumIconRectangle';
-import Image from '@components/image';
-import Copy from '@components/icons/Copy';
 import CopyWhite from '@components/icons/CopyWhite';
-import ShopifyIcon from '@components/icons/Shopify';
-import { SVGProps } from 'react';
+import EthereumIconRectangle from '@components/icons/EthereumIconRectangle';
 import PolygonIcon from '@components/icons/Polygon';
+import Image from '@components/image';
 
 type Props = {
   type: String;
@@ -40,22 +34,23 @@ export default function NetworkCard({ type, addWallet }: Props) {
         <Button
           variant="contained"
           startIcon={<Image src="/assets/icons/apps/metamask.svg" />}
-          sx={{ height: '100%', width: '100%' }}
+          sx={{ height: '52px', width: '100%', '&:hover': { backgroundColor: 'primary.main' } }}
         >
           Add to Wallet
         </Button>
       </Stack>
       <Card
         sx={{
-          padding: '0.5em',
           textAlign: 'center',
           marginTop: '1em',
           borderRadius: 1,
           cursor: 'pointer',
+          height: '52px',
+          backgroundColor:'primary.buttonColor'
         }}
         onClick={() => addWallet(true)}
       >
-        <Typography>Copy URL and add manually</Typography>
+        <Typography sx={{ lineHeight: '52px' }}>Copy URL and add manually</Typography>
       </Card>
     </Card>
   );
