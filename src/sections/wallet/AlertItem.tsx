@@ -1,7 +1,8 @@
-import { Switch, Typography, Stack } from '@mui/material';
+import { Switch, Typography, Stack, Box } from '@mui/material';
 
 import HelpWhite from '@components/icons/HelpWhite';
 import { WalletStatus } from './types';
+import HelpItem from './HelpItem';
 
 type Props = {
   title: String;
@@ -10,9 +11,14 @@ type Props = {
 export default function AlertItem({ title }: Props) {
 
   return (
-    <Stack direction="row" spacing={3} style={{alignItems:'center'}}>
-      <HelpWhite />
-      <Typography>{title}</Typography>
+    <Stack
+      direction="row"
+      spacing={3}
+      style={{ alignItems: 'center' }}
+      justifyContent={'space-between'}
+      m={1}
+    >
+      <HelpItem title={title}/>
       <Switch defaultChecked={true} />
     </Stack>
   );

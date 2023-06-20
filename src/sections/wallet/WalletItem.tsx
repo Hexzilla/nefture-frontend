@@ -1,22 +1,18 @@
-import { useState, useMemo } from 'react';
-import { Stack, Typography, Card, Box, CircularProgress, Switch } from '@mui/material';
+import { Box, Card, CircularProgress, Stack, Typography } from '@mui/material';
 
-import { WalletStatus } from './types';
 import EthereumIcon from '@components/icons/EthereumIcon';
-import Pencil from '@components/icons/Pencil';
 import PencilGray from '@components/icons/PencilGray';
-import { ChartDonut, ChartRadialBar } from '@sections/_examples/extra/chart';
-import Help from '@components/icons/Help';
-import HelpWhite from '@components/icons/HelpWhite';
 import AlertItem from './AlertItem';
+import { WalletStatus } from './types';
 
 const SHOW_TRANSACTIONS = 4;
 
 type Props = {
   item: WalletStatus;
+  alertVisibility: boolean;
 };
 
-export default function WalletItem({ item }: Props) {
+export default function WalletItem({ item, alertVisibility }: Props) {
   const styles = {
     '&:hover': {
       backgroundColor: 'rgba(145,158,171,0.08)',
@@ -43,18 +39,18 @@ export default function WalletItem({ item }: Props) {
         justifyContent="space-between"
         sx={{ padding: '10px 20px', cursor: 'pointer' }}
       >
-        <Stack direction="row" spacing={3} alignItems={'center'}>
+        <Stack direction="row" spacing={2} alignItems={'center'}>
           <EthereumIcon />
           <Typography>Received at 12:56</Typography>
           <PencilGray />
         </Stack>
-        <Stack direction="row" spacing={3} alignItems={'center'}>
+        <Stack direction="row" spacing={2} alignItems={'center'}>
           <Typography>0xebC73...8D0B2</Typography>
         </Stack>
         <Stack
           direction="row"
           justifyContent="space-between"
-          spacing={3}
+          spacing={2}
           style={{ minWidth: '140px' }}
           alignItems={'center'}
         >
@@ -65,7 +61,7 @@ export default function WalletItem({ item }: Props) {
           )}
           {item.status != 0 && (
             <>
-              <Typography>{item.statusTitle}</Typography>
+              <Typography  sx={{ color: `${COLORS[item.status - 1]}.main` }}>{item.statusTitle}</Typography>
               <Box sx={circleStyle}>
                 <CircularProgress
                   color={COLORS[item.status - 1]}
@@ -78,9 +74,13 @@ export default function WalletItem({ item }: Props) {
             </>
           )}
         </Stack>
-        <AlertItem title="Weekly Reports" />
-        <AlertItem title="Real-time Alerts" />
-        <Stack direction="row" spacing={3} alignItems={'center'}>
+        {alertVisibility && (
+          <>
+            <AlertItem title="Weekly Reports" />
+            <AlertItem title="Real-time Alerts" />
+          </>
+        )}
+        <Stack direction="row" spacing={2} alignItems={'center'}>
           <Card sx={{ borderColor: 'primary.main' }}>
             <Typography m={1.5}>Wallet 1</Typography>
           </Card>
