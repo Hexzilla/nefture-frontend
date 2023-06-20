@@ -83,5 +83,8 @@ export default function getVariant(variant = 'slideInUp') {
     color3x: varBgColor({ colors: ['#19dcea', '#b22cff', '#ea2222'] }),
     color4x: varBgColor({ colors: ['#19dcea', '#b22cff', '#ea2222', '#f5be10'] }),
     color5x: varBgColor({ colors: ['#19dcea', '#b22cff', '#ea2222', '#f5be10', '#3bd80d'] }),
+    color6x: varBgColor({ colors: ['#19dcea', '#b22cff', '#ea2222'] }),
+    color7x: varBgColor({ colors: ['#19dcea', '#b22cff', '#ea2222', '#f5be10'] }),
+    color8x: varBgColor({ colors: ['#19dcea', '#b22cff', '#ea2222', '#f5be10', '#3bd80d'] }),
   }[variant];
 }

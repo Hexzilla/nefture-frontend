@@ -15,7 +15,7 @@ export default function WalletPage() {
   const [lg, setLg] = useState(12);
 
   const addWallet = () => {
-    setLg(8);
+    setLg(9);
   };
   const closeAddWallet = () => {
     setLg(12)
