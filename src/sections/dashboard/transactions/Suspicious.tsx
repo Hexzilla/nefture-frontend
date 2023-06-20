@@ -1,10 +1,11 @@
-import { Card, Stack, Typography } from '@mui/material';
+import { Box, Card, Stack, Typography } from '@mui/material';
 
 import StatusChip from '@components/chips/StatusChip';
 import EthereumIcon from '@components/icons/EthereumIcon';
 import useResponsive from '@hooks/useResponsive';
 
 import { Transaction } from '../types';
+import ArrowCircleUp from '@components/icons/ArrowCircleUp';
 
 type Props = {
   transaction: Transaction;
@@ -29,9 +30,12 @@ export default function SuspiciousTransaction({ transaction, onClick }: Props) {
         sx={{ padding: '10px 20px', cursor: 'pointer' }}
       >
         <Stack direction="row" spacing={3}>
-          <div>
+          <Box>
             <EthereumIcon />
-          </div>
+            <Box sx={{ position: 'absolute', top: 0, left: 0 }}>
+              <ArrowCircleUp />
+            </Box>
+          </Box>
 
           <Stack direction="column" spacing={1}>
             <Typography color="grey">Received at 12:56</Typography>
