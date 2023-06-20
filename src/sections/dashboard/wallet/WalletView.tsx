@@ -39,11 +39,16 @@ export default function WalletView({ onClosed, data }: Props) {
   const [open, setOpen] = useState(false);
   const [display, setDisplay] = useState('flex');
   const [arrowVisible, setArrowVisible] = useState('visible');
+  const [rotate, setRotate] = useState('rotate(180deg)')
 
   const changeOpen = () => {
     setOpen(!open);
     if (display === 'flex') setDisplay('none');
     else setDisplay('flex');
+    if(!open)
+      setRotate('rotate(0deg)')
+    else
+      setRotate('rotate(180deg)')
   };
 
   return (
@@ -120,7 +125,7 @@ export default function WalletView({ onClosed, data }: Props) {
             <Alert />
             <Typography sx={{ color: 'critical.main' }}>Critical Risks</Typography>
           </Stack>
-          <Box>
+          <Box sx={{transform:rotate}}>
             <Down />
           </Box>
         </Stack>
