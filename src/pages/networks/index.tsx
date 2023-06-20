@@ -1,21 +1,21 @@
 import { Box, Card, Container, Dialog, Divider, Stack, Typography } from '@mui/material';
 import Head from 'next/head';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import AnimatedContainer from '@components/animated-container';
+import CopyWhite from '@components/icons/CopyWhite';
+import EthereumIconRectangle from '@components/icons/EthereumIconRectangle';
+import GrayClose from '@components/icons/GrayClose';
+import Play from '@components/icons/Play';
+import Image from '@components/image/Image';
 import { useSettingsContext } from '@components/settings';
 import SkeletonNetworkItem from '@components/skeleton/SkeletonNetworkItem';
 import DashboardLayout from '@layouts/dashboard';
+import ComingCard from '@sections/networks/ComingCard';
+import InformationView from '@sections/networks/InformationView';
 import NetworkCard from '@sections/networks/NetworkCard';
 import { TeamMember } from '@sections/team/TeamMembers';
 import React from 'react';
-import EthereumIconRectangle from '@components/icons/EthereumIconRectangle';
-import Polygon from '@components/icons/Polygon';
-import ComingCard from '@sections/networks/ComingCard';
-import CopyWhite from '@components/icons/CopyWhite';
-import InformationView from '@sections/networks/InformationView';
-import Image from '@components/image/Image';
-import Play from '@components/icons/Play';
 
 export default function NetworksPage() {
   const { themeStretch } = useSettingsContext();
@@ -58,17 +58,23 @@ export default function NetworksPage() {
               </>
             ) : (
               <>
-                <NetworkCard type="ethereum" addWallet={setDialogOpen}/>
-                <NetworkCard type="polygon" addWallet={setDialogOpen}/>
+                <NetworkCard type="ethereum" addWallet={setDialogOpen} />
+                <NetworkCard type="polygon" addWallet={setDialogOpen} />
                 <ComingCard />
               </>
             )}
           </Box>
         </Container>
       </AnimatedContainer>
-      <Dialog fullWidth maxWidth="xs" open={dialogOpen}  onClose={() => setDialogOpen(false)}>
+      <Dialog fullWidth maxWidth="xs" open={dialogOpen} onClose={() => setDialogOpen(false)}>
         <Stack>
           <Card sx={{ padding: '1em' }}>
+            <Box
+              sx={{ marginTop: '-10px', marginLeft: '-10px', cursor: 'pointer' }}
+              onClick={() => setDialogOpen(false)}
+            >
+              <GrayClose />
+            </Box>
             <Stack
               direction="row"
               spacing={2}

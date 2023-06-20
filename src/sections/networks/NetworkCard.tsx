@@ -41,12 +41,20 @@ export default function NetworkCard({ type, addWallet }: Props) {
           variant="contained"
           startIcon={<Image src="/assets/icons/apps/metamask.svg" />}
           sx={{ height: '100%', width: '100%' }}
-          onClick={() => addWallet(true)}
         >
           Add to Wallet
         </Button>
       </Stack>
-      <Card sx={{ padding: '0.5em', textAlign: 'center', marginTop: '1em', borderRadius: 1 }}>
+      <Card
+        sx={{
+          padding: '0.5em',
+          textAlign: 'center',
+          marginTop: '1em',
+          borderRadius: 1,
+          cursor: 'pointer',
+        }}
+        onClick={() => addWallet(true)}
+      >
         <Typography>Copy URL and add manually</Typography>
       </Card>
     </Card>
