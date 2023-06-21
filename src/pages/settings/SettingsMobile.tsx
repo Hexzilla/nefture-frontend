@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import SkeletonNetworkItem from '@components/skeleton/SkeletonNetworkItem';
 import { Box } from '@mui/system';
 import NotificationCard from '@sections/notification/NotificationCard';
-import SettingsCard from '@sections/settings/SettingsCard';
+import SettingsCard from '@sections/settings/SettingsEmailCard';
+import SettingsSocialCard from '@sections/settings/SettingsSocialCard';
+import SettingsEmailCard from '@sections/settings/SettingsEmailCard';
 
 export default function SettingsMobile() {
   const [loading, setLoading] = useState(true);
@@ -65,8 +67,8 @@ export default function SettingsMobile() {
             </>
           ) : (
             <>
-              <SettingsCard title={'Smart Contract Analytics'} type={0} />
-              <SettingsCard title={'Telegram'} type={1} />
+              <SettingsEmailCard title={'Telegram'} />
+              <SettingsSocialCard title={'Smart Contract Analytics'} />
             </>
           )}
         </Box>

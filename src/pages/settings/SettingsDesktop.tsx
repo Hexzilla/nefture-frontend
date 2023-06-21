@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import SkeletonNetworkItem from '@components/skeleton/SkeletonNetworkItem';
 import { Box } from '@mui/system';
 import NotificationCard from '@sections/notification/NotificationCard';
-import SettingsCard from '@sections/settings/SettingsCard';
+import SettingsEmailCard from '@sections/settings/SettingsEmailCard';
+import SettingsSocialCard from '@sections/settings/SettingsSocialCard';
 
 export default function SettingsDesktop() {
   const [loading, setLoading] = useState(true);
@@ -44,7 +45,7 @@ export default function SettingsDesktop() {
           </>
         )}
       </Box>
-      <Typography variant="h6" ml={1} pt={3} sx={{marginTop:'60px'}}>
+      <Typography variant="h6" ml={1} pt={3} sx={{ marginTop: '60px' }}>
         Settings
       </Typography>
       <Typography ml={1} mb={3}>
@@ -57,8 +58,8 @@ export default function SettingsDesktop() {
           </>
         ) : (
           <>
-            <SettingsCard title={'Smart Contract Analytics'} type={0} />
-            <SettingsCard title={'Telegram'} type={1} />
+            <SettingsEmailCard title={'Smart Contract Analytics'} />
+            <SettingsSocialCard title={'Telegram'} />
           </>
         )}
       </Box>
