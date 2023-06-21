@@ -10,12 +10,18 @@ import AddWallet from '@sections/wallet/AddWallet';
 import WalletList from '@sections/wallet/WalletList';
 import useResponsive from '@hooks/useResponsive';
 import PlusButton from '@components/icons/PlusButton';
+import getVariant from '@sections/_examples/extra/animate/getVariant';
+import { DialogAnimate, MotionContainer } from '@components/animate';
+
+import { m } from 'framer-motion';
+import { WalletStatus } from '@sections/wallet/types';
 
 export default function WalletPage() {
   const { themeStretch } = useSettingsContext();
   const [lg, setLg] = useState(12);
   const [openWallet, setOpenWallet] = useState(false);
   const isMobile = useResponsive('down', 'sm');
+  const [loadingStatus, setLoadingStatus] = useState(0);
 
   const addWallet = () => {
     setOpenWallet(true);
@@ -23,7 +29,17 @@ export default function WalletPage() {
   };
   const closeAddWallet = () => {
     setOpenWallet(false);
+    setLoadingStatus(0);
     setLg(12);
+  };
+
+  const showSelectedWallet = () =>{
+    setLoadingStatus(5)
+    addWallet();
+  }
+
+  const updateStatus = () => {
+    setLoadingStatus(loadingStatus + 1);
   };
 
   return (
@@ -58,20 +74,36 @@ export default function WalletPage() {
                 </Box>
               )}
             </Stack>
-            <WalletList alertVisibility={lg == 12 ? true : false} />
+            <WalletList
+              alertVisibility={lg == 12 ? true : false}
+              onClick={showSelectedWallet}
+              items={items}
+            />
           </Container>
         </Grid>
-        {(lg != 12 && !isMobile)&& (
+        {lg != 12 && !isMobile && (
           <Grid item xs={12} lg={12 - lg}>
-            <AddWallet onClose={closeAddWallet} />
+            <MotionContainer>
+              <Box component={m.div} variants={getVariant('bounceIn')}>
+                <AddWallet
+                  onClose={closeAddWallet}
+                  loadingStatus={loadingStatus}
+                  updateLoading={updateStatus}
+                />
+              </Box>
+            </MotionContainer>
           </Grid>
         )}
         {isMobile && (
-          <Dialog fullWidth maxWidth="xs" open={openWallet}>
+          <DialogAnimate fullWidth maxWidth="xs" open={openWallet} variants={getVariant('bounceIn')}>
             <Stack>
-              <AddWallet onClose={closeAddWallet} />
+              <AddWallet
+                onClose={closeAddWallet}
+                loadingStatus={loadingStatus}
+                updateLoading={updateStatus}
+              />
             </Stack>
-          </Dialog>
+          </DialogAnimate>
         )}
       </Grid>
     </AnimatedContainer>
@@ -79,3 +111,30 @@ export default function WalletPage() {
 }
 
 WalletPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
+
+const items: WalletStatus[] = [
+  {
+    title: 'title 1',
+    status: 0,
+    statusTitle: 'Check',
+    value: 0,
+  },
+  {
+    title: 'title 2',
+    status: 1,
+    statusTitle: 'Severe',
+    value: 97,
+  },
+  {
+    title: 'title 3',
+    status: 2,
+    statusTitle: 'Medium',
+    value: 97,
+  },
+  {
+    title: 'title 4',
+    status: 3,
+    statusTitle: 'Very Good',
+    value: 97,
+  },
+];

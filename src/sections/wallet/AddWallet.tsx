@@ -12,16 +12,13 @@ import LoadWallet from './LoadWallet';
 
 type Props = {
   onClose: VoidFunction;
+  loadingStatus:number;
+  updateLoading: VoidFunction;
 };
 
-export default function AddWallet({ onClose }: Props) {
+export default function AddWallet({ onClose, loadingStatus, updateLoading }: Props) {
   const [open, setOpen] = useState(false);
   const [display, setDisplay] = useState('flex');
-  const [loadingStatus, setLoadingStatus] = useState(0);
-
-  const updateStatus = () => {
-    setLoadingStatus(loadingStatus + 1);
-  };
 
   return (
     <Card sx={{ padding: '10px 20px', minHeight: '80vh' }}>
@@ -39,9 +36,9 @@ export default function AddWallet({ onClose }: Props) {
           <VisitGray />
         </Typography>
       )}
-      {loadingStatus == 0 && <AddWalletInformation onClick={updateStatus} />}
+      {loadingStatus == 0 && <AddWalletInformation onClick={updateLoading} />}
       {(loadingStatus == 1 || loadingStatus == 2 || loadingStatus == 3 || loadingStatus == 4) && (
-        <LoadWallet loadingStatus={loadingStatus} updateLoadingStatus={updateStatus} />
+        <LoadWallet loadingStatus={loadingStatus} updateLoadingStatus={updateLoading} />
       )}
       {loadingStatus == 5 && <CompleteWallet />}
       <Card sx={{ marginTop: '2em' }}>
