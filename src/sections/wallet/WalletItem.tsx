@@ -41,7 +41,7 @@ export default function WalletItem({ item, alertVisibility }: Props) {
       >
         <Stack direction="row" spacing={2} alignItems={'center'}>
           <EthereumIcon />
-          <Typography>Received at 12:56</Typography>
+          <Typography>Cactus</Typography>
           <PencilGray />
         </Stack>
         <Stack direction="row" spacing={2} alignItems={'center'}>

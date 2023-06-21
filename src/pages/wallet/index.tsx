@@ -6,7 +6,6 @@ import AnimatedContainer from '@components/animated-container';
 import PlusIcon from '@components/icons/PlusWhite';
 import { useSettingsContext } from '@components/settings';
 import DashboardLayout from '@layouts/dashboard';
-import { TeamMember } from '@sections/team/TeamMembers';
 import AddWallet from '@sections/wallet/AddWallet';
 import WalletList from '@sections/wallet/WalletList';
 
@@ -15,10 +14,10 @@ export default function WalletPage() {
   const [lg, setLg] = useState(12);
 
   const addWallet = () => {
-    setLg(9);
+    setLg(8);
   };
   const closeAddWallet = () => {
-    setLg(12)
+    setLg(12);
   };
 
   return (
@@ -34,7 +33,13 @@ export default function WalletPage() {
                 <Typography variant="h6">Wallets</Typography>
                 <Typography>Check your wallet security and protect your assets.</Typography>
               </Box>
-              <Button variant="contained" size="large" startIcon={<PlusIcon />} onClick={addWallet}>
+              <Button
+                sx={{ '&:hover': { backgroundColor: 'primary.main' } }}
+                variant="contained"
+                size="large"
+                startIcon={<PlusIcon />}
+                onClick={addWallet}
+              >
                 Add Wallet
               </Button>
             </Stack>
@@ -52,21 +57,3 @@ export default function WalletPage() {
 }
 
 WalletPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
-
-const teamMembers: TeamMember[] = [
-  {
-    name: 'Luke Dalton',
-    email: 'luke@Nefture.com',
-    access: 'Owner',
-  },
-  {
-    name: 'Eric Thomas',
-    email: 'eric@Nefture.com',
-    access: 'Admin',
-  },
-  {
-    name: 'Pavlo John',
-    email: 'pavlo@Nefture.com',
-    access: 'Suspended',
-  },
-];
