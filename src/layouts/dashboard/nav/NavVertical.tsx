@@ -49,7 +49,7 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
         top: HEADER.H_DASHBOARD_DESKTOP
       }}
     >
-      <NavSectionVertical data={navConfig} />
+      <NavSectionVertical data={navConfig} sx={{marginTop:'1em'}}/>
 
       <Box sx={{ flexGrow: 1 }} />
       <Box
