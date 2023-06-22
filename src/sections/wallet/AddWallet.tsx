@@ -9,6 +9,7 @@ import AddWalletInformation from './AddWalletInformation';
 import AlertItem from './AlertItem';
 import CompleteWallet from './CompleteWallet';
 import LoadWallet from './LoadWallet';
+import SvgColor from '@components/svg-color/SvgColor';
 
 type Props = {
   onClose: VoidFunction;
@@ -32,8 +33,15 @@ export default function AddWallet({ onClose, loadingStatus, updateLoading }: Pro
       )}
       {loadingStatus >= 1 && (
         <Typography color={'gray'} textAlign={'center'} fontSize={'12px'} mb={2}>
-          0x899999...0B2 <CopyGray />
-          <VisitGray />
+          0x899999...0B2 
+          <SvgColor
+            src="/assets/icons/nefture/ic_copy.svg"
+            sx={{marginLeft:'2px', marginBottom: '-0.5em', width: '16px' }}
+          />
+          <SvgColor
+            src="/assets/icons/nefture/ic_visit.svg"
+            sx={{ marginBottom: '-0.5em', width: '16px' }}
+          />
         </Typography>
       )}
       {loadingStatus == 0 && <AddWalletInformation onClick={updateLoading} />}
