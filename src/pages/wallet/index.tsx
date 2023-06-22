@@ -144,28 +144,28 @@ WalletPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</Da
 
 const items: WalletStatus[] = [
   {
-    title: 'title 1',
+    title: 'Cactus 1',
     status: 0,
     statusTitle: 'Check',
     value: 0,
     progress: 1,
   },
   {
-    title: 'title 2',
+    title: 'Cactus 2',
     status: 1,
     statusTitle: 'Severe',
     value: 97,
     progress: 5,
   },
   {
-    title: 'title 3',
+    title: 'Cactus 3',
     status: 2,
     statusTitle: 'Medium',
     value: 97,
     progress: 5,
   },
   {
-    title: 'title 4',
+    title: 'Cactus 4',
     status: 3,
     statusTitle: 'Very Good',
     value: 97,
