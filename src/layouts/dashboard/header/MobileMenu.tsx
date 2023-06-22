@@ -20,7 +20,7 @@ export default function MobileMenu({ data, sx, ...other }: NavSectionProps) {
   return (
     <Box
       sx={{
-        position: 'absolute',
+        position: 'fixed',
         bottom: 0,
         background: '#2D2D2D',
         opacity: 1,
