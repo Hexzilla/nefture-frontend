@@ -87,8 +87,8 @@ export default function WalletItem({ item, alertVisibility, onClick }: Props) {
         </Stack>
         {alertVisibility && !isMobile && (
           <>
-            <AlertItem title="Weekly Reports" />
-            <AlertItem title="Real-time Alerts" />
+            <AlertItem title="Weekly Reports" type={0}/>
+            <AlertItem title="Real-time Alerts" type={0}/>
           </>
         )}
         {!isMobile && (

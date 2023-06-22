@@ -39,7 +39,7 @@ export default function AddWalletInformation({ onClick }: Props) {
         Connect Wallet
       </Button>
       <Stack alignItems={'center'} mt={1}>
-        <HelpItem title="Advantage of connecting your wallet" />
+        <HelpItem title="Advantage of connecting your wallet" type={0}/>
       </Stack>
     </>
   );

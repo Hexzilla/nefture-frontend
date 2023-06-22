@@ -42,7 +42,7 @@ export default function CompleteWallet({}: Props) {
           />
         </Typography>
       </Card>
-      <Card sx={{ marginTop: '1em', alignItems: 'center', textAlign: 'center', padding: '1em' }}>
+      <Card sx={{ marginTop: '1em', alignItems: 'center', textAlign: 'center', padding: '1em', borderRadius:'8px' }}>
         <Typography sx={{ color: 'gray', textAlign: 'center' }}>
           We found <span style={{ color: '#14FE00' }}>0 approvals</span> on your wallet
         </Typography>

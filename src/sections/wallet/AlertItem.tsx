@@ -6,9 +6,10 @@ import HelpItem from './HelpItem';
 
 type Props = {
   title: String;
+  type: number;
 };
 
-export default function AlertItem({ title }: Props) {
+export default function AlertItem({ title, type }: Props) {
 
   return (
     <Stack
@@ -16,9 +17,12 @@ export default function AlertItem({ title }: Props) {
       spacing={3}
       style={{ alignItems: 'center' }}
       justifyContent={'space-between'}
-      m={1}
+      ml={1}
+      mr={1}
+      mt={2}
+      mb={2}
     >
-      <HelpItem title={title}/>
+      <HelpItem title={title} type={type}/>
       <Switch defaultChecked={true} />
     </Stack>
   );
