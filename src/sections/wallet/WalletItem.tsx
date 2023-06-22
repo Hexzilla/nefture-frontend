@@ -1,4 +1,4 @@
-import { Box, Card, CircularProgress, Stack, TextField, Typography } from '@mui/material';
+import { Box, Card, CircularProgress, IconButton, Stack, TextField, Typography } from '@mui/material';
 
 import { useState } from 'react';
 import PencilGray from '@components/icons/PencilGray';
@@ -7,6 +7,7 @@ import { WalletStatus } from './types';
 import useResponsive from '@hooks/useResponsive';
 import EthereumSmallIcon from '@components/icons/EthereumSmallIcon';
 import SvgColor from '@components/svg-color/SvgColor';
+import Iconify from '@components/iconify/Iconify';
 
 type Props = {
   item: WalletStatus;
@@ -88,13 +89,11 @@ export default function WalletItem({ item, alertVisibility, onClick, copyToClipb
           )}
         </Stack>
         {!isMobile && (
-          <Stack direction="row" spacing={2} alignItems={'center'} 
-          onClick={() => copyToClipboard('0xebC7393039298D0B2')}>
+          <Stack direction="row" spacing={2} alignItems={'center'}>
             <Typography>0xebC73...8D0B2</Typography>
-            <SvgColor
-              src="/assets/icons/nefture/ic_copy.svg"
-              sx={{marginLeft:'2px', marginBottom: '-0.5em', width: '16px' }}
-            />
+            <IconButton onClick={() => copyToClipboard('0xebC7393039298D0B2')}>
+              <Iconify icon="eva:copy-fill" width={20} />
+            </IconButton>
           </Stack>
         )}
         <Stack
