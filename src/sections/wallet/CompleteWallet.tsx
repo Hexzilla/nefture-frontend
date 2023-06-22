@@ -43,12 +43,12 @@ export default function CompleteWallet({}: Props) {
         </Typography>
       </Card>
       <Card sx={{ marginTop: '1em', alignItems: 'center', textAlign: 'center', padding: '1em', borderRadius:'8px' }}>
-        <Typography sx={{ textAlign: 'center' }}>
+        <Typography sx={{ textAlign: 'center', marginTop:'1em' }}>
           We found <span style={{ color: '#14FE00' }}>0 approvals</span> on your wallet
         </Typography>
         <Button
           variant="contained"
-          sx={{ marginTop: '1em', '&:hover': { backgroundColor: 'primary.main' } }}
+          sx={{ margin:'1em', '&:hover': { backgroundColor: 'primary.main' } }}
         >
           Receive your wallet audit
         </Button>

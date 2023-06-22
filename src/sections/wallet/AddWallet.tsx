@@ -22,7 +22,7 @@ export default function AddWallet({ onClose, loadingStatus, updateLoading }: Pro
   const [display, setDisplay] = useState('flex');
 
   return (
-    <Card sx={{ padding: '10px 20px', minHeight: '80vh', marginBottom:'1em'}}>
+    <Card sx={{ padding: '10px 20px', minHeight: '80vh', marginBottom:'1em', paddingLeft:'2em', paddingRight:'2em'}}>
       <Box sx={{ cursor: 'pointer' }} onClick={onClose}>
         <Close />
       </Box>
@@ -52,7 +52,7 @@ export default function AddWallet({ onClose, loadingStatus, updateLoading }: Pro
       <Card sx={{ marginTop: '2em', borderRadius:'8px' }}>
         <AlertItem title="Real-time Alert" type={1}/>
       </Card>
-      <Card sx={{ marginTop: '1em', marginBottom: '1em', borderRadius:'8px' }}>
+      <Card sx={{ marginTop: '0.5em', marginBottom: '1em', borderRadius:'8px' }}>
         <AlertItem title="Monthly Alert" type={1}/>
       </Card>
       {(loadingStatus == 1 || loadingStatus == 2 || loadingStatus == 3 || loadingStatus == 4) && (
