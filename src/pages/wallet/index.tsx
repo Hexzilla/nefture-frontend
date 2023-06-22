@@ -25,7 +25,16 @@ export default function WalletPage() {
 
   const addWallet = () => {
     setLg(8);
-    setOpenWallet(true);
+    if(isMobile)
+      setOpenWallet(true);
+    else
+    {
+      (async () => {
+        setTimeout(() => {
+          setOpenWallet(true);
+        }, 500);
+      })();
+    }
   };
   const closeAddWallet = () => {
     setOpenWallet(false);
@@ -81,8 +90,8 @@ export default function WalletPage() {
             />
           </Container>
         </Grid>
-        {lg != 12 && !isMobile && (
-          <Grid item xs={12} lg={12 - lg} visibility={openWallet ? 'visible' : 'hidden'}>
+        {lg != 12 && !isMobile && openWallet && (
+          <Grid item xs={12} lg={12 - lg}>
             <MotionContainer>
               <Box component={m.div} variants={getVariant('slideInRight')}>
                 <AddWallet
