@@ -33,7 +33,7 @@ export default function CompleteWallet({}: Props) {
       <Typography sx={{ color: 'gray', textAlign: 'center', marginTop: '1em' }}>
         Your wallet health is in the <span style={{ color: '#14FE00' }}>safe zone</span>
       </Typography>
-      <Card sx={{ cursor: 'pointer', marginTop: '1em' }}>
+      <Card sx={{ cursor: 'pointer', marginTop: '1em', marginLeft:'5em', marginRight:'5em', backgroundColor:'primary.buttonColor' }}>
         <Typography sx={{ textAlign: 'center', marginTop: '0.5em', marginBottom: '0.5em' }}>
           Share On{' '}
           <SvgColor
@@ -43,7 +43,7 @@ export default function CompleteWallet({}: Props) {
         </Typography>
       </Card>
       <Card sx={{ marginTop: '1em', alignItems: 'center', textAlign: 'center', padding: '1em', borderRadius:'8px' }}>
-        <Typography sx={{ color: 'gray', textAlign: 'center' }}>
+        <Typography sx={{ textAlign: 'center' }}>
           We found <span style={{ color: '#14FE00' }}>0 approvals</span> on your wallet
         </Typography>
         <Button
