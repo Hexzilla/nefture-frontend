@@ -26,6 +26,7 @@ export default function WalletPage() {
   const [loadingStatus, setLoadingStatus] = useState(0);
   const { enqueueSnackbar } = useSnackbar();
   const { copy } = useCopyToClipboard();
+  const [activeWallet, setActiveWallet] = useState(items[0])
 
   const copyToClipboard =(content:string)=>{
     enqueueSnackbar('Copied!');
@@ -51,8 +52,9 @@ export default function WalletPage() {
     setLg(12);
   };
 
-  const showSelectedWallet = () => {
-    setLoadingStatus(5);
+  const showSelectedWallet = (item:WalletStatus) => {
+    setActiveWallet(item)
+    setLoadingStatus(item.progress);
     addWallet();
   };
 
@@ -109,6 +111,7 @@ export default function WalletPage() {
                   loadingStatus={loadingStatus}
                   updateLoading={updateStatus}
                   copyToClipboard = {copyToClipboard}
+                  activeWallet = {activeWallet}
                 />
               </Box>
             </MotionContainer>
@@ -127,6 +130,7 @@ export default function WalletPage() {
                 loadingStatus={loadingStatus}
                 updateLoading={updateStatus}
                 copyToClipboard={copyToClipboard}
+                activeWallet = {activeWallet}
               />
             </Stack>
           </DialogAnimate>
@@ -144,23 +148,27 @@ const items: WalletStatus[] = [
     status: 0,
     statusTitle: 'Check',
     value: 0,
+    progress: 1,
   },
   {
     title: 'title 2',
     status: 1,
     statusTitle: 'Severe',
     value: 97,
+    progress: 5,
   },
   {
     title: 'title 3',
     status: 2,
     statusTitle: 'Medium',
     value: 97,
+    progress: 5,
   },
   {
     title: 'title 4',
     status: 3,
     statusTitle: 'Very Good',
     value: 97,
+    progress: 5,
   },
 ];

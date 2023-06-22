@@ -8,12 +8,14 @@ import AddWalletInformation from './AddWalletInformation';
 import AlertItem from './AlertItem';
 import CompleteWallet from './CompleteWallet';
 import LoadWallet from './LoadWallet';
+import { WalletStatus } from './types';
 
 type Props = {
   onClose: VoidFunction;
   loadingStatus: number;
   updateLoading: VoidFunction;
   copyToClipboard: (content: string) => void;
+  activeWallet: WalletStatus;
 };
 
 export default function AddWallet({
@@ -21,6 +23,7 @@ export default function AddWallet({
   loadingStatus,
   updateLoading,
   copyToClipboard,
+  activeWallet,
 }: Props) {
   const [open, setOpen] = useState(false);
   const [display, setDisplay] = useState('flex');
@@ -67,7 +70,7 @@ export default function AddWallet({
       {(loadingStatus == 1 || loadingStatus == 2 || loadingStatus == 3 || loadingStatus == 4) && (
         <LoadWallet loadingStatus={loadingStatus} updateLoadingStatus={updateLoading} />
       )}
-      {loadingStatus == 5 && <CompleteWallet />}
+      {loadingStatus == 5 && <CompleteWallet activeWallet ={activeWallet}/>}
       <Card sx={{ marginTop: '2em', borderRadius: '8px' }}>
         <AlertItem title="Real-time Alert" type={1} />
       </Card>

@@ -3,4 +3,5 @@ export interface WalletStatus {
   status: number;
   statusTitle: String;
   value: number;
+  progress: number;
 }
