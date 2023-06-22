@@ -5,6 +5,7 @@ import PencilGray from '@components/icons/PencilGray';
 import AlertItem from './AlertItem';
 import { WalletStatus } from './types';
 import useResponsive from '@hooks/useResponsive';
+import EthereumSmallIcon from '@components/icons/EthereumSmallIcon';
 
 const SHOW_TRANSACTIONS = 4;
 
@@ -43,8 +44,8 @@ export default function WalletItem({ item, alertVisibility, onClick }: Props) {
         sx={{ padding: '10px 20px', cursor: 'pointer' }}
       >
         <Stack direction="row" spacing={2} alignItems={'center'}>
-          <EthereumIcon />
-          <Stack direction="column">
+          <EthereumSmallIcon/>
+          <Stack direction="column" sx={{marginLeft:'8px!important', marginRight:'-8px!important'}}>
             <Typography>Cactus</Typography>
             {isMobile&&<Typography color={'gray'} fontSize={'12px'}>0xebC73...8D0B2</Typography>}
           </Stack>
