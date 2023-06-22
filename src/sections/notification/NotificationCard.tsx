@@ -46,6 +46,7 @@ const switchStyle = {
   width: '66px',
   height: '42px',
   '.MuiSwitch-thumb': { width: '18px', height: '18px' },
+  '.Mui-checked':{marginLeft:'4px'}
 };
 
 const dmMono = DM_Mono({
