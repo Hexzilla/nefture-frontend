@@ -34,7 +34,7 @@ export default function WalletItem({ item, alertVisibility, onClick }: Props) {
   const COLORS = ['error', 'warning', 'success'] as const;
 
   return (
-    <Card sx={styles} onClick={onClick}>
+    <Card sx={styles}>
       <Stack
         direction="row"
         spacing={2}
@@ -61,6 +61,7 @@ export default function WalletItem({ item, alertVisibility, onClick }: Props) {
           spacing={2}
           style={{ minWidth: '140px' }}
           alignItems={'center'}
+          onClick={onClick}
         >
           {item.status == 0 && (
             <Card>
