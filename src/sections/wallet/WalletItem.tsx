@@ -1,22 +1,26 @@
-import { Box, Card, CircularProgress, Stack, Typography } from '@mui/material';
+import { Box, Card, CircularProgress, Stack, TextField, Typography } from '@mui/material';
 
-import EthereumIcon from '@components/icons/EthereumIcon';
+import { useState } from 'react';
 import PencilGray from '@components/icons/PencilGray';
 import AlertItem from './AlertItem';
 import { WalletStatus } from './types';
 import useResponsive from '@hooks/useResponsive';
 import EthereumSmallIcon from '@components/icons/EthereumSmallIcon';
-
-const SHOW_TRANSACTIONS = 4;
+import SvgColor from '@components/svg-color/SvgColor';
 
 type Props = {
   item: WalletStatus;
   alertVisibility: boolean;
   onClick: VoidFunction;
+  copyToClipboard: (content: string) => void;
 };
 
-export default function WalletItem({ item, alertVisibility, onClick }: Props) {
+export default function WalletItem({ item, alertVisibility, onClick, copyToClipboard }: Props) {
   const isMobile = useResponsive('down', 'sm');
+  const COLORS = ['error', 'warning', 'success'] as const;
+  const [edit, setEdit] = useState(false);
+  const [walletName, setWalletname] = useState('Cactus')
+
   const styles = {
     '&:hover': {
       backgroundColor: 'rgba(145,158,171,0.08)',
@@ -32,7 +36,10 @@ export default function WalletItem({ item, alertVisibility, onClick }: Props) {
     backgroundColor: '#3f3f3f',
     position: 'relative',
   };
-  const COLORS = ['error', 'warning', 'success'] as const;
+
+  const showEditable = () => {
+    setEdit(!edit)
+  };
 
   return (
     <Card sx={styles}>
@@ -43,17 +50,51 @@ export default function WalletItem({ item, alertVisibility, onClick }: Props) {
         justifyContent="space-between"
         sx={{ padding: '10px 20px', cursor: 'pointer' }}
       >
-        <Stack direction="row" spacing={2} alignItems={'center'}>
-          <EthereumSmallIcon/>
-          <Stack direction="column" sx={{marginLeft:'8px!important', marginRight:'-8px!important'}}>
-            <Typography>Cactus</Typography>
-            {isMobile&&<Typography color={'gray'} fontSize={'12px'}>0xebC73...8D0B2</Typography>}
+        <Stack direction="row" spacing={2} alignItems={'center'} sx={{ width: '160px' }}>
+          <EthereumSmallIcon />
+          <Stack
+            direction="column"
+            sx={{ marginLeft: '8px!important', marginRight: '-8px!important' }}
+          >
+            <Typography
+              display={edit ? 'none' : 'inherit'}
+              sx={{
+                maxWidth: '80px',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              {walletName}
+            </Typography>
+            <TextField
+              defaultValue={walletName}
+              sx={{
+                display: edit ? 'inherit' : 'none',
+                maxWidth: '96px',
+              }}
+              onChange={(e) => setWalletname(e.target.value)}
+            />
+            {isMobile && (
+              <Typography color={'gray'} fontSize={'12px'}>
+                0xebC73...8D0B2
+              </Typography>
+            )}
           </Stack>
-          {!isMobile && <PencilGray />}
+          {!isMobile && (
+            <Box onClick={showEditable}>
+              <PencilGray />
+            </Box>
+          )}
         </Stack>
         {!isMobile && (
-          <Stack direction="row" spacing={2} alignItems={'center'}>
+          <Stack direction="row" spacing={2} alignItems={'center'} 
+          onClick={() => copyToClipboard('0xebC7393039298D0B2')}>
             <Typography>0xebC73...8D0B2</Typography>
+            <SvgColor
+              src="/assets/icons/nefture/ic_copy.svg"
+              sx={{marginLeft:'2px', marginBottom: '-0.5em', width: '16px' }}
+            />
           </Stack>
         )}
         <Stack
@@ -88,8 +129,8 @@ export default function WalletItem({ item, alertVisibility, onClick }: Props) {
         </Stack>
         {alertVisibility && !isMobile && (
           <>
-            <AlertItem title="Weekly Reports" type={0}/>
-            <AlertItem title="Real-time Alerts" type={0}/>
+            <AlertItem title="Weekly Reports" type={0} />
+            <AlertItem title="Real-time Alerts" type={0} />
           </>
         )}
         {!isMobile && (

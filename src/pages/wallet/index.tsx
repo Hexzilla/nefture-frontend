@@ -15,6 +15,8 @@ import { DialogAnimate, MotionContainer } from '@components/animate';
 
 import { m } from 'framer-motion';
 import { WalletStatus } from '@sections/wallet/types';
+import { useSnackbar } from 'notistack';
+import useCopyToClipboard from '@hooks/useCopyToClipboard';
 
 export default function WalletPage() {
   const { themeStretch } = useSettingsContext();
@@ -22,6 +24,13 @@ export default function WalletPage() {
   const [openWallet, setOpenWallet] = useState(false);
   const isMobile = useResponsive('down', 'sm');
   const [loadingStatus, setLoadingStatus] = useState(0);
+  const { enqueueSnackbar } = useSnackbar();
+  const { copy } = useCopyToClipboard();
+
+  const copyToClipboard =(content:string)=>{
+    enqueueSnackbar('Copied!');
+    copy(content);
+  }
 
   const addWallet = () => {
     setLg(8);
@@ -87,6 +96,7 @@ export default function WalletPage() {
               alertVisibility={lg == 12 ? true : false}
               onClick={showSelectedWallet}
               items={items}
+              copyToClipboard = {copyToClipboard}
             />
           </Container>
         </Grid>

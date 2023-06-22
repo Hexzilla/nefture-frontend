@@ -8,9 +8,10 @@ type Props = {
   alertVisibility: boolean;
   items: WalletStatus[];
   onClick: VoidFunction;
+  copyToClipboard: (content: string) => void;
 };
 
-export default function WalletList({ alertVisibility, items, onClick }: Props) {
+export default function WalletList({ alertVisibility, items, onClick, copyToClipboard }: Props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ export default function WalletList({ alertVisibility, items, onClick }: Props) {
         loading ? (
           <Skeleton variant="text" height={140} sx={{ marginBottom:'-50px!important'}} />
         ) : (
-          <WalletItem key={index} item={item} alertVisibility={alertVisibility} onClick={onClick} />
+          <WalletItem key={index} item={item} alertVisibility={alertVisibility} onClick={onClick} copyToClipboard={copyToClipboard}/>
         )
       )}
     </Stack>
