@@ -1,28 +1,40 @@
 import { Box, Card, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
 
-import CopyGray from '@components/icons/CopyGray';
 import Close from '@components/icons/GrayClose';
 import PencilGray from '@components/icons/PencilGray';
-import VisitGray from '@components/icons/VisitGray';
+import SvgColor from '@components/svg-color/SvgColor';
 import AddWalletInformation from './AddWalletInformation';
 import AlertItem from './AlertItem';
 import CompleteWallet from './CompleteWallet';
 import LoadWallet from './LoadWallet';
-import SvgColor from '@components/svg-color/SvgColor';
 
 type Props = {
   onClose: VoidFunction;
-  loadingStatus:number;
+  loadingStatus: number;
   updateLoading: VoidFunction;
+  copyToClipboard: (content: string) => void;
 };
 
-export default function AddWallet({ onClose, loadingStatus, updateLoading }: Props) {
+export default function AddWallet({
+  onClose,
+  loadingStatus,
+  updateLoading,
+  copyToClipboard,
+}: Props) {
   const [open, setOpen] = useState(false);
   const [display, setDisplay] = useState('flex');
 
   return (
-    <Card sx={{ padding: '10px 20px', minHeight: '80vh', marginBottom:'1em', paddingLeft:'2em', paddingRight:'2em'}}>
+    <Card
+      sx={{
+        padding: '10px 20px',
+        minHeight: '80vh',
+        marginBottom: '1em',
+        paddingLeft: '2em',
+        paddingRight: '2em',
+      }}
+    >
       <Box sx={{ cursor: 'pointer' }} onClick={onClose}>
         <Close />
       </Box>
@@ -32,11 +44,18 @@ export default function AddWallet({ onClose, loadingStatus, updateLoading }: Pro
         </Typography>
       )}
       {loadingStatus >= 1 && (
-        <Typography color={'gray'} textAlign={'center'} fontSize={'12px'} mb={2}>
-          0x899999...0B2 
+        <Typography
+          color={'gray'}
+          textAlign={'center'}
+          fontSize={'12px'}
+          mb={2}
+          sx={{cursor:'pointer'}}
+          onClick={() => copyToClipboard('0x8999999302930B2 ')}
+        >
+          0x899999...0B2
           <SvgColor
             src="/assets/icons/nefture/ic_copy.svg"
-            sx={{marginLeft:'2px', marginBottom: '-0.5em', width: '16px' }}
+            sx={{ marginLeft: '2px', marginBottom: '-0.5em', width: '16px' }}
           />
           <SvgColor
             src="/assets/icons/nefture/ic_visit.svg"
@@ -49,11 +68,11 @@ export default function AddWallet({ onClose, loadingStatus, updateLoading }: Pro
         <LoadWallet loadingStatus={loadingStatus} updateLoadingStatus={updateLoading} />
       )}
       {loadingStatus == 5 && <CompleteWallet />}
-      <Card sx={{ marginTop: '2em', borderRadius:'8px' }}>
-        <AlertItem title="Real-time Alert" type={1}/>
+      <Card sx={{ marginTop: '2em', borderRadius: '8px' }}>
+        <AlertItem title="Real-time Alert" type={1} />
       </Card>
-      <Card sx={{ marginTop: '0.5em', marginBottom: '1em', borderRadius:'8px' }}>
-        <AlertItem title="Monthly Alert" type={1}/>
+      <Card sx={{ marginTop: '1em', marginBottom: '1em', borderRadius: '8px' }}>
+        <AlertItem title="Monthly Alert" type={1} />
       </Card>
       {(loadingStatus == 1 || loadingStatus == 2 || loadingStatus == 3 || loadingStatus == 4) && (
         <Stack

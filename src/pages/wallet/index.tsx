@@ -108,6 +108,7 @@ export default function WalletPage() {
                   onClose={closeAddWallet}
                   loadingStatus={loadingStatus}
                   updateLoading={updateStatus}
+                  copyToClipboard = {copyToClipboard}
                 />
               </Box>
             </MotionContainer>
@@ -125,6 +126,7 @@ export default function WalletPage() {
                 onClose={closeAddWallet}
                 loadingStatus={loadingStatus}
                 updateLoading={updateStatus}
+                copyToClipboard={copyToClipboard}
               />
             </Stack>
           </DialogAnimate>
