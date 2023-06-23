@@ -59,6 +59,7 @@ const items: Wallet[] = [
     statusTitle: 'Check',
     value: 0,
     progress: 1,
+    approvals: 0,
   },
   {
     title: 'Cactus 2',
@@ -67,6 +68,7 @@ const items: Wallet[] = [
     statusTitle: 'Severe',
     value: 97,
     progress: 5,
+    approvals: 5,
   },
   {
     title: 'Cactus 3',
@@ -75,6 +77,7 @@ const items: Wallet[] = [
     statusTitle: 'Medium',
     value: 97,
     progress: 5,
+    approvals: 3,
   },
   {
     title: 'Cactus 4',
@@ -83,5 +86,6 @@ const items: Wallet[] = [
     statusTitle: 'Very Good',
     value: 97,
     progress: 5,
+    approvals: 0,
   },
 ];

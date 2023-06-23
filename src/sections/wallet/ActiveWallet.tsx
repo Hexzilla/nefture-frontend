@@ -1,17 +1,17 @@
-import { useMemo, useState } from 'react';
-import { Box, Card, Stack, Typography } from '@mui/material';
+import { Box, Stack, TextField, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
+import { useMemo, useState } from 'react';
 
 import Close from '@components/icons/GrayClose';
 import PencilGray from '@components/icons/PencilGray';
 import SvgColor from '@components/svg-color/SvgColor';
 import { Wallet } from '@components/wallet';
-import AlertItem from '@components/wallet/AlertItem';
+import AlertSettings from '@components/wallet/AlertSettings';
 
 import useCopyToClipboard from '@hooks/useCopyToClipboard';
 
-import WalletLoader from './WalletLoader';
 import ChangeWalletDialog from './ChangeWalletDialog';
+import WalletLoader from './WalletLoader';
 
 type Props = {
   onClose: VoidFunction;
@@ -23,9 +23,11 @@ export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
   const { enqueueSnackbar } = useSnackbar();
   const [open, setOpen] = useState(false);
   const [loadingWallet, setLoadingWallet] = useState(true);
+  const [edit, setEdit] = useState(false);
 
   const handleClose = () => {
     setOpen(false);
+    setEdit(true);
   };
 
   const copyToClipboard = (content: string) => {
@@ -42,19 +44,32 @@ export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
     wallet.title = name;
   };
 
+  const handlePencilClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (edit == true) {
+      setEdit(false);
+    } else setOpen(true);
+  };
+
   return (
     <>
       <Box sx={{ cursor: 'pointer' }} onClick={onClose}>
         <Close />
       </Box>
 
-      <Typography
-        variant="h6"
-        textAlign={'center'}
-        onClick={() => setOpen(true)}
-        sx={{ cursor: 'pointer' }}
-      >
-        {wallet.title} <PencilGray />
+      <Typography variant="h6" textAlign={'center'} sx={{ cursor: 'pointer' }}>
+        <span style={{ display: edit ? 'none' : '' }}>{wallet.title}</span>
+        <TextField
+          defaultValue={wallet.title}
+          sx={{
+            maxWidth: '96px',
+            display: edit ? '' : 'none',
+            marginTop: '-8px',
+          }}
+          onChange={(e) => setWalletName(e.target.value)}
+        />{' '}
+        <Box display={'contents'} onClick={(e) => handlePencilClick(e)}>
+          <PencilGray />
+        </Box>
       </Typography>
       <Typography
         color={'gray'}
@@ -80,12 +95,7 @@ export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
         defaultLoadValue={wallet.status >= 1 ? 5 : 1}
       />
 
-      <Card sx={{ marginTop: '2em', borderRadius: '8px' }}>
-        <AlertItem title="Real-time Alert" type={1} />
-      </Card>
-      <Card sx={{ marginTop: '1em', marginBottom: '1em', borderRadius: '8px' }}>
-        <AlertItem title="Monthly Alert" type={1} />
-      </Card>
+      <AlertSettings />
 
       {!!loadingWallet && (
         <Stack
@@ -105,12 +115,7 @@ export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
         </Stack>
       )}
 
-      <ChangeWalletDialog
-        open={open}
-        walletName={wallet.title}
-        handleClose={handleClose}
-        onChange={setWalletName}
-      />
+      <ChangeWalletDialog open={open} walletName={wallet.title} handleClose={handleClose} />
     </>
   );
 }

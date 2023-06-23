@@ -12,7 +12,7 @@ type Props = {
 export default function MotionLazyContainer({ children }: Props) {
   return (
     <LazyMotion strict features={loadFeatures}>
-      <m.div style={{ height: '100%', background: 'linear-gradient(rgb(45,51,65), rgb(41,41,41))' }}> {children} </m.div>
+      <m.div> {children} </m.div>
     </LazyMotion>
   );
 }

@@ -11,11 +11,10 @@ import {
 type Props = {
   open: boolean;
   handleClose: VoidFunction;
-  onChange: (content: string) => void;
   walletName: string;
 };
 
-export default function ChangeWalletDialog({ open, handleClose, onChange, walletName }: Props) {
+export default function ChangeWalletDialog({ open, handleClose, walletName }: Props) {
   return (
     <Dialog open={open}>
       <DialogTitle>Subscribe</DialogTitle>
@@ -30,8 +29,7 @@ export default function ChangeWalletDialog({ open, handleClose, onChange, wallet
           type="email"
           margin="dense"
           variant="outlined"
-          label="Email Address"
-          onChange={(e) => onChange(e.target.value)}
+          label="Wallet Address"
           defaultValue={walletName}
           sx={{ marginTop: '24px' }}
         />

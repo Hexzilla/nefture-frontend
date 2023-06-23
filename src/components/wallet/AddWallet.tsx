@@ -3,6 +3,7 @@ import { Button, Stack, TextField, Typography, Box } from '@mui/material';
 import { DM_Sans } from '@next/font/google';
 
 import CloseIcon from '@components/icons/GrayClose';
+import AlertSettings from './AlertSettings';
 import HelpItem from './HelpItem';
 
 type Props = {
@@ -61,9 +62,12 @@ export default function AddWallet({ onClose, onEnterWallet, onConnectWallet }: P
         >
           Connect Wallet
         </Button>
+
         <Stack alignItems={'center'} mt={2}>
           <HelpItem title="Advantage of connecting your wallet" type={0} />
         </Stack>
+
+        <AlertSettings />
       </Box>
     </>
   );

@@ -52,17 +52,9 @@ import { StyledChart } from '../components/chart';
 import ProgressBar from '../components/progress-bar';
 import SnackbarProvider from '../components/snackbar';
 import { MotionLazyContainer } from '../components/animate';
-import { ThemeSettings, SettingsProvider } from '../components/settings';
-
-// Check our docs
-// https://docs.minimals.cc/authentication/ts-version
+import { SettingsProvider } from '../components/settings';
 
 import { AuthProvider } from '../auth/JwtContext';
-// import { AuthProvider } from '../auth/Auth0Context';
-// import { AuthProvider } from '../auth/FirebaseContext';
-// import { AuthProvider } from '../auth/AwsCognitoContext';
-
-// ----------------------------------------------------------------------
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -92,7 +84,6 @@ export default function MyApp(props: MyAppProps) {
             <SettingsProvider>
               <MotionLazyContainer>
                 <ThemeProvider>
-                  {/* <ThemeSettings> */}
                   <ThemeLocalization>
                     <SnackbarProvider>
                       <StyledChart />
@@ -102,7 +93,6 @@ export default function MyApp(props: MyAppProps) {
                       </AnimatePresence>
                     </SnackbarProvider>
                   </ThemeLocalization>
-                  {/* </ThemeSettings> */}
                 </ThemeProvider>
               </MotionLazyContainer>
             </SettingsProvider>

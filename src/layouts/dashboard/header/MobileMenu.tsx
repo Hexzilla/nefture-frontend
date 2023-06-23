@@ -31,7 +31,7 @@ export default function MobileMenu({ data, sx, ...other }: NavSectionProps) {
     >
       <Stack direction="row" justifyContent="space-between">
         <MenuButton title="Dashboard" icon="/assets/icons/navbar/ic_dashboard.svg" link="/"/>
-        <MenuButton title="Wallets" icon="/assets/icons/navbar/ic_wallets.svg" link="/wallets"/>
+        <MenuButton title="Wallets" icon="/assets/icons/navbar/ic_wallets.svg" link="/wallet"/>
         <MenuButton title="Nefture +" icon="/assets/icons/navbar/ic_guard.svg" link="/nefture"/>
         <MenuButton title="Settings" icon="/assets/icons/navbar/ic_settings.svg" link="/settings"/>
       </Stack>

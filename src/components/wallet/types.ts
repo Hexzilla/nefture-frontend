@@ -5,6 +5,7 @@ export interface Wallet {
   statusTitle: String;
   value: number;
   progress: number;
+  approvals: number;
 }
 
 export type ModalType = 'New' | 'Edit' | 'View' | null;
