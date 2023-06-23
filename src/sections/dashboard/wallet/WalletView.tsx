@@ -116,10 +116,10 @@ export default function WalletView({ onClosed, data }: Props) {
           spacing={2}
           alignItems="center"
           justifyContent="space-between"
-          sx={{ padding: '10px 20px', cursor: 'pointer' }}
+          sx={{ padding: '10px', cursor: 'pointer' }}
           onClick={changeOpen}
         >
-          <Stack direction="row" spacing={3} justifyContent="space-between" alignItems="center">
+          <Stack direction="row" spacing={1} justifyContent="space-between" alignItems="center">
             <Alert />
             <Typography sx={{ color: 'critical.main' }}>Critical Risks</Typography>
           </Stack>
