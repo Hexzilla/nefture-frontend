@@ -11,12 +11,12 @@ export default function WalletAddress({ sx }: Props) {
     <>
     <Box height={'60px'}/>
     <Card sx={sx}>
-      <Stack direction={'row'} justifyContent={'space-between'}>
+      <Stack direction="row" justifyContent="space-between">
         <EthereumSmallIcon />
         <Typography color={'gray'} mt={0.2}>
           EX03dk..20DO2
         </Typography>
-        <Stack direction={'row'}>
+        <Stack direction="row">
           <Box
             component="img"
             src="/assets/icons/nefture/ic_copy.svg"
