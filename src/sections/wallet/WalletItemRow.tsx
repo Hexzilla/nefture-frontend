@@ -1,5 +1,13 @@
 import { useMemo, useState } from 'react';
-import { Box, Card, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
+import {
+  Box,
+  Card,
+  CircularProgress,
+  IconButton,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
 
 import EthereumSmallIcon from '@components/icons/EthereumSmallIcon';
 import PencilGray from '@components/icons/PencilGray';
@@ -22,6 +30,7 @@ export default function WalletItemRow({ wallet }: Props) {
   const { modalType, openModal, setActiveWallet } = useWalletContext();
   const [walletName, setWalletname] = useState(wallet.title);
   const [open, setOpen] = useState(false);
+  const [edit, setEdit] = useState(false);
   const { copy } = useCopyToClipboard();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -48,22 +57,24 @@ export default function WalletItemRow({ wallet }: Props) {
 
   const handleClose = () => {
     setOpen(false);
+    setEdit(true);
   };
 
-  const openEditDialog = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>{
-    e.stopPropagation()
-    setOpen(true)
-  }
+  const openEditDialog = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
+    if (edit == true) setEdit(false);
+    else setOpen(true);
+  };
 
   const copyToClipboard = (content: string) => {
     copy(content);
     enqueueSnackbar('Copied!');
   };
 
-  const copyWalletAddress = (e : any) =>{
-    e.stopPropagation()
-    copyToClipboard(walletAddress)
-  } 
+  const copyWalletAddress = (e: any) => {
+    e.stopPropagation();
+    copyToClipboard(walletAddress);
+  };
 
   const walletAddress = useMemo(() => {
     const address = wallet.address;
@@ -93,9 +104,18 @@ export default function WalletItemRow({ wallet }: Props) {
                   whiteSpace: 'nowrap',
                   textOverflow: 'ellipsis',
                 }}
+                display={edit ? 'none' : 'inherit'}
               >
                 {walletName}
               </Typography>
+              <TextField
+                defaultValue={walletName}
+                sx={{
+                  display: edit ? 'inherit' : 'none',
+                  maxWidth: '96px',
+                }}
+                onChange={(e) => setWalletname(e.target.value)}
+              />
               {isMobile && (
                 <Typography color={'gray'} fontSize={'12px'}>
                   {walletAddress}
@@ -111,7 +131,7 @@ export default function WalletItemRow({ wallet }: Props) {
           {!isMobile && (
             <Stack direction="row" spacing={2} alignItems={'center'}>
               <Typography>{walletAddress}</Typography>
-              <IconButton onClick={(event)=> copyWalletAddress(event)}>
+              <IconButton onClick={(event) => copyWalletAddress(event)}>
                 <Iconify icon="eva:copy-fill" width={20} />
               </IconButton>
             </Stack>
@@ -160,12 +180,7 @@ export default function WalletItemRow({ wallet }: Props) {
           )}
         </Stack>
       </Card>
-      <ChangeWalletDialog
-        open={open}
-        handleClose={handleClose}
-        onChange={setWalletname}
-        walletName={walletName}
-      />
+      <ChangeWalletDialog open={open} handleClose={handleClose} walletName={walletName} />
     </>
   );
 }
