@@ -30,8 +30,10 @@ export default function WalletView({ data, onClosed }: Props) {
     <Card sx={{ padding: '12px' }}>
       <DialogHeader title="Swap" walletName="Wallet1" onClose={onClosed} />
 
-      <Volumn display={display} data={data} type={'Receiving'} />
-      <Volumn display={display} data={data} type={'Paying'} />
+      <Stack spacing={2} mt={2}>
+        <Volumn title="Receiving" icon="plus" quantity="5260 USDC" volumn="$5,260.42" />
+        <Volumn title="Paying" icon="minus" quantity="4260 USDT" volumn="$4,260.42" />
+      </Stack>
 
       <Stack
         direction="row"
