@@ -39,7 +39,7 @@ export default function WalletPage() {
           </Container>
         </Grid>
 
-        <WalletModal isMobile={isMobile} />
+        <WalletModal isMobile={isMobile} visibility={modalType?true:false}/>
       </Grid>
     </AnimatedContainer>
   );

@@ -9,6 +9,8 @@ import AlertItem from '@components/wallet/AlertItem';
 import useResponsive from '@hooks/useResponsive';
 
 import ChangeWalletDialog from './ChangeWalletDialog';
+import useCopyToClipboard from '@hooks/useCopyToClipboard';
+import { useSnackbar } from 'notistack';
 
 type Props = {
   wallet: Wallet;
@@ -20,6 +22,8 @@ export default function WalletItemRow({ wallet }: Props) {
   const { modalType, openModal, setActiveWallet } = useWalletContext();
   const [walletName, setWalletname] = useState(wallet.title);
   const [open, setOpen] = useState(false);
+  const { copy } = useCopyToClipboard();
+  const { enqueueSnackbar } = useSnackbar();
 
   const styles = {
     '&:hover': {
@@ -45,6 +49,21 @@ export default function WalletItemRow({ wallet }: Props) {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const openEditDialog = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>{
+    e.stopPropagation()
+    setOpen(true)
+  }
+
+  const copyToClipboard = (content: string) => {
+    copy(content);
+    enqueueSnackbar('Copied!');
+  };
+
+  const copyWalletAddress = (e : any) =>{
+    e.stopPropagation()
+    copyToClipboard(walletAddress)
+  } 
 
   const walletAddress = useMemo(() => {
     const address = wallet.address;
@@ -84,7 +103,7 @@ export default function WalletItemRow({ wallet }: Props) {
               )}
             </Stack>
             {!isMobile && (
-              <Box onClick={() => setOpen(true)}>
+              <Box onClick={(event) => openEditDialog(event)}>
                 <PencilGray />
               </Box>
             )}
@@ -92,7 +111,7 @@ export default function WalletItemRow({ wallet }: Props) {
           {!isMobile && (
             <Stack direction="row" spacing={2} alignItems={'center'}>
               <Typography>{walletAddress}</Typography>
-              <IconButton>
+              <IconButton onClick={(event)=> copyWalletAddress(event)}>
                 <Iconify icon="eva:copy-fill" width={20} />
               </IconButton>
             </Stack>
@@ -103,7 +122,6 @@ export default function WalletItemRow({ wallet }: Props) {
             spacing={2}
             style={{ minWidth: '140px' }}
             alignItems={'center'}
-            onClick={handleSelectWallet}
           >
             {wallet.status === 0 && (
               <Card>

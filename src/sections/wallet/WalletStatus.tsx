@@ -1,4 +1,4 @@
-import { Box, Button, Card, CircularProgress, Stack, Typography } from '@mui/material';
+import { Box, Button, Card, CircularProgress, Stack, Typography, Link } from '@mui/material';
 
 import ReloadGray from '@components/icons/ReloadGray';
 import SvgColor from '@components/svg-color/SvgColor';
@@ -57,18 +57,19 @@ export default function WalletStatus({ activeWallet }: Props) {
         sx={{
           cursor: 'pointer',
           marginTop: '1em',
-          marginLeft: '5em',
-          marginRight: '5em',
+          width: '50%',
           backgroundColor: 'primary.buttonColor',
         }}
       >
-        <Typography sx={{ textAlign: 'center', marginTop: '0.5em', marginBottom: '0.5em' }}>
-          Share On{' '}
-          <SvgColor
-            src="/assets/icons/apps/ic_twitter.svg"
-            sx={{ marginBottom: '-0.4em', width: '16px' }}
-          />
-        </Typography>
+        <Link href={'twitter-share'} sx={{color:'white', '&:hover':{textDecoration:'none'}}}>
+          <Typography sx={{ textAlign: 'center', marginTop: '0.5em', marginBottom: '0.5em' }}>
+            Share On{' '}
+            <SvgColor
+              src="/assets/icons/apps/ic_twitter.svg"
+              sx={{ marginBottom: '-0.4em', width: '16px' }}
+            />
+          </Typography>
+        </Link>
       </Card>
       <Card
         sx={{

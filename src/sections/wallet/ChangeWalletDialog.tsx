@@ -34,6 +34,7 @@ export default function ChangeWalletDialog({ open, handleClose, onChange, wallet
           label="Email Address"
           onChange={(e) => onChange(e.target.value)}
           defaultValue={walletName}
+          sx={{marginTop:'24px'}}
         />
       </DialogContent>
       <DialogActions>

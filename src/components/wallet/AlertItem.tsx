@@ -20,7 +20,7 @@ export default function AlertItem({ title, type }: Props) {
       mb={2}
     >
       <HelpItem title={title} type={type}/>
-      <Switch defaultChecked={true} />
+      <Switch defaultChecked={true} onClick={(e)=> e.stopPropagation()}/>
     </Stack>
   );
 }

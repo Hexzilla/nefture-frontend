@@ -15,7 +15,7 @@ export default function HelpItem({ title, type }: Props) {
           <Box sx={{ cursor: 'pointer' }}>
             <SvgColor
               src="/assets/icons/nefture/ic_help_white_round.svg"
-              sx={{ marginBottom: '-0.4em', width: '16px' }}
+              sx={{width: '16px' }}
             />
           </Box>
         </Tooltip>

@@ -8,11 +8,12 @@ import WalletStatus from './WalletStatus';
 
 type Props = {
   onLoadingComplete: () => void;
+  defaultLoadValue: number;
 };
 
-export default function LoadWallet({ onLoadingComplete }: Props) {
+export default function LoadWallet({ onLoadingComplete, defaultLoadValue }: Props) {
   const { activeWallet } = useWalletContext();
-  const [loadingStatus, setLoadingStatus] = useState(1);
+  const [loadingStatus, setLoadingStatus] = useState(defaultLoadValue);
 
   const updateProgress = () => {
     if (loadingStatus >= 4) {
@@ -24,11 +25,17 @@ export default function LoadWallet({ onLoadingComplete }: Props) {
   };
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      updateProgress();
-    }, 1200);
+    console.log(defaultLoadValue)
+    if (loadingStatus >= 4) {
+      setLoadingStatus(100);
+      onLoadingComplete();
+    } else {
+      const timer = setInterval(() => {
+        updateProgress();
+      }, 1200);
 
-    return () => clearInterval(timer);
+      return () => clearInterval(timer);
+    }
   }, [updateProgress]);
 
   const variantColors = (variant: string) => {
