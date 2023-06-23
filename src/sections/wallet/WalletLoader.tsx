@@ -26,9 +26,16 @@ export default function LoadWallet({ onLoadingComplete }: Props) {
   useEffect(() => {
     const timer = setInterval(() => {
       updateProgress();
-    }, 1500);
+    }, 1200);
+
     return () => clearInterval(timer);
   }, [updateProgress]);
+
+  const variantColors = (variant: string) => {
+    if (loadingStatus === 3) {
+      return getVariant(variant);
+    }
+  };
 
   return (
     <Stack position={'relative'} alignItems={'center'}>
@@ -36,7 +43,7 @@ export default function LoadWallet({ onLoadingComplete }: Props) {
         <>
           <Box
             component={m.div}
-            {...(loadingStatus === 3 && getVariant('color8x'))}
+            {...variantColors('color8x')}
             sx={{
               height: '240px',
               width: '240px',
@@ -46,7 +53,7 @@ export default function LoadWallet({ onLoadingComplete }: Props) {
           />
           <Box
             component={m.div}
-            {...(loadingStatus === 3 && getVariant('color7x'))}
+            {...variantColors('color7x')}
             sx={{
               height: '190px',
               width: '190px',
@@ -59,7 +66,7 @@ export default function LoadWallet({ onLoadingComplete }: Props) {
           />
           <Box
             component={m.div}
-            {...(loadingStatus === 3 && getVariant('color6x'))}
+            {...variantColors('color6x')}
             sx={{
               height: '140px',
               width: '140px',

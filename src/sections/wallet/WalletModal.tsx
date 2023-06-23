@@ -28,7 +28,6 @@ const ModalContent = () => {
       {modalType === 'View' && !!activeWallet && (
         <ActiveWallet
           onClose={closeModal}
-          copyToClipboard={() => console.log('copyToClipboard')}
           activeWallet={activeWallet}
         />
       )}

@@ -1,7 +1,6 @@
 import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import Head from 'next/head';
 import { useState } from 'react';
-import { useSnackbar } from 'notistack';
 
 import AnimatedContainer from '@components/animated-container';
 import { useSettingsContext } from '@components/settings';
@@ -10,7 +9,6 @@ import AddWalletButton from '@components/wallet/AddWalletButton';
 
 import DashboardLayout from '@layouts/dashboard';
 import useResponsive from '@hooks/useResponsive';
-import useCopyToClipboard from '@hooks/useCopyToClipboard';
 
 import WalletList from '@sections/wallet/WalletList';
 import WalletModal from '@sections/wallet/WalletModal';
@@ -19,39 +17,6 @@ export default function WalletPage() {
   const isMobile = useResponsive('down', 'sm');
   const { themeStretch } = useSettingsContext();
   const { modalType, openModal } = useWalletContext();
-  const { enqueueSnackbar } = useSnackbar();
-  const { copy } = useCopyToClipboard();
-  const [lg, setLg] = useState(12);
-  const [openWallet, setOpenWallet] = useState(false);
-  const [loadingStatus, setLoadingStatus] = useState(0);
-  const [activeWallet, setActiveWallet] = useState(items[0]);
-
-  const copyToClipboard = (content: string) => {
-    enqueueSnackbar('Copied!');
-    copy(content);
-  };
-
-  const handleAddWallet = () => {
-    setLg(8);
-    openModal('New');
-  };
-
-  const closeAddWallet = () => {
-    setOpenWallet(false);
-    setLoadingStatus(0);
-    setLg(12);
-  };
-
-  const showSelectedWallet = (item: Wallet) => {
-    setActiveWallet(item);
-    setLoadingStatus(item.progress);
-    setLg(8);
-    setOpenWallet(true);
-  };
-
-  const updateStatus = () => {
-    setLoadingStatus(loadingStatus + 1);
-  };
 
   return (
     <AnimatedContainer>
@@ -59,7 +24,7 @@ export default function WalletPage() {
         <title> Wallet | Nefture</title>
       </Head>
       <Grid container spacing={1}>
-        <Grid item xs={12} lg={lg}>
+        <Grid item xs={12} lg={modalType ? 8 : 12}>
           <Container maxWidth={themeStretch ? false : 'xl'}>
             <Stack direction="row" justifyContent="space-between" alignItems="center" mt={3}>
               <Box>
@@ -68,9 +33,9 @@ export default function WalletPage() {
                   Check your wallet security and protect your assets.
                 </Typography>
               </Box>
-              <AddWalletButton isMobile={isMobile} onClick={handleAddWallet} />
+              <AddWalletButton isMobile={isMobile} onClick={() => openModal('New')} />
             </Stack>
-            <WalletList alertVisibility={lg == 12 ? true : false} wallets={items} />
+            <WalletList wallets={items} />
           </Container>
         </Grid>
 

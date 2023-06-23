@@ -12,13 +12,12 @@ import ChangeWalletDialog from './ChangeWalletDialog';
 
 type Props = {
   wallet: Wallet;
-  alertVisibility: boolean;
 };
 
-export default function WalletItemRow({ wallet, alertVisibility }: Props) {
+export default function WalletItemRow({ wallet }: Props) {
   const isMobile = useResponsive('down', 'sm');
   const COLORS = ['error', 'warning', 'success'] as const;
-  const { openModal, setActiveWallet } = useWalletContext();
+  const { modalType, openModal, setActiveWallet } = useWalletContext();
   const [walletName, setWalletname] = useState(wallet.title);
   const [open, setOpen] = useState(false);
 
@@ -124,7 +123,7 @@ export default function WalletItemRow({ wallet, alertVisibility }: Props) {
               </>
             )}
           </Stack>
-          {alertVisibility && !isMobile && (
+          {!isMobile && !modalType && (
             <>
               <AlertItem title="Weekly Reports" type={0} />
               <AlertItem title="Real-time Alerts" type={0} />

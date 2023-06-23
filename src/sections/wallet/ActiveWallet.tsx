@@ -1,5 +1,6 @@
-import { Box, Card, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
+import { Box, Card, Stack, Typography } from '@mui/material';
+import { useSnackbar } from 'notistack';
 
 import Close from '@components/icons/GrayClose';
 import PencilGray from '@components/icons/PencilGray';
@@ -7,22 +8,30 @@ import SvgColor from '@components/svg-color/SvgColor';
 import { Wallet } from '@components/wallet';
 import AlertItem from '@components/wallet/AlertItem';
 
+import useCopyToClipboard from '@hooks/useCopyToClipboard';
+
 import WalletLoader from './WalletLoader';
 import ChangeWalletDialog from './ChangeWalletDialog';
 
 type Props = {
   onClose: VoidFunction;
-  copyToClipboard: (content: string) => void;
   activeWallet: Wallet;
 };
 
-export default function ActiveWallet({ onClose, copyToClipboard, activeWallet }: Props) {
+export default function ActiveWallet({ onClose, activeWallet }: Props) {
+  const { copy } = useCopyToClipboard();
+  const { enqueueSnackbar } = useSnackbar();
   const [open, setOpen] = useState(false);
   const [walletName, setWalletname] = useState(activeWallet.title);
   const [loadingWallet, setLoadingWallet] = useState(true);
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const copyToClipboard = (content: string) => {
+    copy(content);
+    enqueueSnackbar('Copied!');
   };
 
   return (
@@ -54,7 +63,7 @@ export default function ActiveWallet({ onClose, copyToClipboard, activeWallet }:
           fontSize={'12px'}
           mb={2}
           sx={{ cursor: 'pointer' }}
-          onClick={() => copyToClipboard('0x8999999302930B2 ')}
+          onClick={() => copyToClipboard('0x8999999302930B2')}
         >
           0x899999...0B2
           <SvgColor

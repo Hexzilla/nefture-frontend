@@ -6,11 +6,10 @@ import { Wallet } from '@components/wallet';
 import WalletItemRow from './WalletItemRow';
 
 type Props = {
-  alertVisibility: boolean;
   wallets: Wallet[];
 };
 
-export default function WalletList({ alertVisibility, wallets }: Props) {
+export default function WalletList({ wallets }: Props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -27,11 +26,7 @@ export default function WalletList({ alertVisibility, wallets }: Props) {
         loading ? (
           <Skeleton variant="text" height={140} sx={{ marginBottom: '-50px!important' }} />
         ) : (
-          <WalletItemRow
-            key={index}
-            wallet={wallet}
-            alertVisibility={alertVisibility}
-          />
+          <WalletItemRow key={index} wallet={wallet} />
         )
       )}
     </Stack>
