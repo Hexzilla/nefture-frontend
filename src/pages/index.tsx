@@ -1,6 +1,6 @@
 import { Container, Dialog, Grid, Stack } from '@mui/material';
 import Head from 'next/head';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useAuthContext } from '../auth/useAuthContext';
 import AnimatedContainer from '../components/animated-container';
@@ -8,12 +8,12 @@ import { useSettingsContext } from '../components/settings';
 import useResponsive from '../hooks/useResponsive';
 import DashboardLayout from '../layouts/dashboard';
 
-import SuspiciousTransactions from '@sections/dashboard/transactions/SuspiciousTransactions';
 import LatestTransactions from '@sections/dashboard/transactions/LatestTransactions';
-import SwapModal from '@sections/dashboard/wallet/Swap';
-import BurnModal from '@sections/dashboard/wallet/Burn';
+import SuspiciousTransactions from '@sections/dashboard/transactions/SuspiciousTransactions';
 import { Transaction } from '@sections/dashboard/types';
+import HistoryModal from '@sections/dashboard/wallet/History';
 import SkeletonWalletView from '@sections/dashboard/wallet/SkeletonWalletView';
+import SwapModal from '@sections/dashboard/wallet/Swap';
 import ApprovalModal from '@sections/dashboard/wallet/Approval';
 
 GeneralAppPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
@@ -58,6 +58,7 @@ const Dashboard = () => {
         {!isMobile && state == 0 && <SkeletonWalletView />}
         {/* {walletVisible && <BurnModal onClose={hideWallet} transaction={activeWallet} />} */}
         {walletVisible && <ApprovalModal onClose={hideWallet} transaction={activeWallet} />}
+        {/* {walletVisible && <HistoryModal onClose={hideWallet} transaction={activeWallet} />} */}
         {isMobile && (
           <Dialog fullWidth maxWidth="xs" open={walletVisible}>
             <Stack>

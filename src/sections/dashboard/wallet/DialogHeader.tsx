@@ -2,6 +2,7 @@ import { Box, Stack, Typography } from '@mui/material';
 
 import CloseIcon from '@components/icons/GrayClose';
 import TransactionIcon from '@components/icons/Transaction';
+import TransactionGray from '@components/icons/TransactionGray';
 
 type Props = {
   title: string;
@@ -13,7 +14,7 @@ export default function DialogHeader({ title, wallet, onClose }: Props) {
   return (
     <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
       <Stack direction="row" alignItems="center" spacing={1} sx={{ marginLeft: '-10px' }}>
-        <TransactionIcon />
+        {title != 'Transaction rejected'?<TransactionIcon />:<TransactionGray />}
         <Typography>{title}</Typography>
       </Stack>
       <Stack direction="row" spacing={2} alignItems="center">
