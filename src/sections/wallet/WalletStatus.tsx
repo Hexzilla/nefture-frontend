@@ -8,7 +8,7 @@ type Props = {
   activeWallet: Wallet;
 };
 
-export default function CompleteWallet({ activeWallet }: Props) {
+export default function WalletStatus({ activeWallet }: Props) {
   const circleStyle = {
     borderWidth: '1px',
     borderStyle: 'solid',

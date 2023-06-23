@@ -7,7 +7,6 @@ import SvgColor from '@components/svg-color/SvgColor';
 import { Wallet } from '@components/wallet';
 import AlertItem from '@components/wallet/AlertItem';
 
-import CompleteWallet from './CompleteWallet';
 import WalletLoader from './WalletLoader';
 import ChangeWalletDialog from './ChangeWalletDialog';
 
@@ -17,14 +16,10 @@ type Props = {
   activeWallet: Wallet;
 };
 
-export default function ActiveWallet({
-  onClose,
-  copyToClipboard,
-  activeWallet,
-}: Props) {
+export default function ActiveWallet({ onClose, copyToClipboard, activeWallet }: Props) {
   const [open, setOpen] = useState(false);
   const [walletName, setWalletname] = useState(activeWallet.title);
-  const [loadingStatus, setLoadingStatus] = useState(1);
+  const [loadingWallet, setLoadingWallet] = useState(true);
 
   const handleClose = () => {
     setOpen(false);
@@ -53,7 +48,6 @@ export default function ActiveWallet({
         >
           {walletName} <PencilGray />
         </Typography>
-
         <Typography
           color={'gray'}
           textAlign={'center'}
@@ -73,9 +67,7 @@ export default function ActiveWallet({
           />
         </Typography>
 
-        <WalletLoader loadingStatus={loadingStatus} setLoadingStatus={setLoadingStatus} />
-
-        <CompleteWallet activeWallet={activeWallet} />
+        <WalletLoader onLoadingComplete={() => setLoadingWallet(false)} />
 
         <Card sx={{ marginTop: '2em', borderRadius: '8px' }}>
           <AlertItem title="Real-time Alert" type={1} />
@@ -84,21 +76,23 @@ export default function ActiveWallet({
           <AlertItem title="Monthly Alert" type={1} />
         </Card>
 
-        <Stack
-          direction={'column'}
-          sx={{
-            backgroundColor: 'primary.main',
-            marginTop: '24px',
-            padding: '12px',
-            borderRadius: '8px',
-          }}
-          mb={2}
-        >
-          <Typography fontSize={'15px'}>Activate Wallet Monitoring</Typography>
-          <Typography fontSize={'14px'} mt={1}>
-            Receive an alert when a threat is detected.
-          </Typography>
-        </Stack>
+        {!!loadingWallet && (
+          <Stack
+            direction={'column'}
+            sx={{
+              backgroundColor: 'primary.main',
+              marginTop: '24px',
+              padding: '12px',
+              borderRadius: '8px',
+            }}
+            mb={2}
+          >
+            <Typography fontSize={'15px'}>Activate Wallet Monitoring</Typography>
+            <Typography fontSize={'14px'} mt={1}>
+              Receive an alert when a threat is detected.
+            </Typography>
+          </Stack>
+        )}
       </Card>
 
       <ChangeWalletDialog
