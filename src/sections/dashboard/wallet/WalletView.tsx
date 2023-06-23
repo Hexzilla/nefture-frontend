@@ -41,9 +41,9 @@ export default function WalletView({ onClosed, data }: Props) {
   const [arrowVisible, setArrowVisible] = useState('visible');
 
   return (
-    <Card sx={{ padding: '10px 20px', minHeight: '90vh' }}>
+    <Card sx={{ padding: '10px', minHeight: '90vh' }}>
       <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
-        <Stack direction="row" alignItems="center">
+        <Stack direction="row" alignItems="center" spacing={1} sx={{ marginLeft: '-10px' }}>
           <TransactionIcon />
           <Typography>Swap</Typography>
         </Stack>
@@ -103,11 +103,11 @@ export default function WalletView({ onClosed, data }: Props) {
 
       <CriticalRisks data={data} />
 
-      <Button href="/" size="large" variant="contained" sx={buttonSX}>
-        Go to Home
-      </Button>
+      <Stack mt={3} spacing={1}>
+        <Button href="/" size="large" variant="contained" sx={buttonSX}>
+          Go to Home
+        </Button>
 
-      <Stack mt={3} mb={1}>
         <Swipezor
           mainText="Swipe to Approve"
           overlayText="Approved"
