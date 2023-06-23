@@ -5,9 +5,8 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  TextField
+  TextField,
 } from '@mui/material';
-
 
 type Props = {
   open: boolean;
@@ -34,7 +33,7 @@ export default function ChangeWalletDialog({ open, handleClose, onChange, wallet
           label="Email Address"
           onChange={(e) => onChange(e.target.value)}
           defaultValue={walletName}
-          sx={{marginTop:'24px'}}
+          sx={{ marginTop: '24px' }}
         />
       </DialogContent>
       <DialogActions>

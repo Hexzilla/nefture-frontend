@@ -25,7 +25,6 @@ export default function LoadWallet({ onLoadingComplete, defaultLoadValue }: Prop
   };
 
   useEffect(() => {
-    console.log(defaultLoadValue)
     if (loadingStatus >= 4) {
       setLoadingStatus(100);
       onLoadingComplete();

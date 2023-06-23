@@ -13,10 +13,7 @@ export default function HelpItem({ title, type }: Props) {
       {type == 0 && (
         <Tooltip title="This is the help">
           <Box sx={{ cursor: 'pointer' }}>
-            <SvgColor
-              src="/assets/icons/nefture/ic_help_white_round.svg"
-              sx={{width: '16px' }}
-            />
+            <SvgColor src="/assets/icons/nefture/ic_help_white_round.svg" sx={{ width: '16px' }} />
           </Box>
         </Tooltip>
       )}

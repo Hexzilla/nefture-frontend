@@ -10,7 +10,6 @@ import getVariant from '@sections/_examples/extra/animate/getVariant';
 
 type Props = {
   isMobile: boolean;
-  visibility: boolean;
 };
 
 const ModalContent = ({ isMobile }: Props) => {
@@ -39,25 +38,28 @@ const ModalContent = ({ isMobile }: Props) => {
   );
 };
 
-export default function WalletModal({ isMobile, visibility }: Props) {
+export default function WalletModal({ isMobile }: Props) {
   const { modalType } = useWalletContext();
-  console.log('isMobile', isMobile);
 
   if (isMobile) {
     return (
       <DialogAnimate fullWidth maxWidth="xs" open={!!modalType} variants={getVariant('bounceIn')}>
-        <ModalContent isMobile={isMobile} visibility={visibility} />
+        <ModalContent isMobile={isMobile} />
       </DialogAnimate>
     );
   }
 
   return (
-    <Grid item xs={12} lg={4} sx={{display:visibility?'block':'none'}}>
-      <MotionContainer>
-        <Box component={m.div} variants={getVariant('slideInRight')}>
-          <ModalContent isMobile={isMobile} visibility={visibility} />
-        </Box>
-      </MotionContainer>
-    </Grid>
+    <>
+      {!!modalType && (
+        <Grid item xs={12} lg={4}>
+          <MotionContainer>
+            <Box component={m.div} variants={getVariant('slideInRight')}>
+              <ModalContent isMobile={isMobile} />
+            </Box>
+          </MotionContainer>
+        </Grid>
+      )}
+    </>
   );
 }

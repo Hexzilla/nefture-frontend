@@ -61,7 +61,7 @@ export default function WalletStatus({ activeWallet }: Props) {
           backgroundColor: 'primary.buttonColor',
         }}
       >
-        <Link href={'twitter-share'} sx={{color:'white', '&:hover':{textDecoration:'none'}}}>
+        <Link href={'twitter-share'} sx={{ color: 'white', '&:hover': { textDecoration: 'none' } }}>
           <Typography sx={{ textAlign: 'center', marginTop: '0.5em', marginBottom: '0.5em' }}>
             Share On{' '}
             <SvgColor
