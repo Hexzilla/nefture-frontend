@@ -12,7 +12,7 @@ import { useSettingsContext } from '@components/settings';
 import DashboardLayout from '@layouts/dashboard';
 import WalletList from '@sections/wallet/WalletList';
 import useResponsive from '@hooks/useResponsive';
-import AddWallet from '@sections/wallet/AddWallet';
+import ActiveWallet from '@sections/wallet/ActiveWallet';
 import getVariant from '@sections/_examples/extra/animate/getVariant';
 
 import { WalletStatus } from '@sections/wallet/types';
@@ -104,7 +104,7 @@ export default function WalletPage() {
           <Grid item xs={12} lg={12 - lg}>
             <MotionContainer>
               <Box component={m.div} variants={getVariant('slideInRight')}>
-                <AddWallet
+                <ActiveWallet
                   onClose={closeAddWallet}
                   loadingStatus={loadingStatus}
                   updateLoading={updateStatus}
@@ -122,15 +122,13 @@ export default function WalletPage() {
             open={openWallet}
             variants={getVariant('bounceIn')}
           >
-            <Stack>
-              <AddWallet
-                onClose={closeAddWallet}
-                loadingStatus={loadingStatus}
-                updateLoading={updateStatus}
-                copyToClipboard={copyToClipboard}
-                activeWallet={activeWallet}
-              />
-            </Stack>
+            <ActiveWallet
+              onClose={closeAddWallet}
+              loadingStatus={loadingStatus}
+              updateLoading={updateStatus}
+              copyToClipboard={copyToClipboard}
+              activeWallet={activeWallet}
+            />
           </DialogAnimate>
         )}
       </Grid>
