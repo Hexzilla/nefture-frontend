@@ -12,7 +12,7 @@ export default function StatusLabel({ title, variant }: Props) {
         borderRadius: '8px',
         bgcolor: backgrounds[variant],
         color: colors[variant],
-        padding: '0.6em 0.5em',
+        padding: '18px',
         textAlign: 'center',
       }}
     >
@@ -23,14 +23,14 @@ export default function StatusLabel({ title, variant }: Props) {
 
 const backgrounds: Record<string, string> = {
   low: '#28344A',
-  medium: '#4A4028', 
+  medium: '#4A4028',
   high: '#4A3828',
-  danger : '#4A2828',
-}
+  danger: '#4A2828',
+};
 
 const colors: Record<string, string> = {
   low: '#2965FF',
   medium: '#FF9901',
   high: '#FF6C01',
   danger: '#FF4601',
-}
+};
