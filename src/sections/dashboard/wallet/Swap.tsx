@@ -11,6 +11,7 @@ import Volumn from './Volumn';
 import CriticalRisks from './CriticalRisks';
 import DialogHeader from './DialogHeader';
 import DialogAction from './DialogAction';
+import Modal from './Modal';
 
 type Props = {
   onClosed: VoidFunction;
@@ -22,14 +23,9 @@ const dmMono = DM_Mono({
   subsets: ['latin'],
 });
 
-export default function WalletView({ data, onClosed }: Props) {
-  const [display, setDisplay] = useState('flex');
-  const [arrowVisible, setArrowVisible] = useState('visible');
-
+export default function SwapModal({ data, onClosed }: Props) {
   return (
-    <Card sx={{ padding: '12px' }}>
-      <DialogHeader title="Swap" walletName="Wallet1" onClose={onClosed} />
-
+    <Modal title="Swap" wallet="Wallet1" needHelp onClose={onClosed}>
       <Stack spacing={2} mt={2}>
         <Volumn title="Receiving" icon="plus" quantity="5260 USDC" volumn="$5,260.42" />
         <Volumn title="Paying" icon="minus" quantity="4260 USDT" volumn="$4,260.42" />
@@ -41,7 +37,6 @@ export default function WalletView({ data, onClosed }: Props) {
         alignItems="center"
         justifyContent="space-between"
         mt={3}
-        sx={{ display: display }}
         className={dmMono.className}
       >
         <Typography color="gray">Protocal</Typography>
@@ -58,7 +53,6 @@ export default function WalletView({ data, onClosed }: Props) {
         alignItems="center"
         justifyContent="space-between"
         mt={1}
-        sx={{ display: display }}
         className={dmMono.className}
       >
         <Typography color="gray">Chain</Typography>
@@ -71,7 +65,6 @@ export default function WalletView({ data, onClosed }: Props) {
         justifyContent="space-between"
         mt={1}
         mb={3}
-        sx={{ display: display }}
         className={dmMono.className}
       >
         <Typography color="gray">Network Fee</Typography>
@@ -81,13 +74,6 @@ export default function WalletView({ data, onClosed }: Props) {
       <CriticalRisks data={data} />
 
       <DialogAction />
-
-      <Stack alignItems="center" sx={{ padding: '10px 20px', marginTop: '12px' }}>
-        <Stack direction="row" spacing={2}>
-          <Help />
-          <Typography color="gray">Need Help?</Typography>
-        </Stack>
-      </Stack>
-    </Card>
+    </Modal>
   );
 }

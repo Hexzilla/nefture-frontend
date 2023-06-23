@@ -5,11 +5,11 @@ import TransactionIcon from '@components/icons/Transaction';
 
 type Props = {
   title: string;
-  walletName: string;
+  wallet: string;
   onClose: VoidFunction;
 };
 
-export default function DialogHeader({ title, walletName, onClose }: Props) {
+export default function DialogHeader({ title, wallet, onClose }: Props) {
   return (
     <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
       <Stack direction="row" alignItems="center" spacing={1} sx={{ marginLeft: '-10px' }}>
@@ -17,7 +17,7 @@ export default function DialogHeader({ title, walletName, onClose }: Props) {
         <Typography>{title}</Typography>
       </Stack>
       <Stack direction="row" spacing={2} alignItems="center">
-        <Typography>{walletName}</Typography>
+        <Typography>{wallet}</Typography>
         <Box sx={{ cursor: 'pointer' }} onClick={onClose}>
           <CloseIcon />
         </Box>
