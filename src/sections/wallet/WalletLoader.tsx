@@ -1,20 +1,32 @@
+import { useEffect, useState } from 'react';
 import { Box, Stack, Typography } from '@mui/material';
-
-import getVariant from '@sections/_examples/extra/animate/getVariant';
 import { m } from 'framer-motion';
 
+import getVariant from '@sections/_examples/extra/animate/getVariant';
+
 type Props = {
-  loadingStatus:number;
-  updateLoadingStatus : VoidFunction; 
+  loadingStatus: number;
+  setLoadingStatus: (value: number) => void;
 };
 
-export default function LoadWallet({loadingStatus, updateLoadingStatus}: Props) {
+export default function LoadWallet({ loadingStatus, setLoadingStatus }: Props) {
+  const updateLoadingState = () => {
+    setLoadingStatus(loadingStatus + 1);
+  };
+
+  useEffect(() => {
+    const time = setInterval(() => {
+      updateLoadingState();
+    }, 2000);
+
+    return () => clearInterval(time);
+  }, [updateLoadingState]);
 
   return (
     <Stack position={'relative'} alignItems={'center'}>
       <Box
         component={m.div}
-        {...(loadingStatus == 3 && getVariant('color8x'))}
+        {...(loadingStatus === 3 && getVariant('color8x'))}
         sx={{
           height: '240px',
           width: '240px',
@@ -24,7 +36,7 @@ export default function LoadWallet({loadingStatus, updateLoadingStatus}: Props) 
       />
       <Box
         component={m.div}
-        {...(loadingStatus == 3 && getVariant('color7x'))}
+        {...(loadingStatus === 3 && getVariant('color7x'))}
         sx={{
           height: '190px',
           width: '190px',
@@ -37,7 +49,7 @@ export default function LoadWallet({loadingStatus, updateLoadingStatus}: Props) 
       />
       <Box
         component={m.div}
-        {...(loadingStatus == 3 && getVariant('color6x'))}
+        {...(loadingStatus === 3 && getVariant('color6x'))}
         sx={{
           height: '140px',
           width: '140px',
@@ -48,35 +60,34 @@ export default function LoadWallet({loadingStatus, updateLoadingStatus}: Props) 
           cursor: 'pointer',
         }}
         position={'absolute'}
-        onClick={updateLoadingStatus}
+        onClick={updateLoadingState}
       />
-      {(loadingStatus == 1 || loadingStatus == 2) && (
+
+      {(loadingStatus === 1 || loadingStatus === 2) && (
         <Typography
-          onClick={updateLoadingStatus}
+          onClick={updateLoadingState}
           sx={{ cursor: 'pointer', top: '115px' }}
           position={'absolute'}
         >
-          {loadingStatus == 1 && 'Launch Check'}
-          {loadingStatus == 2 && 'Scanning...'}
+          {loadingStatus === 1 && 'Launch Check'}
+          {loadingStatus === 2 && 'Scanning...'}
         </Typography>
       )}
-      {(loadingStatus == 3 || loadingStatus == 4) && (
+      {(loadingStatus === 3 || loadingStatus === 4) && (
         <>
           <Typography
-            onClick={updateLoadingStatus}
+            onClick={updateLoadingState}
             sx={{ cursor: 'pointer', top: '105px' }}
             position={'absolute'}
           >
-            {loadingStatus == 3 && 'Anaylzing'}
-            {loadingStatus == 4 && 'A little'}
+            {loadingStatus === 3 ? 'Anaylzing' : 'A little'}
           </Typography>
           <Typography
-            onClick={updateLoadingStatus}
+            onClick={updateLoadingState}
             sx={{ cursor: 'pointer', top: '125px' }}
             position={'absolute'}
           >
-            {loadingStatus == 3 && 'threads'}
-            {loadingStatus == 4 && 'more paitience'}
+            {loadingStatus === 3 ? 'threads' : 'more paitience'}
           </Typography>
         </>
       )}

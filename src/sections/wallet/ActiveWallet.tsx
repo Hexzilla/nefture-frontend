@@ -8,26 +8,23 @@ import { Wallet } from '@components/wallet';
 import AlertItem from '@components/wallet/AlertItem';
 
 import CompleteWallet from './CompleteWallet';
-import LoadWallet from './LoadWallet';
+import WalletLoader from './WalletLoader';
 import ChangeWalletDialog from './ChangeWalletDialog';
 
 type Props = {
   onClose: VoidFunction;
-  loadingStatus: number;
-  updateLoading: VoidFunction;
   copyToClipboard: (content: string) => void;
   activeWallet: Wallet;
 };
 
 export default function ActiveWallet({
   onClose,
-  loadingStatus,
-  updateLoading,
   copyToClipboard,
   activeWallet,
 }: Props) {
   const [open, setOpen] = useState(false);
   const [walletName, setWalletname] = useState(activeWallet.title);
+  const [loadingStatus, setLoadingStatus] = useState(1);
 
   const handleClose = () => {
     setOpen(false);
@@ -76,7 +73,7 @@ export default function ActiveWallet({
           />
         </Typography>
 
-        <LoadWallet loadingStatus={loadingStatus} updateLoadingStatus={updateLoading} />
+        <WalletLoader loadingStatus={loadingStatus} setLoadingStatus={setLoadingStatus} />
 
         <CompleteWallet activeWallet={activeWallet} />
 

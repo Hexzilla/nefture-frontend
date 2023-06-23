@@ -1,24 +1,18 @@
-import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material';
+import { Box, Container, Grid, Stack, Typography } from '@mui/material';
 import Head from 'next/head';
 import { useState } from 'react';
-import { m } from 'framer-motion';
 import { useSnackbar } from 'notistack';
 
-import { DialogAnimate, MotionContainer } from '@components/animate';
 import AnimatedContainer from '@components/animated-container';
-import PlusButton from '@components/icons/PlusButton';
-import PlusIcon from '@components/icons/PlusWhite';
 import { useSettingsContext } from '@components/settings';
 import { Wallet, WalletProvider, useWalletContext } from '@components/wallet';
-import DashboardLayout from '@layouts/dashboard';
-import WalletList from '@sections/wallet/WalletList';
-import useResponsive from '@hooks/useResponsive';
-import ActiveWallet from '@sections/wallet/ActiveWallet';
-import getVariant from '@sections/_examples/extra/animate/getVariant';
+import AddWalletButton from '@components/wallet/AddWalletButton';
 
+import DashboardLayout from '@layouts/dashboard';
+import useResponsive from '@hooks/useResponsive';
 import useCopyToClipboard from '@hooks/useCopyToClipboard';
-import AddWallet from '@sections/wallet/AddWallet';
-import AddWalletButton from '@sections/wallet/AddWalletButton';
+
+import WalletList from '@sections/wallet/WalletList';
 import WalletModal from '@sections/wallet/WalletModal';
 
 export default function WalletPage() {
