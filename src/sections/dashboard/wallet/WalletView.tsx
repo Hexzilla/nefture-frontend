@@ -11,6 +11,7 @@ import TransactionIcon from '@components/icons/Transaction';
 import { DM_Mono } from '@next/font/google';
 import { Risk, Transaction } from '../types';
 import Volumn from './Volumn';
+import CriticalRisks from './CriticalRisks';
 
 const Swipezor = dynamic(() => import('./Swipezor'), {
   ssr: false,
@@ -36,18 +37,8 @@ const dmMono = DM_Mono({
 });
 
 export default function WalletView({ onClosed, data }: Props) {
-  const [open, setOpen] = useState(false);
   const [display, setDisplay] = useState('flex');
   const [arrowVisible, setArrowVisible] = useState('visible');
-  const [rotate, setRotate] = useState('rotate(180deg)');
-
-  const changeOpen = () => {
-    setOpen(!open);
-    if (display === 'flex') setDisplay('none');
-    else setDisplay('flex');
-    if (!open) setRotate('rotate(0deg)');
-    else setRotate('rotate(180deg)');
-  };
 
   return (
     <Card sx={{ padding: '10px 20px', minHeight: '90vh' }}>
@@ -110,53 +101,7 @@ export default function WalletView({ onClosed, data }: Props) {
         <Typography>0.0034 ETH ~$1.59</Typography>
       </Stack>
 
-      <Card>
-        <Stack
-          direction="row"
-          spacing={2}
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ padding: '10px', cursor: 'pointer' }}
-          onClick={changeOpen}
-        >
-          <Stack direction="row" spacing={1} justifyContent="space-between" alignItems="center">
-            <Alert />
-            <Typography sx={{ color: 'critical.main' }}>Critical Risks</Typography>
-          </Stack>
-          <Box sx={{ transform: rotate }}>
-            <Down />
-          </Box>
-        </Stack>
-
-        <Collapse in={open} unmountOnExit>
-          {data.critical_risks &&
-            data.critical_risks.map((item: Risk, index: number) => (
-              <Card sx={{ margin: '16px 30px' }} key={index}>
-                <Stack
-                  direction="row"
-                  spacing={2}
-                  alignItems="center"
-                  justifyContent="space-between"
-                  sx={{ padding: '8px' }}
-                >
-                  <Stack direction="row" spacing={3} alignItems="center" sx={{ width: '100%' }}>
-                    <Alert />
-                    <Stack
-                      direction="column"
-                      spacing={1}
-                      sx={{ width: `calc(100% - 48px)`, marginLeft: '12px!important' }}
-                    >
-                      <Typography>Danger</Typography>
-                      <Typography color="grey" sx={{ overflowWrap: 'break-word' }}>
-                        {data.critical_risks[index].description}
-                      </Typography>
-                    </Stack>
-                  </Stack>
-                </Stack>
-              </Card>
-            ))}
-        </Collapse>
-      </Card>
+      <CriticalRisks data={data} />
 
       <Button href="/" size="large" variant="contained" sx={buttonSX}>
         Go to Home
