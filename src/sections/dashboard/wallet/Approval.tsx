@@ -24,19 +24,19 @@ export default function ApprovalModal({ transaction, onClose }: Props) {
   return (
     <Modal title="Approval" wallet="Wallet1" needHelp onClose={onClose}>
       <WalletAddress
-        sx={{ marginLeft: '9em', marginRight: '9em', padding: '0.2em 0.5em', marginTop: '3em' }}
+        sx={{ padding: '0.2em 0.5em', margin: 'auto', width:'240px' }}
       />
+      <Box height={'20px'}/>
       <Stack
         sx={{
           borderRadius: '8px',
           backgroundColor: BACKGROUNDS[0],
-          marginLeft: '9em',
-          marginTop: '1em',
-          marginRight: '9em',
-          padding: '0.6em 0.5em',
           color: COLORS[0],
-          textAlign: 'center',
+          padding: '0.6em 0.5em',
         }}
+        width={'240px'}
+        m={'auto'}
+        textAlign={'center'}
       >
         <Typography>{texts[0]}</Typography>
       </Stack>

@@ -8,6 +8,8 @@ type Props = {
 
 export default function WalletAddress({ sx }: Props) {
   return (
+    <>
+    <Box height={'60px'}/>
     <Card sx={sx}>
       <Stack direction={'row'} justifyContent={'space-between'}>
         <EthereumSmallIcon />
@@ -28,5 +30,6 @@ export default function WalletAddress({ sx }: Props) {
         </Stack>
       </Stack>
     </Card>
+    </>
   );
 }
