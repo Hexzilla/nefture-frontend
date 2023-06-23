@@ -1,25 +1,21 @@
-import { Box, Card, Stack, Typography } from '@mui/material';
+import { Box, Card, Stack, Typography, SxProps, Theme } from '@mui/material';
 import { useMemo } from 'react';
 
 import EthereumSmallIcon from '@components/icons/EthereumSmallIcon';
 
 type Props = {
   address: string;
+  sx?: SxProps<Theme>;
 };
 
-export default function WalletAddress({ address }: Props) {
+export default function WalletAddress({ address, sx }: Props) {
   const walletAddress = useMemo(() => {
     return address.substring(0, 7) + '...' + address.slice(address.length - 5);
   }, [address]);
 
   return (
-    <Card sx={{ width: '100%' }}>
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        sx={{ height: '33px', padding: '8px' }}
-      >
+    <Card sx={{ padding: '4px 8px', ...sx }}>
+      <Stack direction="row" justifyContent="space-between">
         <EthereumSmallIcon />
 
         <Typography color="gray" mt={0.2}>
