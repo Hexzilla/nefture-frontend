@@ -2,7 +2,7 @@ import { Box, Card, Collapse, Stack, Typography } from '@mui/material';
 import { useState } from 'react';
 
 import Alert from '@components/icons/Alert';
-import Down from '@components/icons/Down';
+import DownIcon from '@components/icons/Down';
 import { Risk, Transaction } from '../types';
 
 type Props = {
@@ -27,17 +27,20 @@ export default function CriticalRisks({ data }: Props) {
       <Stack
         direction="row"
         spacing={2}
-        alignItems="center"
+        alignItems="start"
         justifyContent="space-between"
         sx={{ padding: '10px', cursor: 'pointer' }}
         onClick={changeOpen}
       >
-        <Stack direction="row" spacing={1} justifyContent="space-between" alignItems="center">
+        <Stack direction="row" spacing={1} justifyContent="space-between" alignItems="start">
           <Alert />
-          <Typography sx={{ color: 'critical.main' }}>Critical Risks</Typography>
+          <div>
+            <Typography color="critical.main">Critical Risks</Typography>
+            <Typography variant='caption' color="grey">3 risks identified</Typography>
+          </div>
         </Stack>
-        <Box sx={{ transform: rotate }}>
-          <Down />
+        <Box sx={{ transform: rotate }} display="flex" alignItems="start">
+          <DownIcon />
         </Box>
       </Stack>
 
