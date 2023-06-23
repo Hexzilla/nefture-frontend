@@ -14,6 +14,7 @@ import SwapModal from '@sections/dashboard/wallet/Swap';
 import BurnModal from '@sections/dashboard/wallet/Burn';
 import { Transaction } from '@sections/dashboard/types';
 import SkeletonWalletView from '@sections/dashboard/wallet/SkeletonWalletView';
+import ApprovalModal from '@sections/dashboard/wallet/Approval';
 
 GeneralAppPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
 
@@ -55,7 +56,8 @@ const Dashboard = () => {
       </Grid>
       <Grid item xs={12} lg={5}>
         {!isMobile && state == 0 && <SkeletonWalletView />}
-        {walletVisible && <BurnModal onClose={hideWallet} transaction={activeWallet} />}
+        {/* {walletVisible && <BurnModal onClose={hideWallet} transaction={activeWallet} />} */}
+        {walletVisible && <ApprovalModal onClose={hideWallet} transaction={activeWallet} />}
         {isMobile && (
           <Dialog fullWidth maxWidth="xs" open={walletVisible}>
             <Stack>
