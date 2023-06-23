@@ -14,7 +14,7 @@ type Props = {
 
 export default function RiskModal({ variant, onClose }: Props) {
   return (
-    <Modal title="Medium risk" wallet="Wallet1" needHelp onClose={onClose}>
+    <Modal title={RiskNames[variant]} wallet="Wallet1" needHelp onClose={onClose}>
       <Stack
         direction="column"
         justifyContent="center"
@@ -31,11 +31,19 @@ export default function RiskModal({ variant, onClose }: Props) {
       </Stack>
 
       <Stack spacing="10px" my={3}>
-        <Description title="Chain" description="Ethereum" />
-        <Description title="Network Fee" description="0.0034 ETH ~$1.59" />
+        <Description title="Deployed" description="10 Jun 2021 23:21:10 GMT" />
+        <Description title="Chart" description="DexScreener" />
+        <Description title="Creator wallet" description="Creator" />
       </Stack>
 
       <WalletActions title="Reject (recommended)" swipe onSubmit={() => console.log('Reject')} />
     </Modal>
   );
 }
+
+const RiskNames: Record<string, string> = {
+  low: 'Low Risk',
+  medium: 'Medium Risk',
+  high: 'High Risk',
+  danger: 'Danger',
+};
