@@ -1,24 +1,25 @@
 import { Box, Button, Card, Collapse, Stack, Typography } from '@mui/material';
+import { DM_Mono } from '@next/font/google';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
-import Alert from '@components/icons/Alert';
 import CheckGreen from '@components/icons/CheckGreen';
-import Down from '@components/icons/Down';
 import CloseIcon from '@components/icons/GrayClose';
 import Help from '@components/icons/Help';
 import TransactionIcon from '@components/icons/Transaction';
-import { DM_Mono } from '@next/font/google';
+
 import { Risk, Transaction } from '../types';
+
 import Volumn from './Volumn';
 import CriticalRisks from './CriticalRisks';
+import DialogHeader from './DialogHeader';
 
 const Swipezor = dynamic(() => import('./Swipezor'), {
   ssr: false,
 });
 
 type Props = {
-  onClosed?: VoidFunction;
+  onClosed: VoidFunction;
   data: any | Transaction;
 };
 
@@ -42,21 +43,10 @@ export default function WalletView({ onClosed, data }: Props) {
 
   return (
     <Card sx={{ padding: '10px', minHeight: '90vh' }}>
-      <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
-        <Stack direction="row" alignItems="center" spacing={1} sx={{ marginLeft: '-10px' }}>
-          <TransactionIcon />
-          <Typography>Swap</Typography>
-        </Stack>
-        <Stack direction="row" spacing={2} alignItems="center">
-          <Typography>Wallet1</Typography>
-          <Box sx={{ cursor: 'pointer' }} onClick={onClosed}>
-            <CloseIcon />
-          </Box>
-        </Stack>
-      </Stack>
-
-      <Volumn display={display} data={data} type={'receiving'} />
-      <Volumn display={display} data={data} type={'paying'} />
+      <DialogHeader title="Swap" walletName="Wallet1" onClose={onClosed} />
+      
+      <Volumn display={display} data={data} type={'Receiving'} />
+      <Volumn display={display} data={data} type={'Paying'} />
 
       <Stack
         direction="row"
