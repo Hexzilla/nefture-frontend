@@ -14,6 +14,7 @@ export default function StatusLabel({ title, variant }: Props) {
         color: colors[variant],
         padding: '18px',
         textAlign: 'center',
+        width: '100%',
       }}
     >
       <Typography>{title}</Typography>

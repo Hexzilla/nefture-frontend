@@ -13,7 +13,7 @@ export default function WalletAddress({ address }: Props) {
   }, [address]);
 
   return (
-    <Card>
+    <Card sx={{ width: '100%' }}>
       <Stack
         direction="row"
         justifyContent="space-between"
