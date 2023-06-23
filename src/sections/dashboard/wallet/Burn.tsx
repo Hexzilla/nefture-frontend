@@ -2,17 +2,17 @@ import { Stack, Typography } from '@mui/material';
 
 import { Transaction } from '../types';
 import Volumn from './Volumn';
-import CriticalRisks from './CriticalRisks';
+import CriticalRisks from './labels/CriticalRisks';
 import WalletActions from './WalletActions';
 import Modal from './Modal';
 import Description from './Description';
 
 type Props = {
+  transaction: Transaction;
   onClose: VoidFunction;
-  data: any | Transaction;
 };
 
-export default function BurnModal({ data, onClose }: Props) {
+export default function BurnModal({ transaction, onClose }: Props) {
   return (
     <Modal title="Burn" wallet="Wallet1" needHelp onClose={onClose}>
       <Stack spacing={2} mt={2}>
@@ -26,7 +26,7 @@ export default function BurnModal({ data, onClose }: Props) {
         <Description title="Network Fee" description="0.0034 ETH ~$1.59" />
       </Stack>
 
-      <CriticalRisks data={data} />
+      <CriticalRisks risks={transaction.critical_risks} />
 
       <WalletActions title="Reject (recommended)" swipe onSubmit={() => console.log('Reject')} />
     </Modal>

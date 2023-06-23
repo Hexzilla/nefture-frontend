@@ -19,7 +19,7 @@ GeneralAppPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}
 
 const Dashboard = () => {
   const [walletVisible, setWalletVisible] = useState(false);
-  const [activeWallet, setActiveWallet] = useState({});
+  const [activeWallet, setActiveWallet] = useState({} as any);
   const [state, setState] = useState(0);
   const isMobile = useResponsive('down', 'sm');
 
@@ -55,11 +55,11 @@ const Dashboard = () => {
       </Grid>
       <Grid item xs={12} lg={5}>
         {!isMobile && state == 0 && <SkeletonWalletView />}
-        {walletVisible && <BurnModal onClose={hideWallet} data={activeWallet} />}
+        {walletVisible && <BurnModal onClose={hideWallet} transaction={activeWallet} />}
         {isMobile && (
           <Dialog fullWidth maxWidth="xs" open={walletVisible}>
             <Stack>
-              <SwapModal onClose={hideWallet} data={activeWallet} />
+              <SwapModal onClose={hideWallet} transaction={activeWallet} />
             </Stack>
           </Dialog>
         )}

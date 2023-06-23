@@ -5,14 +5,14 @@ import CheckGreen from '@components/icons/CheckGreen';
 
 import { Transaction } from '../types';
 import Volumn from './Volumn';
-import CriticalRisks from './CriticalRisks';
+import CriticalRisks from './labels/CriticalRisks';
 import WalletActions from './WalletActions';
 import Modal from './Modal';
 import Description from './Description';
 
 type Props = {
   onClose: VoidFunction;
-  data: any | Transaction;
+  transaction: Transaction;
 };
 
 const dmMono = DM_Mono({
@@ -20,7 +20,7 @@ const dmMono = DM_Mono({
   subsets: ['latin'],
 });
 
-export default function SwapModal({ data, onClose }: Props) {
+export default function SwapModal({ transaction, onClose }: Props) {
   return (
     <Modal title="Swap" wallet="Wallet1" needHelp onClose={onClose}>
       <Stack spacing={2} mt={2}>
@@ -41,7 +41,7 @@ export default function SwapModal({ data, onClose }: Props) {
         <Description title="Network Fee" description="0.0034 ETH ~$1.59" />
       </Stack>
 
-      <CriticalRisks data={data} />
+      <CriticalRisks risks={transaction.critical_risks} />
 
       <WalletActions title="Go to Home" swipe onSubmit={() => console.log('GoToHome')} />
     </Modal>
