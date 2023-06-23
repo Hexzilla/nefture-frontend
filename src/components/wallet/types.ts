@@ -1,5 +1,6 @@
 export interface Wallet {
   title: string;
+  address: string;
   status: number;
   statusTitle: String;
   value: number;

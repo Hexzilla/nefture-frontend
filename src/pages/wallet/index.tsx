@@ -54,6 +54,7 @@ WalletPage.getLayout = (page: React.ReactElement) => (
 const items: Wallet[] = [
   {
     title: 'Cactus 1',
+    address: '0x8eEf868D86e583fd2750cfAb337a7626aB464948',
     status: 0,
     statusTitle: 'Check',
     value: 0,
@@ -61,6 +62,7 @@ const items: Wallet[] = [
   },
   {
     title: 'Cactus 2',
+    address: '0x33022222f2783fc46494f37a786e5Ab38626868D',
     status: 1,
     statusTitle: 'Severe',
     value: 97,
@@ -68,6 +70,7 @@ const items: Wallet[] = [
   },
   {
     title: 'Cactus 3',
+    address: '0x12345222f27786e5Ab38626868D883fc46494f37',
     status: 2,
     statusTitle: 'Medium',
     value: 97,
@@ -75,6 +78,7 @@ const items: Wallet[] = [
   },
   {
     title: 'Cactus 4',
+    address: '0x1118eEf2783fdaB50c46494f37a7626868D86220',
     status: 3,
     statusTitle: 'Very Good',
     value: 97,

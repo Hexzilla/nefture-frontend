@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Box, Card, Stack, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
 
@@ -18,11 +18,10 @@ type Props = {
   activeWallet: Wallet;
 };
 
-export default function ActiveWallet({ onClose, activeWallet }: Props) {
+export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
   const { copy } = useCopyToClipboard();
   const { enqueueSnackbar } = useSnackbar();
   const [open, setOpen] = useState(false);
-  const [walletName, setWalletname] = useState(activeWallet.title);
   const [loadingWallet, setLoadingWallet] = useState(true);
 
   const handleClose = () => {
@@ -33,6 +32,15 @@ export default function ActiveWallet({ onClose, activeWallet }: Props) {
     copy(content);
     enqueueSnackbar('Copied!');
   };
+
+  const walletAddress = useMemo(() => {
+    const address = wallet.address;
+    return address.substring(0, 7) + '...' + address.slice(address.length - 5);
+  }, [wallet.address]);
+
+  const setWalletName = (name: string) => {
+    wallet.title = name;
+  }
 
   return (
     <>
@@ -55,7 +63,7 @@ export default function ActiveWallet({ onClose, activeWallet }: Props) {
           onClick={() => setOpen(true)}
           sx={{ cursor: 'pointer' }}
         >
-          {walletName} <PencilGray />
+          {wallet.title} <PencilGray />
         </Typography>
         <Typography
           color={'gray'}
@@ -63,9 +71,9 @@ export default function ActiveWallet({ onClose, activeWallet }: Props) {
           fontSize={'12px'}
           mb={2}
           sx={{ cursor: 'pointer' }}
-          onClick={() => copyToClipboard('0x8999999302930B2')}
+          onClick={() => copyToClipboard(wallet.address)}
         >
-          0x899999...0B2
+          {walletAddress}
           <SvgColor
             src="/assets/icons/nefture/ic_copy.svg"
             sx={{ marginLeft: '2px', marginBottom: '-0.5em', width: '16px' }}
@@ -106,9 +114,9 @@ export default function ActiveWallet({ onClose, activeWallet }: Props) {
 
       <ChangeWalletDialog
         open={open}
+        walletName={wallet.title}
         handleClose={handleClose}
-        onChange={setWalletname}
-        walletName={walletName}
+        onChange={setWalletName}
       />
     </>
   );

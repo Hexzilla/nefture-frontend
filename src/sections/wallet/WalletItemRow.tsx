@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Box, Card, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
 
 import EthereumSmallIcon from '@components/icons/EthereumSmallIcon';
@@ -46,6 +46,11 @@ export default function WalletItemRow({ wallet }: Props) {
     setOpen(false);
   };
 
+  const walletAddress = useMemo(() => {
+    const address = wallet.address;
+    return address.substring(0, 7) + '...' + address.slice(address.length - 5);
+  }, [wallet.address]);
+
   return (
     <>
       <Card sx={styles} onClick={handleSelectWallet}>
@@ -74,7 +79,7 @@ export default function WalletItemRow({ wallet }: Props) {
               </Typography>
               {isMobile && (
                 <Typography color={'gray'} fontSize={'12px'}>
-                  0xebC73...8D0B2
+                  {walletAddress}
                 </Typography>
               )}
             </Stack>
@@ -84,10 +89,9 @@ export default function WalletItemRow({ wallet }: Props) {
               </Box>
             )}
           </Stack>
-          {/* onClick={() => copyToClipboard('0xebC7393039298D0B2')} */}
           {!isMobile && (
             <Stack direction="row" spacing={2} alignItems={'center'}>
-              <Typography>0xebC73...8D0B2</Typography>
+              <Typography>{walletAddress}</Typography>
               <IconButton>
                 <Iconify icon="eva:copy-fill" width={20} />
               </IconButton>
