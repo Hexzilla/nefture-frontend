@@ -16,7 +16,7 @@ const createWallet = () => {
   return {
     title: 'User Wallet',
     address: '0x8eEf2750c37a7626868D86e583fdaB46494fAb38',
-    status: 1,
+    status: 0,
     statusTitle: 'Check',
     value: 1123,
     progress: 1,
