@@ -1,13 +1,14 @@
+import { useState, useEffect } from 'react';
 import { Skeleton, Stack } from '@mui/material';
 
+import { Wallet } from '@components/wallet';
+
 import WalletItem from './WalletItem';
-import { WalletStatus } from './types';
-import { useState, useEffect } from 'react';
 
 type Props = {
   alertVisibility: boolean;
-  items: WalletStatus[];
-  onClick: (item: WalletStatus) => void;
+  items: Wallet[];
+  onClick: (item: Wallet) => void;
   copyToClipboard: (content: string) => void;
 };
 

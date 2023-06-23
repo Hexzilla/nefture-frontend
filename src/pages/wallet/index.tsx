@@ -9,13 +9,13 @@ import AnimatedContainer from '@components/animated-container';
 import PlusButton from '@components/icons/PlusButton';
 import PlusIcon from '@components/icons/PlusWhite';
 import { useSettingsContext } from '@components/settings';
+import { Wallet, WalletProvider, useWalletContext } from '@components/wallet';
 import DashboardLayout from '@layouts/dashboard';
 import WalletList from '@sections/wallet/WalletList';
 import useResponsive from '@hooks/useResponsive';
 import ActiveWallet from '@sections/wallet/ActiveWallet';
 import getVariant from '@sections/_examples/extra/animate/getVariant';
 
-import { WalletStatus } from '@sections/wallet/types';
 import useCopyToClipboard from '@hooks/useCopyToClipboard';
 
 export default function WalletPage() {
@@ -50,7 +50,7 @@ export default function WalletPage() {
     setLg(12);
   };
 
-  const showSelectedWallet = (item: WalletStatus) => {
+  const showSelectedWallet = (item: Wallet) => {
     setActiveWallet(item);
     setLoadingStatus(item.progress);
     addWallet();
@@ -136,9 +136,13 @@ export default function WalletPage() {
   );
 }
 
-WalletPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
+WalletPage.getLayout = (page: React.ReactElement) => (
+  <DashboardLayout>
+    <WalletProvider>{page}</WalletProvider>
+  </DashboardLayout>
+);
 
-const items: WalletStatus[] = [
+const items: Wallet[] = [
   {
     title: 'Cactus 1',
     status: 0,

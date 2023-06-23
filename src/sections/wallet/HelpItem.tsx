@@ -1,7 +1,5 @@
-import { Switch, Typography, Stack, Box, Tooltip } from '@mui/material';
+import { Typography, Stack, Box, Tooltip } from '@mui/material';
 
-import HelpWhite from '@components/icons/HelpWhite';
-import { WalletStatus } from './types';
 import SvgColor from '@components/svg-color/SvgColor';
 
 type Props = {

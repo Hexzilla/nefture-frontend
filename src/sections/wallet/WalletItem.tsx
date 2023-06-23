@@ -3,7 +3,7 @@ import { Box, Button, Card, CircularProgress, Dialog, DialogActions, DialogConte
 import { useState } from 'react';
 import PencilGray from '@components/icons/PencilGray';
 import AlertItem from './AlertItem';
-import { WalletStatus } from './types';
+import { Wallet } from './types';
 import useResponsive from '@hooks/useResponsive';
 import EthereumSmallIcon from '@components/icons/EthereumSmallIcon';
 import SvgColor from '@components/svg-color/SvgColor';
@@ -11,7 +11,7 @@ import Iconify from '@components/iconify/Iconify';
 import ChangeWalletDialog from './ChangeWalletDialog';
 
 type Props = {
-  item: WalletStatus;
+  item: Wallet;
   alertVisibility: boolean;
   onClick: VoidFunction;
   copyToClipboard: (content: string) => void;

@@ -1,7 +1,5 @@
-import { Switch, Typography, Stack, Box } from '@mui/material';
+import { Switch, Stack } from '@mui/material';
 
-import HelpWhite from '@components/icons/HelpWhite';
-import { WalletStatus } from './types';
 import HelpItem from './HelpItem';
 
 type Props = {
