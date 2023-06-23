@@ -1,4 +1,4 @@
-import { Box, Card, Stack, TextField, Typography } from '@mui/material';
+import { Box, Stack, TextField, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useMemo, useState } from 'react';
 
@@ -6,7 +6,7 @@ import Close from '@components/icons/GrayClose';
 import PencilGray from '@components/icons/PencilGray';
 import SvgColor from '@components/svg-color/SvgColor';
 import { Wallet } from '@components/wallet';
-import AlertItem from '@components/wallet/AlertItem';
+import AlertSettings from '@components/wallet/AlertSettings';
 
 import useCopyToClipboard from '@hooks/useCopyToClipboard';
 
@@ -95,12 +95,7 @@ export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
         defaultLoadValue={wallet.status >= 1 ? 5 : 1}
       />
 
-      <Card sx={{ marginTop: '2em', borderRadius: '8px' }}>
-        <AlertItem title="Real-time Alert" type={1} />
-      </Card>
-      <Card sx={{ marginTop: '1em', marginBottom: '1em', borderRadius: '8px' }}>
-        <AlertItem title="Monthly Alert" type={1} />
-      </Card>
+      <AlertSettings />
 
       {!!loadingWallet && (
         <Stack
