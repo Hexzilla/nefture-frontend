@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Alert from '@components/icons/Alert';
 import CheckGreen from '@components/icons/CheckGreen';
 import Down from '@components/icons/Down';
-import Close from '@components/icons/GrayClose';
+import CloseIcon from '@components/icons/GrayClose';
 import Help from '@components/icons/Help';
 import TransactionIcon from '@components/icons/Transaction';
 import { DM_Mono } from '@next/font/google';
@@ -47,10 +47,10 @@ export default function WalletView({ onClosed, data }: Props) {
           <TransactionIcon />
           <Typography>Swap</Typography>
         </Stack>
-        <Stack direction="row" spacing={1} alignItems="center">
+        <Stack direction="row" spacing={2} alignItems="center">
           <Typography>Wallet1</Typography>
           <Box sx={{ cursor: 'pointer' }} onClick={onClosed}>
-            <Close />
+            <CloseIcon />
           </Box>
         </Stack>
       </Stack>
