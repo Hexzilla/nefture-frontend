@@ -11,6 +11,7 @@ import DashboardLayout from '../layouts/dashboard';
 import SuspiciousTransactions from '@sections/dashboard/transactions/SuspiciousTransactions';
 import LatestTransactions from '@sections/dashboard/transactions/LatestTransactions';
 import SwapModal from '@sections/dashboard/wallet/Swap';
+import BurnModal from '@sections/dashboard/wallet/Burn';
 import { Transaction } from '@sections/dashboard/types';
 import SkeletonWalletView from '@sections/dashboard/wallet/SkeletonWalletView';
 
@@ -54,11 +55,11 @@ const Dashboard = () => {
       </Grid>
       <Grid item xs={12} lg={5}>
         {!isMobile && state == 0 && <SkeletonWalletView />}
-        {walletVisible && <SwapModal onClosed={hideWallet} data={activeWallet} />}
+        {walletVisible && <BurnModal onClose={hideWallet} data={activeWallet} />}
         {isMobile && (
           <Dialog fullWidth maxWidth="xs" open={walletVisible}>
             <Stack>
-              <SwapModal onClosed={hideWallet} data={activeWallet} />
+              <SwapModal onClose={hideWallet} data={activeWallet} />
             </Stack>
           </Dialog>
         )}

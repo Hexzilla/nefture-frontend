@@ -20,7 +20,7 @@ const dmMono = DM_Mono({
 
 export default function Modal({ title, wallet, needHelp, children, onClose }: Props) {
   return (
-    <Card sx={{ padding: '12px' }}>
+    <Card sx={{ padding: '12px' }} className={dmMono.className}>
       <DialogHeader title={title} wallet={wallet} onClose={onClose} />
 
       {children}

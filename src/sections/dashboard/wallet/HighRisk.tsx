@@ -20,30 +20,23 @@ const dmMono = DM_Mono({
   subsets: ['latin'],
 });
 
-export default function SwapModal({ data, onClose }: Props) {
+export default function HighRiskModal({ data, onClose }: Props) {
   return (
-    <Modal title="Swap" wallet="Wallet1" needHelp onClose={onClose}>
+    <Modal title="Burn" wallet="Wallet1" needHelp onClose={onClose}>
       <Stack spacing={2} mt={2}>
-        <Volumn title="Receiving" icon="plus" quantity="5260 USDC" volumn="$5,260.42" />
-        <Volumn title="Paying" icon="minus" quantity="4260 USDT" volumn="$4,260.42" />
+        <Volumn title="Burning" icon="minus" quantity="2 Tokens" volumn="$5,260.42" />
       </Stack>
 
       <Stack spacing="10px" my={3} className={dmMono.className}>
-        <Description title="Protocal">
-          <Stack direction="row" spacing={1} alignItems="center">
-            <Typography>Uniswap V2 router</Typography>
-            <Box display="flex" alignItems="center" sx={{ cursor: 'pointer' }} onClick={onClose}>
-              <CheckGreen />
-            </Box>
-          </Stack>
-        </Description>
+        <Typography mb="8px">Destinataire</Typography>
+        <Description title="Wallet" description="0x32455...7c9A3" />
         <Description title="Chain" description="Ethereum" />
         <Description title="Network Fee" description="0.0034 ETH ~$1.59" />
       </Stack>
 
       <CriticalRisks data={data} />
 
-      <WalletActions title="Go to Home" swipe onSubmit={() => console.log('GoToHome')} />
+      <WalletActions title="Reject (recommended)" swipe onSubmit={() => console.log('Reject')} />
     </Modal>
   );
 }
