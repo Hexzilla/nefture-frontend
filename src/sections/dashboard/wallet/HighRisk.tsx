@@ -1,14 +1,13 @@
 import { Box, Stack, Typography } from '@mui/material';
 import { DM_Mono } from '@next/font/google';
 
-import CheckGreen from '@components/icons/CheckGreen';
+import Description from '@components/wallet/Description';
 
 import { Transaction } from '../types';
 import Volumn from './Volumn';
 import CriticalRisks from './labels/CriticalRisks';
 import WalletActions from './WalletActions';
 import Modal from './Modal';
-import Description from './Description';
 
 type Props = {
   transaction: Transaction;
