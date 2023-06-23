@@ -16,7 +16,6 @@ import Iconify from '@components/iconify/Iconify';
 import AlertItem from '@components/wallet/AlertItem';
 import useResponsive from '@hooks/useResponsive';
 
-import ChangeWalletDialog from './ChangeWalletDialog';
 import useCopyToClipboard from '@hooks/useCopyToClipboard';
 import { useSnackbar } from 'notistack';
 
@@ -28,8 +27,7 @@ export default function WalletItemRow({ wallet }: Props) {
   const isMobile = useResponsive('down', 'sm');
   const COLORS = ['error', 'warning', 'success'] as const;
   const { modalType, openModal, setActiveWallet } = useWalletContext();
-  const [walletName, setWalletname] = useState(wallet.title);
-  const [open, setOpen] = useState(false);
+  const [walletName, setWalletName] = useState(wallet.title);
   const [edit, setEdit] = useState(false);
   const { copy } = useCopyToClipboard();
   const { enqueueSnackbar } = useSnackbar();
@@ -55,15 +53,15 @@ export default function WalletItemRow({ wallet }: Props) {
     setActiveWallet(wallet);
   };
 
-  const handleClose = () => {
-    setOpen(false);
-    setEdit(true);
-  };
+  const handleKeyInput = (e: any) => {
+    if (e.keyCode === 13) {
+      setEdit(false);
+    }
+  }
 
   const openEditDialog = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation();
-    if (edit == true) setEdit(false);
-    else setOpen(true);
+    setEdit(true);
   };
 
   const copyToClipboard = (content: string) => {
@@ -114,7 +112,8 @@ export default function WalletItemRow({ wallet }: Props) {
                   display: edit ? 'inherit' : 'none',
                   maxWidth: '96px',
                 }}
-                onChange={(e) => setWalletname(e.target.value)}
+                onKeyDown={handleKeyInput}
+                onChange={(e) => setWalletName(e.target.value)}
               />
               {isMobile && (
                 <Typography color={'gray'} fontSize={'12px'}>
@@ -180,7 +179,6 @@ export default function WalletItemRow({ wallet }: Props) {
           )}
         </Stack>
       </Card>
-      <ChangeWalletDialog open={open} handleClose={handleClose} walletName={walletName} />
     </>
   );
 }

@@ -115,7 +115,7 @@ export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
         </Stack>
       )}
 
-      <ChangeWalletDialog open={open} walletName={wallet.title} handleClose={handleClose} />
+      {/* <ChangeWalletDialog open={open} walletName={wallet.title} handleClose={handleClose} /> */}
     </>
   );
 }
