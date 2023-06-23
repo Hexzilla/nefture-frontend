@@ -1,17 +1,14 @@
-import { Box, Card, Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import { DM_Mono } from '@next/font/google';
-import { useState } from 'react';
 
 import CheckGreen from '@components/icons/CheckGreen';
-import Help from '@components/icons/Help';
 
 import { Transaction } from '../types';
-
 import Volumn from './Volumn';
 import CriticalRisks from './CriticalRisks';
-import DialogHeader from './DialogHeader';
 import DialogAction from './DialogAction';
 import Modal from './Modal';
+import Description from './Description';
 
 type Props = {
   onClosed: VoidFunction;
@@ -31,44 +28,17 @@ export default function SwapModal({ data, onClosed }: Props) {
         <Volumn title="Paying" icon="minus" quantity="4260 USDT" volumn="$4,260.42" />
       </Stack>
 
-      <Stack
-        direction="row"
-        spacing={2}
-        alignItems="center"
-        justifyContent="space-between"
-        mt={3}
-        className={dmMono.className}
-      >
-        <Typography color="gray">Protocal</Typography>
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Typography>Uniswap V2 router</Typography>
-          <Box display="flex" alignItems="center" sx={{ cursor: 'pointer' }} onClick={onClosed}>
-            <CheckGreen />
-          </Box>
-        </Stack>
-      </Stack>
-      <Stack
-        direction="row"
-        spacing={2}
-        alignItems="center"
-        justifyContent="space-between"
-        mt={1}
-        className={dmMono.className}
-      >
-        <Typography color="gray">Chain</Typography>
-        <Typography>Ethereum</Typography>
-      </Stack>
-      <Stack
-        direction="row"
-        spacing={2}
-        alignItems="center"
-        justifyContent="space-between"
-        mt={1}
-        mb={3}
-        className={dmMono.className}
-      >
-        <Typography color="gray">Network Fee</Typography>
-        <Typography>0.0034 ETH ~$1.59</Typography>
+      <Stack spacing={1} mt={3} className={dmMono.className}>
+        <Description title="Protocal">
+          <Stack direction="row" spacing={1} alignItems="center">
+            <Typography>Uniswap V2 router</Typography>
+            <Box display="flex" alignItems="center" sx={{ cursor: 'pointer' }} onClick={onClosed}>
+              <CheckGreen />
+            </Box>
+          </Stack>
+        </Description>
+        <Description title="Chain" description="Ethereum" />
+        <Description title="Network Fee" description="0.0034 ETH ~$1.59" />
       </Stack>
 
       <CriticalRisks data={data} />

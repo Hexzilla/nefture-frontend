@@ -1,6 +1,7 @@
+import { Card, Stack, Typography } from '@mui/material';
+
 import PlusBlue from '@components/icons/PlusBlue';
 import MinusCrucial from '@components/icons/MinusCrucial';
-import { Card, Stack, Typography } from '@mui/material';
 
 type Props = {
   title: string;
