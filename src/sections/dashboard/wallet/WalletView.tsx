@@ -1,35 +1,20 @@
-import { Box, Button, Card, Collapse, Stack, Typography } from '@mui/material';
+import { Box, Card, Stack, Typography } from '@mui/material';
 import { DM_Mono } from '@next/font/google';
-import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
 import CheckGreen from '@components/icons/CheckGreen';
-import CloseIcon from '@components/icons/GrayClose';
 import Help from '@components/icons/Help';
-import TransactionIcon from '@components/icons/Transaction';
 
-import { Risk, Transaction } from '../types';
+import { Transaction } from '../types';
 
 import Volumn from './Volumn';
 import CriticalRisks from './CriticalRisks';
 import DialogHeader from './DialogHeader';
-
-const Swipezor = dynamic(() => import('./Swipezor'), {
-  ssr: false,
-});
+import DialogAction from './DialogAction';
 
 type Props = {
   onClosed: VoidFunction;
   data: any | Transaction;
-};
-
-const buttonSX = {
-  width: '100%',
-  backgroundColor: 'black',
-  marginTop: '12px',
-  '&:hover': {
-    backgroundColor: '#2965FF',
-  },
 };
 
 const dmMono = DM_Mono({
@@ -37,14 +22,14 @@ const dmMono = DM_Mono({
   subsets: ['latin'],
 });
 
-export default function WalletView({ onClosed, data }: Props) {
+export default function WalletView({ data, onClosed }: Props) {
   const [display, setDisplay] = useState('flex');
   const [arrowVisible, setArrowVisible] = useState('visible');
 
   return (
-    <Card sx={{ padding: '10px', minHeight: '90vh' }}>
+    <Card sx={{ padding: '12px' }}>
       <DialogHeader title="Swap" walletName="Wallet1" onClose={onClosed} />
-      
+
       <Volumn display={display} data={data} type={'Receiving'} />
       <Volumn display={display} data={data} type={'Paying'} />
 
@@ -93,20 +78,7 @@ export default function WalletView({ onClosed, data }: Props) {
 
       <CriticalRisks data={data} />
 
-      <Stack mt={3} spacing={1}>
-        <Button href="/" size="large" variant="contained" sx={buttonSX}>
-          Go to Home
-        </Button>
-
-        <Swipezor
-          mainText="Swipe to Approve"
-          overlayText="Approved"
-          onSwipeDone={function () {
-            setArrowVisible('hidden');
-          }}
-          arrowVisible={arrowVisible}
-        />
-      </Stack>
+      <DialogAction />
 
       <Stack alignItems="center" sx={{ padding: '10px 20px', marginTop: '12px' }}>
         <Stack direction="row" spacing={2}>
