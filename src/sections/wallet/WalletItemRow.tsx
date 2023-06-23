@@ -1,26 +1,25 @@
-import { Box, Button, Card, CircularProgress, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, Stack, TextField, Typography } from '@mui/material';
-
 import { useState } from 'react';
-import PencilGray from '@components/icons/PencilGray';
-import AlertItem from './AlertItem';
-import { Wallet } from './types';
-import useResponsive from '@hooks/useResponsive';
+import { Box, Card, CircularProgress, IconButton, Stack, Typography } from '@mui/material';
+
 import EthereumSmallIcon from '@components/icons/EthereumSmallIcon';
-import SvgColor from '@components/svg-color/SvgColor';
+import PencilGray from '@components/icons/PencilGray';
+import { Wallet, useWalletContext } from '@components/wallet';
 import Iconify from '@components/iconify/Iconify';
+import AlertItem from '@components/wallet/AlertItem';
+import useResponsive from '@hooks/useResponsive';
+
 import ChangeWalletDialog from './ChangeWalletDialog';
 
 type Props = {
-  item: Wallet;
+  wallet: Wallet;
   alertVisibility: boolean;
-  onClick: VoidFunction;
-  copyToClipboard: (content: string) => void;
 };
 
-export default function WalletItem({ item, alertVisibility, onClick, copyToClipboard }: Props) {
+export default function WalletItemRow({ wallet, alertVisibility }: Props) {
   const isMobile = useResponsive('down', 'sm');
   const COLORS = ['error', 'warning', 'success'] as const;
-  const [walletName, setWalletname] = useState(item.title)
+  const { openModal, setActiveWallet } = useWalletContext();
+  const [walletName, setWalletname] = useState(wallet.title);
   const [open, setOpen] = useState(false);
 
   const styles = {
@@ -39,13 +38,18 @@ export default function WalletItem({ item, alertVisibility, onClick, copyToClipb
     position: 'relative',
   };
 
+  const handleSelectWallet = () => {
+    openModal('View');
+    setActiveWallet(wallet);
+  };
+
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
     <>
-      <Card sx={styles} onClick={onClick}>
+      <Card sx={styles} onClick={handleSelectWallet}>
         <Stack
           direction="row"
           spacing={2}
@@ -96,21 +100,21 @@ export default function WalletItem({ item, alertVisibility, onClick, copyToClipb
             spacing={2}
             style={{ minWidth: '140px' }}
             alignItems={'center'}
-            onClick={onClick}
+            onClick={handleSelectWallet}
           >
-            {item.status === 0 && (
+            {wallet.status === 0 && (
               <Card>
                 <Typography m={1.5}>Launch Check</Typography>
               </Card>
             )}
-            {item.status !== 0 && (
+            {wallet.status !== 0 && (
               <>
-                <Typography sx={{ color: `${COLORS[item.status - 1]}.main` }}>
-                  {item.statusTitle}
+                <Typography sx={{ color: `${COLORS[wallet.status - 1]}.main` }}>
+                  {wallet.statusTitle}
                 </Typography>
                 <Box sx={circleStyle}>
                   <CircularProgress
-                    color={COLORS[item.status - 1]}
+                    color={COLORS[wallet.status - 1]}
                     variant="determinate"
                     value={95}
                     size={48}
@@ -135,7 +139,12 @@ export default function WalletItem({ item, alertVisibility, onClick, copyToClipb
           )}
         </Stack>
       </Card>
-      <ChangeWalletDialog open={open} handleClose={handleClose} onChange={setWalletname} walletName={walletName}/>
+      <ChangeWalletDialog
+        open={open}
+        handleClose={handleClose}
+        onChange={setWalletname}
+        walletName={walletName}
+      />
     </>
   );
 }

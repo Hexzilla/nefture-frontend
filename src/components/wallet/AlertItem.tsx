@@ -8,7 +8,6 @@ type Props = {
 };
 
 export default function AlertItem({ title, type }: Props) {
-
   return (
     <Stack
       direction="row"

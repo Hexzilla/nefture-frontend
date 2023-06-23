@@ -1,9 +1,13 @@
 import { useMemo, useState, useEffect, useContext, useCallback, createContext } from 'react';
 import localStorageAvailable from '../../utils/localStorageAvailable';
-import { Wallet, WalletValueProps, WalletContextProps } from './types';
+import { Wallet, WalletValueProps, WalletContextProps, ModalType } from './types';
 
 const initialState: WalletContextProps = {
+  modalType: null,
+  openModal: () => {},
+  closeModal: () => {},
   activeWallet: null,
+  setActiveWallet: () => {},
 };
 
 export const WalletContext = createContext(initialState);
@@ -21,14 +25,18 @@ type WalletProviderProps = {
 };
 
 export function WalletProvider({ children }: WalletProviderProps) {
+  const [modalType, openModal] = useState<ModalType>(null);
   const [activeWallet, setActiveWallet] = useState<Wallet | null>(null);
 
   const memoizedValue = useMemo(
     () => ({
+      modalType,
+      openModal,
+      closeModal: () => openModal(null),
       activeWallet,
       setActiveWallet,
     }),
-    [activeWallet, setActiveWallet]
+    [modalType, activeWallet]
   );
 
   return <WalletContext.Provider value={memoizedValue}>{children}</WalletContext.Provider>;

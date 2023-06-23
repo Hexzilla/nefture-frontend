@@ -1,7 +1,8 @@
+import { Box, Button, Card, CircularProgress, Stack, Typography } from '@mui/material';
+
 import ReloadGray from '@components/icons/ReloadGray';
 import SvgColor from '@components/svg-color/SvgColor';
-import { Box, Button, Card, CircularProgress, Stack, Typography } from '@mui/material';
-import { Wallet } from './types';
+import { Wallet } from '@components/wallet/types';
 
 type Props = {
   activeWallet: Wallet;

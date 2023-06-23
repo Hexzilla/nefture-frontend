@@ -17,10 +17,14 @@ import ActiveWallet from '@sections/wallet/ActiveWallet';
 import getVariant from '@sections/_examples/extra/animate/getVariant';
 
 import useCopyToClipboard from '@hooks/useCopyToClipboard';
+import AddWallet from '@sections/wallet/AddWallet';
+import AddWalletButton from '@sections/wallet/AddWalletButton';
+import WalletModal from '@sections/wallet/WalletModal';
 
 export default function WalletPage() {
   const isMobile = useResponsive('down', 'sm');
   const { themeStretch } = useSettingsContext();
+  const { modalType, openModal } = useWalletContext();
   const { enqueueSnackbar } = useSnackbar();
   const { copy } = useCopyToClipboard();
   const [lg, setLg] = useState(12);
@@ -33,17 +37,11 @@ export default function WalletPage() {
     copy(content);
   };
 
-  const addWallet = () => {
+  const handleAddWallet = () => {
     setLg(8);
-    if (isMobile) setOpenWallet(true);
-    else {
-      (async () => {
-        setTimeout(() => {
-          setOpenWallet(true);
-        }, 500);
-      })();
-    }
+    openModal('New');
   };
+
   const closeAddWallet = () => {
     setOpenWallet(false);
     setLoadingStatus(0);
@@ -53,7 +51,8 @@ export default function WalletPage() {
   const showSelectedWallet = (item: Wallet) => {
     setActiveWallet(item);
     setLoadingStatus(item.progress);
-    addWallet();
+    setLg(8);
+    setOpenWallet(true);
   };
 
   const updateStatus = () => {
@@ -75,62 +74,13 @@ export default function WalletPage() {
                   Check your wallet security and protect your assets.
                 </Typography>
               </Box>
-              {!isMobile && (
-                <Button
-                  sx={{ '&:hover': { backgroundColor: 'primary.main' } }}
-                  variant="contained"
-                  size="large"
-                  startIcon={<PlusIcon />}
-                  onClick={addWallet}
-                >
-                  Add Wallet
-                </Button>
-              )}
-              {isMobile && (
-                <Box onClick={addWallet}>
-                  <PlusButton />
-                </Box>
-              )}
+              <AddWalletButton isMobile={isMobile} onClick={handleAddWallet} />
             </Stack>
-            <WalletList
-              alertVisibility={lg == 12 ? true : false}
-              onClick={showSelectedWallet}
-              items={items}
-              copyToClipboard={copyToClipboard}
-            />
+            <WalletList alertVisibility={lg == 12 ? true : false} wallets={items} />
           </Container>
         </Grid>
-        {lg != 12 && !isMobile && openWallet && (
-          <Grid item xs={12} lg={12 - lg}>
-            <MotionContainer>
-              <Box component={m.div} variants={getVariant('slideInRight')}>
-                <ActiveWallet
-                  onClose={closeAddWallet}
-                  loadingStatus={loadingStatus}
-                  updateLoading={updateStatus}
-                  copyToClipboard={copyToClipboard}
-                  activeWallet={activeWallet}
-                />
-              </Box>
-            </MotionContainer>
-          </Grid>
-        )}
-        {isMobile && (
-          <DialogAnimate
-            fullWidth
-            maxWidth="xs"
-            open={openWallet}
-            variants={getVariant('bounceIn')}
-          >
-            <ActiveWallet
-              onClose={closeAddWallet}
-              loadingStatus={loadingStatus}
-              updateLoading={updateStatus}
-              copyToClipboard={copyToClipboard}
-              activeWallet={activeWallet}
-            />
-          </DialogAnimate>
-        )}
+
+        <WalletModal isMobile={isMobile} />
       </Grid>
     </AnimatedContainer>
   );

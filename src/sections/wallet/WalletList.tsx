@@ -3,16 +3,14 @@ import { Skeleton, Stack } from '@mui/material';
 
 import { Wallet } from '@components/wallet';
 
-import WalletItem from './WalletItem';
+import WalletItemRow from './WalletItemRow';
 
 type Props = {
   alertVisibility: boolean;
-  items: Wallet[];
-  onClick: (item: Wallet) => void;
-  copyToClipboard: (content: string) => void;
+  wallets: Wallet[];
 };
 
-export default function WalletList({ alertVisibility, items, onClick, copyToClipboard }: Props) {
+export default function WalletList({ alertVisibility, wallets }: Props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,16 +23,14 @@ export default function WalletList({ alertVisibility, items, onClick, copyToClip
 
   return (
     <Stack direction="column" spacing="10px" sx={{ cursor: 'pointer' }} mt={3}>
-      {items.map((item, index) =>
+      {wallets.map((wallet, index) =>
         loading ? (
           <Skeleton variant="text" height={140} sx={{ marginBottom: '-50px!important' }} />
         ) : (
-          <WalletItem
+          <WalletItemRow
             key={index}
-            item={item}
+            wallet={wallet}
             alertVisibility={alertVisibility}
-            onClick={() => onClick(item)}
-            copyToClipboard={copyToClipboard}
           />
         )
       )}
