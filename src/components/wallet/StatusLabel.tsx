@@ -1,11 +1,12 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, SxProps, Theme } from '@mui/material';
 
 type Props = {
   title: string;
   variant: 'low' | 'medium' | 'high' | 'danger';
+  sx?: SxProps<Theme>;
 };
 
-export default function StatusLabel({ title, variant }: Props) {
+export default function StatusLabel({ title, variant, sx }: Props) {
   return (
     <Box
       sx={{
@@ -14,7 +15,7 @@ export default function StatusLabel({ title, variant }: Props) {
         color: colors[variant],
         padding: '18px',
         textAlign: 'center',
-        width: '100%',
+        ...sx,
       }}
     >
       <Typography>{title}</Typography>
