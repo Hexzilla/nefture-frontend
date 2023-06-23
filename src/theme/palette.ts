@@ -30,7 +30,7 @@ const GREY = {
   600: '#637381',
   700: '#454F5B',
   800: '#252525',
-  900: "#292929",
+  900: '#292929',
   1000: '#161C24',
 };
 
@@ -41,7 +41,7 @@ const PRIMARY = {
   dark: '#007B55',
   darker: '#005249',
   contrastText: '#FFFFFF',
-  buttonColor:'rgb(255, 255, 255, 6%)',
+  buttonColor: 'rgb(255, 255, 255, 6%)',
 };
 
 const SECONDARY = {
@@ -96,7 +96,22 @@ const CRITICAL = {
   dark: '#B71D18',
   darker: '#7A0916',
   contrastText: '#FFFFFF',
-}
+};
+
+const RISK = {
+  color: {
+    low: '#2965FF',
+    medium: '#FF9901',
+    high: '#FF6C01',
+    danger: '#FF4601',
+  },
+  background: {
+    low: '#28344A',
+    medium: '#4A4028',
+    high: '#4A3828',
+    danger: '#4A2828',
+  },
+};
 
 const COMMON = {
   common: { black: '#000000', white: '#FFFFFF' },
@@ -106,6 +121,7 @@ const COMMON = {
   success: SUCCESS,
   warning: WARNING,
   critical: CRITICAL,
+  risk: RISK,
   error: ERROR,
   grey: GREY,
   divider: alpha(GREY[500], 0.24),
