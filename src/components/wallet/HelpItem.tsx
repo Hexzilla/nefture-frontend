@@ -12,7 +12,7 @@ export default function HelpItem({ title, type }: Props) {
     <Stack direction="row">
       {type == 0 && (
         <Tooltip title="This is the help">
-          <Box sx={{cursor:'pointer'}}>
+          <Box sx={{ cursor: 'pointer' }}>
             <SvgColor
               src="/assets/icons/nefture/ic_help_white_round.svg"
               sx={{ marginBottom: '-0.4em', width: '16px' }}
@@ -20,10 +20,12 @@ export default function HelpItem({ title, type }: Props) {
           </Box>
         </Tooltip>
       )}
-      <Typography sx={{ marginLeft: '0.5em', marginTop: '3px' }}>{title}</Typography>
+      <Typography variant="body2" sx={{ marginLeft: '0.5em', marginTop: '3px' }}>
+        {title}
+      </Typography>
       {type == 1 && (
         <Tooltip title="This is the help">
-          <Box sx={{cursor:'pointer'}}>
+          <Box sx={{ cursor: 'pointer' }}>
             <SvgColor
               src="/assets/icons/nefture/ic_help_white_round.svg"
               sx={{ marginBottom: '-0.4em', width: '16px', marginLeft: '0.5em' }}

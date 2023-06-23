@@ -1,4 +1,4 @@
-import { Box, Grid } from '@mui/material';
+import { Box, Card, Grid } from '@mui/material';
 import { m } from 'framer-motion';
 
 import { DialogAnimate, MotionContainer } from '@components/animate';
@@ -12,12 +12,18 @@ type Props = {
   isMobile: boolean;
 };
 
-const ModalContent = () => {
+const ModalContent = ({ isMobile }: Props) => {
   const { activeWallet, modalType, closeModal } = useWalletContext();
 
-  console.log('modalType', modalType);
   return (
-    <>
+    <Card
+      sx={{
+        padding: isMobile ? '12px' : '20px',
+        minHeight: '80vh',
+        marginBottom: '1em',
+        overflow: 'auto',
+      }}
+    >
       {modalType === 'New' && (
         <AddWallet
           onClose={closeModal}
@@ -26,12 +32,9 @@ const ModalContent = () => {
         />
       )}
       {modalType === 'View' && !!activeWallet && (
-        <ActiveWallet
-          onClose={closeModal}
-          activeWallet={activeWallet}
-        />
+        <ActiveWallet onClose={closeModal} activeWallet={activeWallet} />
       )}
-    </>
+    </Card>
   );
 };
 
@@ -42,7 +45,7 @@ export default function WalletModal({ isMobile }: Props) {
   if (isMobile) {
     return (
       <DialogAnimate fullWidth maxWidth="xs" open={!!modalType} variants={getVariant('bounceIn')}>
-        <ModalContent />
+        <ModalContent isMobile={isMobile} />
       </DialogAnimate>
     );
   }
@@ -51,7 +54,7 @@ export default function WalletModal({ isMobile }: Props) {
     <Grid item xs={12} lg={4}>
       <MotionContainer>
         <Box component={m.div} variants={getVariant('slideInRight')}>
-          <ModalContent />
+          <ModalContent isMobile={isMobile} />
         </Box>
       </MotionContainer>
     </Grid>

@@ -1,4 +1,4 @@
-import { Button, Card, Stack, TextField, Typography, Box } from '@mui/material';
+import { Button, Stack, TextField, Typography, Box } from '@mui/material';
 
 import { DM_Sans } from '@next/font/google';
 
@@ -18,19 +18,11 @@ const dmSans = DM_Sans({
 
 export default function AddWallet({ onClose, onEnterWallet, onConnectWallet }: Props) {
   return (
-    <Card
-      sx={{
-        padding: '10px 20px',
-        minHeight: '80vh',
-        marginBottom: '1em',
-        paddingLeft: '2em',
-        paddingRight: '2em',
-      }}
-    >
+    <>
       <Box sx={{ cursor: 'pointer' }} onClick={onClose}>
         <CloseIcon />
       </Box>
-      <Box ml={2} mr={2}>
+      <Box sx={{ mx: 2 }}>
         <Typography variant="h6" textAlign={'center'} mt={2} className={dmSans.className}>
           Add new Wallet
         </Typography>
@@ -73,6 +65,6 @@ export default function AddWallet({ onClose, onEnterWallet, onConnectWallet }: P
           <HelpItem title="Advantage of connecting your wallet" type={0} />
         </Stack>
       </Box>
-    </Card>
+    </>
   );
 }

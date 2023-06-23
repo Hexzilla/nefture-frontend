@@ -1,5 +1,5 @@
 import { Card, Stack, Switch, Typography } from '@mui/material';
-import { DM_Mono } from 'next/font/google';
+import { DM_Mono } from '@next/font/google';
 
 type Props = {
   title: String;
