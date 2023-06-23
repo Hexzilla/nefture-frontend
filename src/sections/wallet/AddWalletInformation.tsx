@@ -2,7 +2,7 @@ import { Button, Stack, TextField, Typography, Box } from '@mui/material';
 import { useState } from 'react';
 
 import HelpItem from './HelpItem';
-import { DM_Sans } from 'next/font/google';
+import { DM_Sans } from '@next/font/google';
 
 type Props = {
   onClick: VoidFunction;
@@ -16,6 +16,7 @@ const dmSans = DM_Sans({
 export default function AddWalletInformation({ onClick }: Props) {
   const [open, setOpen] = useState(false);
   const [display, setDisplay] = useState('flex');
+
   return (
     <Box ml={2} mr={2}>
       <Typography variant="h6" textAlign={'center'} mt={2} className={dmSans.className}>

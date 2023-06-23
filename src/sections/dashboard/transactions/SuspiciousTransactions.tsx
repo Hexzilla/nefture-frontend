@@ -1,7 +1,7 @@
 import { Stack, Typography } from '@mui/material';
 import { useMemo, useState } from 'react';
 
-import { DM_Mono } from 'next/font/google';
+import { DM_Mono } from '@next/font/google';
 import { Transaction } from '../types';
 import Container from './Container';
 import Suspicious from './Suspicious';

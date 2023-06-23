@@ -8,7 +8,7 @@ import Down from '@components/icons/Down';
 import Close from '@components/icons/GrayClose';
 import Help from '@components/icons/Help';
 import TransactionIcon from '@components/icons/Transaction';
-import { DM_Mono } from 'next/font/google';
+import { DM_Mono } from '@next/font/google';
 import { Risk, Transaction } from '../types';
 import Volumn from './Volumn';
 

@@ -27,7 +27,6 @@ export default function AddWallet({
   activeWallet,
 }: Props) {
   const [open, setOpen] = useState(false);
-  const [display, setDisplay] = useState('flex');
   const [walletName, setWalletname] = useState(activeWallet.title)
 
   const handleClose = () => {

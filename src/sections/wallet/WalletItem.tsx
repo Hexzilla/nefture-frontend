@@ -43,10 +43,9 @@ export default function WalletItem({ item, alertVisibility, onClick, copyToClipb
     setOpen(false);
   };
 
-
   return (
     <>
-      <Card sx={styles}>
+      <Card sx={styles} onClick={onClick}>
         <Stack
           direction="row"
           spacing={2}
@@ -99,12 +98,12 @@ export default function WalletItem({ item, alertVisibility, onClick, copyToClipb
             alignItems={'center'}
             onClick={onClick}
           >
-            {item.status == 0 && (
+            {item.status === 0 && (
               <Card>
                 <Typography m={1.5}>Launch Check</Typography>
               </Card>
             )}
-            {item.status != 0 && (
+            {item.status !== 0 && (
               <>
                 <Typography sx={{ color: `${COLORS[item.status - 1]}.main` }}>
                   {item.statusTitle}
