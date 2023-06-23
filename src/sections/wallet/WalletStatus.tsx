@@ -22,6 +22,7 @@ export default function WalletStatus({ activeWallet }: Props) {
 
   const COLORS = ['error', 'warning', 'success'] as const;
   const textColors = ['#FF5630', '#FE8900', '#36B37E'];
+  const zones = ['risky', 'medium', 'safe'];
 
   return (
     <>
@@ -51,7 +52,7 @@ export default function WalletStatus({ activeWallet }: Props) {
       </Typography>
       <Typography sx={{ color: 'gray', textAlign: 'center', marginTop: '1em' }}>
         Your wallet health is in the{' '}
-        <span style={{ color: textColors[activeWallet.status - 1] }}>safe zone</span>
+        <span style={{ color: textColors[activeWallet.status - 1] }}>{zones[activeWallet.status - 1]} zone</span>
       </Typography>
       <Card
         sx={{
@@ -81,7 +82,7 @@ export default function WalletStatus({ activeWallet }: Props) {
         }}
       >
         <Typography sx={{ textAlign: 'center', marginTop: '1em' }}>
-          We found <span style={{ color: textColors[activeWallet.status - 1] }}>0 approvals</span>{' '}
+          We found <span style={{ color: textColors[activeWallet.status - 1] }}>{activeWallet.approvals} approvals</span>{' '}
           on your wallet
         </Typography>
         <Button
