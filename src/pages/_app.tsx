@@ -24,7 +24,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import '../theme/css/slide.css';
 
 //Swipezor
-import '../theme/css/swipezor.css'
+import '../theme/css/swipezor.css';
 
 // ----------------------------------------------------------------------
 
@@ -52,6 +52,7 @@ import { StyledChart } from '../components/chart';
 import ProgressBar from '../components/progress-bar';
 import SnackbarProvider from '../components/snackbar';
 import { MotionLazyContainer } from '../components/animate';
+import { ModalProvider } from '../components/modals';
 import { SettingsProvider } from '../components/settings';
 
 import { AuthProvider } from '../auth/JwtContext';
@@ -82,19 +83,21 @@ export default function MyApp(props: MyAppProps) {
         <ReduxProvider store={store}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <SettingsProvider>
-              <MotionLazyContainer>
-                <ThemeProvider>
-                  <ThemeLocalization>
-                    <SnackbarProvider>
-                      <StyledChart />
-                      <ProgressBar />
-                      <AnimatePresence mode="wait" initial={false}>
-                        {getLayout(<Component {...pageProps} />)}
-                      </AnimatePresence>
-                    </SnackbarProvider>
-                  </ThemeLocalization>
-                </ThemeProvider>
-              </MotionLazyContainer>
+              <ModalProvider>
+                <MotionLazyContainer>
+                  <ThemeProvider>
+                    <ThemeLocalization>
+                      <SnackbarProvider>
+                        <StyledChart />
+                        <ProgressBar />
+                        <AnimatePresence mode="wait" initial={false}>
+                          {getLayout(<Component {...pageProps} />)}
+                        </AnimatePresence>
+                      </SnackbarProvider>
+                    </ThemeLocalization>
+                  </ThemeProvider>
+                </MotionLazyContainer>
+              </ModalProvider>
             </SettingsProvider>
           </LocalizationProvider>
         </ReduxProvider>

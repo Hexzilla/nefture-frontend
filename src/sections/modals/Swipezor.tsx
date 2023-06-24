@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useSwipeable } from 'react-swipeable';
 
 function findLeft(element: any) {

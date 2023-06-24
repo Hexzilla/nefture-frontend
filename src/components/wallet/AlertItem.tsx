@@ -13,7 +13,7 @@ export default function AlertItem({ title, type }: Props) {
       direction="row"
       spacing={3}
       style={{ alignItems: 'center' }}
-      justifyContent={'space-between'}
+      justifyContent="end"
       ml={1}
       mr={1}
       mt={2}
