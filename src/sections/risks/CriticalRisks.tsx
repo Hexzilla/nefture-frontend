@@ -32,7 +32,7 @@ export default function CriticalRisks({ risks }: Props) {
       <Collapse in={open} unmountOnExit>
         <Stack spacing="10px" m="16px">
           {(risks || []).map((item: Risk, index: number) => (
-            <RiskLabel variant="danger" description={item.description} />
+            <RiskLabel key={index} variant="danger" description={item.description} />
           ))}
         </Stack>
       </Collapse>
