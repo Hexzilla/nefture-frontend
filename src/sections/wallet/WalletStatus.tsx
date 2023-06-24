@@ -47,12 +47,12 @@ export default function WalletStatus({ activeWallet, onRefresh }: Props) {
         <Typography
           variant="body1"
           sx={{
-            color: 'success.main',
+            color: `${COLORS[activeWallet.status - 1]}.main`,
             textAlign: 'center',
             fontWeight: 700,
           }}
         >
-          Very Good
+          {activeWallet.statusTitle}
         </Typography>
         <Box component="div" pt="4px" sx={{ cursor: 'pointer' }} onClick={onRefresh}>
           <ReloadGray />
