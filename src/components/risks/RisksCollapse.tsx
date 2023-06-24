@@ -54,7 +54,12 @@ export default function RisksCollapse({ risks, variant, description }: Props) {
       <Collapse in={open} unmountOnExit>
         <Stack spacing="10px" m="16px">
           {(risks || []).map((item: Risk, index: number) => (
-            <RiskItem key={index} variant="danger" description={item.description} />
+            <RiskItem
+              key={index}
+              title="Danger"
+              variant="critical"
+              description={item.description}
+            />
           ))}
         </Stack>
       </Collapse>

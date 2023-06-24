@@ -1,20 +1,21 @@
 import { Stack, Typography } from '@mui/material';
 
-import RiskDanger from '@components/icons/RiskDanger';
+import RiskIcon from '@components/risks/RiskIcon';
+import { RiskType } from '@components/risks/types';
 
 export type AnalysisItem = {
-  variant: string;
+  variant: RiskType;
   description: string;
-}
+};
 
 type Props = {
   item: AnalysisItem;
-}
+};
 
 const AnalysisItemRow = ({ item }: Props) => {
   return (
     <Stack direction="row" alignItems="center" spacing="10px">
-      <RiskDanger />
+      <RiskIcon variant={item.variant} />
       <Typography variant="subtitle2" color="white">
         {item.description}
       </Typography>
