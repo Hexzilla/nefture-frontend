@@ -3,10 +3,10 @@ import { DM_Mono } from '@next/font/google';
 
 import Description from '@components/wallet/Description';
 import WalletAddress from '@components/wallet/WalletAddress';
+import RisksCollapse from '@components/risks/RisksCollapse';
 import StatusLabel from '@components/wallet/StatusLabel';
 
 import { Transaction } from '@sections/dashboard/types';
-import RisksCollapse from '@sections/risks/RisksCollapse';
 
 import Modal from './Modal';
 import WalletActions from './Actions';

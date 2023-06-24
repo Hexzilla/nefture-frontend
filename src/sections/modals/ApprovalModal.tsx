@@ -6,7 +6,7 @@ import WalletAddress from '@components/wallet/WalletAddress';
 import StatusLabel from '@components/wallet/StatusLabel';
 
 import { Transaction } from '@sections/dashboard/types';
-import { Coin } from '@sections/risks/types';
+import { Coin } from '@components/risks/types';
 
 import CoinItem from './CoinItem';
 import Modal from './Modal';
@@ -33,7 +33,7 @@ export default function ApprovalModal({ transaction, onClose }: Props) {
           <WalletAddress address="0x8eEf26868D86B46494fAbe583fda2750c37a7638" />
         </Box>
         <Box sx={{ width: '58%' }}>
-          <StatusLabel title="High risk" variant="danger" />
+          <StatusLabel title="High risk" variant="critical" />
         </Box>
       </Stack>
 

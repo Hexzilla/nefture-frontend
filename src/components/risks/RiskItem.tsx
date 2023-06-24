@@ -10,7 +10,7 @@ type Props = {
   description: string;
 };
 
-export default function RiskLabel({ variant, description }: Props) {
+export default function RiskItem({ variant, description }: Props) {
   const title = useMemo(() => {
     return variant[0].toUpperCase() + variant.slice(1);
   }, [variant]);

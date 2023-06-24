@@ -5,7 +5,7 @@ import Alert from '@components/icons/Alert';
 import DownIcon from '@components/icons/Down';
 
 import { Risk, RiskType } from './types';
-import RiskLabel from './RiskLabel';
+import RiskItem from './RiskItem';
 
 type Props = {
   risks?: Risk[] | null;
@@ -40,7 +40,7 @@ export default function RisksCollapse({ risks, variant, description }: Props) {
         <Stack direction="row" spacing={1} justifyContent="space-between" alignItems="start">
           <Alert />
           <div>
-            <Typography color={`risk.${variant}`}>{title}</Typography>
+            <Typography color={`risk.color.${variant}`}>{title}</Typography>
             <Typography variant="caption" color="grey">
               {subtitle}
             </Typography>
@@ -54,7 +54,7 @@ export default function RisksCollapse({ risks, variant, description }: Props) {
       <Collapse in={open} unmountOnExit>
         <Stack spacing="10px" m="16px">
           {(risks || []).map((item: Risk, index: number) => (
-            <RiskLabel key={index} variant="danger" description={item.description} />
+            <RiskItem key={index} variant="danger" description={item.description} />
           ))}
         </Stack>
       </Collapse>

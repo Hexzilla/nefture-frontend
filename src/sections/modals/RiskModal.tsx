@@ -4,11 +4,13 @@ import Description from '@components/wallet/Description';
 import WalletAddress from '@components/wallet/WalletAddress';
 import StatusLabel from '@components/wallet/StatusLabel';
 
+import { RiskType } from '@components/risks/types';
+
 import Modal from './Modal';
 import ModalActions from './Actions';
 
 type Props = {
-  variant: 'low' | 'medium' | 'high' | 'danger';
+  variant: RiskType;
   onClose: VoidFunction;
 };
 

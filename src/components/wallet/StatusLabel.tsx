@@ -1,8 +1,10 @@
 import { Box, Typography, SxProps, Theme } from '@mui/material';
 
+import { RiskType } from '@components/risks/types';
+
 type Props = {
   title: string;
-  variant: 'low' | 'medium' | 'high' | 'danger';
+  variant: RiskType;
   sx?: SxProps<Theme>;
 };
 

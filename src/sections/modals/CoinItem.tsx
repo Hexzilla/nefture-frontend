@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from '@mui/material';
 
-import { Coin } from '@sections/risks/types';
+import { Coin } from '@components/risks/types';
 
 type Props = {
   item: Coin;

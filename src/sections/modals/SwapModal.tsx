@@ -2,10 +2,10 @@ import { Box, Stack, Typography } from '@mui/material';
 import { DM_Mono } from '@next/font/google';
 
 import CheckGreen from '@components/icons/CheckGreen';
+import RisksCollapse from '@components/risks/RisksCollapse';
 import Description from '@components/wallet/Description';
 
 import { Transaction } from '@sections/dashboard/types';
-import RisksCollapse from '@sections/risks/RisksCollapse';
 
 import Modal from './Modal';
 import ModalActions from './Actions';
