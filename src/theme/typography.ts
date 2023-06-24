@@ -102,7 +102,7 @@ const typography = {
   },
   body1: {
     lineHeight: 1.25,
-    fontSize: pxToRem(16),
+    fontSize: pxToRem(17),
   },
   body2: {
     lineHeight: 1.25,

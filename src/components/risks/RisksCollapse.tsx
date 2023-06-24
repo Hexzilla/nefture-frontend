@@ -28,7 +28,7 @@ export default function RisksCollapse({ risks, variant, description }: Props) {
   }, [risks, description]);
 
   return (
-    <Card>
+    <Card sx={{ bgcolor: `risk.background.${variant}` }}>
       <Stack
         direction="row"
         spacing={2}
@@ -41,7 +41,7 @@ export default function RisksCollapse({ risks, variant, description }: Props) {
           <Alert />
           <div>
             <Typography color={`risk.color.${variant}`}>{title}</Typography>
-            <Typography variant="caption" color="grey">
+            <Typography variant="body1" color="grey">
               {subtitle}
             </Typography>
           </div>
