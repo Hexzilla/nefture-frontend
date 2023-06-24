@@ -6,9 +6,10 @@ import { Wallet } from '@components/wallet/types';
 
 type Props = {
   activeWallet: Wallet;
+  onRefresh: VoidFunction;
 };
 
-export default function WalletStatus({ activeWallet }: Props) {
+export default function WalletStatus({ activeWallet, onRefresh }: Props) {
   const circleStyle = {
     borderWidth: '1px',
     borderStyle: 'solid',
@@ -41,19 +42,30 @@ export default function WalletStatus({ activeWallet }: Props) {
           </Typography>
         </Box>
       </Stack>
-      <Typography
-        sx={{
-          color: `${COLORS[activeWallet.status - 1]}.main`,
-          textAlign: 'center',
-          marginTop: '1em',
-        }}
-      >
-        {activeWallet.statusTitle} <ReloadGray />
-      </Typography>
+
+      <Stack direction="row" alignItems="center" spacing="7px" mt="16px">
+        <Typography
+          variant="body1"
+          sx={{
+            color: 'success.main',
+            textAlign: 'center',
+            fontWeight: 700,
+          }}
+        >
+          Very Good
+        </Typography>
+        <Box component="div" pt="4px" sx={{ cursor: 'pointer' }} onClick={onRefresh}>
+          <ReloadGray />
+        </Box>
+      </Stack>
+
       <Typography sx={{ color: 'gray', textAlign: 'center', marginTop: '1em' }}>
         Your wallet health is in the{' '}
-        <span style={{ color: textColors[activeWallet.status - 1] }}>{zones[activeWallet.status - 1]} zone</span>
+        <span style={{ color: textColors[activeWallet.status - 1] }}>
+          {zones[activeWallet.status - 1]} zone
+        </span>
       </Typography>
+
       <Card
         sx={{
           cursor: 'pointer',
@@ -82,7 +94,10 @@ export default function WalletStatus({ activeWallet }: Props) {
         }}
       >
         <Typography sx={{ textAlign: 'center', marginTop: '1em' }}>
-          We found <span style={{ color: textColors[activeWallet.status - 1] }}>{activeWallet.approvals} approvals</span>{' '}
+          We found{' '}
+          <span style={{ color: textColors[activeWallet.status - 1] }}>
+            {activeWallet.approvals} approvals
+          </span>{' '}
           on your wallet
         </Typography>
         <Button

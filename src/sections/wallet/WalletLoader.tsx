@@ -117,7 +117,9 @@ export default function LoadWallet({ onLoadingComplete, defaultLoadValue }: Prop
         </>
       )}
 
-      {!!(loadingStatus === 100 && activeWallet) && <WalletStatus activeWallet={activeWallet} />}
+      {!!(loadingStatus === 100 && activeWallet) && (
+        <WalletStatus activeWallet={activeWallet} onRefresh={() => setLoadingStatus(1)} />
+      )}
     </Stack>
   );
 }
