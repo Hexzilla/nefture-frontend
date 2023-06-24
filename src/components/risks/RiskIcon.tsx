@@ -8,8 +8,8 @@ import { RiskType } from './types';
 
 const RiskIcons: Record<RiskType, React.ReactElement> = {
   low: <CarefulIcon />,
-  medium: <WarningIcon />,
-  high: <DangerIcon />,
+  medium: <CarefulIcon />,
+  high: <WarningIcon />,
   critical: <DangerIcon />,
 };
 

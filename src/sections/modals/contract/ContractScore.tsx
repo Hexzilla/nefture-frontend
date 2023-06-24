@@ -1,6 +1,7 @@
 import { Stack, Typography } from '@mui/material';
 
 import AnalysisCard from './AnalysisCard';
+import { AnalysisItem } from './AnalysisItem';
 
 const ContractScore = () => {
   return (
@@ -19,9 +20,9 @@ const ContractScore = () => {
 
 export default ContractScore;
 
-const items = [
+const items: AnalysisItem[] = [
   { variant: 'critical', description: 'Token is sellable (not a honeypot) at this time' },
-  { variant: 'critical', description: 'Token is sellable (not a honeypot) at this time' },
-  { variant: 'critical', description: 'Token is sellable (not a honeypot) at this time' },
-  { variant: 'critical', description: 'Token is sellable (not a honeypot) at this time' },
+  { variant: 'low', description: 'Token is sellable (not a honeypot) at this time' },
+  { variant: 'high', description: 'Token is sellable (not a honeypot) at this time' },
+  { variant: 'high', description: 'Token is sellable (not a honeypot) at this time' },
 ];
