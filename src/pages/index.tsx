@@ -43,7 +43,7 @@ const Dashboard = () => {
   }, []);
 
   const viewTransactions = () => {
-    console.log('yes')
+    console.log('yes');
     setState(2);
   };
 
@@ -51,16 +51,26 @@ const Dashboard = () => {
     <Grid container spacing={4}>
       <Grid item xs={12} lg={7}>
         <Stack direction="column" spacing={4}>
-          <SuspiciousTransactions onClick={displayWallet} state={state} viewTransaction={viewTransactions}/>
-          <LatestTransactions onClick={displayWallet} state={state} viewTransaction={viewTransactions}/>
+          <SuspiciousTransactions
+            onClick={displayWallet}
+            state={state}
+            viewTransaction={viewTransactions}
+          />
+          <LatestTransactions
+            onClick={displayWallet}
+            state={state}
+            viewTransaction={viewTransactions}
+          />
         </Stack>
       </Grid>
       <Grid item xs={12} lg={5}>
         {!isMobile && state == 0 && <SkeletonWalletView />}
-        {/* {walletVisible && <BurnModal onClose={hideWallet} transaction={activeWallet} />} */}
-        {/* {walletVisible && <SwapModal onClose={hideWallet} transaction={activeWallet} />} */}
-        {walletVisible && <ApprovalModal onClose={hideWallet} transaction={activeWallet} />}
-        {/* {walletVisible && <HistoryModal onClose={hideWallet} transaction={activeWallet} />} */}
+        <Stack spacing={2}>
+          {walletVisible && <BurnModal onClose={hideWallet} transaction={activeWallet} />}
+          {walletVisible && <SwapModal onClose={hideWallet} transaction={activeWallet} />}
+          {walletVisible && <ApprovalModal onClose={hideWallet} transaction={activeWallet} />}
+          {walletVisible && <HistoryModal onClose={hideWallet} transaction={activeWallet} />}
+        </Stack>
         {isMobile && (
           <Dialog fullWidth maxWidth="xs" open={walletVisible}>
             <Stack>
