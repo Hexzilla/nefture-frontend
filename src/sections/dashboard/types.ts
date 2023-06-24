@@ -1,4 +1,4 @@
-import { Risk } from './wallet/labels/types';
+import { Risk } from "@components/risks/types";
 
 export interface Transaction {
   status: string;

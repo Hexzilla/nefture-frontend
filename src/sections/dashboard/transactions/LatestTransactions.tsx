@@ -56,11 +56,11 @@ const mock_transactions: Transaction[] = [
     value_tx: '1.05 ETH',
     critical_risks: [
       {
-        id_risk: 1,
+        id: 1,
         description: 'description danger 1',
       },
       {
-        id_risk: 1,
+        id: 1,
         description: 'description danger 2',
       },
     ],
@@ -73,11 +73,11 @@ const mock_transactions: Transaction[] = [
     value_tx: '1.05 ETH',
     critical_risks: [
       {
-        id_risk: 1,
+        id: 1,
         description: 'description danger 3',
       },
       {
-        id_risk: 2,
+        id: 2,
         description: 'description danger 4',
       },
     ],
@@ -90,7 +90,7 @@ const mock_transactions: Transaction[] = [
     value_tx: '1.05 ETH',
     critical_risks: [
       {
-        id_risk: 1,
+        id: 1,
         description: 'description danger 5',
       },
     ],
@@ -103,7 +103,7 @@ const mock_transactions: Transaction[] = [
     value_tx: '1.05 ETH',
     critical_risks: [
       {
-        id_risk: 1,
+        id: 1,
         description: 'description danger 5',
       },
     ],
