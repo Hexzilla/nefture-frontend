@@ -38,8 +38,6 @@ const stackStyle = {
   spacing: 2,
   alignItems: 'center',
   justifyContent: 'space-between',
-  marginTop: '1em',
-  marginBottom: '0.5em',
 };
 
 const switchStyle = {
