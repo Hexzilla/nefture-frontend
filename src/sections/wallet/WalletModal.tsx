@@ -36,7 +36,6 @@ const ModalContent = ({ isMobile }: Props) => {
     <Card
       sx={{
         padding: isMobile ? '12px' : '20px',
-        minHeight: '80vh',
         marginBottom: '1em',
         overflow: 'auto',
       }}
