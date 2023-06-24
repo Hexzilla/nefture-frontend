@@ -12,15 +12,15 @@ export default function AlertItem({ title, type }: Props) {
     <Stack
       direction="row"
       spacing={3}
-      style={{ alignItems: 'center' }}
-      justifyContent="end"
+      alignItems="center"
+      justifyContent={type === 0 ? 'end' : 'space-between'}
       ml={1}
       mr={1}
       mt={2}
       mb={2}
     >
-      <HelpItem title={title} type={type}/>
-      <Switch defaultChecked={true} onClick={(e)=> e.stopPropagation()}/>
+      <HelpItem title={title} type={type} />
+      <Switch defaultChecked={true} onClick={(e) => e.stopPropagation()} />
     </Stack>
   );
 }
