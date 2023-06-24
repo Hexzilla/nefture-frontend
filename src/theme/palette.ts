@@ -104,12 +104,14 @@ const RISK = {
     medium: '#FF9901',
     high: '#FF6C01',
     danger: '#FF4601',
+    critical: '#FF4601',
   },
   background: {
     low: '#28344A',
     medium: '#4A4028',
     high: '#4A3828',
     danger: '#4A2828',
+    critical: '#4A2828',
   },
 };
 

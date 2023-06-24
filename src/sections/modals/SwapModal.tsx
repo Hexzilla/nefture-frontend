@@ -5,7 +5,7 @@ import CheckGreen from '@components/icons/CheckGreen';
 import Description from '@components/wallet/Description';
 
 import { Transaction } from '@sections/dashboard/types';
-import CriticalRisks from '@sections/risks/CriticalRisks';
+import RisksCollapse from '@sections/risks/RisksCollapse';
 
 import Modal from './Modal';
 import ModalActions from './Actions';
@@ -42,7 +42,7 @@ export default function SwapModal({ transaction, onClose }: Props) {
         <Description title="Network Fee" description="0.0034 ETH ~$1.59" />
       </Stack>
 
-      <CriticalRisks risks={transaction.critical_risks} />
+      <RisksCollapse risks={transaction.critical_risks} variant="medium" />
 
       <ModalActions title="Go to Home" swipe onSubmit={() => console.log('GoToHome')} />
     </Modal>

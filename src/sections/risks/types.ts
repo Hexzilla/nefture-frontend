@@ -8,3 +8,5 @@ export interface Coin {
   img: string;
   amount: number;
 }
+
+export type RiskType = 'low' | 'medium' | 'high' | 'critical';

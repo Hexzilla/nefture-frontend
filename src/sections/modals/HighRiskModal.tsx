@@ -2,13 +2,14 @@ import { Box, Stack, Typography } from '@mui/material';
 import { DM_Mono } from '@next/font/google';
 
 import Description from '@components/wallet/Description';
+import WalletAddress from '@components/wallet/WalletAddress';
+import StatusLabel from '@components/wallet/StatusLabel';
 
 import { Transaction } from '@sections/dashboard/types';
-import CriticalRisks from '@sections/risks/CriticalRisks';
+import RisksCollapse from '@sections/risks/RisksCollapse';
 
 import Modal from './Modal';
 import WalletActions from './Actions';
-import Volumn from './Volumn';
 
 type Props = {
   transaction: Transaction;
@@ -22,19 +23,31 @@ const dmMono = DM_Mono({
 
 export default function HighRiskModal({ transaction, onClose }: Props) {
   return (
-    <Modal title="Burn" wallet="Wallet1" needHelp onClose={onClose}>
-      <Stack spacing={2} mt={2}>
-        <Volumn title="Burning" icon="minus" quantity="2 Tokens" volumn="$5,260.42" />
+    <Modal title="High risk" wallet="Wallet1" needHelp onClose={onClose}>
+      <Stack
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+        spacing="14px"
+        mt="34px"
+      >
+        <Typography>TOKEN NAME ID</Typography>
+
+        <Box sx={{ width: '50%' }}>
+          <WalletAddress address="0x8eEf26868D86B46494fAbe583fda2750c37a7638" />
+        </Box>
+        <Box sx={{ width: '58%' }}>
+          <StatusLabel title="Probably a rug" variant="high" />
+        </Box>
       </Stack>
 
       <Stack spacing="10px" my={3} className={dmMono.className}>
-        <Typography mb="8px">Destinataire</Typography>
-        <Description title="Wallet" description="0x32455...7c9A3" />
-        <Description title="Chain" description="Ethereum" />
-        <Description title="Network Fee" description="0.0034 ETH ~$1.59" />
+        <Description title="Deployed" description="10 Jun 2021 23:21:10 GMT" />
+        <Description title="Chart" description="DexScreener" />
+        <Description title="Creator wallet" description="Creator" />
       </Stack>
 
-      <CriticalRisks risks={transaction.critical_risks} />
+      <RisksCollapse risks={transaction.critical_risks} variant="high" />
 
       <WalletActions title="Reject (recommended)" swipe onSubmit={() => console.log('Reject')} />
     </Modal>
