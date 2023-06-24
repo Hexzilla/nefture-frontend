@@ -37,19 +37,19 @@ export default function SettingsMobile() {
       <Typography variant="h6" ml={1} pt={3}>
         {titles[tab]}
       </Typography>
-      <Typography ml={1} mb={3}>
+      <Typography variant="subtitle1" ml={1} mb={3}>
         {descriptions[tab]}
       </Typography>
-      <Tabs value={tab} onChange={(event, newValue) => setTab(newValue)}>
+
+      <Tabs value={tab} onChange={(_, value) => setTab(value)} sx={{ marginBottom: '20px' }}>
         <Tab value={0} label={'Notifications'} />
         <Tab value={1} label={'Settings'} />
       </Tabs>
-      {tab == 0 && (
-        <Box gap={3} display="grid" gridTemplateColumns={columnTemplates}>
+
+      {tab === 0 && (
+        <Box gap={3} display="grid" gridTemplateColumns={columnTemplates} pb="80px">
           {loading ? (
-            <>
-              <SkeletonNetworkItem key={1} />
-            </>
+            <SkeletonNetworkItem key={1} />
           ) : (
             <>
               <NotificationCard title={'Smart Contract Analytics'} type={0} />
@@ -59,12 +59,11 @@ export default function SettingsMobile() {
           )}
         </Box>
       )}
-      {tab == 1 && (
-        <Box gap={3} display="grid" gridTemplateColumns={columnTemplates}>
+
+      {tab === 1 && (
+        <Box gap={3} display="grid" gridTemplateColumns={columnTemplates} pb="80px">
           {loading ? (
-            <>
-              <SkeletonNetworkItem key={1} />
-            </>
+            <SkeletonNetworkItem key={1} />
           ) : (
             <>
               <SettingsEmailCard title={'Telegram'} />
