@@ -4,11 +4,12 @@ import { DM_Mono } from '@next/font/google';
 import CheckGreen from '@components/icons/CheckGreen';
 import Description from '@components/wallet/Description';
 
-import { Transaction } from '../types';
-import Volumn from './Volumn';
-import CriticalRisks from './labels/CriticalRisks';
-import WalletActions from './WalletActions';
+import { Transaction } from '@sections/dashboard/types';
+import CriticalRisks from '@sections/risks/CriticalRisks';
+
 import Modal from './Modal';
+import ModalActions from './Actions';
+import Volumn from './Volumn';
 
 type Props = {
   onClose: VoidFunction;
@@ -43,7 +44,7 @@ export default function SwapModal({ transaction, onClose }: Props) {
 
       <CriticalRisks risks={transaction.critical_risks} />
 
-      <WalletActions title="Go to Home" swipe onSubmit={() => console.log('GoToHome')} />
+      <ModalActions title="Go to Home" swipe onSubmit={() => console.log('GoToHome')} />
     </Modal>
   );
 }

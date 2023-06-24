@@ -5,11 +5,12 @@ import Scrollbar from '@components/scrollbar';
 import WalletAddress from '@components/wallet/WalletAddress';
 import StatusLabel from '@components/wallet/StatusLabel';
 
-import { Transaction } from '../types';
+import { Transaction } from '@sections/dashboard/types';
+import { Coin } from '@sections/risks/types';
+
 import CoinItem from './CoinItem';
 import Modal from './Modal';
-import WalletActions from './WalletActions';
-import { Coin } from './labels/types';
+import ModalActions from './Actions';
 
 type Props = {
   transaction: Transaction;
@@ -72,7 +73,7 @@ export default function ApprovalModal({ transaction, onClose }: Props) {
           </Card>
         )}
       </Box>
-      <WalletActions title="Reject (recommended)" swipe onSubmit={() => console.log('Reject')} />
+      <ModalActions title="Reject (recommended)" swipe onSubmit={() => console.log('Reject')} />
     </Modal>
   );
 }

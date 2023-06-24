@@ -10,7 +10,7 @@ type Props = {
   onClose: VoidFunction;
 };
 
-export default function DialogHeader({ title, wallet, onClose }: Props) {
+export default function ModalHeader({ title, wallet, onClose }: Props) {
   return (
     <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
       <Stack direction="row" alignItems="center" spacing={1} sx={{ marginLeft: '-10px' }}>

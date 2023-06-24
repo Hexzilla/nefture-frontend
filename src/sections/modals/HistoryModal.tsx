@@ -1,7 +1,8 @@
 import { Box, Button, Stack, Typography } from '@mui/material';
 
 import TransactionIcon from '@components/icons/Transaction';
-import { Transaction } from '../types';
+import { Transaction } from '@sections/dashboard/types';
+
 import Modal from './Modal';
 
 type Props = {

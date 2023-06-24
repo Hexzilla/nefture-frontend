@@ -5,7 +5,7 @@ import WalletAddress from '@components/wallet/WalletAddress';
 import StatusLabel from '@components/wallet/StatusLabel';
 
 import Modal from './Modal';
-import WalletActions from './WalletActions';
+import ModalActions from './Actions';
 
 type Props = {
   variant: 'low' | 'medium' | 'high' | 'danger';
@@ -36,7 +36,7 @@ export default function RiskModal({ variant, onClose }: Props) {
         <Description title="Creator wallet" description="Creator" />
       </Stack>
 
-      <WalletActions title="Reject (recommended)" swipe onSubmit={() => console.log('Reject')} />
+      <ModalActions title="Reject (recommended)" swipe onSubmit={() => console.log('Reject')} />
     </Modal>
   );
 }

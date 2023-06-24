@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from '@mui/material';
 
-import { Coin } from './labels/types';
+import { Coin } from '@sections/risks/types';
 
 type Props = {
   item: Coin;
@@ -17,7 +17,12 @@ export default function CoinItem({ item }: Props) {
         />
         <Box>
           <Typography>
-            {item.name} <Box component="img" src="/assets/icons/nefture/ic_check_green.svg" display={'inline'} />
+            {item.name}{' '}
+            <Box
+              component="img"
+              src="/assets/icons/nefture/ic_check_green.svg"
+              display={'inline'}
+            />
           </Typography>
           <Typography variant="caption">Amount {item.amount}</Typography>
         </Box>

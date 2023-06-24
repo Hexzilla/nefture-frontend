@@ -20,7 +20,7 @@ type Props = {
   onSubmit: VoidFunction;
 };
 
-export default function WalletActions({ title, swipe, onSubmit }: Props) {
+export default function ModalActions({ title, swipe, onSubmit }: Props) {
   const [arrowVisible, setArrowVisible] = useState('visible');
 
   return (

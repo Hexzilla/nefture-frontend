@@ -11,11 +11,12 @@ import DashboardLayout from '../layouts/dashboard';
 import LatestTransactions from '@sections/dashboard/transactions/LatestTransactions';
 import SuspiciousTransactions from '@sections/dashboard/transactions/SuspiciousTransactions';
 import { Transaction } from '@sections/dashboard/types';
-import HistoryModal from '@sections/dashboard/wallet/History';
 import SkeletonWalletView from '@sections/dashboard/wallet/SkeletonWalletView';
-import SwapModal from '@sections/dashboard/wallet/Swap';
-import ApprovalModal from '@sections/dashboard/wallet/Approval';
-import BurnModal from '@sections/dashboard/wallet/Burn';
+
+import HistoryModal from '@sections/modals/HistoryModal';
+import SwapModal from '@sections/modals/SwapModal';
+import ApprovalModal from '@sections/modals/ApprovalModal';
+import BurnModal from '@sections/modals/BurnModal';
 
 GeneralAppPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
 

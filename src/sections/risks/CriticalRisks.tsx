@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Risk } from './types';
 import Risks from './Risks';
 import RiskLabel from './RiskLabel';
-import { Box } from '@mui/system';
 
 type Props = {
   risks?: Risk[] | null;

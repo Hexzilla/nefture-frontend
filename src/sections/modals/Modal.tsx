@@ -3,7 +3,7 @@ import { DM_Mono } from '@next/font/google';
 
 import Help from '@components/icons/Help';
 
-import DialogHeader from './DialogHeader';
+import ModalHeader from './Header';
 
 type Props = {
   title: string;
@@ -21,7 +21,7 @@ const dmMono = DM_Mono({
 export default function Modal({ title, wallet, needHelp, children, onClose }: Props) {
   return (
     <Card sx={{ padding: '12px' }} className={dmMono.className}>
-      <DialogHeader title={title} wallet={wallet} onClose={onClose} />
+      <ModalHeader title={title} wallet={wallet} onClose={onClose} />
 
       {children}
 
