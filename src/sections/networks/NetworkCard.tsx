@@ -35,13 +35,7 @@ export default function NetworkCard({ name, rpcUrl, type, addWallet }: Props) {
       >
         <Stack direction="column" spacing="12px">
           <Typography>{name}</Typography>
-          <Stack
-            direction="row"
-            spacing={1}
-            justifyContent="space-between"
-            alignItems="center"
-            mt={1}
-          >
+          <Stack direction="row" spacing={1} justifyContent="space-between" alignItems="center">
             <Typography color="gray">{rpcUrl}</Typography>
             <Box
               component="div"
@@ -55,7 +49,9 @@ export default function NetworkCard({ name, rpcUrl, type, addWallet }: Props) {
         </Stack>
         <Box>{type === 'ethereum' ? <EthereumIconRectangle /> : <PolygonIcon />}</Box>
       </Stack>
+      
       <Divider />
+
       <Stack direction="row" mt={2}>
         <Button
           variant="contained"
