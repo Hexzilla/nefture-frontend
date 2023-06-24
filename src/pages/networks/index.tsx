@@ -58,14 +58,25 @@ export default function NetworksPage() {
               </>
             ) : (
               <>
-                <NetworkCard type="ethereum" addWallet={setDialogOpen} />
-                <NetworkCard type="polygon" addWallet={setDialogOpen} />
+                <NetworkCard
+                  type="ethereum"
+                  name="Ethereum"
+                  rpcUrl="https://rpc.nefture.com"
+                  addWallet={setDialogOpen}
+                />
+                <NetworkCard
+                  type="polygon"
+                  name="Polygon"
+                  rpcUrl="https://polygon.nefture.com"
+                  addWallet={setDialogOpen}
+                />
                 <ComingCard />
               </>
             )}
           </Box>
         </Container>
       </AnimatedContainer>
+
       <Dialog fullWidth maxWidth="xs" open={dialogOpen} onClose={() => setDialogOpen(false)}>
         <Stack>
           <Card sx={{ padding: '1em' }}>
@@ -118,21 +129,3 @@ export default function NetworksPage() {
 }
 
 NetworksPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
-
-const teamMembers: TeamMember[] = [
-  {
-    name: 'Luke Dalton',
-    email: 'luke@Nefture.com',
-    access: 'Owner',
-  },
-  {
-    name: 'Eric Thomas',
-    email: 'eric@Nefture.com',
-    access: 'Admin',
-  },
-  {
-    name: 'Pavlo John',
-    email: 'pavlo@Nefture.com',
-    access: 'Suspended',
-  },
-];

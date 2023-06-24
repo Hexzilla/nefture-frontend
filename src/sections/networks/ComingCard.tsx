@@ -25,7 +25,7 @@ export default function ComingCard() {
         mb={3}
       >
         <Stack direction="column">
-          <Typography>Ethereum</Typography>
+          <Typography>Coming Soon</Typography>
           <Typography color="gray" mt={1}>
             Follow us to stay updated!
           </Typography>

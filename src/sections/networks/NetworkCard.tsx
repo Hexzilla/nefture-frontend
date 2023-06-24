@@ -1,15 +1,28 @@
 import { Box, Button, Card, Divider, Stack, Typography } from '@mui/material';
+import { useSnackbar } from 'notistack';
 
 import CopyWhite from '@components/icons/CopyWhite';
 import EthereumIconRectangle from '@components/icons/EthereumIconRectangle';
 import PolygonIcon from '@components/icons/Polygon';
 import Image from '@components/image';
+import useCopyToClipboard from '@hooks/useCopyToClipboard';
 
 type Props = {
-  type: String;
+  type: string;
+  name: string;
+  rpcUrl: string;
   addWallet: (value: boolean) => void;
 };
-export default function NetworkCard({ type, addWallet }: Props) {
+
+export default function NetworkCard({ name, rpcUrl, type, addWallet }: Props) {
+  const { copy } = useCopyToClipboard();
+  const { enqueueSnackbar } = useSnackbar();
+
+  const copyToClipboard = (content: string) => {
+    copy(content);
+    enqueueSnackbar('Copied!');
+  };
+
   return (
     <Card sx={{ padding: '1em' }}>
       <Stack
@@ -20,11 +33,24 @@ export default function NetworkCard({ type, addWallet }: Props) {
         mt={1}
         mb={3}
       >
-        <Stack direction="column">
-          <Typography>Ethereum</Typography>
-          <Stack direction="row" spacing={2} justifyContent="space-between" mt={1}>
-            <Typography color="gray">https://rpc.nefture.com</Typography>
-            <CopyWhite />
+        <Stack direction="column" spacing="12px">
+          <Typography>{name}</Typography>
+          <Stack
+            direction="row"
+            spacing={1}
+            justifyContent="space-between"
+            alignItems="center"
+            mt={1}
+          >
+            <Typography color="gray">{rpcUrl}</Typography>
+            <Box
+              component="div"
+              pt="4px"
+              sx={{ cursor: 'pointer' }}
+              onClick={() => copyToClipboard(rpcUrl)}
+            >
+              <CopyWhite />
+            </Box>
           </Stack>
         </Stack>
         <Box>{type === 'ethereum' ? <EthereumIconRectangle /> : <PolygonIcon />}</Box>
@@ -46,7 +72,7 @@ export default function NetworkCard({ type, addWallet }: Props) {
           borderRadius: 1,
           cursor: 'pointer',
           height: '52px',
-          backgroundColor:'primary.buttonColor'
+          backgroundColor: 'primary.buttonColor',
         }}
         onClick={() => addWallet(true)}
       >
