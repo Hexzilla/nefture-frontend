@@ -1,6 +1,6 @@
 import { Box, Stack, Typography } from '@mui/material';
-import { useState } from 'react';
 
+import { useModalContext } from '@components/modals';
 import Description from '@components/wallet/Description';
 import WalletAddress from '@components/wallet/WalletAddress';
 import RisksCollapse from '@components/risks/RisksCollapse';
@@ -19,11 +19,11 @@ type Props = {
 };
 
 export default function SmartContractModal({ transaction, onClose }: Props) {
-  const [pageNum, setPageNum] = useState(0);
+  const { page, setPage } = useModalContext();
 
   return (
-    <Modal title="Smart Contract" wallet="Wallet1" needHelp onBack={() => setPageNum(1)} onClose={onClose}>
-      {pageNum === 0 && (
+    <Modal title="Smart Contract" wallet="Wallet1" needHelp onClose={onClose}>
+      {page === 0 && (
         <>
           <Stack
             direction="column"
@@ -31,7 +31,7 @@ export default function SmartContractModal({ transaction, onClose }: Props) {
             alignItems="center"
             spacing="14px"
             mt="34px"
-            onClick={() => setPageNum(1)}
+            onClick={() => setPage(1)}
           >
             <Typography>TOKEN NAME (DTO)</Typography>
 
@@ -53,7 +53,7 @@ export default function SmartContractModal({ transaction, onClose }: Props) {
         </>
       )}
 
-      {pageNum === 1 && (
+      {page === 1 && (
         <Box padding="39px">
           <ContractScore />
         </Box>

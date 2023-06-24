@@ -1,16 +1,18 @@
 import { Button, Card, Stack, Typography } from '@mui/material';
 import { DM_Mono } from '@next/font/google';
+import { useMemo } from 'react';
 
 import Help from '@components/icons/Help';
+import { useModalContext } from '@components/modals';
 
 import ModalHeader from './Header';
+import LeftArrow from '@components/icons/LeftArrow';
 
 type Props = {
   title: string;
   wallet: string;
   children: React.ReactNode;
   needHelp?: boolean;
-  onBack?: VoidFunction;
   onClose: VoidFunction;
 };
 
@@ -19,21 +21,22 @@ const dmMono = DM_Mono({
   subsets: ['latin'],
 });
 
-export default function Modal({ title, wallet, needHelp, children, onBack, onClose }: Props) {
+export default function Modal({ title, wallet, needHelp, children, onClose }: Props) {
+  const { page, setPage } = useModalContext();
+
+  const backButton = useMemo(() => {
+    if (page > 0) {
+      return (
+        <Button variant="text" sx={{ color: 'white' }} onClick={() => setPage(0)}>
+          <LeftArrow /> Go back
+        </Button>
+      );
+    }
+  }, [page]);
+
   return (
     <Card sx={{ padding: '12px' }} className={dmMono.className}>
-      <ModalHeader
-        title={title}
-        wallet={wallet}
-        middle={
-          onBack && (
-            <Button variant="text" sx={{ color: 'white' }} onClick={onBack}>
-              {'< Back'}
-            </Button>
-          )
-        }
-        onClose={onClose}
-      />
+      <ModalHeader title={title} wallet={wallet} middle={backButton} onClose={onClose} />
 
       {children}
 

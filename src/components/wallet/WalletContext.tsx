@@ -1,6 +1,5 @@
-import { useMemo, useState, useEffect, useContext, useCallback, createContext } from 'react';
-import localStorageAvailable from '../../utils/localStorageAvailable';
-import { Wallet, WalletValueProps, WalletContextProps, ModalType } from './types';
+import { useMemo, useState, useContext, createContext } from 'react';
+import { Wallet, WalletContextProps, ModalType } from './types';
 
 const initialState: WalletContextProps = {
   modalType: null,
