@@ -87,16 +87,16 @@ const typography = {
   h6: {
     fontWeight: 700,
     lineHeight: 1.5,
-    fontSize: pxToRem(22),
+    fontSize: pxToRem(20),
     ...responsiveFontSizes({ sm: 24, md: 24, lg: 24 }),
   },
   subtitle1: {
-    fontWeight: 700,
+    fontWeight: 500,
     lineHeight: 1.5,
     fontSize: pxToRem(16),
   },
   subtitle2: {
-    fontWeight: 700,
+    fontWeight: 500,
     lineHeight: 1.375,
     fontSize: pxToRem(12),
   },
@@ -106,7 +106,7 @@ const typography = {
   },
   body2: {
     lineHeight: 1.25,
-    fontSize: pxToRem(14),
+    fontSize: pxToRem(15),
   },
   caption: {
     lineHeight: 1.125,

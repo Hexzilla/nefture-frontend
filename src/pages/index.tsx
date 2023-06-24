@@ -18,6 +18,7 @@ import SwapModal from '@sections/modals/SwapModal';
 import ApprovalModal from '@sections/modals/ApprovalModal';
 import BurnModal from '@sections/modals/BurnModal';
 import HighRiskModal from '@sections/modals/HighRiskModal';
+import SmartContractModal from '@sections/modals/contract';
 
 GeneralAppPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
 
@@ -68,6 +69,7 @@ const Dashboard = () => {
       <Grid item xs={12} lg={5}>
         {!isMobile && state == 0 && <SkeletonWalletView />}
         <Stack spacing={2}>
+          {walletVisible && <SmartContractModal onClose={hideWallet} transaction={activeWallet} />}
           {walletVisible && <HighRiskModal onClose={hideWallet} transaction={activeWallet} />}
           {walletVisible && <BurnModal onClose={hideWallet} transaction={activeWallet} />}
           {walletVisible && <SwapModal onClose={hideWallet} transaction={activeWallet} />}

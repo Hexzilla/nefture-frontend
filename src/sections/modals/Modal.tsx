@@ -1,4 +1,4 @@
-import { Card, Stack, Typography } from '@mui/material';
+import { Button, Card, Stack, Typography } from '@mui/material';
 import { DM_Mono } from '@next/font/google';
 
 import Help from '@components/icons/Help';
@@ -10,6 +10,7 @@ type Props = {
   wallet: string;
   children: React.ReactNode;
   needHelp?: boolean;
+  onBack?: VoidFunction;
   onClose: VoidFunction;
 };
 
@@ -18,10 +19,21 @@ const dmMono = DM_Mono({
   subsets: ['latin'],
 });
 
-export default function Modal({ title, wallet, needHelp, children, onClose }: Props) {
+export default function Modal({ title, wallet, needHelp, children, onBack, onClose }: Props) {
   return (
     <Card sx={{ padding: '12px' }} className={dmMono.className}>
-      <ModalHeader title={title} wallet={wallet} onClose={onClose} />
+      <ModalHeader
+        title={title}
+        wallet={wallet}
+        middle={
+          onBack && (
+            <Button variant="text" sx={{ color: 'white' }} onClick={onBack}>
+              {'< Back'}
+            </Button>
+          )
+        }
+        onClose={onClose}
+      />
 
       {children}
 

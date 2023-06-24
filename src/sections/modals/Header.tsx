@@ -6,17 +6,21 @@ import TransactionGray from '@components/icons/TransactionGray';
 
 type Props = {
   title: string;
+  middle?: React.ReactNode;
   wallet: string;
   onClose: VoidFunction;
 };
 
-export default function ModalHeader({ title, wallet, onClose }: Props) {
+export default function ModalHeader({ title, middle, wallet, onClose }: Props) {
   return (
     <Stack direction="row" spacing={2} alignItems="center" justifyContent="space-between">
       <Stack direction="row" alignItems="center" spacing={1} sx={{ marginLeft: '-10px' }}>
-        {title != 'Transaction rejected'?<TransactionIcon />:<TransactionGray />}
+        {title != 'Transaction rejected' ? <TransactionIcon /> : <TransactionGray />}
         <Typography>{title}</Typography>
       </Stack>
+
+      {middle}
+
       <Stack direction="row" spacing={2} alignItems="center">
         <Typography>{wallet}</Typography>
         <Box sx={{ cursor: 'pointer' }} onClick={onClose}>
