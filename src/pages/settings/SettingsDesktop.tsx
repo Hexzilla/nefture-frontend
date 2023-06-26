@@ -58,7 +58,7 @@ export default function SettingsDesktop() {
           </>
         ) : (
           <>
-            <SettingsEmailCard title={'Smart Contract Analytics'} />
+            <SettingsEmailCard title={'Email'} />
             <SettingsSocialCard title={'Telegram'} />
           </>
         )}

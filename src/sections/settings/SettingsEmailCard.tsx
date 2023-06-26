@@ -7,7 +7,7 @@ type Props = {
   title: String;
 };
 
-const imageResources = '/assets/icons/navbar/ic_dashboard.svg';
+const imageResources = '/assets/icons/nefture/ic_email.svg';
 const captions = 'Continue with Email';
 const connectAnother = 'Or Continue with telgram';
 const backgrounds = ['primary.main', 'white'];

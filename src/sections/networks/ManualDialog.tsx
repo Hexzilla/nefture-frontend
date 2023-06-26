@@ -74,7 +74,7 @@ export default function ManualDialog({ open, onClose }: Props) {
           <InformationView title="Chain ID" value="ETH" onCopy={onCopy} />
           <InformationView title="Currency Symbol" value="1" onCopy={onCopy} />
           <InformationView title="BlockExplorerURL" value="https://etherscan.io" onCopy={onCopy} />
-          <Box sx={{ position: 'relative' }}>
+          <Box sx={{ position: 'relative', minHeight:'200px' }}>
             <Image src="/assets/images/network/video.png" mt={2} />
             <Box sx={{ position: 'absolute', top: '40%', left: '40%' }}>
               <Play />

@@ -54,7 +54,7 @@ const dmMono = DM_Mono({
 
 export default function NotificationCard({ title, type }: Props) {
   return (
-    <Card sx={{ padding: '1em' }}>
+    <Card sx={{ padding: '30px' }}>
       <Stack direction="row" sx={stackStyle}>
         <Typography style={{}}>{title}</Typography>
         {type == 0 && <Switch defaultChecked color="success" sx={switchStyle} />}
