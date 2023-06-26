@@ -1,18 +1,13 @@
-import { Box, Card, Container, Dialog, Divider, Stack, Typography } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
 import AnimatedContainer from '@components/animated-container';
-import CopyWhite from '@components/icons/CopyWhite';
-import EthereumIconRectangle from '@components/icons/EthereumIconRectangle';
-import GrayClose from '@components/icons/GrayClose';
-import Play from '@components/icons/Play';
-import Image from '@components/image/Image';
 import { useSettingsContext } from '@components/settings';
 import SkeletonNetworkItem from '@components/skeleton/SkeletonNetworkItem';
 import DashboardLayout from '@layouts/dashboard';
 import ComingCard from '@sections/networks/ComingCard';
-import InformationView from '@sections/networks/InformationView';
+import ManualDialog from '@sections/networks/ManualDialog';
 import NetworkCard from '@sections/networks/NetworkCard';
 import { TeamMember } from '@sections/team/TeamMembers';
 import React from 'react';
@@ -66,53 +61,7 @@ export default function NetworksPage() {
           </Box>
         </Container>
       </AnimatedContainer>
-      <Dialog fullWidth maxWidth="xs" open={dialogOpen} onClose={() => setDialogOpen(false)}>
-        <Stack>
-          <Card sx={{ padding: '1em' }}>
-            <Box
-              sx={{ marginTop: '-10px', marginLeft: '-10px', cursor: 'pointer' }}
-              onClick={() => setDialogOpen(false)}
-            >
-              <GrayClose />
-            </Box>
-            <Stack
-              direction="row"
-              spacing={2}
-              alignItems="center"
-              justifyContent="space-between"
-              mt={1}
-              mb={3}
-            >
-              <Stack direction="column">
-                <Typography>Ethereum</Typography>
-                <Stack direction="row" spacing={2} justifyContent="space-between" mt={1}>
-                  <Typography color="gray">https://rpc.nefture.com</Typography>
-                  <CopyWhite />
-                </Stack>
-              </Stack>
-              <EthereumIconRectangle />
-            </Stack>
-            <Divider />
-            <Card sx={{ padding: '0.5em', textAlign: 'center', marginTop: '1em', borderRadius: 1 }}>
-              <Typography>Copy URL and add manually</Typography>
-            </Card>
-            <Typography mt={2} mb={3}>
-              Click on your network and then click on “Add Network”. Enter the following parameters:
-            </Typography>
-            <InformationView title="Network Name" value="Nefture RPC Mainnet" />
-            <InformationView title="New RPC URL" value="Https://nefture.com" />
-            <InformationView title="Chain ID" value="ETH" />
-            <InformationView title="Currency Symbol" value="1" />
-            <InformationView title="BlockExplorerURL" value="https://etherscan.io" />
-            <Box sx={{ position: 'relative' }}>
-              <Image src="/assets/images/network/video.png" mt={2} />
-              <Box sx={{ position: 'absolute', top: '40%', left: '40%' }}>
-                <Play />
-              </Box>
-            </Box>
-          </Card>
-        </Stack>
-      </Dialog>
+      <ManualDialog open={dialogOpen} onClose={() => setDialogOpen(false)}></ManualDialog>
     </>
   );
 }

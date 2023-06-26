@@ -42,6 +42,7 @@ const PRIMARY = {
   darker: '#005249',
   contrastText: '#FFFFFF',
   buttonColor: 'rgb(255, 255, 255, 6%)',
+  buttonHover: 'rgb(255, 255, 255, 1%)',
 };
 
 const SECONDARY = {
