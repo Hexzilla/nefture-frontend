@@ -95,6 +95,7 @@ export default function DashboardLayout({ children }: Props) {
               paddingBottom: '10px',
               ...(!isDesktop && {
                 paddingBottom: '100px',
+                paddingTop: '40px',
               }),
             }}
           >
