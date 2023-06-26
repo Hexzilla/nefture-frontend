@@ -92,10 +92,10 @@ export default function DashboardLayout({ children }: Props) {
 
           <Main
             sx={{
+              paddingBottom: '10px',
               ...(!isDesktop && {
-                p: '0',
+                paddingBottom: '100px',
               }),
-              paddingBottom: 0,
             }}
           >
             {children}
