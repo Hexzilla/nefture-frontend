@@ -90,14 +90,13 @@ export default function WalletItemRow({ wallet }: Props) {
           sx={{ padding: '10px 20px', cursor: 'pointer' }}
         >
           <Stack direction="row" spacing={2} alignItems={'center'} sx={{ width: '160px' }}>
-            <EthereumSmallIcon />
+            <Box component="img" src="/assets/icons/nefture/ic_ethereum_small.svg" />
             <Stack
               direction="column"
               sx={{ marginLeft: '8px!important', marginRight: '-8px!important' }}
             >
               <Typography
                 sx={{
-                  maxWidth: '80px',
                   overflow: 'hidden',
                   whiteSpace: 'nowrap',
                   textOverflow: 'ellipsis',
