@@ -63,7 +63,7 @@ export default function NotificationCard({ title, type }: Props) {
         {type == 1 && <Switch defaultChecked color="primary" sx={switchStyle} />}
       </Stack>
       <Typography style={proStyle[type]}>PRO</Typography>
-      <Typography mt={1} color={'gray'} sx={{ marginTop: '1.5em', marginBottom: '1em', fontSize:'10px' }} className={dmMono.className}>
+      <Typography mt={1} color={'gray'} sx={{ marginTop: '1.5em', marginBottom: '1em', fontSize:'12px' }} className={dmMono.className}>
         This alerts tracks all your approvals over time.
       </Typography>
       <Stack direction="row" sx={stackStyle}>
