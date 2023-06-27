@@ -45,10 +45,14 @@ export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
   };
 
   const handlePencilClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (edit == true) {
-      setEdit(false);
-    } else setOpen(true);
+      setEdit(!edit);
   };
+
+  const handleKeyInput = (e: any) => {
+    if (e.keyCode === 13) {
+      setEdit(false);
+    }
+  }
 
   return (
     <>
@@ -61,10 +65,11 @@ export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
         <TextField
           defaultValue={wallet.title}
           sx={{
-            maxWidth: '96px',
+            maxWidth: '196px',
             display: edit ? '' : 'none',
             marginTop: '-8px',
           }}
+          onKeyDown={handleKeyInput}
           onChange={(e) => setWalletName(e.target.value)}
         />{' '}
         <Box display={'contents'} onClick={(e) => handlePencilClick(e)}>
