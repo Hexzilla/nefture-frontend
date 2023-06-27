@@ -99,15 +99,44 @@ export default function SettingsSocialCard({ title }: Props) {
           Edit Telegram id
         </LoadingButton>
       )}
-      {status==0&&<Typography color={'gray'} sx={{ width: '100%', marginTop: '1em', textAlign: 'center', fontSize:'14px' }}>
-        If button doesn't work, <Link sx={{textDecoration:'underline', color:'gray'}}>click here</Link> to open Nefture security bot
-      </Typography>}
-      {status==0&&<Typography color={'gray'} sx={{ width: '100%', marginTop: '3em', textAlign: 'center', fontSize:'14px' }}>
-        Need Help? <Link color={'primary.main'}>Contact US</Link>
-      </Typography>}
-      {status!=0&&<Typography color={'gray'} sx={{ width: '100%', marginTop: '0.5em', textAlign: 'center', fontSize:'14px' }}>
-        {connectAnother}
-      </Typography>}
+      {status == 0 && (
+        <Typography
+          color={'gray'}
+          sx={{ width: '100%', marginTop: '1em', textAlign: 'center', fontSize: '14px' }}
+        >
+          If button doesn't work,{' '}
+          <Link
+            sx={{ textDecoration: 'underline', color: 'gray' }}
+            href="https://support.nefture.com"
+          >
+            click here
+          </Link>{' '}
+          to open Nefture security bot
+        </Typography>
+      )}
+      {status == 0 && (
+        <Typography
+          color={'gray'}
+          sx={{ width: '100%', marginTop: '3em', textAlign: 'center', fontSize: '14px' }}
+        >
+          Need Help?{' '}
+          <Link
+            color={'primary.main'}
+            href="https://support.nefture.com"
+            sx={{ textDecoration: 'none' }}
+          >
+            Contact US
+          </Link>
+        </Typography>
+      )}
+      {status != 0 && (
+        <Typography
+          color={'gray'}
+          sx={{ width: '100%', marginTop: '0.5em', textAlign: 'center', fontSize: '14px' }}
+        >
+          {connectAnother}
+        </Typography>
+      )}
     </Card>
   );
 }

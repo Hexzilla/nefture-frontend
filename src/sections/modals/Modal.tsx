@@ -8,6 +8,7 @@ import { useModalContext } from '@components/modals';
 import ModalHeader from './Header';
 import LeftArrow from '@components/icons/LeftArrow';
 import { Box } from '@mui/system';
+import Link from 'next/link';
 
 type Props = {
   title: string;
@@ -45,11 +46,13 @@ export default function Modal({ title, wallet, needHelp, children, onClose }: Pr
         <Stack alignItems="center" sx={{ padding: '10px 20px', marginTop: '12px' }}>
           <Stack direction="row" spacing={2}>
             <Tooltip title="This is the help">
-              <Box sx={{cursor:'pointer'}}>
+              <Box sx={{ cursor: 'pointer' }}>
                 <Help />
               </Box>
             </Tooltip>
-            <Typography color="gray">Need Help?</Typography>
+            <Link href="https://help.nefture.com" style={{ textDecoration: 'none' }}>
+              <Typography color="gray">Need Help?</Typography>
+            </Link>
           </Stack>
         </Stack>
       )}
