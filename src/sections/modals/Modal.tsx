@@ -1,4 +1,4 @@
-import { Button, Card, Stack, Typography } from '@mui/material';
+import { Button, Card, Stack, Tooltip, Typography } from '@mui/material';
 import { DM_Mono } from '@next/font/google';
 import { useMemo } from 'react';
 
@@ -7,6 +7,7 @@ import { useModalContext } from '@components/modals';
 
 import ModalHeader from './Header';
 import LeftArrow from '@components/icons/LeftArrow';
+import { Box } from '@mui/system';
 
 type Props = {
   title: string;
@@ -43,7 +44,11 @@ export default function Modal({ title, wallet, needHelp, children, onClose }: Pr
       {!!needHelp && (
         <Stack alignItems="center" sx={{ padding: '10px 20px', marginTop: '12px' }}>
           <Stack direction="row" spacing={2}>
-            <Help />
+            <Tooltip title="This is the help">
+              <Box sx={{cursor:'pointer'}}>
+                <Help />
+              </Box>
+            </Tooltip>
             <Typography color="gray">Need Help?</Typography>
           </Stack>
         </Stack>
