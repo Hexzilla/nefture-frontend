@@ -10,8 +10,8 @@ export default function Description({ title, description, children }: Props) {
   return (
     <Stack direction="row" alignItems="center" justifyContent="space-between">
       <Typography color="gray">{title}</Typography>
-      <Stack direction="row" spacing={1} alignItems="center">
-        {!!description && <Typography>{description}</Typography>}
+      <Stack direction="row" alignItems="center">
+        {!!description && <Typography textAlign="right">{description}</Typography>}
         {children && <>{children}</>}
       </Stack>
     </Stack>
