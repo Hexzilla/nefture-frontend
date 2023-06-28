@@ -25,6 +25,7 @@ type Props = {
 
 export default function WalletItemRow({ wallet }: Props) {
   const isMobile = useResponsive('down', 'sm');
+  const isMax = useResponsive('up', 'lg');
   const COLORS = ['error', 'warning', 'success'] as const;
   const { modalType, openModal, setActiveWallet } = useWalletContext();
   const [walletName, setWalletName] = useState(wallet.title);
@@ -126,7 +127,7 @@ export default function WalletItemRow({ wallet }: Props) {
               </Box>
             )}
           </Stack>
-          {!isMobile && (
+          {isMax && (
             <Stack direction="row" spacing={2} alignItems={'center'}>
               <Typography>{walletAddress}</Typography>
               <IconButton onClick={(event) => copyWalletAddress(event)}>
@@ -169,7 +170,7 @@ export default function WalletItemRow({ wallet }: Props) {
               <AlertItem title="Real-time Alerts" type={0} />
             </>
           )}
-          {!isMobile && (
+          {(isMax) && (
             <Stack direction="row" spacing={2} alignItems={'center'}>
               <Card sx={{ borderColor: 'primary.main' }}>
                 <Typography m={1.5}>Wallet 1</Typography>
