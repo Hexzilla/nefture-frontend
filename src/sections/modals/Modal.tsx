@@ -1,5 +1,6 @@
-import { Button, Card, Stack, Typography } from '@mui/material';
+import { Button, Card, Link, Stack, Typography } from '@mui/material';
 import { DM_Mono } from '@next/font/google';
+import NextLink from 'next/link';
 import { useMemo } from 'react';
 
 import Help from '@components/icons/Help';
@@ -44,7 +45,16 @@ export default function Modal({ title, wallet, needHelp, children, onClose }: Pr
         <Stack alignItems="center" sx={{ padding: '10px 20px', marginTop: '12px' }}>
           <Stack direction="row" spacing={2}>
             <Help />
-            <Typography color="gray">Need Help?</Typography>
+            <Link
+              component={NextLink}
+              href={'https://help.nefture.com'}
+              color="inherit"
+              noWrap
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Typography color="gray">Need Help?</Typography>
+            </Link>
           </Stack>
         </Stack>
       )}
