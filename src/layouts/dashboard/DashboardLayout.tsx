@@ -18,8 +18,6 @@ import navConfig, { mobileNavConfig } from './nav/config-navigation';
 
 // ----------------------------------------------------------------------
 
-const background = 'linear-gradient(180deg, rgba(41, 101, 255, 0.1) 0%, rgba(41, 101, 255, 0) 51.64%), linear-gradient(0deg, #292929, #292929), #FFFFFF';
-
 type Props = {
   children?: React.ReactNode;
 };
@@ -85,7 +83,6 @@ export default function DashboardLayout({ children }: Props) {
           sx={{
             display: { lg: 'flex' },
             minHeight: { lg: '100vh' },
-            background,
           }}
         >
           {renderNavVertical}
