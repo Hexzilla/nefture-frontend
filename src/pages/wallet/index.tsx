@@ -24,7 +24,7 @@ export default function WalletPage() {
         <title> Wallet | Nefture</title>
       </Head>
       <Grid container spacing={1}>
-        <Grid item xs={12} lg={modalType ? 8 : 12}>
+        <Grid item xs={12} lg={modalType ? 8 : 12} display={(isMobile && modalType)?'none':'inherit'}>
           <Container maxWidth={themeStretch ? false : 'xl'}>
             <Stack direction="row" justifyContent="space-between" alignItems="center" mt={3}>
               <Box>

@@ -1,12 +1,12 @@
-import { Box, Card, Grid } from '@mui/material';
+import { Box, Card, Grid, Stack } from '@mui/material';
 import { m } from 'framer-motion';
 
-import { DialogAnimate, MotionContainer } from '@components/animate';
+import { MotionContainer } from '@components/animate';
 import { Wallet, useWalletContext } from '@components/wallet';
 import AddWallet from '@components/wallet/AddWallet';
 
-import ActiveWallet from '@sections/wallet/ActiveWallet';
 import getVariant from '@sections/_examples/extra/animate/getVariant';
+import ActiveWallet from '@sections/wallet/ActiveWallet';
 
 type Props = {
   isMobile: boolean;
@@ -33,11 +33,10 @@ const ModalContent = ({ isMobile }: Props) => {
   };
 
   return (
-    <Card
+    <Stack
       sx={{
-        padding: isMobile ? '12px' : '20px',
-        marginBottom: '1em',
-        overflow: 'auto',
+        padding: isMobile ? '0px 20px' : '20px',
+        width: '100%',
       }}
     >
       {modalType === 'New' && (
@@ -50,7 +49,7 @@ const ModalContent = ({ isMobile }: Props) => {
       {modalType === 'View' && !!activeWallet && (
         <ActiveWallet onClose={closeModal} activeWallet={activeWallet} />
       )}
-    </Card>
+    </Stack>
   );
 };
 
@@ -58,11 +57,7 @@ export default function WalletModal({ isMobile }: Props) {
   const { modalType } = useWalletContext();
 
   if (isMobile) {
-    return (
-      <DialogAnimate fullWidth maxWidth="xs" open={!!modalType} variants={getVariant('bounceIn')}>
-        <ModalContent isMobile={isMobile} />
-      </DialogAnimate>
-    );
+    return <ModalContent isMobile={isMobile} />;
   }
 
   return (
@@ -71,7 +66,9 @@ export default function WalletModal({ isMobile }: Props) {
         <Grid item xs={12} lg={4}>
           <MotionContainer>
             <Box component={m.div} variants={getVariant('slideInRight')}>
-              <ModalContent isMobile={isMobile} />
+              <Card>
+                <ModalContent isMobile={isMobile} />
+              </Card>
             </Box>
           </MotionContainer>
         </Grid>
