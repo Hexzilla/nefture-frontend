@@ -10,7 +10,6 @@ import AlertSettings from '@components/wallet/AlertSettings';
 
 import useCopyToClipboard from '@hooks/useCopyToClipboard';
 
-import ChangeWalletDialog from './ChangeWalletDialog';
 import WalletLoader from './WalletLoader';
 
 type Props = {
@@ -21,14 +20,8 @@ type Props = {
 export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
   const { copy } = useCopyToClipboard();
   const { enqueueSnackbar } = useSnackbar();
-  const [open, setOpen] = useState(false);
   const [loadingWallet, setLoadingWallet] = useState(true);
   const [edit, setEdit] = useState(false);
-
-  const handleClose = () => {
-    setOpen(false);
-    setEdit(true);
-  };
 
   const copyToClipboard = (content: string) => {
     copy(content);
@@ -45,10 +38,14 @@ export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
   };
 
   const handlePencilClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (edit == true) {
-      setEdit(false);
-    } else setOpen(true);
+    setEdit(value => !value);
   };
+
+  const handleKeyInput = (e: any) => {
+    if (e.keyCode === 13) {
+      setEdit(false);
+    }
+  }
 
   return (
     <>
@@ -65,12 +62,14 @@ export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
             display: edit ? '' : 'none',
             marginTop: '-8px',
           }}
+          onKeyDown={handleKeyInput}
           onChange={(e) => setWalletName(e.target.value)}
         />{' '}
         <Box display={'contents'} onClick={(e) => handlePencilClick(e)}>
           <PencilGray />
         </Box>
       </Typography>
+
       <Typography
         color={'gray'}
         textAlign={'center'}
@@ -114,8 +113,6 @@ export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
           </Typography>
         </Stack>
       )}
-
-      {/* <ChangeWalletDialog open={open} walletName={wallet.title} handleClose={handleClose} /> */}
     </>
   );
 }
