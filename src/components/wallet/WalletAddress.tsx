@@ -1,7 +1,9 @@
 import { Box, Card, Stack, Typography, SxProps, Theme } from '@mui/material';
 import { useMemo } from 'react';
+import { useSnackbar } from 'notistack';
 
 import EthereumSmallIcon from '@components/icons/EthereumSmallIcon';
+import useCopyToClipboard from '@hooks/useCopyToClipboard';
 
 type Props = {
   address: string;
@@ -9,9 +11,17 @@ type Props = {
 };
 
 export default function WalletAddress({ address, sx }: Props) {
+  const { copy } = useCopyToClipboard();
+  const { enqueueSnackbar } = useSnackbar();
+
   const walletAddress = useMemo(() => {
     return address.substring(0, 7) + '...' + address.slice(address.length - 5);
   }, [address]);
+
+  const copyToClipboard = (content: string) => {
+    copy(content);
+    enqueueSnackbar('Copied!');
+  };
 
   return (
     <Card sx={{ padding: '4px 8px', ...sx }}>
@@ -26,7 +36,8 @@ export default function WalletAddress({ address, sx }: Props) {
           <Box
             component="img"
             src="/assets/icons/nefture/ic_copy.svg"
-            sx={{ width: '16px', color: 'gray' }}
+            sx={{ width: '16px', color: 'gray', cursor: 'pointer' }}
+            onClick={() => copyToClipboard(walletAddress)}
           />
           <Box
             component="img"
