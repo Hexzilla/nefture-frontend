@@ -58,7 +58,7 @@ export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
         <TextField
           defaultValue={wallet.title}
           sx={{
-            maxWidth: '96px',
+            maxWidth: '196px',
             display: edit ? '' : 'none',
             marginTop: '-8px',
           }}
