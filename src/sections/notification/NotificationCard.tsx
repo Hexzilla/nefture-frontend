@@ -1,5 +1,6 @@
-import { Card, Stack, Switch, Typography } from '@mui/material';
+import { Card, Link, Stack, Switch, Typography } from '@mui/material';
 import { DM_Mono } from '@next/font/google';
+import NextLink from 'next/link';
 
 type Props = {
   title: String;
@@ -44,7 +45,7 @@ const switchStyle = {
   width: '66px',
   height: '42px',
   '.MuiSwitch-thumb': { width: '18px', height: '18px' },
-  '.Mui-checked':{marginLeft:'4px'}
+  '.Mui-checked': { marginLeft: '4px' },
 };
 
 const dmMono = DM_Mono({
@@ -61,11 +62,27 @@ export default function NotificationCard({ title, type }: Props) {
         {type == 1 && <Switch defaultChecked color="primary" sx={switchStyle} />}
       </Stack>
       <Typography style={proStyle[type]}>PRO</Typography>
-      <Typography mt={1} color={'gray'} sx={{ marginTop: '1.5em', marginBottom: '1em', fontSize:'12px' }} className={dmMono.className}>
+      <Typography
+        mt={1}
+        color={'gray'}
+        sx={{ marginTop: '1.5em', marginBottom: '1em', fontSize: '12px' }}
+        className={dmMono.className}
+      >
         This alerts tracks all your approvals over time.
       </Typography>
+
       <Stack direction="row" sx={stackStyle}>
-        <Typography style={defaultStyle[type]}>See example</Typography>
+        <Link
+          component={NextLink}
+          href={'https://example.nefture.com'}
+          color="inherit"
+          noWrap
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <Typography style={defaultStyle[type]}>See example</Typography>
+        </Link>
+
         {type == 0 && (
           <Card
             sx={{
