@@ -23,6 +23,9 @@ export default function GlobalStyles() {
           width: '100%',
           height: '100%',
           background: 'linear-gradient(180deg, rgba(41, 101, 255, 0.1) 0%, rgba(41, 101, 255, 0) 51.64%), linear-gradient(0deg, #292929, #292929), #FFFFFF',
+          backgroundColor: '#292929',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
         },
         '#__next': {
           width: '100%',
