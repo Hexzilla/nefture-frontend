@@ -14,7 +14,7 @@ import WalletList from '@sections/wallet/WalletList';
 import WalletModal from '@sections/wallet/WalletModal';
 
 export default function WalletPage() {
-  const isMobile = useResponsive('down', 768);
+  const isMobile = useResponsive('down', 'sm');
   const { themeStretch } = useSettingsContext();
   const { wallets, modalType, openModal } = useWalletContext();
 
