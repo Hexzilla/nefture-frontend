@@ -18,7 +18,7 @@ export default function Main({ children, sx, ...other }: BoxProps) {
 
   const isNavMini = themeLayout === 'mini';
 
-  const isDesktop = useResponsive('up', 'lg');
+  const isDesktop = useResponsive('up', 'md');
 
   if (isNavHorizontal) {
     return (
@@ -48,10 +48,6 @@ export default function Main({ children, sx, ...other }: BoxProps) {
         ...(isDesktop && {
           px: 2,
           py: `${HEADER.H_DASHBOARD_DESKTOP + SPACING}px`,
-          width: `calc(100% - ${NAV.W_DASHBOARD}px)`,
-          ...(isNavMini && {
-            width: `calc(100% - ${NAV.W_DASHBOARD_MINI}px)`,
-          }),
         }),
         ...sx,
       }}

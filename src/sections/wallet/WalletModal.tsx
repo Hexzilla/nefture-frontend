@@ -69,7 +69,7 @@ export default function WalletModal({ isMobile }: Props) {
   return (
     <>
       {!!modalType && (
-        <Grid item xs={12} lg={4}>
+        <Grid item xs={12} md={4}>
           <MotionContainer>
             <Box component={m.div} variants={getVariant('slideInRight')}>
               <ModalContent isMobile={isMobile} />

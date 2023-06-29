@@ -24,8 +24,8 @@ type Props = {
 };
 
 export default function WalletItemRow({ wallet }: Props) {
-  const isMobile = useResponsive('down', 'sm');
-  const isHideAlerts = useResponsive('down', 1320);
+  const isDesktop = useResponsive('up', 'lg');
+  const isMobile = useResponsive('down', 'md');
   const COLORS = ['error', 'warning', 'success'] as const;
   const { modalType, openModal, setActiveWallet, setWalletName } = useWalletContext();
   const { copy } = useCopyToClipboard();
@@ -121,19 +121,21 @@ export default function WalletItemRow({ wallet }: Props) {
                 onKeyDown={handleKeyInput}
                 onChange={(e) => handleWalletNameChange(e.target.value)}
               />
-              {isMobile && (
+              {!isDesktop && (
                 <Typography color={'gray'} fontSize={'12px'}>
                   {walletAddress}
                 </Typography>
               )}
             </Stack>
+
             {!isMobile && (
               <Box onClick={(event) => openEditDialog(event)}>
                 <PencilGray />
               </Box>
             )}
           </Stack>
-          {!isMobile && (
+
+          {isDesktop && (
             <Stack direction="row" spacing={2} alignItems={'center'}>
               <Typography>{walletAddress}</Typography>
               <IconButton onClick={(event) => copyWalletAddress(event)}>
@@ -170,7 +172,8 @@ export default function WalletItemRow({ wallet }: Props) {
               </>
             )}
           </Stack>
-          {!isHideAlerts && !modalType && (
+
+          {!isMobile && !modalType && (
             <>
               <AlertItem title="Weekly Reports" type={0} />
               <AlertItem title="Real-time Alerts" type={0} />

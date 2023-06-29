@@ -31,10 +31,9 @@ type Props = {
 };
 
 export default function Header({ onOpenNav }: Props) {
-  const [selectedUserId, setSelectedUserId] = useState(1);
   const theme = useTheme();
 
-  const isDesktop = useResponsive('up', 'lg');
+  const isDesktop = useResponsive('up', 'md');
 
   const renderContent = (
     <Stack

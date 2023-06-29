@@ -25,7 +25,7 @@ const Dashboard = () => {
   const [walletVisible, setWalletVisible] = useState(false);
   const [activeWallet, setActiveWallet] = useState({} as any);
   const [state, setState] = useState(0);
-  const isMobile = useResponsive('down', 'sm');
+  const isMobile = useResponsive('down', 'md');
 
   const displayWallet = (value: Transaction) => {
     setWalletVisible(true);
@@ -75,6 +75,7 @@ const Dashboard = () => {
           {walletVisible && <ApprovalModal onClose={hideWallet} transaction={activeWallet} />}
           {walletVisible && <HistoryModal onClose={hideWallet} transaction={activeWallet} />}
         </Stack>
+
         {isMobile && (
           <Dialog fullWidth maxWidth="xs" open={walletVisible}>
             <Stack>

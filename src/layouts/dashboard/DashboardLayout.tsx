@@ -25,7 +25,7 @@ type Props = {
 export default function DashboardLayout({ children }: Props) {
   const { themeLayout } = useSettingsContext();
 
-  const isDesktop = useResponsive('up', 'lg');
+  const isDesktop = useResponsive('up', 'md');
 
   const [open, setOpen] = useState(false);
 
