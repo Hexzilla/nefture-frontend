@@ -37,7 +37,7 @@ export default function Modal({ title, wallet, needHelp, children, onClose }: Pr
   }, [page]);
 
   return (
-    <Card sx={{ padding: '12px' }} className={dmMono.className}>
+    <Card sx={{ padding: '12px', minHeight: 'calc(100vh - 100px)' }} className={dmMono.className}>
       <ModalHeader title={title} wallet={wallet} middle={backButton} onClose={onClose} />
 
       {children}
