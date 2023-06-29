@@ -47,7 +47,12 @@ export default function BurnModal({ transaction, onClose }: Props) {
         </>
       )}
 
-      <RisksCollapse risks={transaction.critical_risks} variant="critical" />
+      <RisksCollapse
+        risks={transaction.critical_risks}
+        variant="critical"
+        collapsed={collapsed}
+        setCollapsed={setCollapsed}
+      />
     </Modal>
   );
 }
