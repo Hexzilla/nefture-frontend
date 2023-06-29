@@ -43,7 +43,7 @@ export default function SmartContractModal({ transaction, onClose }: Props) {
             direction="column"
             justifyContent="center"
             alignItems="center"
-            spacing="14px"
+            spacing="12px"
             mt="34px"
             onClick={() => setPage(1)}
           >

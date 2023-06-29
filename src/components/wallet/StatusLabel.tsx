@@ -16,6 +16,7 @@ export default function StatusLabel({ title, variant, sx }: Props) {
         color: `risk.color.${variant}`,
         bgcolor: `risk.background.${variant}`,
         padding: '17px',
+        marginTop: '12px',
         textAlign: 'center',
         ...sx,
       }}
