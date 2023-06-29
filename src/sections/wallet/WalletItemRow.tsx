@@ -24,7 +24,7 @@ type Props = {
 };
 
 export default function WalletItemRow({ wallet }: Props) {
-  const isMobile = useResponsive('down', 768);
+  const isMobile = useResponsive('down', 'sm');
   const isMax = useResponsive('up', 'xl');
   const COLORS = ['error', 'warning', 'success'] as const;
   const { modalType, openModal, setActiveWallet, setWalletName } = useWalletContext();
