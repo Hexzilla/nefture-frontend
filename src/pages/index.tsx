@@ -51,8 +51,8 @@ const Dashboard = () => {
   };
 
   return (
-    <Grid container spacing={6}>
-      <Grid item xs={12} md={8}>
+    <Grid container spacing={3}>
+      <Grid item xs={12} md={7}>
         <Stack direction="column" spacing={4}>
           <SuspiciousTransactions
             onClick={displayWallet}
@@ -66,7 +66,7 @@ const Dashboard = () => {
           />
         </Stack>
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} md={5}>
         {!isMobile && state == 0 && <SkeletonWalletView />}
         <Stack spacing={2}>
           {walletVisible && <SmartContractModal onClose={hideWallet} transaction={activeWallet} />}
