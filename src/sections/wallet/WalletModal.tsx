@@ -1,7 +1,7 @@
-import { Box, Card, Grid } from '@mui/material';
+import { Box, Card, Dialog, Grid } from '@mui/material';
 import { m } from 'framer-motion';
 
-import { DialogAnimate, MotionContainer } from '@components/animate';
+import { MotionContainer } from '@components/animate';
 import { Wallet, useWalletContext } from '@components/wallet';
 import AddWallet from '@components/wallet/AddWallet';
 
@@ -60,9 +60,9 @@ export default function WalletModal({ isMobile }: Props) {
 
   if (isMobile) {
     return (
-      <DialogAnimate fullWidth maxWidth="xs" open={!!modalType} variants={getVariant('bounceIn')}>
+      <Dialog fullWidth maxWidth="xs" open={!!modalType}>
         <ModalContent isMobile={isMobile} />
-      </DialogAnimate>
+      </Dialog>
     );
   }
 
