@@ -1,5 +1,15 @@
 // @mui
-import { AppBar, Box, IconButton, MenuItem, Select, Stack, Toolbar, Typography } from '@mui/material';
+import {
+  AppBar,
+  Box,
+  IconButton,
+  MenuItem,
+  Select,
+  Stack,
+  Toolbar,
+  Tooltip,
+  Typography,
+} from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 // utils
 import { bgBlur } from '../../../utils/cssStyles';
@@ -21,7 +31,6 @@ type Props = {
 };
 
 export default function Header({ onOpenNav }: Props) {
-
   const [selectedUserId, setSelectedUserId] = useState(1);
   const theme = useTheme();
 
@@ -81,31 +90,21 @@ export default function Header({ onOpenNav }: Props) {
           justifyContent="space-between"
           spacing={{ xs: 0.5, sm: 1.5 }}
         >
-          {coinTypesData && coinTypesData.length > 0 && (
-            <SelectCoinType list={coinTypesData} />
-          )}
+          {coinTypesData && coinTypesData.length > 0 && <SelectCoinType list={coinTypesData} />}
 
           {coinAmountsData && coinAmountsData.length > 0 && (
             <SelectCoinAmount list={coinAmountsData} />
           )}
 
-          <IconButton
-            size="small"
-            color="inherit"
-            onClick={()=>{}}
-            sx={{ color: 'white' }}
-          >
+          <IconButton size="small" color="inherit" onClick={() => {}} sx={{ color: 'white' }}>
             <Iconify icon="carbon:notification" width={20} height={20} />
           </IconButton>
 
-          <IconButton
-            size="small"
-            color="inherit"
-            onClick={()=>{}}
-            sx={{ color: 'white' }}
-          >
-            <Iconify icon="raphael:question" width={20} height={20} />
-          </IconButton>
+          <Tooltip title={'This is a help'}>
+            <IconButton size="small" color="inherit" onClick={() => {}} sx={{ color: 'white' }}>
+              <Iconify icon="raphael:question" width={20} height={20} />
+            </IconButton>
+          </Tooltip>
         </Stack>
       </Stack>
     </Stack>
@@ -145,7 +144,6 @@ export default function Header({ onOpenNav }: Props) {
     </AppBar>
   );
 }
-
 
 const coinTypesData = [
   { id: 1, name: 'Ethereum', icon: '/assets/images/coins/ethereum.svg' },
