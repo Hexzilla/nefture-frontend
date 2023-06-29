@@ -11,11 +11,17 @@ type Props = {
   risks?: Risk[] | null;
   variant: RiskType;
   description?: string;
+  collapsed?: boolean;
+  setCollapsed?: (value: boolean) => void;
 };
 
-export default function RisksCollapse({ risks, variant, description }: Props) {
-  const [open, setOpen] = useState(false);
-
+export default function RisksCollapse({
+  risks,
+  variant,
+  description,
+  collapsed,
+  setCollapsed,
+}: Props) {
   const title = useMemo(() => {
     return variant[0].toUpperCase() + variant.slice(1) + ' Risks';
   }, [variant]);
@@ -28,14 +34,14 @@ export default function RisksCollapse({ risks, variant, description }: Props) {
   }, [risks, description]);
 
   return (
-    <Card sx={{ bgcolor: `risk.background.${variant}` }}>
+    <Card sx={{ marginTop: collapsed ? '32px' : 0 }}>
       <Stack
         direction="row"
         spacing={2}
         alignItems="start"
         justifyContent="space-between"
         sx={{ padding: '10px', cursor: 'pointer' }}
-        onClick={() => setOpen((open) => !open)}
+        onClick={() => setCollapsed?.(!collapsed)}
       >
         <Stack direction="row" spacing={1} justifyContent="space-between" alignItems="start">
           <Alert />
@@ -51,7 +57,7 @@ export default function RisksCollapse({ risks, variant, description }: Props) {
         </Box>
       </Stack>
 
-      <Collapse in={open} unmountOnExit>
+      <Collapse in={collapsed} unmountOnExit>
         <Stack spacing="10px" m="16px">
           {(risks || []).map((item: Risk, index: number) => (
             <RiskItem

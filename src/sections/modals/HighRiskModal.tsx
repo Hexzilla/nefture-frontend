@@ -1,5 +1,6 @@
 import { Box, Stack, Typography } from '@mui/material';
 import { DM_Mono } from '@next/font/google';
+import React, { useState } from 'react';
 
 import Description from '@components/wallet/Description';
 import WalletAddress from '@components/wallet/WalletAddress';
@@ -22,6 +23,8 @@ const dmMono = DM_Mono({
 });
 
 export default function HighRiskModal({ transaction, onClose }: Props) {
+  const [collapsed, setCollapsed] = useState(false);
+
   return (
     <Modal
       title="High risk"
@@ -36,30 +39,39 @@ export default function HighRiskModal({ transaction, onClose }: Props) {
       }
       onClose={onClose}
     >
-      <Stack
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-        spacing="14px"
-        mt="34px"
-      >
-        <Typography>TOKEN NAME ID</Typography>
+      {!collapsed && (
+        <>
+          <Stack
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            spacing="14px"
+            mt="34px"
+          >
+            <Typography>TOKEN NAME ID</Typography>
 
-        <Box sx={{ width: '50%' }}>
-          <WalletAddress address="0x8eEf26868D86B46494fAbe583fda2750c37a7638" />
-        </Box>
-        <Box sx={{ width: '58%' }}>
-          <StatusLabel title="Probably a rug" variant="high" />
-        </Box>
-      </Stack>
+            <Box sx={{ width: '50%' }}>
+              <WalletAddress address="0x8eEf26868D86B46494fAbe583fda2750c37a7638" />
+            </Box>
+            <Box sx={{ width: '58%' }}>
+              <StatusLabel title="Probably a rug" variant="high" />
+            </Box>
+          </Stack>
 
-      <Stack spacing="10px" my={3} className={dmMono.className}>
-        <Description title="Deployed" description="10 Jun 2021 23:21:10 GMT" />
-        <Description title="Chart" description="DexScreener" />
-        <Description title="Creator wallet" description="Creator" />
-      </Stack>
+          <Stack spacing="10px" my={3} className={dmMono.className}>
+            <Description title="Deployed" description="10 Jun 2021 23:21:10 GMT" />
+            <Description title="Chart" description="DexScreener" />
+            <Description title="Creator wallet" description="Creator" />
+          </Stack>
+        </>
+      )}
 
-      <RisksCollapse risks={transaction.critical_risks} variant="high" />
+      <RisksCollapse
+        risks={transaction.critical_risks}
+        variant="high"
+        collapsed={collapsed}
+        setCollapsed={setCollapsed}
+      />
     </Modal>
   );
 }

@@ -1,4 +1,5 @@
 import { Box, Stack, Typography } from '@mui/material';
+import React, { useState } from 'react';
 
 import { useModalContext } from '@components/modals';
 import Description from '@components/wallet/Description';
@@ -20,6 +21,7 @@ type Props = {
 
 export default function SmartContractModal({ transaction, onClose }: Props) {
   const { page, setPage } = useModalContext();
+  const [collapsed, setCollapsed] = useState(false);
 
   return (
     <Modal
@@ -35,7 +37,7 @@ export default function SmartContractModal({ transaction, onClose }: Props) {
       }
       onClose={onClose}
     >
-      {page === 0 && (
+      {!collapsed && (
         <>
           <Stack
             direction="column"
@@ -60,16 +62,15 @@ export default function SmartContractModal({ transaction, onClose }: Props) {
             <Description title="Chart" description="DexScreener" />
             <Description title="Creator wallet" description="Creator" />
           </Stack>
-
-          <RisksCollapse risks={transaction.critical_risks} variant="critical" />
         </>
       )}
 
-      {page === 1 && (
-        <Box padding="39px">
-          <ContractScore />
-        </Box>
-      )}
+      <RisksCollapse
+        risks={transaction.critical_risks}
+        variant="critical"
+        collapsed={collapsed}
+        setCollapsed={setCollapsed}
+      />
     </Modal>
   );
 }
