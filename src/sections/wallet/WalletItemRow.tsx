@@ -25,6 +25,7 @@ type Props = {
 
 export default function WalletItemRow({ wallet }: Props) {
   const isMobile = useResponsive('down', 'sm');
+  const isHideAlerts = useResponsive('down', 1320);
   const COLORS = ['error', 'warning', 'success'] as const;
   const { modalType, openModal, setActiveWallet, setWalletName } = useWalletContext();
   const { copy } = useCopyToClipboard();
@@ -169,7 +170,7 @@ export default function WalletItemRow({ wallet }: Props) {
               </>
             )}
           </Stack>
-          {!isMobile && !modalType && (
+          {!isHideAlerts && !modalType && (
             <>
               <AlertItem title="Weekly Reports" type={0} />
               <AlertItem title="Real-time Alerts" type={0} />

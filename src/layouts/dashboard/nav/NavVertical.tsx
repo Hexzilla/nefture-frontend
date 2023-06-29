@@ -35,21 +35,16 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
   }, [pathname]);
 
   const renderContent = (
-    <Scrollbar
+    <Stack
       sx={{
         height: 1,
-        '& .simplebar-content': {
-          height: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          borderColor: '#474B56',
-          borderWidth: '1px',
-          borderRightStyle: 'solid',
-        },
-        top: HEADER.H_DASHBOARD_DESKTOP
+        borderColor: '#474B56',
+        borderWidth: '1px',
+        borderRightStyle: 'solid',
+        paddingTop: '92px',
       }}
     >
-      <NavSectionVertical data={navConfig} sx={{marginTop:'1em'}}/>
+      <NavSectionVertical data={navConfig} />
 
       <Box sx={{ flexGrow: 1 }} />
       <Box
@@ -58,17 +53,20 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
           backgroundImage: 'linear-gradient(to right, #0EAE88 , #1350C7)',
           borderRadius: '8px',
           margin: '24px',
-          padding: '12px'
+          padding: '12px',
         }}
       >
-        <Typography textAlign="center" color="white">Upgrade your Wallet Security</Typography>
+        <Typography textAlign="center" color="white">
+          Upgrade your Wallet Security
+        </Typography>
 
         <Button sx={{ width: '100%', background: 'white', color: '#1350C7', marginTop: '12px' }}>
           Upgrade to Pro
         </Button>
       </Box>
-      <NavSectionVertical data={bottomNavConfig} sx={{ marginBottom:'108px' }} />
-    </Scrollbar>
+
+      <NavSectionVertical data={bottomNavConfig} />
+    </Stack>
   );
 
   return (
