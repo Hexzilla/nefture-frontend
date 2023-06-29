@@ -14,7 +14,7 @@ import WalletList from '@sections/wallet/WalletList';
 import WalletModal from '@sections/wallet/WalletModal';
 
 export default function WalletPage() {
-  const isMobile = useResponsive('down', 'sm');
+  const isMobile = useResponsive('down', 768);
   const { themeStretch } = useSettingsContext();
   const { modalType, openModal } = useWalletContext();
 
@@ -24,7 +24,12 @@ export default function WalletPage() {
         <title> Wallet | Nefture</title>
       </Head>
       <Grid container spacing={1}>
-        <Grid item xs={12} lg={modalType ? 8 : 12} display={(isMobile && modalType)?'none':'inherit'}>
+        <Grid
+          item
+          xs={12}
+          lg={modalType ? 8 : 12}
+          display={isMobile && modalType ? 'none' : 'inherit'}
+        >
           <Container maxWidth={themeStretch ? false : 'xl'}>
             <Stack direction="row" justifyContent="space-between" alignItems="center" mt={3}>
               <Box>
