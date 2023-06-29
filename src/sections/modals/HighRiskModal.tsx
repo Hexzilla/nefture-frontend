@@ -23,7 +23,7 @@ const dmMono = DM_Mono({
 
 export default function HighRiskModal({ transaction, onClose }: Props) {
   return (
-    <Modal title="High risk" wallet="Wallet1" needHelp onClose={onClose}>
+    <Modal title="High risk" wallet="Wallet1" onClose={onClose}>
       <Stack
         direction="column"
         justifyContent="center"

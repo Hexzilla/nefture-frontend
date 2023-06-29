@@ -1,7 +1,17 @@
-import { Button, Card, Link, Stack, Tooltip, Typography } from '@mui/material';
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Link,
+  Stack,
+  Tooltip,
+  Typography,
+} from '@mui/material';
 import { DM_Mono } from '@next/font/google';
 import NextLink from 'next/link';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import Help from '@components/icons/Help';
 import { useModalContext } from '@components/modals';
@@ -14,7 +24,7 @@ type Props = {
   title: string;
   wallet: string;
   children: React.ReactNode;
-  needHelp?: boolean;
+  actions?: React.ReactNode;
   onClose: VoidFunction;
 };
 
@@ -23,7 +33,7 @@ const dmMono = DM_Mono({
   subsets: ['latin'],
 });
 
-export default function Modal({ title, wallet, needHelp, children, onClose }: Props) {
+export default function Modal({ title, wallet, actions, children, onClose }: Props) {
   const { page, setPage } = useModalContext();
 
   const backButton = useMemo(() => {
@@ -37,32 +47,22 @@ export default function Modal({ title, wallet, needHelp, children, onClose }: Pr
   }, [page]);
 
   return (
-    <Card sx={{ padding: '12px', minHeight: 'calc(100vh - 100px)' }} className={dmMono.className}>
-      <ModalHeader title={title} wallet={wallet} middle={backButton} onClose={onClose} />
+    <Card
+      sx={{
+        padding: '12px',
+        minHeight: 'calc(100vh - 100px)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}
+      className={dmMono.className}
+    >
+      <CardContent sx={{ padding: 0 }}>
+        <ModalHeader title={title} wallet={wallet} middle={backButton} onClose={onClose} />
+        {children}
+      </CardContent>
 
-      {children}
-
-      {!!needHelp && (
-        <Stack alignItems="center" sx={{ padding: '10px 20px', marginTop: '12px' }}>
-          <Stack direction="row" spacing={2}>
-            <Tooltip title="This is the help">
-              <Box sx={{ cursor: 'pointer' }}>
-                <Help />
-              </Box>
-            </Tooltip>
-            <Link
-              component={NextLink}
-              href={'https://help.nefture.com'}
-              color="inherit"
-              noWrap
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <Typography color="gray">Need Help?</Typography>
-            </Link>
-          </Stack>
-        </Stack>
-      )}
+      {actions && <CardActions sx={{ display: 'block' }}>{actions}</CardActions>}
     </Card>
   );
 }

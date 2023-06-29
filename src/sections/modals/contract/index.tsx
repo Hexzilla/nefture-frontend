@@ -22,7 +22,19 @@ export default function SmartContractModal({ transaction, onClose }: Props) {
   const { page, setPage } = useModalContext();
 
   return (
-    <Modal title="Smart Contract" wallet="Wallet1" needHelp onClose={onClose}>
+    <Modal
+      title="Smart Contract"
+      wallet="Wallet1"
+      actions={
+        <WalletActions
+          title="Reject (recommended)"
+          swipe
+          help={{ tooltip: 'Smart Contract', link: 'https://help.nefture.com' }}
+          onSubmit={() => console.log('Reject')}
+        />
+      }
+      onClose={onClose}
+    >
       {page === 0 && (
         <>
           <Stack
@@ -58,8 +70,6 @@ export default function SmartContractModal({ transaction, onClose }: Props) {
           <ContractScore />
         </Box>
       )}
-
-      <WalletActions title="Reject (recommended)" swipe onSubmit={() => console.log('Reject')} />
     </Modal>
   );
 }

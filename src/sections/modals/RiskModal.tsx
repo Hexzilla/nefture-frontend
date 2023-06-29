@@ -16,7 +16,7 @@ type Props = {
 
 export default function RiskModal({ variant, onClose }: Props) {
   return (
-    <Modal title={RiskNames[variant]} wallet="Wallet1" needHelp onClose={onClose}>
+    <Modal title={RiskNames[variant]} wallet="Wallet1" onClose={onClose}>
       <Stack
         direction="column"
         justifyContent="center"

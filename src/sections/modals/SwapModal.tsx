@@ -23,7 +23,7 @@ const dmMono = DM_Mono({
 
 export default function SwapModal({ transaction, onClose }: Props) {
   return (
-    <Modal title="Swap" wallet="Wallet1" needHelp onClose={onClose}>
+    <Modal title="Swap" wallet="Wallet1" onClose={onClose}>
       <Stack spacing={2} mt={2}>
         <Volumn title="Receiving" icon="plus" quantity="5260 USDC" volumn="$5,260.42" />
         <Volumn title="Paying" icon="minus" quantity="4260 USDT" volumn="$4,260.42" />

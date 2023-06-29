@@ -13,7 +13,7 @@ type Props = {
 export default function HistoryModal({ transaction, onClose }: Props) {
 
   return (
-    <Modal title="Transaction rejected" wallet="Wallet1" needHelp onClose={onClose}>
+    <Modal title="Transaction rejected" wallet="Wallet1" onClose={onClose}>
       <Box sx={{ minHeight: '250px', position: 'relative', marginTop: '200px' }}>
         <Stack>
           <Stack

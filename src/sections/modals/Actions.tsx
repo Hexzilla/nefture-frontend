@@ -1,3 +1,4 @@
+import NeedHelp from '@components/modals/NeedHelp';
 import { Button, Stack } from '@mui/material';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
@@ -17,10 +18,14 @@ const styles = {
 type Props = {
   title: string;
   swipe: boolean;
+  help?: {
+    tooltip: string;
+    link: string;
+  };
   onSubmit: VoidFunction;
 };
 
-export default function ModalActions({ title, swipe, onSubmit }: Props) {
+export default function ModalActions({ title, swipe, help, onSubmit }: Props) {
   const [arrowVisible, setArrowVisible] = useState('visible');
 
   return (
@@ -29,7 +34,7 @@ export default function ModalActions({ title, swipe, onSubmit }: Props) {
         {title}
       </Button>
 
-      {swipe && (
+      {!!swipe && (
         <Swipezor
           mainText="Swipe to Approve"
           overlayText="Approved"
@@ -39,6 +44,8 @@ export default function ModalActions({ title, swipe, onSubmit }: Props) {
           arrowVisible={arrowVisible}
         />
       )}
+
+      {!!help && <NeedHelp tooltip={help.tooltip} link={help.link} />}
     </Stack>
   );
 }

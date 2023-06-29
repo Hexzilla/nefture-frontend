@@ -21,7 +21,7 @@ export default function ApprovalModal({ transaction, onClose }: Props) {
   const height = items.length > 3 ? '200px' : 'auto';
 
   return (
-    <Modal title="Approval" wallet="Wallet1" needHelp onClose={onClose}>
+    <Modal title="Approval" wallet="Wallet1" onClose={onClose}>
       <Stack
         direction="column"
         justifyContent="center"
