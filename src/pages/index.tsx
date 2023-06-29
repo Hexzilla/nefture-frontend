@@ -22,7 +22,6 @@ import SmartContractModal from '@sections/modals/contract';
 GeneralAppPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
 
 const Dashboard = () => {
-  const { themeStretch } = useSettingsContext();
   const [walletVisible, setWalletVisible] = useState(false);
   const [activeWallet, setActiveWallet] = useState({} as any);
   const [state, setState] = useState(0);
@@ -51,25 +50,22 @@ const Dashboard = () => {
   };
 
   return (
-    <Grid container spacing={1}>
-      <Grid item xs={12} md={8}>
-        <Container maxWidth={themeStretch ? false : 'xl'}>
-          <Stack direction="column" spacing={4} mt={2}>
-            <SuspiciousTransactions
-              onClick={displayWallet}
-              state={state}
-              viewTransaction={viewTransactions}
-            />
-            <LatestTransactions
-              onClick={displayWallet}
-              state={state}
-              viewTransaction={viewTransactions}
-            />
-          </Stack>
-        </Container>
+    <Grid container spacing={3}>
+      <Grid item xs={12} md={7}>
+        <Stack direction="column" spacing={4}>
+          <SuspiciousTransactions
+            onClick={displayWallet}
+            state={state}
+            viewTransaction={viewTransactions}
+          />
+          <LatestTransactions
+            onClick={displayWallet}
+            state={state}
+            viewTransaction={viewTransactions}
+          />
+        </Stack>
       </Grid>
-
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} md={5}>
         {!isMobile && state == 0 && <SkeletonWalletView />}
         <Stack spacing={2}>
           {walletVisible && <SmartContractModal onClose={hideWallet} transaction={activeWallet} />}
@@ -92,12 +88,16 @@ const Dashboard = () => {
 };
 
 export default function GeneralAppPage() {
+  const { themeStretch } = useSettingsContext();
+
   return (
     <AnimatedContainer>
       <Head>
         <title> Dashboard | Nefture</title>
       </Head>
-      <Dashboard />
+      <Container maxWidth={themeStretch ? false : 'xl'}>
+        <Dashboard />
+      </Container>
     </AnimatedContainer>
   );
 }
