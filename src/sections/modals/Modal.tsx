@@ -1,24 +1,11 @@
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Link,
-  Stack,
-  Tooltip,
-  Typography,
-} from '@mui/material';
+import { Button, Card, CardActions, CardContent } from '@mui/material';
 import { DM_Mono } from '@next/font/google';
-import NextLink from 'next/link';
 import React, { useMemo } from 'react';
 
-import Help from '@components/icons/Help';
 import { useModalContext } from '@components/modals';
 
 import ModalHeader from './Header';
 import LeftArrow from '@components/icons/LeftArrow';
-import { Box } from '@mui/system';
 
 type Props = {
   title: string;
@@ -50,7 +37,7 @@ export default function Modal({ title, wallet, actions, children, onClose }: Pro
     <Card
       sx={{
         padding: '12px',
-        minHeight: 'calc(100vh - 100px)',
+        minHeight: `calc(100vh - 100px)`,
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
