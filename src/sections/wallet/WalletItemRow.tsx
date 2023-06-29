@@ -27,7 +27,7 @@ export default function WalletItemRow({ wallet }: Props) {
   const isDesktop = useResponsive('up', 'lg');
   const isMobile = useResponsive('down', 'md');
   const COLORS = ['error', 'warning', 'success'] as const;
-  const { modalType, openModal, setActiveWallet, setWalletName } = useWalletContext();
+  const { modalType, openModal, activeWallet, setActiveWallet, setWalletName } = useWalletContext();
   const { copy } = useCopyToClipboard();
   const { enqueueSnackbar } = useSnackbar();
   const [edit, setEdit] = useState(false);
@@ -55,8 +55,13 @@ export default function WalletItemRow({ wallet }: Props) {
   };
 
   const handleSelectWallet = () => {
-    openModal('View');
-    setActiveWallet(wallet);
+    if (modalType === 'View' && wallet.id === activeWallet?.id) {
+      openModal(null);
+      setActiveWallet(null);
+    } else {
+      openModal('View');
+      setActiveWallet(wallet);
+    }
   };
 
   const handleKeyInput = (e: any) => {

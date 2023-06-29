@@ -18,6 +18,7 @@ import ApprovalModal from '@sections/modals/ApprovalModal';
 import BurnModal from '@sections/modals/BurnModal';
 import HighRiskModal from '@sections/modals/HighRiskModal';
 import SmartContractModal from '@sections/modals/contract';
+import ScoreModal from '@sections/modals/contract/ScoreModal';
 
 GeneralAppPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
 
@@ -28,7 +29,7 @@ const Dashboard = () => {
   const isMobile = useResponsive('down', 'md');
 
   const displayWallet = (value: Transaction) => {
-    setWalletVisible(true);
+    setWalletVisible(!walletVisible);
     setActiveWallet(value);
   };
 
@@ -69,6 +70,7 @@ const Dashboard = () => {
         {!isMobile && state == 0 && <SkeletonWalletView />}
         <Stack spacing={2}>
           {walletVisible && <SmartContractModal onClose={hideWallet} transaction={activeWallet} />}
+          {walletVisible && <ScoreModal onClose={hideWallet} transaction={activeWallet} />}
           {walletVisible && <HighRiskModal onClose={hideWallet} transaction={activeWallet} />}
           {walletVisible && <BurnModal onClose={hideWallet} transaction={activeWallet} />}
           {walletVisible && <SwapModal onClose={hideWallet} transaction={activeWallet} />}

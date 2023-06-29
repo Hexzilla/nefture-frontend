@@ -2,14 +2,13 @@ import { Button, Card, CardActions, CardContent } from '@mui/material';
 import { DM_Mono } from '@next/font/google';
 import React, { useMemo } from 'react';
 
-import { useModalContext } from '@components/modals';
-
 import ModalHeader from './Header';
 import LeftArrow from '@components/icons/LeftArrow';
 
 type Props = {
   title: string;
   wallet: string;
+  showBackButton?: boolean;
   children: React.ReactNode;
   actions?: React.ReactNode;
   onClose: VoidFunction;
@@ -20,18 +19,16 @@ const dmMono = DM_Mono({
   subsets: ['latin'],
 });
 
-export default function Modal({ title, wallet, actions, children, onClose }: Props) {
-  const { page, setPage } = useModalContext();
-
+export default function Modal({ title, wallet, showBackButton, actions, children, onClose }: Props) {
   const backButton = useMemo(() => {
-    if (page > 0) {
+    if (showBackButton) {
       return (
-        <Button variant="text" sx={{ color: 'white' }} onClick={() => setPage(0)}>
+        <Button variant="text" sx={{ color: 'white' }} onClick={() => console.log(0)}>
           <LeftArrow /> Go back
         </Button>
       );
     }
-  }, [page]);
+  }, [showBackButton]);
 
   return (
     <Card
