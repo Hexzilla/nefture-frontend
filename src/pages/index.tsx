@@ -2,7 +2,6 @@ import { Container, Dialog, Grid, Stack } from '@mui/material';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 
-import { useAuthContext } from '../auth/useAuthContext';
 import AnimatedContainer from '../components/animated-container';
 import { useSettingsContext } from '../components/settings';
 import useResponsive from '../hooks/useResponsive';
@@ -23,6 +22,7 @@ import SmartContractModal from '@sections/modals/contract';
 GeneralAppPage.getLayout = (page: React.ReactElement) => <DashboardLayout>{page}</DashboardLayout>;
 
 const Dashboard = () => {
+  const { themeStretch } = useSettingsContext();
   const [walletVisible, setWalletVisible] = useState(false);
   const [activeWallet, setActiveWallet] = useState({} as any);
   const [state, setState] = useState(0);
@@ -51,22 +51,25 @@ const Dashboard = () => {
   };
 
   return (
-    <Grid container spacing={3}>
-      <Grid item xs={12} md={7}>
-        <Stack direction="column" spacing={4}>
-          <SuspiciousTransactions
-            onClick={displayWallet}
-            state={state}
-            viewTransaction={viewTransactions}
-          />
-          <LatestTransactions
-            onClick={displayWallet}
-            state={state}
-            viewTransaction={viewTransactions}
-          />
-        </Stack>
+    <Grid container spacing={1}>
+      <Grid item xs={12} md={8}>
+        <Container maxWidth={themeStretch ? false : 'xl'}>
+          <Stack direction="column" spacing={4} mt={2}>
+            <SuspiciousTransactions
+              onClick={displayWallet}
+              state={state}
+              viewTransaction={viewTransactions}
+            />
+            <LatestTransactions
+              onClick={displayWallet}
+              state={state}
+              viewTransaction={viewTransactions}
+            />
+          </Stack>
+        </Container>
       </Grid>
-      <Grid item xs={12} md={5}>
+
+      <Grid item xs={12} md={4}>
         {!isMobile && state == 0 && <SkeletonWalletView />}
         <Stack spacing={2}>
           {walletVisible && <SmartContractModal onClose={hideWallet} transaction={activeWallet} />}
@@ -89,17 +92,12 @@ const Dashboard = () => {
 };
 
 export default function GeneralAppPage() {
-  const { user } = useAuthContext();
-  const { themeStretch } = useSettingsContext();
-
   return (
     <AnimatedContainer>
       <Head>
         <title> Dashboard | Nefture</title>
       </Head>
-      <Container maxWidth={themeStretch ? false : 'xl'}>
-        <Dashboard />
-      </Container>
+      <Dashboard />
     </AnimatedContainer>
   );
 }
