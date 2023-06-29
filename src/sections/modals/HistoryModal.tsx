@@ -19,6 +19,7 @@ export default function HistoryModal({ transaction, onClose }: Props) {
       actions={
         <ModalActions
           title="See on etherscan"
+          variant="main"
           swipe
           help={{ tooltip: 'Swap', link: 'https://help.nefture.com' }}
           onSubmit={() => console.log('Reject')}

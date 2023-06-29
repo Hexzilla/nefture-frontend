@@ -7,16 +7,27 @@ const Swipezor = dynamic(() => import('./Swipezor'), {
   ssr: false,
 });
 
-const styles = {
+const mainButtonStyles = {
+  borderRadius: '12px',
+  bgcolor: 'primary.main',
+  '&:hover': {
+    bgcolor: 'primary.main',
+  },
+  width: '100%',
+};
+
+const blackButtonStyles = {
   borderRadius: '12px',
   bgcolor: 'common.black',
   '&:hover': {
     bgcolor: '#2965FF',
   },
+  width: '100%',
 };
 
 type Props = {
   title: string;
+  variant?: 'main' | 'black';
   swipe: boolean;
   help?: {
     tooltip: string;
@@ -25,12 +36,17 @@ type Props = {
   onSubmit: VoidFunction;
 };
 
-export default function ModalActions({ title, swipe, help, onSubmit }: Props) {
+export default function ModalActions({ title, variant, swipe, help, onSubmit }: Props) {
   const [arrowVisible, setArrowVisible] = useState('visible');
 
   return (
     <Stack mt={3} spacing={1}>
-      <Button size="large" variant="contained" sx={styles} onClick={onSubmit}>
+      <Button
+        size="large"
+        variant="contained"
+        sx={variant === 'main' ? mainButtonStyles : blackButtonStyles}
+        onClick={onSubmit}
+      >
         {title}
       </Button>
 

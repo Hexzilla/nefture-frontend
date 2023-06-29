@@ -11,7 +11,7 @@ type Props = {
   defaultLoadValue: number;
 };
 
-export default function LoadWallet({ onLoadingComplete, defaultLoadValue }: Props) {
+export default function WalletLoader({ onLoadingComplete, defaultLoadValue }: Props) {
   const { activeWallet } = useWalletContext();
   const [loadingStatus, setLoadingStatus] = useState(defaultLoadValue);
 

@@ -32,6 +32,7 @@ export default function SwapModal({ transaction, onClose }: Props) {
       actions={
         <ModalActions
           title="Go to Home"
+          variant='main'
           swipe
           help={{ tooltip: 'Swap', link: 'https://help.nefture.com' }}
           onSubmit={() => console.log('GoToHome')}
