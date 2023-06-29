@@ -23,7 +23,19 @@ const dmMono = DM_Mono({
 
 export default function SwapModal({ transaction, onClose }: Props) {
   return (
-    <Modal title="Swap" wallet="Wallet1" onClose={onClose}>
+    <Modal
+      title="Swap"
+      wallet="Wallet1"
+      actions={
+        <ModalActions
+          title="Go to Home"
+          swipe
+          help={{ tooltip: 'Swap', link: 'https://help.nefture.com' }}
+          onSubmit={() => console.log('GoToHome')}
+        />
+      }
+      onClose={onClose}
+    >
       <Stack spacing={2} mt={2}>
         <Volumn title="Receiving" icon="plus" quantity="5260 USDC" volumn="$5,260.42" />
         <Volumn title="Paying" icon="minus" quantity="4260 USDT" volumn="$4,260.42" />
@@ -43,8 +55,6 @@ export default function SwapModal({ transaction, onClose }: Props) {
       </Stack>
 
       <RisksCollapse risks={transaction.critical_risks} variant="medium" />
-
-      <ModalActions title="Go to Home" swipe onSubmit={() => console.log('GoToHome')} />
     </Modal>
   );
 }

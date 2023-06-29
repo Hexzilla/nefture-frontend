@@ -16,7 +16,19 @@ type Props = {
 
 export default function BurnModal({ transaction, onClose }: Props) {
   return (
-    <Modal title="Burn" wallet="Wallet1" onClose={onClose}>
+    <Modal
+      title="Burn"
+      wallet="Wallet1"
+      actions={
+        <ModalActions
+          title="Reject (recommended)"
+          swipe
+          help={{ tooltip: 'Burn', link: 'https://help.nefture.com' }}
+          onSubmit={() => console.log('Reject')}
+        />
+      }
+      onClose={onClose}
+    >
       <Stack spacing={2} mt={2}>
         <Volumn title="Burning" icon="minus" quantity="2 Tokens" volumn="$5,260.42" />
       </Stack>
@@ -29,8 +41,6 @@ export default function BurnModal({ transaction, onClose }: Props) {
       </Stack>
 
       <RisksCollapse risks={transaction.critical_risks} variant="critical" />
-
-      <ModalActions title="Reject (recommended)" swipe onSubmit={() => console.log('Reject')} />
     </Modal>
   );
 }

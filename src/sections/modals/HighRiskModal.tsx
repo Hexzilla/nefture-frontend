@@ -23,7 +23,19 @@ const dmMono = DM_Mono({
 
 export default function HighRiskModal({ transaction, onClose }: Props) {
   return (
-    <Modal title="High risk" wallet="Wallet1" onClose={onClose}>
+    <Modal
+      title="High risk"
+      wallet="Wallet1"
+      actions={
+        <WalletActions
+          title="Reject (recommended)"
+          swipe
+          help={{ tooltip: 'High Risk', link: 'https://help.nefture.com' }}
+          onSubmit={() => console.log('Reject')}
+        />
+      }
+      onClose={onClose}
+    >
       <Stack
         direction="column"
         justifyContent="center"
@@ -48,8 +60,6 @@ export default function HighRiskModal({ transaction, onClose }: Props) {
       </Stack>
 
       <RisksCollapse risks={transaction.critical_risks} variant="high" />
-
-      <WalletActions title="Reject (recommended)" swipe onSubmit={() => console.log('Reject')} />
     </Modal>
   );
 }

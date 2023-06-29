@@ -21,7 +21,19 @@ export default function ApprovalModal({ transaction, onClose }: Props) {
   const height = items.length > 3 ? '200px' : 'auto';
 
   return (
-    <Modal title="Approval" wallet="Wallet1" onClose={onClose}>
+    <Modal
+      title="Approval"
+      wallet="Wallet1"
+      actions={
+        <ModalActions
+          title="Reject (recommended)"
+          swipe
+          help={{ tooltip: 'Swap', link: 'https://help.nefture.com' }}
+          onSubmit={() => console.log('Reject')}
+        />
+      }
+      onClose={onClose}
+    >
       <Stack
         direction="column"
         justifyContent="center"
@@ -73,7 +85,6 @@ export default function ApprovalModal({ transaction, onClose }: Props) {
           </Card>
         )}
       </Box>
-      <ModalActions title="Reject (recommended)" swipe onSubmit={() => console.log('Reject')} />
     </Modal>
   );
 }
