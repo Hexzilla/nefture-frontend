@@ -17,6 +17,7 @@ export default function WalletPage() {
   const isMobile = useResponsive('down', 'sm');
   const { themeStretch } = useSettingsContext();
   const { wallets, modalType, openModal } = useWalletContext();
+  console.log('modalType', modalType)
 
   return (
     <AnimatedContainer>
