@@ -1,4 +1,5 @@
 export interface Wallet {
+  id: number;
   title: string;
   address: string;
   status: number;
@@ -16,7 +17,9 @@ export type WalletValueProps = {
   closeModal: () => void;
   activeWallet: Wallet | null;
   setActiveWallet: (value: Wallet | null) => void;
+  setWalletName: (id: number, name: string) => void;
 };
 
 export type WalletContextProps = WalletValueProps & {
+  wallets: Wallet[];
 };

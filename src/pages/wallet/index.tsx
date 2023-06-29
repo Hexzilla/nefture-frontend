@@ -16,7 +16,7 @@ import WalletModal from '@sections/wallet/WalletModal';
 export default function WalletPage() {
   const isMobile = useResponsive('down', 768);
   const { themeStretch } = useSettingsContext();
-  const { modalType, openModal } = useWalletContext();
+  const { wallets, modalType, openModal } = useWalletContext();
 
   return (
     <AnimatedContainer>
@@ -40,7 +40,8 @@ export default function WalletPage() {
               </Box>
               <AddWalletButton isMobile={isMobile} onClick={() => openModal('New')} />
             </Stack>
-            <WalletList wallets={items} />
+
+            <WalletList wallets={wallets} />
           </Container>
         </Grid>
 
@@ -55,42 +56,3 @@ WalletPage.getLayout = (page: React.ReactElement) => (
     <WalletProvider>{page}</WalletProvider>
   </DashboardLayout>
 );
-
-const items: Wallet[] = [
-  {
-    title: 'Cactus 1',
-    address: '0x8eEf868D86e583fd2750cfAb337a7626aB464948',
-    status: 0,
-    statusTitle: 'Check',
-    value: 0,
-    progress: 1,
-    approvals: 0,
-  },
-  {
-    title: 'Cactus 2',
-    address: '0x33022222f2783fc46494f37a786e5Ab38626868D',
-    status: 1,
-    statusTitle: 'Severe',
-    value: 97,
-    progress: 5,
-    approvals: 5,
-  },
-  {
-    title: 'Cactus 3',
-    address: '0x12345222f27786e5Ab38626868D883fc46494f37',
-    status: 2,
-    statusTitle: 'Medium',
-    value: 97,
-    progress: 5,
-    approvals: 3,
-  },
-  {
-    title: 'Cactus 4',
-    address: '0x1118eEf2783fdaB50c46494f37a7626868D86220',
-    status: 3,
-    statusTitle: 'Very Good',
-    value: 97,
-    progress: 5,
-    approvals: 0,
-  },
-];

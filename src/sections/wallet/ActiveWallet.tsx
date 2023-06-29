@@ -5,7 +5,7 @@ import { useMemo, useState } from 'react';
 import Close from '@components/icons/GrayClose';
 import PencilGray from '@components/icons/PencilGray';
 import SvgColor from '@components/svg-color/SvgColor';
-import { Wallet } from '@components/wallet';
+import { Wallet, useWalletContext } from '@components/wallet';
 import AlertSettings from '@components/wallet/AlertSettings';
 
 import useCopyToClipboard from '@hooks/useCopyToClipboard';
@@ -13,12 +13,13 @@ import useCopyToClipboard from '@hooks/useCopyToClipboard';
 import WalletLoader from './WalletLoader';
 
 type Props = {
+  wallet: Wallet;
   onClose: VoidFunction;
-  activeWallet: Wallet;
 };
 
-export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
+export default function ActiveWallet({ wallet, onClose }: Props) {
   const { copy } = useCopyToClipboard();
+  const { setWalletName } = useWalletContext();
   const { enqueueSnackbar } = useSnackbar();
   const [loadingWallet, setLoadingWallet] = useState(true);
   const [edit, setEdit] = useState(false);
@@ -33,19 +34,21 @@ export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
     return address.substring(0, 7) + '...' + address.slice(address.length - 5);
   }, [wallet.address]);
 
-  const setWalletName = (name: string) => {
-    wallet.title = name;
+  const handleWalletNameChanged = (name: string) => {
+    if (wallet.id) {
+      setWalletName(wallet.id, name);
+    }
   };
 
   const handlePencilClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    setEdit(value => !value);
+    setEdit((value) => !value);
   };
 
   const handleKeyInput = (e: any) => {
     if (e.keyCode === 13) {
       setEdit(false);
     }
-  }
+  };
 
   return (
     <>
@@ -56,14 +59,14 @@ export default function ActiveWallet({ onClose, activeWallet: wallet }: Props) {
       <Typography variant="h6" textAlign={'center'} sx={{ cursor: 'pointer' }}>
         <span style={{ display: edit ? 'none' : '' }}>{wallet.title}</span>
         <TextField
-          defaultValue={wallet.title}
+          value={wallet.title}
           sx={{
             maxWidth: '196px',
             display: edit ? '' : 'none',
             marginTop: '-8px',
           }}
           onKeyDown={handleKeyInput}
-          onChange={(e) => setWalletName(e.target.value)}
+          onChange={(e) => handleWalletNameChanged(e.target.value)}
         />{' '}
         <Box display={'contents'} onClick={(e) => handlePencilClick(e)}>
           <PencilGray />

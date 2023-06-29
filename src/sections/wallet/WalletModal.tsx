@@ -14,6 +14,7 @@ type Props = {
 
 const createWallet = () => {
   return {
+    id: 0,
     title: 'User Wallet',
     address: '0x8eEf2750c37a7626868D86e583fdaB46494fAb38',
     status: 0,
@@ -47,7 +48,7 @@ const ModalContent = ({ isMobile }: Props) => {
         />
       )}
       {modalType === 'View' && !!activeWallet && (
-        <ActiveWallet onClose={closeModal} activeWallet={activeWallet} />
+        <ActiveWallet onClose={closeModal} wallet={activeWallet} />
       )}
     </Stack>
   );

@@ -22,13 +22,15 @@ export default function WalletList({ wallets }: Props) {
 
   return (
     <Stack direction="column" spacing="10px" sx={{ cursor: 'pointer' }} mt={3}>
-      {wallets.map((wallet, index) =>
-        loading ? (
-          <Skeleton variant="text" height={140} sx={{ marginBottom: '-50px!important' }} />
-        ) : (
-          <WalletItemRow key={index} wallet={wallet} />
-        )
-      )}
+      {wallets.map((wallet) => (
+        <div key={wallet.id}>
+          {loading ? (
+            <Skeleton variant="text" height={140} sx={{ marginBottom: '-50px!important' }} />
+          ) : (
+            <WalletItemRow wallet={wallet} />
+          )}
+        </div>
+      ))}
     </Stack>
   );
 }

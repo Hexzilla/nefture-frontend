@@ -27,11 +27,10 @@ export default function WalletItemRow({ wallet }: Props) {
   const isMobile = useResponsive('down', 768);
   const isMax = useResponsive('up', 'xl');
   const COLORS = ['error', 'warning', 'success'] as const;
-  const { modalType, openModal, setActiveWallet } = useWalletContext();
-  const [walletName, setWalletName] = useState(wallet.title);
-  const [edit, setEdit] = useState(false);
+  const { modalType, openModal, setActiveWallet, setWalletName } = useWalletContext();
   const { copy } = useCopyToClipboard();
   const { enqueueSnackbar } = useSnackbar();
+  const [edit, setEdit] = useState(false);
 
   const styles = {
     '&:hover': {
@@ -49,6 +48,12 @@ export default function WalletItemRow({ wallet }: Props) {
     position: 'relative',
   };
 
+  const handleWalletNameChange = (name: string) => {
+    if (wallet.id) {
+      setWalletName(wallet.id, name);
+    }
+  };
+
   const handleSelectWallet = () => {
     openModal('View');
     setActiveWallet(wallet);
@@ -58,7 +63,7 @@ export default function WalletItemRow({ wallet }: Props) {
     if (e.keyCode === 13) {
       setEdit(false);
     }
-  }
+  };
 
   const openEditDialog = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.stopPropagation();
@@ -104,16 +109,17 @@ export default function WalletItemRow({ wallet }: Props) {
                 }}
                 display={edit ? 'none' : 'inherit'}
               >
-                {walletName}
+                {wallet.title}
               </Typography>
               <TextField
-                defaultValue={walletName}
+                defaultValue={wallet.title}
                 sx={{
                   display: edit ? 'inherit' : 'none',
                   maxWidth: '96px',
                 }}
+                inputProps={{ maxLength: 12 }}
                 onKeyDown={handleKeyInput}
-                onChange={(e) => setWalletName(e.target.value)}
+                onChange={(e) => handleWalletNameChange(e.target.value)}
               />
               {isMobile && (
                 <Typography color={'gray'} fontSize={'12px'}>
@@ -170,7 +176,7 @@ export default function WalletItemRow({ wallet }: Props) {
               <AlertItem title="Real-time Alerts" type={0} />
             </>
           )}
-          {(isMax) && (
+          {isMax && (
             <Stack direction="row" spacing={2} alignItems={'center'}>
               <Card sx={{ borderColor: 'primary.main' }}>
                 <Typography m={1.5}>Wallet 1</Typography>
