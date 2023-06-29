@@ -1,10 +1,5 @@
-import { Box, Stack, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-
-import Description from '@components/wallet/Description';
-import WalletAddress from '@components/wallet/WalletAddress';
-import RisksCollapse from '@components/risks/RisksCollapse';
-import StatusLabel from '@components/wallet/StatusLabel';
+import { Box } from '@mui/material';
+import React from 'react';
 
 import { Transaction } from '@sections/dashboard/types';
 
